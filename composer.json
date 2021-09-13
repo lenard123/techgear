@@ -1,0 +1,14 @@
+{
+    "name": "lenard/online-store",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lenard Mangay-ayam",
+            "email": "lenard.mangayayam@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.11"
+    }
+}
