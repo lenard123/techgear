@@ -37,7 +37,7 @@ class Order extends BaseModel
   {
     $subtotal = 0;
     foreach($this->getItems() as $item) {
-      $subtotal = $item->getSubtotal();
+      $subtotal += $item->getSubtotal();
     }
     return $subtotal + $this->shipping_fee;
   }
