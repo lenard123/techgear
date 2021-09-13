@@ -1,0 +1,91 @@
+<?php
+
+import("NotFoundException");
+
+class Route
+{
+  public $controller;
+  public $model = null;
+  public $middlewares = [];
+
+  static $global_middlewares = [
+    'CleanRequestMiddleware'
+  ];
+
+  static $web_middlewares = [];
+  static $api_middlewares = [];
+
+  public function __construct($controller)
+  {
+    $this->controller = $controller;
+  }
+
+  public function setModel($model)
+  {
+    $this->model = $model;
+    return $this;
+  }
+
+  public function addMiddleware($middleware)
+  {
+    array_push($this->middlewares, $middleware);
+    return $this;
+  }
+
+  public function proceed()
+  {
+    $controller = $this->instantiateController();
+    $method = $this->getRequestMethod();
+    $controller->$method();
+  }
+
+  public function getRequestMethod()
+  {
+    return strtolower(getRequestMethod());
+  }
+
+  public function testMiddleware()
+  {
+    $middlewares = array_merge(self::$global_middlewares, $this->middlewares);
+    foreach ($middlewares as $middleware) {
+      import("middlewares/$middleware");
+      (new $middleware)->test();
+    }
+  }
+
+  private function instantiateModel()
+  {
+    $modelClass = $this->model;
+    if (is_null($modelClass)) return null; 
+
+    import("models/$modelClass");
+
+    $id = $this->getId();
+    $model = $modelClass::find($id);
+
+    if (is_null($model)) throw new NotFoundException();
+
+    return $model;
+  }
+
+  private function getId()
+  {
+    $id = get('id');
+    if (is_null($id)) throw new NotFoundException();
+    return $id;
+  }
+
+  private function instantiateController()
+  {
+    $model = $this->instantiateModel();
+    $controllerClass = $this->controller;
+    import("controllers/$controllerClass");
+    $controller = new $controllerClass($model);
+    return $controller;
+  }
+
+  public static function init($controller)
+  {
+    return new Route($controller);
+  }
+}
