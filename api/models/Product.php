@@ -2,6 +2,7 @@
 
 import("models/BaseModel");
 import("models/Subcategory");
+import("models/User");
 
 class Product extends BaseModel
 {
@@ -26,6 +27,18 @@ class Product extends BaseModel
       return asset(self::DEFAULT_IMAGE);
     }
     return storage($this->image);
+  }
+
+  public function isFavorite()
+  {
+    if (User::isUserCustomer()) {
+      $user = User::getCurrentUser();
+      foreach($user->getFavorites() as $favorite) {
+        if ($favorite->product_id == $this->id)
+          return true;
+      }
+    }
+    return false;
   }
 
   public function update()
