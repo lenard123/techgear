@@ -43,6 +43,14 @@ class User extends BaseModel
     return $this->user_info;
   }
 
+  public function changeEmail($email)
+  {
+    $_SESSION['user_email'] = $email;
+    setcookie("user_email", $email, time() + (86400 * 30));
+    $this->email = $email;
+    $this->update();
+  }
+
   public function update()
   {
     $stmt = self::prepareStatement("UPDATE `users` SET `role`=?, `email`=?, `password`=?, `firstname`=?, `lastname`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?");

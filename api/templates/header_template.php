@@ -101,7 +101,7 @@
                 <a href="<?= url('?page=personal') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                   Profile
                 </a>
-                <a href="#" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
+                <a href="<?= url('?page=settings') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                   Settings
                 </a>
                 <div class="border-b border-gray-300 my-1"></div>

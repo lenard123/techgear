@@ -12,5 +12,6 @@ $web_routes = [
   "checkout" => Route::init('CheckoutController')->addMiddleware('CustomerOnlyMiddleware'),
   "order" => Route::init('OrderController')->addMiddleware('CustomerOnlyMiddleware'),
   "personal" => Route::init('PersonalController')->addMiddleware('CustomerOnlyMiddleware'),
+  "settings" => Route::init('SettingsController')->addMiddleware('CustomerOnlyMiddleware'),
 ];
 
