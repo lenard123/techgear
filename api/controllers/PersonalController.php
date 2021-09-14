@@ -35,6 +35,27 @@ class PersonalController extends BaseController
     $view->addScript(asset('js/promise-polyfill.min.js'));
     $view->addScript(asset('js/axios.min.js'));
     $view->addScript(asset('js/address.js'));
+
+
+    if (!is_null($this->user_info->region) && LocationController::isValidRegion($this->user_info->region))
+    {
+      $region = $this->user_info->region;
+      $view->addJSData("region_data", LocationController::getLocation()->$region);
+      $view->addJSData("region", $region);
+      if (!is_null($this->user_info->province)) 
+      {
+        $view->addJSData("province", $this->user_info->province);
+        if (!is_null($this->user_info->municipality)) 
+        {
+          $view->addJSData("municipality", $this->user_info->municipality);
+          if (!is_null($this->user_info->barangay)) 
+          {
+            $view->addJSData("barangay", $this->user_info->barangay);
+          }
+        }
+      }
+    }
+
     $view->render();
   }
 
@@ -43,7 +64,22 @@ class PersonalController extends BaseController
     $type = post('type');
     if ($type == 'contact') {
       return $this->updateContact();
+    } else if ($type == 'address') {
+      return $this->updateAddress();
     }
+    redirect('?page=personal');
+  }
+
+  private function updateAddress()
+  {
+    $this->user_info->region = post('region');
+    $this->user_info->province = post('province');
+    $this->user_info->municipality = post('municipality');
+    $this->user_info->barangay = post('barangay');
+    $this->user_info->street = post('street');
+    $this->user_info->unit = post('unit');
+    $this->user_info->update();
+    AlertMessage::success("Address Info updated successfully");
     redirect('?page=personal');
   }
 
