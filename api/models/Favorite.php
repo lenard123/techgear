@@ -65,4 +65,11 @@ class Favorite extends BaseModel
       array_push($favorites, self::populateData($row));
     return $favorites;
   }
+
+  public static function deleteProduct($product_id)
+  {
+    $stmt = self::prepareStatement("DELETE FROM `favorites` WHERE `product_id`=?");
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+  }
 }

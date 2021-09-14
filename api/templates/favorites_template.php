@@ -27,16 +27,20 @@
         </div>
       </div>
       <div class="flex justify-between lg:hidden">
-        <div class="text-gray-500 text-xl leading-6 mb-3">
+        <div class="text-gray-500 text-xl leading-6">
           <?= money($favorite->getProduct()->price) ?>
         </div>
         <div class="flex">
           <!-- Remove from favorites -->
-          <a href="#" class="text-red-500 my-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-            </svg>
-          </a>
+          <form action="<?= url('?page=favorites') ?>" class="my-auto" method="POST">
+            <?= __method('DELETE') ?>
+            <input type="hidden" name="product_id" value="<?= $favorite->product_id ?>">
+            <button type="submit" class="text-red-500 my-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </form>
 
           <!-- Add to Cart -->
           <form action="<?= url('?page=cart') ?>" class="my-auto" method="post">
@@ -64,12 +68,16 @@
           ADD TO CART
         </button>
       </form>
-      <a href="#" class="text-red-400 text-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-        </svg>
-        <span>Remove from favorites</span>
-      </a>
+      <form action="<?= url('?page=favorites') ?>" method="POST">
+        <?= __method('DELETE') ?>
+        <input type="hidden" name="product_id" value="<?= $favorite->product_id ?>">
+        <button type="submit" class="text-red-400 text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+          </svg>
+          <span>Remove from favorites</span>
+        </button>
+      </form>
     </div>
   </div>
   <?php endforeach; ?>

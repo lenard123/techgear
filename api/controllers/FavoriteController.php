@@ -18,6 +18,18 @@ class FavoriteController extends BaseController
     $view->render();
   }
 
+  public function delete()
+  {
+    $product_id = post('product_id');
+
+    if (is_null($product_id)) return redirect('?page=favorites');
+    if (!Favorite::isCurrentUserFavorite($product_id)) return redirect('?page=favorites'); 
+
+    Favorite::deleteProduct($product_id);
+    AlertMessage::success("Product successfully removed from favorites");
+    redirect('?page=favorites');
+  }
+
   public function post()
   {
     $product_id = post('product_id');
