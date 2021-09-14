@@ -5,6 +5,7 @@ import("controllers/LocationController");
 import("components/CustomerPageComponent");
 import("models/User");
 import("models/Order");
+import("utils/AlertMessage");
 import("utils/ValidatorList");
 
 class CheckoutController extends BaseController
@@ -86,7 +87,8 @@ class CheckoutController extends BaseController
     $order->shipping_fee = SITE_SHIPPING_FEE;
     $order->save();
 
-    dd($order);
+    AlertMessage::success('Order placed successfully');
+    redirect('?page=order');
   }
 
   public function validate()
