@@ -10,6 +10,10 @@
   display: none;
 }
 
+.category-link .subcategories > *:last-child {
+  border-bottom: 0;
+}
+
 .category-link.active .caret {
   transform: rotateZ(-90deg);
 }
