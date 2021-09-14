@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="<?= url('assets/styles.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.min.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?= url('assets/css/styles.css') ?>">
   <title>
     <?= isset($title) ? $title . ' | '. SITE_NAME : SITE_NAME ?>
   </title>
@@ -15,7 +15,7 @@
 <?php view($content, $content_data) ?>
 <?php AlertMessage::render() ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<?= url('assets/js/jquery.min.js') ?>"></script>
 <script src="<?= url('assets/js/app.js') ?>"></script>
 
 

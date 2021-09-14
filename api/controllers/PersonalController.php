@@ -18,8 +18,8 @@ class PersonalController extends BaseController
     $view->setTitle("Personal Info");
     $view->addData("user", $user);
     $view->addData("regions", $regions);
-    $view->addScript('https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js');
-    $view->addScript('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js');
+    $view->addScript(asset('js/promise-polyfill.min.js'));
+    $view->addScript(asset('js/axios.min.js'));
     $view->addScript(asset('js/address.js'));
     $view->render();
   }

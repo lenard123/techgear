@@ -39,8 +39,8 @@ class CheckoutController extends BaseController
       $view->addData("total", $total);
       $view->addData("regions", $regions);
       $view->addData("validator", $validator);
-      $view->addScript('https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js');
-      $view->addScript('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js');
+      $view->addScript(asset('js/promise-polyfill.min.js'));
+      $view->addScript(asset('js/axios.min.js'));
       $view->addScript(asset('js/address.js'));
 
       if (!is_null($user_info->region) && LocationController::isValidRegion($user_info->region)) {
