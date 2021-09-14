@@ -21,6 +21,14 @@ class Favorite extends BaseModel
     return $this->product;
   }
 
+  public function save()
+  {
+    $stmt = self::prepareStatement("INSERT INTO `favorites`(`user_id`, `product_id`) VALUES (?, ?)");
+    $stmt->bind_param("ii", $this->user_id, $this->product_id);
+    $stmt->execute();
+    $this->id = self::getLastId();
+  }
+
   public static function isCurrentUserFavorite($product_id)
   {
     if (User::isUserCustomer()) {
