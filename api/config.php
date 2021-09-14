@@ -11,7 +11,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_DATABASE', 'online-store');
 
-define('SITE_NAME', 'E-Commerce');
+define('SITE_NAME', 'TechGear');
 define('SITE_SHIPPING_FEE', 38);
 
 define('ENV', 'DEBUG');
