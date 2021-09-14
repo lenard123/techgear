@@ -4,6 +4,7 @@ import("models/BaseModel");
 import("models/UserInfo");
 import("models/Cart");
 import("models/Order");
+import("models/Favorite");
 
 class User extends BaseModel
 {
@@ -19,6 +20,7 @@ class User extends BaseModel
   public $carts = null;
   public $user_info = null;
   public $orders = null;
+  public $favorites = null;
 
   public static $current_user = null;
 
@@ -99,6 +101,13 @@ class User extends BaseModel
       $this->carts = Cart::getAllFromUser($this->id);
     }
     return $this->carts;
+  }
+
+  public function getFavorites()
+  {
+    if (is_null($this->favorites))
+      $this->favorites = Favorite::getAllFromUser($this->id);
+    return $this->favorites;
   }
 
   public function getOrders()
