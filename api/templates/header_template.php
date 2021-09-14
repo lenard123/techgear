@@ -95,7 +95,7 @@
                 <a href="<?= url('?page=order') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                   Orders <?= $order_count > 0 ? "($order_count)": "" ?>
                 </a>
-                <a href="#" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
+                <a href="<?= url('?page=favorites') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                   Favorites <?= $favorite_count > 0 ? "($favorite_count)" : "" ?>
                 </a>
                 <a href="<?= url('?page=personal') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">

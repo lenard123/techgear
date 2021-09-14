@@ -43,7 +43,10 @@
               <span>(<?= $order_count ?>)</span>
               <?php endif; ?>
             </a>
-            <a href="#" class="border-l-2 px-5 py-2 text-gray-600">
+            <a 
+              href="<?= url('?page=favorites') ?>" 
+              class="border-l-2 px-5 py-2 text-gray-600 <?= $active == 'favorites' ? 'border-blue-500' : '' ?>"
+              >
               <span>Favorites </span>
               <span>
                 <?= $favorite_count > 0 ? "($favorite_count)" : "" ?>
