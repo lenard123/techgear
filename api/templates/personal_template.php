@@ -6,7 +6,9 @@
 
   <div class="p-5 border-b border-gray-200">
     <div class="text-xl mb-4 font-semibold">Contact</div>
-    <form>
+    <form action="<?= url('?page=personal') ?>" method="POST">
+      <?= __method('PATCH') ?>
+      <input type="hidden" name="type" value="contact"/>
       <div class="grid lg:grid-cols-2 gap-5 mb-5">
         <div class="text-gray-800">
           <label>Firstname: </label>
@@ -17,16 +19,26 @@
             value="<?= $user->firstname ?>" 
             required 
           />
+          <?php if($validator->isNotValid('firstname')) : ?>
+            <span class="text-red-500 text-sm">
+              <?= $validator->getMessage('firstname') ?>
+            </span>
+          <?php endif; ?> 
         </div>
         <div class="text-gray-800">
           <label>Lastname: </label>
-          <input 
+          <input
             type="text" 
             name="lastname" 
             class="font-light block border border-gray-300 w-full p-2 rounded focus:border-blue-500 outline-none"
             value="<?= $user->lastname ?>" 
             required 
           />
+          <?php if($validator->isNotValid('lastname')) : ?>
+            <span class="text-red-500 text-sm">
+              <?= $validator->getMessage('lastname') ?>
+            </span>
+          <?php endif; ?> 
         </div>
       </div>
       <div class="text-gray-800 mb-5">
@@ -35,6 +47,7 @@
           type="text" 
           name="phone" 
           class="font-light block border border-gray-300 w-full p-2 rounded focus:border-blue-500 outline-none"
+          value="<?= $user_info->phone ?>"
         />
       </div>
       <button 

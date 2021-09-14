@@ -43,6 +43,21 @@ class User extends BaseModel
     return $this->user_info;
   }
 
+  public function update()
+  {
+    $stmt = self::prepareStatement("UPDATE `users` SET `role`=?, `email`=?, `password`=?, `firstname`=?, `lastname`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?");
+    $stmt->bind_param(
+      "issssi",
+      $this->role,
+      $this->email,
+      $this->password,
+      $this->firstname,
+      $this->lastname,
+      $this->id
+    );
+    $stmt->execute();
+  }
+
   public function save()
   {
     $user_stmt = self::prepareStatement("INSERT INTO `users`(`role`, `email`, `password`, `firstname`, `lastname`) VALUES (?, ?, ?, ?, ?)");

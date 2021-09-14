@@ -33,6 +33,23 @@ class UserInfo extends BaseModel
     return $user_info;
   }
 
+  public function update()
+  {
+    $stmt = self::prepareStatement("UPDATE `user_info` SET `region`=?, `province`=?, `municipality`=?, `barangay`=?, `street`=?, `unit`=?, `phone`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `user_id`=?");
+    $stmt->bind_param(
+      "sssssssi",
+      $this->region,
+      $this->province,
+      $this->municipality,
+      $this->barangay,
+      $this->street,
+      $this->unit,
+      $this->phone,
+      $this->user_id
+    );
+    $stmt->execute();
+  }
+
   public function save()
   {
     $stmt = self::prepareStatement("INSERT INTO `user_info`(`user_id`, `region`, `province`, `municipality`, `barangay`, `street`, `unit`, `phone`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
