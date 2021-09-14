@@ -96,7 +96,7 @@
                   Orders <?= $order_count > 0 ? "($order_count)": "" ?>
                 </a>
                 <a href="#" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
-                  Favorites (2)
+                  Favorites <?= $favorite_count > 0 ? "($favorite_count)" : "" ?>
                 </a>
                 <a href="<?= url('?page=personal') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                   Profile

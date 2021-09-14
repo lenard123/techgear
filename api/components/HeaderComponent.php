@@ -13,8 +13,10 @@ class HeaderComponent extends Component
     $this->addData("categories", Category::getAll());
 
     if (User::isUserCustomer()) {
-      $this->addData("cart_count", User::getCurrentUser()->countCart());
-      $this->addData("order_count", User::getCurrentUser()->countOrder());
+      $user = User::getCurrentUser();
+      $this->addData("cart_count", $user->countCart());
+      $this->addData("order_count", $user->countOrder());
+      $this->addData("favorite_count", count($user->getFavorites()));
     }
 
   }

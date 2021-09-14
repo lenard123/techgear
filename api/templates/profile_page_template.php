@@ -44,7 +44,10 @@
               <?php endif; ?>
             </a>
             <a href="#" class="border-l-2 px-5 py-2 text-gray-600">
-              Favorites (2)
+              <span>Favorites </span>
+              <span>
+                <?= $favorite_count > 0 ? "($favorite_count)" : "" ?>
+              </span>  
             </a>
             <a 
               href="<?= url('?page=personal') ?>" 
