@@ -4,6 +4,10 @@
     <h1 class="text-4xl text-gray-800 font-semibold">Orders</h1>
   </div>
 
+  <?php if (count($orders) <= 0) : ?>
+    <div class="py-10 text-center">You don't have any orders</div>
+  <?php endif; ?>
+
   <?php foreach($orders as $order) : ?>
   <div class="p-5 border-b border-gray-200">
     <div class="mb-3">
