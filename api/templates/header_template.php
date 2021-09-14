@@ -136,11 +136,69 @@
 </header>
 
 <div class="lg:hidden" id="sidebar" style="display: none;">
-  <div id="sidebar_overlay" class="fixed hidden bg-black top-0 left-0 right-0 bottom-0 z-30 opacity-10">
+  <div id="sidebar_overlay" class="close-sidebar fixed hidden bg-black top-0 left-0 right-0 bottom-0 z-30 opacity-10">
   </div>
   <div 
     id="sidebar_nav" 
-    class="fixed top-0 left-0 bg-white min-h-screen z-40" 
+    class="fixed overflow-y-scroll top-0 left-0 bg-white h-screen z-40" 
     style="left: -300px; width: 300px;">
+
+    <a class="close-sidebar cursor-pointer absolute top-3 right-3 text-gray-400">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </a>
+
+    <div class="px-4 py-2 border-b border-gray-200 text-gray-400 leading-3">
+      <p class="font-bold text-md mb-1">(0939) 771 4101</p>
+      <p class="text-xs">lenard.mangayayam@gmail.com</p>
+    </div>
+
+    <?php foreach($categories as $category) : ?>
+    <div class="category-link px-4 border-b border-gray-200 text-gray-500">
+      <div class="flex items-center justify-between h-12">
+        <a class="cursor-pointer"><?= __($category->name) ?></a>
+        <a class="cursor-pointer caret">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </a>
+      </div>
+      <div class="subcategories">
+        <?php foreach($category->getSubcategories() as $subcategory) : ?>
+          <div 
+            class="h-12 flex items-center px-4 border-b border-gray-200 text-gray-500" 
+          >
+            <a href="<?= url('?page=subcategory&id=' . $subcategory->id) ?>"><?= __($subcategory->name) ?></a>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+    <?php endforeach; ?>
+
+    <?php if (!User::isUserCustomer()) : ?>
+      <div class="px-4 border-b border-gray-200 text-gray-500">
+        <a href="<?= url('?page=signin') ?>" class="flex items-center justify-between h-12">
+          <span>Login</span>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="px-4 border-b border-gray-200 text-gray-500">
+        <a href="<?= url('?page=signup') ?>" class="flex items-center justify-between h-12">
+          <span>Register</span>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    <?php endif; ?>
+
   </div>
 </div>

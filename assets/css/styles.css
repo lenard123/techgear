@@ -6,6 +6,18 @@
   display: block;
 }
 
+.category-link .subcategories {
+  display: none;
+}
+
+.category-link.active .caret {
+  transform: rotateZ(-90deg);
+}
+
+.category-link.active .subcategories {
+  display: block;
+}
+
 .ratio-4-3 {
   width: 100%;
   padding-top: 75%;
