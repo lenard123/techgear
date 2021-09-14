@@ -172,8 +172,6 @@ class User extends BaseModel
         $data = md5($_SERVER['HTTP_USER_AGENT'] . $user->password);
         if ($data == $_COOKIE['user_auth']) {
           return $user;
-        } else {
-          self::forgetUser();
         }
       }
     }
