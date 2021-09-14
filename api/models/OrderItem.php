@@ -48,12 +48,17 @@ class OrderItem extends BaseModel
     $cart_items = Cart::getAllFromUser($user_id);
     foreach($cart_items as $cart)
     {
+      $product = $cart->getProduct();
+
       $order_item = new OrderItem;
       $order_item->order_id = $order_id;
       $order_item->product_id = $cart->product_id;
       $order_item->quantity = $cart->quantity;
-      $order_item->price = $cart->getProduct()->price;
+      $order_item->price = $product->price;
       $order_item->save();
+
+      $product->quantity -= $cart->quantity;
+      $product->update();
     }
     Cart::clear($user_id);
   }

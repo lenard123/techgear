@@ -28,6 +28,23 @@ class Product extends BaseModel
     return storage($this->image);
   }
 
+  public function update()
+  {
+    $stmt = self::prepareStatement("UPDATE `products` SET `subcategory_id`=?, `name`=?, `description`=?, `price`=?, `image`=?, `quantity`=?, `max_order`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?");
+    $stmt->bind_param(
+      "issdsiii",
+      $this->subcategory_id,
+      $this->name,
+      $this->description,
+      $this->price,
+      $this->image,
+      $this->quantity,
+      $this->max_order,
+      $this->id
+    );
+    $stmt->execute();
+  }
+
   public function isAvailable()
   {
     return $this->quantity > 0;
