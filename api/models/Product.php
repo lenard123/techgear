@@ -2,7 +2,7 @@
 
 import("models/BaseModel");
 import("models/Subcategory");
-import("models/User");
+import("models/Favorite");
 
 class Product extends BaseModel
 {
@@ -31,14 +31,7 @@ class Product extends BaseModel
 
   public function isFavorite()
   {
-    if (User::isUserCustomer()) {
-      $user = User::getCurrentUser();
-      foreach($user->getFavorites() as $favorite) {
-        if ($favorite->product_id == $this->id)
-          return true;
-      }
-    }
-    return false;
+    return Favorite::isCurrentUserFavorite($this->id);
   }
 
   public function update()

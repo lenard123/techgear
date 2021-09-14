@@ -1,6 +1,8 @@
 <?php
 
 import("models/BaseModel");
+import("models/Product");
+import("models/User");
 
 class Favorite extends BaseModel
 {
@@ -9,6 +11,27 @@ class Favorite extends BaseModel
   public $product_id;
   public $created_at;
   public $modified_at;
+
+  public $product = null;
+
+  public function getProduct()
+  {
+    if (is_null($this->product))
+      $this->product = Product::find($this->product_id);
+    return $this->product;
+  }
+
+  public static function isCurrentUserFavorite($product_id)
+  {
+    if (User::isUserCustomer()) {
+      $user = User::getCurrentUser();
+      foreach($user->getFavorites() as $favorite) {
+        if ($favorite->product_id == $product_id)
+          return true;
+      }
+    }
+    return false;
+  }
 
   public static function populateData($row)
   {
