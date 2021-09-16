@@ -46,7 +46,7 @@ class SignupController extends BaseController
   private function saveUser()
   {
     $user = new User;
-    $user->role = USER_ROLE_CUSTOMER;
+    $user->role = USER::ROLE_CUSTOMER;
     $user->email = post('email');
     $user->setPassword(post('password'));
     $user->firstname = post('firstname');

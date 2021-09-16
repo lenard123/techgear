@@ -24,6 +24,10 @@ class User extends BaseModel
 
   public static $current_user = null;
 
+  const ROLE_CUSTOMER = 1;
+  const ROLE_SUBADMIN = 2;
+  const ROLE_ADMIN = 3;
+
   public static function populateData($data)
   {
     $user = new User;
@@ -227,7 +231,7 @@ class User extends BaseModel
   {
     $current_user = self::getCurrentUser();
     if(isset($current_user)) {
-      return $current_user->role === USER_ROLE_CUSTOMER;
+      return $current_user->role === self::ROLE_CUSTOMER;
     }
     return false;
   }

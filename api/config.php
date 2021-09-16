@@ -16,7 +16,3 @@ define('SITE_SHIPPING_FEE', 38);
 
 define('ENV', 'DEBUG');
 
-define('USER_ROLE_CUSTOMER', 1);
-define('USER_ROLE_SUBADMIN', 2);
-define('USER_ROLE_ADMIN', 3);
-
