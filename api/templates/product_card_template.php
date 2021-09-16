@@ -2,7 +2,7 @@
 <div class="bg-white hover:shadow-2xl border border-gray-200 flex flex-row md:flex-col">
 
   <!-- Image -->
-  <a href="#" class="flex-shrink-0 block w-2/5 md:w-full">
+  <a href="<?= url("?page=product&id={$product->id}") ?>" class="flex-shrink-0 block w-2/5 md:w-full">
     <div class="w-full relative overflow-hidden" style="padding-top: 75%;">
       <img class="mx-auto h-full absolute top-0 left-0 right-0 botttom-0" src="<?= $product->getImage() ?>" />
     </div>
@@ -13,7 +13,7 @@
     <!-- Desc -->
     <div class="flex-grow pb-5">
       <a href="#" class="block text-gray-500 text-sm"><?= __($product->getSubcategory()->name) ?></a>
-      <a href="#" class="block text-gray-600 text-md leading-6 font-semibold"><?= __($product->name) ?></a>
+      <a href="<?= url("?page=product&id={$product->id}") ?>" class="block text-gray-600 text-md leading-6 font-semibold"><?= __($product->name) ?></a>
     </div>
 
     <!-- Price -->

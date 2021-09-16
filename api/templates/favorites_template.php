@@ -22,9 +22,9 @@
     <div class="flex flex-col justify-between p-5 w-full lg:w-6/12">
       <div class="pb-5">
         <div class="text-gray-500 text-sm"><?= __($favorite->getProduct()->getSubcategory()->name) ?></div>
-        <div class="text-gray-600 text-md leading-6 font-semibold">
+        <a href="<?= url("?page=product&id={$favorite->product_id}") ?>" class="text-gray-600 text-md leading-6 font-semibold">
           <?= __($favorite->getProduct()->name) ?>
-        </div>
+        </a>
       </div>
       <div class="flex justify-between lg:hidden">
         <div class="text-gray-500 text-xl leading-6">
