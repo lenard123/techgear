@@ -18,6 +18,7 @@ class Product extends BaseModel
   public $modified_at;
 
   public $subcategory = null;
+  public $related_products = null;
 
   const DEFAULT_IMAGE = 'img/product1.jpg';
 
@@ -29,9 +30,31 @@ class Product extends BaseModel
     return storage($this->image);
   }
 
+  public function getDescription()
+  {
+    if (is_null($this->description) or $this->description == "")
+      return "No description available";
+    return $this->description;
+  }
+
   public function isFavorite()
   {
     return Favorite::isCurrentUserFavorite($this->id);
+  }
+
+  public function getRelatedProducts()
+  {
+    if (is_null($this->related_products)){
+      $products = array();
+      $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `subcategory_id`=? AND `id`<>? LIMIT 5");
+      $stmt->bind_param("ii", $this->subcategory_id, $this->id);
+      $stmt->execute();
+      $rs = $stmt->get_result();
+      while($row = $rs->fetch_assoc()) 
+        array_push($products, self::populateData($row));
+      $this->related_products = $products;
+    }
+    return $this->related_products;
   }
 
   public function update()
