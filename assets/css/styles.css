@@ -15,6 +15,10 @@
 }
 
 .category-link.active .caret {
+  transition: transform 300ms linear;
+}
+
+.category-link.active .caret {
   transform: rotateZ(-90deg);
 }
 
