@@ -22,6 +22,11 @@ class CustomerPageComponent extends Component
     parent::addData("js_data", $this->js_data);
   }
 
+  public function addDescription($description)
+  {
+    parent::addData("description", $description);
+  }
+
   public function addJSData($key, $value)
   {
     $this->js_data[$key] = $value;
@@ -36,7 +41,7 @@ class CustomerPageComponent extends Component
 
   public function setTitle($title)
   {
-    parent::addData("title", __($title));
+    parent::addData("title", $title);
   }
 
   public function addData($key, $value)

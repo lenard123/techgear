@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <?php if (isset($description)) : ?>
+  <meta name="description" content="<?= __($description) ?>">
+  <?php endif; ?>
   <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.min.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= url('assets/css/styles.css') ?>">
-  <title>
-    <?= isset($title) ? $title . ' | '. SITE_NAME : SITE_NAME ?>
-  </title>
+  <title><?= isset($title) ? __($title) . ' | '. SITE_NAME : SITE_NAME ?></title>
 </head>
 <body class="bg-gray-100">
 

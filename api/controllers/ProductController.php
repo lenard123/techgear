@@ -19,6 +19,7 @@ class ProductController extends BaseController
     $product = $this->product;
 
     $view = new CustomerPageComponent("product_template");
+    $view->addDescription($product->description ?? $product->name);
     $view->setTitle($product->name);
     $view->addData("product", $product);
     $view->render();
