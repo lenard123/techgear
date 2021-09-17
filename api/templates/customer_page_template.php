@@ -8,6 +8,9 @@
   <?php endif; ?>
   <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.min.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= url('assets/css/styles.css') ?>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet"> 
   <title><?= isset($title) ? __($title) . ' | '. SITE_NAME : SITE_NAME ?></title>
 </head>
 <body class="bg-gray-100">

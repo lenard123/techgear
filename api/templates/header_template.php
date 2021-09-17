@@ -47,11 +47,15 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </a>
-          <a href="<?= url() ?>" class="block my-auto mr-10">
+          <a 
+            href="<?= url() ?>" 
+            class="block my-auto mr-5 text-2xl text-gray-800 font-black"
+            style="font-family: 'Iceland', cursive;">
             <img
-              src="<?= url('assets/img/logo.svg') ?>" 
-              class="h-8" 
+              src="<?= url('assets/img/logo1.png') ?>" 
+              class="h-8 inline-block" 
             />
+            <span>TechGear</span>
           </a>
 
           <div class="hidden lg:flex">
