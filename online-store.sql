@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 13, 2021 at 09:29 AM
+-- Generation Time: Sep 17, 2021 at 06:39 AM
 -- Server version: 8.0.13
 -- PHP Version: 7.2.11
 
@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `online-store`
@@ -35,14 +35,14 @@ CREATE TABLE `carts` (
   `quantity` int(11) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NULL DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `carts`
 --
 
 INSERT INTO `carts` (`id`, `user_id`, `product_id`, `quantity`, `modified_at`) VALUES
-(30, 9, 12, 2, '2021-09-13 09:20:12');
+(36, 9, 13, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -55,16 +55,23 @@ CREATE TABLE `categories` (
   `name` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NULL DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `modified_at`) VALUES
-(1, 'Electronics', NULL),
-(2, 'Fashion', NULL),
-(3, 'Books', NULL);
+(1, 'TV & Video', NULL),
+(2, 'Audio & Home Theater', NULL),
+(3, 'Computer', NULL),
+(4, 'Laptop', NULL),
+(5, 'Wearable Technology', NULL),
+(6, 'Car Electronics & GPS', NULL),
+(7, 'Portable Audio', NULL),
+(8, 'Cell Phone', NULL),
+(9, 'Office Electronics', NULL),
+(10, 'Camera & Photo', NULL);
 
 -- --------------------------------------------------------
 
@@ -78,7 +85,14 @@ CREATE TABLE `favorites` (
   `product_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NULL DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `favorites`
+--
+
+INSERT INTO `favorites` (`id`, `user_id`, `product_id`, `modified_at`) VALUES
+(8, 9, 13, NULL);
 
 -- --------------------------------------------------------
 
@@ -103,15 +117,7 @@ CREATE TABLE `orders` (
   `shipping_fee` decimal(15,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NULL DEFAULT NULL
-) ;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `user_id`, `status`, `recipient_firstname`, `recipient_lastname`, `region`, `province`, `municipality`, `barangay`, `street`, `unit`, `phone`, `email`, `shipping_fee`, `modified_at`) VALUES
-(2, 9, 1, 'Lenard', 'Mangay-ayam', 'NCR', 'NATIONAL CAPITAL REGION - THIRD DISTRICT', 'CALOOCAN CITY', 'BARANGAY 188', 'MRH NHA SITE 4', 'BLdg.2a 2nd Floor Unit 10', '09397714101', 'lenard.mangayayam@gmail.com', '38.00', NULL),
-(4, 9, 1, 'Lenard', 'Mangay-ayam', 'NCR', 'NATIONAL CAPITAL REGION - THIRD DISTRICT', 'CALOOCAN CITY', 'BARANGAY 188', 'MRH NHA SITE 4', 'BLdg.2a 2nd Floor Unit 10', '09397714101', 'lenard.mangayayam@gmail.com', '38.00', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -127,16 +133,7 @@ CREATE TABLE `order_items` (
   `price` decimal(15,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NULL DEFAULT NULL
-) ;
-
---
--- Dumping data for table `order_items`
---
-
-INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`, `modified_at`) VALUES
-(3, 2, 1, 1, '15999.00', NULL),
-(5, 4, 1, 1, '15999.00', NULL),
-(6, 4, 12, 1, '15499.00', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -146,7 +143,7 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`, 
 
 CREATE TABLE `products` (
   `id` int(11) UNSIGNED NOT NULL,
-  `subcategory_id` int(11) UNSIGNED NOT NULL,
+  `category_id` int(10) UNSIGNED DEFAULT NULL,
   `name` varchar(200) NOT NULL,
   `description` text,
   `price` decimal(15,2) UNSIGNED NOT NULL,
@@ -155,50 +152,14 @@ CREATE TABLE `products` (
   `max_order` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NULL DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `subcategory_id`, `name`, `description`, `price`, `image`, `quantity`, `max_order`, `modified_at`) VALUES
-(1, 1, 'Apple MacBook Pro 15\" Touch Bar MPTU2LL/A 256GB (Silver)', NULL, '15999.00', 'uploads/product/product1.jpg', 10, NULL, NULL),
-(12, 1, 'Dell Inspiron 5378-2063 (Gray)', NULL, '15499.00', 'uploads/product/product2.jpg', 10, 4, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subcategories`
---
-
-CREATE TABLE `subcategories` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `category_id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified_at` timestamp NULL DEFAULT NULL
-) ;
-
---
--- Dumping data for table `subcategories`
---
-
-INSERT INTO `subcategories` (`id`, `category_id`, `name`, `modified_at`) VALUES
-(1, 1, 'Computers', NULL),
-(2, 1, 'Mobile Phones', NULL),
-(3, 1, 'Television Sets', NULL),
-(4, 1, 'DSLR Cameras', NULL),
-(5, 1, 'Projectors', NULL),
-(6, 2, 'Men\'s', NULL),
-(7, 2, 'Women\'s', NULL),
-(8, 2, 'Children\'s', NULL),
-(9, 2, 'Accessories', NULL),
-(10, 2, 'Footwear', NULL),
-(11, 3, 'Adventure', NULL),
-(12, 3, 'Horror', NULL),
-(13, 3, 'Romantic', NULL),
-(14, 3, 'Children\'s', NULL),
-(15, 3, 'Non-Fiction', NULL);
+INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `image`, `quantity`, `max_order`, `modified_at`) VALUES
+(13, 4, 'Apple MacBook Pro 15\" Touch Bar MPTU2LL/A 256GB (Silver)', NULL, '25999.50', 'storage/uploads/product/product1.jpg', 4, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -209,20 +170,20 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `modified_at`) VALUES
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `role` int(1) UNSIGNED NOT NULL,
-  `email` varchar(500) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `password` varchar(500) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NULL DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `role`, `email`, `password`, `firstname`, `lastname`, `modified_at`) VALUES
-(9, 1, 'lenard.mangayayam@gmail.com', '$2y$10$ULlYkJKdMsm9jCah2tqabuSSdajMUw3CuJ4qb1fB2zpKDlnziyFFW', 'Lenard', 'Mangay-ayam', NULL);
+(9, 1, 'lenard.mangayayam@gmail.com', '$2y$10$/UfxIDMyPqz8srM9lUdJ8Oe7.U4ceUJZQXK3RPDB2fzyqP7ILg83G', 'John-Lenard', 'Mangay-ayam', '2021-09-14 06:01:51');
 
 -- --------------------------------------------------------
 
@@ -233,23 +194,23 @@ INSERT INTO `users` (`id`, `role`, `email`, `password`, `firstname`, `lastname`,
 CREATE TABLE `user_info` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `region` varchar(50)  DEFAULT NULL,
-  `province` varchar(50)  DEFAULT NULL,
-  `municipality` varchar(50)  DEFAULT NULL,
-  `barangay` varchar(50)  DEFAULT NULL,
-  `street` varchar(90)  DEFAULT NULL,
-  `unit` varchar(90)  DEFAULT NULL,
+  `region` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `province` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `municipality` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `barangay` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `street` varchar(90) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `unit` varchar(90) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NULL DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `user_info`
 --
 
 INSERT INTO `user_info` (`id`, `user_id`, `region`, `province`, `municipality`, `barangay`, `street`, `unit`, `phone`, `modified_at`) VALUES
-(1, 9, 'NCR', 'NATIONAL CAPITAL REGION - THIRD DISTRICT', 'CALOOCAN CITY', 'BARANGAY 188', 'MRH NHA SITE 4', 'BLdg.2a 2nd Floor Unit 10', '09397714101', NULL);
+(1, 9, 'NCR', 'NATIONAL CAPITAL REGION - THIRD DISTRICT', 'CALOOCAN CITY', 'BARANGAY 188', 'MRH NHA SITE 4', 'BLdg.2a 2nd Floor Unit 10', '09384379875', '2021-09-14 05:01:50');
 
 --
 -- Indexes for dumped tables
@@ -274,7 +235,8 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `favorites`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `orders`
@@ -295,13 +257,6 @@ ALTER TABLE `order_items`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `subcategory_id` (`subcategory_id`);
-
---
--- Indexes for table `subcategories`
---
-ALTER TABLE `subcategories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`);
 
@@ -327,43 +282,37 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `subcategories`
---
-ALTER TABLE `subcategories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -389,6 +338,13 @@ ALTER TABLE `carts`
   ADD CONSTRAINT `carts_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
+-- Constraints for table `favorites`
+--
+ALTER TABLE `favorites`
+  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
@@ -405,13 +361,7 @@ ALTER TABLE `order_items`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `subcategories`
---
-ALTER TABLE `subcategories`
-  ADD CONSTRAINT `subcategories_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `user_info`

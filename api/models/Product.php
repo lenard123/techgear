@@ -1,13 +1,13 @@
 <?php
 
 import("models/BaseModel");
-import("models/Subcategory");
 import("models/Favorite");
+import("models/Category");
 
 class Product extends BaseModel
 {
   public $id;
-  public $subcategory_id;
+  public $category_id;
   public $name;
   public $description;
   public $price;
@@ -17,7 +17,7 @@ class Product extends BaseModel
   public $created_at;
   public $modified_at;
 
-  public $subcategory = null;
+  public $category = null;
   public $related_products = null;
 
   const DEFAULT_IMAGE = 'img/product1.jpg';
@@ -27,7 +27,7 @@ class Product extends BaseModel
     if (is_null($this->image)) {
       return asset(self::DEFAULT_IMAGE);
     }
-    return storage($this->image);
+    return url($this->image);
   }
 
   public function getDescription()
@@ -46,8 +46,8 @@ class Product extends BaseModel
   {
     if (is_null($this->related_products)){
       $products = array();
-      $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `subcategory_id`=? AND `id`<>? LIMIT 5");
-      $stmt->bind_param("ii", $this->subcategory_id, $this->id);
+      $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `category_id`=? AND `id`<>? LIMIT 5");
+      $stmt->bind_param("ii", $this->category_id, $this->id);
       $stmt->execute();
       $rs = $stmt->get_result();
       while($row = $rs->fetch_assoc()) 
@@ -59,10 +59,10 @@ class Product extends BaseModel
 
   public function update()
   {
-    $stmt = self::prepareStatement("UPDATE `products` SET `subcategory_id`=?, `name`=?, `description`=?, `price`=?, `image`=?, `quantity`=?, `max_order`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?");
+    $stmt = self::prepareStatement("UPDATE `products` SET `category_id`=?, `name`=?, `description`=?, `price`=?, `image`=?, `quantity`=?, `max_order`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?");
     $stmt->bind_param(
       "issdsiii",
-      $this->subcategory_id,
+      $this->category_id,
       $this->name,
       $this->description,
       $this->price,
@@ -79,11 +79,11 @@ class Product extends BaseModel
     return $this->quantity > 0;
   }
 
-  public function getSubcategory()
+  public function getCategory()
   {
-    if (is_null($this->subcategory))
-      $this->subcategory = Subcategory::find($this->subcategory_id);
-    return $this->subcategory;
+    if (is_null($this->category))
+      $this->category = Category::find($this->category_id);
+    return $this->category;
   }
 
   public static function find($id)
@@ -102,7 +102,7 @@ class Product extends BaseModel
   {
     $product = new Product;
     $product->id = intval($row["id"]);
-    $product->subcategory_id = intval($row["subcategory_id"]);
+    $product->category_id = intval($row["category_id"]);
     $product->name = $row["name"];
     $product->description = $row["description"];
     $product->price = floatval($row["price"]);
@@ -123,16 +123,16 @@ class Product extends BaseModel
     return $products;
   }
 
-  public static function getAllFromSubcategory($subcategory_id)
+  public static function getAllFromCategory($category_id)
   {
     $result = array();
-    $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `subcategory_id`=?");
-    $stmt->bind_param("i", $subcategory_id);
+    $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `category_id`=?");
+    $stmt->bind_param("i", $category_id);
     $stmt->execute();
     $rs = $stmt->get_result();
     while($row = $rs->fetch_assoc()) {
       array_push($result, self::populateData($row));
     }
-    return $result;
+    return $result;    
   }
 }

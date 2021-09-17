@@ -4,7 +4,7 @@ import("Route");
 
 $web_routes = [
   "home" => Route::init('HomeController'),
-  "subcategory" => Route::init('SubcategoryController')->setModel('Subcategory'),
+  "category" => Route::init('CategoryController')->setModel('Category'),
   "signout" => Route::init('SignoutController')->addMiddleware('CustomerOnlyMiddleware'),
   "signin" => Route::init('SigninController')->addMiddleware('GuestCustomerOnlyMiddleware'),
   "cart" => Route::init('CartController')->addMiddleware('CustomerOnlyMiddleware'),

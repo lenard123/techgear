@@ -2,17 +2,17 @@
   <div class="container mx-auto sm:px-5">
     <h1 class="text-center mb-8"> 
       <span class="text-lg text-gray-500 my-auto mr-2">
-        <?= __($product->getSubcategory()->getCategory()->name) ?>
+        <a href="<?= url() ?>">Home</a>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </span>
-      <a href="<?= url("?page=subcategory&id={$product->subcategory_id}") ?>" class="text-lg text-gray-500 my-auto mr-2">
-        <?= __($product->getSubCategory()->name) ?>
+      <span class="text-lg text-gray-500 my-auto mr-2">
+        <a href="<?= url("?page=category&id={$product->category_id}") ?>"><?= __($product->getCategory()->name) ?></a>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
-      </a>
+      </span>
       <span class="block text-2xl">
         <?= __($product->name) ?>
       </span>
@@ -33,7 +33,7 @@
 
         <div>
           <span class="text-gray-600">Category: </span>
-          <span class="text-gray-800 font-semibold"><?= __($product->getSubcategory()->name) ?></span>
+          <span class="text-gray-800 font-semibold"><?= __($product->getCategory()->name) ?></span>
         </div>
 
         <div class="border-b pb-2 border-gray-200">

@@ -1,7 +1,6 @@
 <?php
 
 import("models/BaseModel");
-import("models/Subcategory");
 
 class Category extends BaseModel 
 {
@@ -10,22 +9,14 @@ class Category extends BaseModel
   public $created_at;
   public $modified_at;
 
-  public $subcategories = null;
-
+  public $products = null;
   static $categories = null;
 
-  public function getSubcategories()
+  public function getProducts()
   {
-    if(is_null($this->subcategories)) {
-      $all_subcategories = Subcategory::getAll();
-      $result = array();
-      foreach ($all_subcategories as $subcategory) {
-        if ($subcategory->category_id == $this->id)
-          array_push($result, $subcategory);
-      }
-      $this->subcategories = $result;
-    }
-    return $this->subcategories;
+    if (is_null($this->products))
+      $this->products = Product::getAllFromCategory($this->id);
+    return $this->products;
   }
 
   public static function find($id)
