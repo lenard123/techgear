@@ -2,6 +2,7 @@
 
 import("components/Component");
 import("components/AdminHeaderComponent");
+import("components/AdminSidebarComponent");
 
 class AdminPageComponent extends Component
 {
@@ -10,6 +11,7 @@ class AdminPageComponent extends Component
   public function __construct()
   {
     parent::addData("header", new AdminHeaderComponent);
+    parent::addData("sidebar", new AdminSidebarComponent);
   }
 
 }
