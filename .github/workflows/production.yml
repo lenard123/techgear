@@ -1,0 +1,20 @@
+name: Merge Main Branch to Production Branch
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - run: |
+          git config user.name lenard123
+          git config user.email lenard.mangayayam@gmail.com
+          git checkout -b production
+      - run: cp api/config.production.php api/config.php
+      - run: |
+          git add api/config.php
+          git commit -m "Use Production config"
+          git push --set-upstream origin production --force
