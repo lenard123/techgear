@@ -149,23 +149,13 @@
     </div>
 
     <div class="category-link px-4 border-b border-gray-200 text-gray-500">
+
+      <?php foreach($categories as $category) : ?>
       <div class="flex items-center justify-between h-12">
-        <a class="cursor-pointer">Categories</a>
-        <a class="cursor-pointer caret">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </a>
+        <a href="<?= url("?page=category&id={$category->id}") ?>"><?= __($category->name) ?></a>
       </div>
-      <div class="subcategories">
-        <?php foreach($categories as $category) : ?>
-          <div 
-            class="h-12 flex items-center px-4 border-b border-gray-200 text-gray-500" 
-          >
-            <a href=""><?= __($category->name) ?></a>
-          </div>
-        <?php endforeach; ?>
-      </div>
+      <?php endforeach; ?>
+
     </div>
 
     <?php if (!User::isUserCustomer()) : ?>
