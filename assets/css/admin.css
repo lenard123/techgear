@@ -1,0 +1,4 @@
+aside {
+  scrollbar-width: thin;
+  --scrollbar-thumb: #4b5563 !important;
+}
