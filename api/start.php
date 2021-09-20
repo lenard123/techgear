@@ -3,6 +3,7 @@
 require_once "init.php";
 require_once "routing/api.php";
 require_once "routing/web.php";
+require_once "routing/admin.php";
 
 import("NotFoundException");
 
@@ -17,6 +18,18 @@ function load($page)
   } catch (NotFoundException $ex) {
     $ex->render404();
   }
+}
+
+function loadAdmin($page)
+{
+  global $admin_routes;
+  try{
+    $route = $admin_routes[$page];
+    $route->testMiddleware();
+    $route->proceed();
+  } catch (NotFoundException $ex) {
+    $ex->render404();
+  } 
 }
 
 function loadApi($page)
