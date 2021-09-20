@@ -59,23 +59,17 @@
           </a>
 
           <div class="hidden lg:flex">
-            <div class="relative my-auto" data-type="dropdown">
-              <a class="text-lg py-2 px-3 block cursor-pointer">
-                <span>Categories</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
+            <?php foreach($categories as $i => $category) : ?>
+              <?php if ($i < 5) : #Limit the displayed category to 5 items ?>
+              <a 
+                href="<?= url("?page=category&id={$category->id}") ?>" 
+                class="text-md my-auto whitespace-nowrap py-2 px-3"
+              >
+                <span><?= __($category->name) ?></span>
               </a>
-              <div class="hidden w-auto py-2 rounded border border-gray-300 bg-white absolute z-20"  data-type="dropdown-menu">
-                <?php foreach($categories as $category) : ?>
-                  <a href="<?= url("?page=category&id={$category->id}") ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
-                    <?= __($category->name) ?>
-                  </a>
-                <?php endforeach; ?>
-              </div>
-            </div>
+              <?php endif; ?>
+            <?php endforeach; ?>
           </div>
-
         </div>
         <div class="flex">
           <a href="#" class="my-auto mr-4">
@@ -155,23 +149,13 @@
     </div>
 
     <div class="category-link px-4 border-b border-gray-200 text-gray-500">
+
+      <?php foreach($categories as $category) : ?>
       <div class="flex items-center justify-between h-12">
-        <a class="cursor-pointer">Categories</a>
-        <a class="cursor-pointer caret">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </a>
+        <a href="<?= url("?page=category&id={$category->id}") ?>"><?= __($category->name) ?></a>
       </div>
-      <div class="subcategories">
-        <?php foreach($categories as $category) : ?>
-          <div 
-            class="h-12 flex items-center px-4 border-b border-gray-200 text-gray-500" 
-          >
-            <a href=""><?= __($category->name) ?></a>
-          </div>
-        <?php endforeach; ?>
-      </div>
+      <?php endforeach; ?>
+
     </div>
 
     <?php if (!User::isUserCustomer()) : ?>
