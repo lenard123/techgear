@@ -26,6 +26,20 @@
   display: block;
 }
 
+.search-bar {
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  height: 60px;
+  transition: opacity 300ms ease-in-out, top 50ms ease-in-out;
+}
+
+.search-bar.active {
+  pointer-events: auto;
+  opacity: 1;
+  top: 60px;
+}
+
 .ratio-4-3 {
   width: 100%;
   padding-top: 75%;

@@ -39,7 +39,7 @@
     </div>
   </div>
   <div style="height: 60px;">
-    <nav id="navbar" class="fixed lg:static bg-white text-gray-500 top-0 left-0 right-0 z-20 border-b border-gray-300" style="height: 60px;">
+    <nav id="navbar" class="fixed lg:relative bg-white text-gray-500 top-0 left-0 right-0 z-20 shadow" style="height: 60px;">
       <div class="container mx-auto px-5 h-full flex justify-between">
         <div class="flex">
           <a class="cursor-pointer my-auto mr-2 lg:hidden" id="sidebar_burger">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="flex">
-          <a href="#" class="my-auto mr-4">
+          <a id="search-bar-toggler" class="cursor-pointer my-auto mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -122,6 +122,25 @@
             </div>
           <?php endif ?>
 
+
+        </div>
+      </div>
+      <div class="search-bar absolute left-0 right-0 bg-white z-20 shadow">
+        <div class="container mx-auto px-5 h-full text-lg flex">
+          <form class="w-full" action="<?= url() ?>">
+            <input type="hidden" name="page" value="search">
+            <input
+              class="h-full w-full focus:outline-none"
+              type="text" 
+              name="query"
+              placeholder="Search Product">
+          </form>
+
+          <button id="search-bar-close">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
 
         </div>
       </div>
