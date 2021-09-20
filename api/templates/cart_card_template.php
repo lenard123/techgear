@@ -9,7 +9,7 @@
     </div>
     <div class="flex-grow px-2 py-4">
       <div class="text-sm text-gray-500"><?= __($cart->getProduct()->getCategory()->name) ?></div>
-      <a href="<?= url("?page=product&id={$cart->product_id}") ?>" class="text-md text-gray-600 leading-6 font-semibold"><?= __($cart->getProduct()->name) ?></a>
+      <a href="<?= url("?page=product&id={$cart->product_id}") ?>" class="text-md text-gray-600 hover:text-blue-500 leading-6 font-semibold"><?= __($cart->getProduct()->name) ?></a>
     </div>
   </div>
 
