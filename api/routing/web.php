@@ -15,5 +15,6 @@ $web_routes = [
   "settings" => Route::init('SettingsController')->addMiddleware('CustomerOnlyMiddleware'),
   "favorites" => Route::init('FavoriteController')->addMiddleware('CustomerOnlyMiddleware'),
   "product" => Route::init('ProductController')->setModel('Product'),
+  "search" => Route::init('SearchController'),
 ];
 
