@@ -52,7 +52,7 @@
             class="block my-auto mr-5 text-2xl text-gray-800 font-black"
             style="font-family: 'Iceland', cursive;">
             <img
-              src="<?= url('assets/img/logo1.png') ?>" 
+              src="<?= url('assets/img/logo.png') ?>" 
               class="h-8 inline-block" 
             />
             <span>TechGear</span>
