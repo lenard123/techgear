@@ -24,6 +24,7 @@ function loadAdmin($page)
 {
   global $admin_routes;
   try{
+    if (!isset($admin_routes[$page])) throw new NotFoundException();
     $route = $admin_routes[$page];
     $route->testMiddleware();
     $route->proceed();
