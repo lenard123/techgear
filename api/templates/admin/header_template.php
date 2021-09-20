@@ -11,7 +11,7 @@
       </a>
 
       <input 
-        class="py-1 px-2 focus:outline-none"
+        class="py-2 px-3 bg-gray-50 rounded focus:outline-none focus:border-blue-500 border border-gray-50"
         type="text" 
         name="" 
         placeholder="Search Everywhere">
