@@ -1,5 +1,5 @@
-<aside class="bg-gray-800 fixed -left-60 lg:left-0 w-60 h-screen overflow-y-scroll">
-  <div class="flex items-center px-5 bg-gray-900" style="height: 60px">
+<aside id="sidebar" class="bg-gray-800 fixed -left-60 lg:left-0 w-60 h-screen overflow-y-scroll">
+  <div class="flex justify-between items-center px-5 bg-gray-900" style="height: 60px">
     <a 
       href="<?= url() ?>" 
       class="flex items-center mr-5 text-2xl text-white font-black"
@@ -10,6 +10,13 @@
       />
       <span>TechGear</span>
     </a>
+
+    <a class="lg:hidden text-gray-500 cursor-pointer" data-action="close-sidebar">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </a>
+
   </div>
 
   <nav>
