@@ -5,7 +5,7 @@ require_once "routing/api.php";
 require_once "routing/web.php";
 require_once "routing/admin.php";
 
-import("NotFoundException");
+import("Utils/NotFoundException");
 
 function load($page)
 {
