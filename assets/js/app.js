@@ -14,6 +14,14 @@ $(document).ready(function() {
   $(document).scroll(setNavbarPosition)
 
 
+  //Search Bar
+  $('#search-bar-toggler').click(function(){
+    $('.search-bar').toggleClass('active')
+  })
+
+  $('#search-bar-close').click(function(){
+    $('.search-bar').removeClass('active')
+  })
 
 
   //Dropdown

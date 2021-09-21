@@ -98,6 +98,19 @@ class Product extends BaseModel
     return null;
   }
 
+  public static function search($query)
+  {
+    $result = array();
+    $query = "%$query%";
+    $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `name` LIKE ? OR `description` LIKE ?");
+    $stmt->bind_param("ss", $query, $query);
+    $stmt->execute();
+    $rs = $stmt->get_result();
+    while($row = $rs->fetch_assoc())
+      array_push($result, self::populateData($row));
+    return $result;
+  }
+
   public static function populateData($row)
   {
     $product = new Product;

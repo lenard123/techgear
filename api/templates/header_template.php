@@ -39,7 +39,7 @@
     </div>
   </div>
   <div style="height: 60px;">
-    <nav id="navbar" class="fixed lg:static bg-white text-gray-500 top-0 left-0 right-0 z-20 border-b border-gray-300" style="height: 60px;">
+    <nav id="navbar" class="fixed lg:relative bg-white text-gray-500 top-0 left-0 right-0 z-20 shadow" style="height: 60px;">
       <div class="container mx-auto px-5 h-full flex justify-between">
         <div class="flex">
           <a class="cursor-pointer my-auto mr-2 lg:hidden" id="sidebar_burger">
@@ -49,36 +49,30 @@
           </a>
           <a 
             href="<?= url() ?>" 
-            class="block my-auto mr-5 text-2xl text-gray-800 font-black"
+            class="flex my-auto mr-5 text-2xl text-gray-800 font-black"
             style="font-family: 'Iceland', cursive;">
             <img
               src="<?= url('assets/img/logo.png') ?>" 
-              class="h-8 inline-block" 
+              class="mr-2 h-8 inline-block" 
             />
             <span>TechGear</span>
           </a>
 
           <div class="hidden lg:flex">
-            <div class="relative my-auto" data-type="dropdown">
-              <a class="text-lg py-2 px-3 block cursor-pointer">
-                <span>Categories</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
+            <?php foreach($categories as $i => $category) : ?>
+              <?php if ($i < 5) : #Limit the displayed category to 5 items ?>
+              <a 
+                href="<?= url("?page=category&id={$category->id}") ?>" 
+                class="text-md my-auto whitespace-nowrap py-2 px-3"
+              >
+                <span><?= __($category->name) ?></span>
               </a>
-              <div class="hidden w-auto py-2 rounded border border-gray-300 bg-white absolute z-20"  data-type="dropdown-menu">
-                <?php foreach($categories as $category) : ?>
-                  <a href="<?= url("?page=category&id={$category->id}") ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
-                    <?= __($category->name) ?>
-                  </a>
-                <?php endforeach; ?>
-              </div>
-            </div>
+              <?php endif; ?>
+            <?php endforeach; ?>
           </div>
-
         </div>
         <div class="flex">
-          <a href="#" class="my-auto mr-4">
+          <a id="search-bar-toggler" class="cursor-pointer my-auto mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -131,6 +125,25 @@
 
         </div>
       </div>
+      <div class="search-bar absolute left-0 right-0 bg-white z-20 shadow">
+        <div class="container mx-auto px-5 h-full text-lg flex">
+          <form class="w-full" action="<?= url() ?>">
+            <input type="hidden" name="page" value="search">
+            <input
+              class="h-full w-full focus:outline-none"
+              type="text" 
+              name="query"
+              placeholder="Search Product">
+          </form>
+
+          <button id="search-bar-close">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -155,23 +168,13 @@
     </div>
 
     <div class="category-link px-4 border-b border-gray-200 text-gray-500">
+
+      <?php foreach($categories as $category) : ?>
       <div class="flex items-center justify-between h-12">
-        <a class="cursor-pointer">Categories</a>
-        <a class="cursor-pointer caret">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </a>
+        <a href="<?= url("?page=category&id={$category->id}") ?>"><?= __($category->name) ?></a>
       </div>
-      <div class="subcategories">
-        <?php foreach($categories as $category) : ?>
-          <div 
-            class="h-12 flex items-center px-4 border-b border-gray-200 text-gray-500" 
-          >
-            <a href=""><?= __($category->name) ?></a>
-          </div>
-        <?php endforeach; ?>
-      </div>
+      <?php endforeach; ?>
+
     </div>
 
     <?php if (!User::isUserCustomer()) : ?>

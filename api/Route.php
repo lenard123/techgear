@@ -9,6 +9,7 @@ class Route
   public $model = null;
   public $isModelPrivate = false;
   public $middlewares = [];
+  public $isAdmin = false;
 
   static $global_middlewares = [
     'CleanRequestMiddleware'
@@ -17,8 +18,9 @@ class Route
   static $web_middlewares = [];
   static $api_middlewares = [];
 
-  public function __construct($controller)
+  public function __construct($controller, $isAdmin = false)
   {
+    $this->isAdmin = $isAdmin;
     $this->controller = $controller;
   }
 
@@ -84,7 +86,12 @@ class Route
   {
     $model = $this->instantiateModel();
     $controllerClass = $this->controller;
-    import("controllers/$controllerClass");
+
+    if ($this->isAdmin)
+      import("controllers/admin/$controllerClass");
+    else
+      import("controllers/$controllerClass");
+
     $controller = new $controllerClass($model);
     return $controller;
   }
@@ -92,5 +99,10 @@ class Route
   public static function init($controller)
   {
     return new Route($controller);
+  }
+
+  public static function admin($controller)
+  {
+    return new Route($controller, true);
   }
 }
