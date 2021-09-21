@@ -25,6 +25,9 @@ class Order extends BaseModel
   public $items = null;
 
   const STATUS_PREPARING = 1;
+  const STATUS_SHIPPED = 2;
+  const STATUS_DELIVERY = 3;
+  const STATUS_DELIVERED = 4;
 
   public function getItems()
   {
@@ -75,6 +78,17 @@ class Order extends BaseModel
     $this->id = self::getLastId();
 
     OrderItem::moveCart($this->user_id, $this->id);
+  }
+
+  public static function find($id)
+  {
+    $stmt = self::prepareStatement("SELECT * FROM `orders` WHERE `id` = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc())
+      return self::populateData($row);
+    return null;
   }
 
   public static function getAllFromUser($user_id)

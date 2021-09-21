@@ -1,11 +1,13 @@
 <?php
 
 import("NotFoundException");
+import("models/User");
 
 class Route
 {
   public $controller;
   public $model = null;
+  public $isModelPrivate = false;
   public $middlewares = [];
 
   static $global_middlewares = [
@@ -20,9 +22,10 @@ class Route
     $this->controller = $controller;
   }
 
-  public function setModel($model)
+  public function setModel($model, $isPrivate = false)
   {
     $this->model = $model;
+    $this->isModelPrivate = $isPrivate;
     return $this;
   }
 
@@ -64,6 +67,8 @@ class Route
     $model = $modelClass::find($id);
 
     if (is_null($model)) throw new NotFoundException();
+
+    if ($this->isModelPrivate && $model->user_id != User::getCurrentUser()->id) throw new NotFoundException;
 
     return $model;
   }
