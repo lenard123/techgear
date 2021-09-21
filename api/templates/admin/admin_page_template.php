@@ -14,7 +14,9 @@
 
 <?= $header->render() ?>
 <?= $sidebar->render() ?>
-<?= view("admin/" . $content) ?>
+<div class="lg:pl-60" style="padding-top: 60px">
+  <?= view("admin/" . $content) ?>
+</div>
 
 </body>
 </html>
