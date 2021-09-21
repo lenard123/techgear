@@ -9,12 +9,11 @@ class CustomerPageComponent extends Component
   protected $template = "customer_page_template";
   protected $content_data = [];
   protected $scripts = [];
-  protected $js_data = [
-    "base_url" => BASE_URL
-  ];
+  protected $js_data = [];
 
   public function __construct($content)
   {
+    $this->js_data["base_url"] = baseURL();
     parent::addData("content", $content);
     parent::addData("header", new HeaderComponent);
     parent::addData("content_data", $this->content_data);
