@@ -1,6 +1,11 @@
-aside {
+#sidebar {
   scrollbar-width: thin;
   --scrollbar-thumb: #4b5563 !important;
+  transition: left 300ms ease;
+}
+
+#sidebar.active {
+  left: 0;
 }
 
 .breadcrumbs  li:not(:last-child)::after {
@@ -16,3 +21,4 @@ aside {
 .table-rows > div:last-child {
   border-bottom-width: 0;
 }
+
