@@ -14,6 +14,7 @@
 
 <?= $header->render() ?>
 <?= $sidebar->render() ?>
+<?= view("admin/" . $content) ?>
 
 </body>
 </html>

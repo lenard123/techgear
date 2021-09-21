@@ -7,7 +7,7 @@ class ManageCategoryController extends BaseController
 {
   public function get()
   {
-    $view = new AdminPageComponent;
+    $view = new AdminPageComponent("category_template");
     $view->render();
   }
 }

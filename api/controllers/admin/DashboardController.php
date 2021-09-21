@@ -7,7 +7,7 @@ class DashboardController extends BaseController
 {
   public function get()
   {
-    $view = new AdminPageComponent;
+    $view = new AdminPageComponent("dashboard_template");
     $view->render();
   }
 }
