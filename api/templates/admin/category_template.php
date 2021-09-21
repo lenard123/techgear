@@ -44,7 +44,7 @@
             <span>No products</span>
           <?php endif; ?>
         </p>
-        <p class="text-sm text-gray-500">
+        <p class="hidden md:block text-sm text-gray-500">
           <span class="md:hidden mr-2">Created: </span>
           <span><?= toDate($category->created_at) ?></span>
         </p>
