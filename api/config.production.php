@@ -1,7 +1,7 @@
 <?php
 
 //url || path
-define('BASE_URL', 'https://electronics-gadgets-ecommerce.herokuapp.com/');
+define('BASE_FOLDER', '');
 define('ROOT_PATH', dirname(__DIR__));
 define('API_PATH', __DIR__ . '/');
 

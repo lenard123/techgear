@@ -1,8 +1,16 @@
 <?php
 
+function baseURL()
+{
+  $protocol = isSecure() ? 'https://' : 'http://';
+  $host = $_SERVER['HTTP_HOST'];
+  $path = BASE_FOLDER;
+  return $protocol . $host . '/' . $path . '/';
+}
+
 function url($path = '')
 {
-  return BASE_URL . $path;
+  return baseURL() . $path;
 }
 
 function admin($path='')
@@ -12,12 +20,12 @@ function admin($path='')
 
 function asset($path)
 {
-  return BASE_URL . "assets/" . $path;
+  return url("assets/" . $path);
 }
 
 function storage($path)
 {
-  return BASE_URL . "storage/" . $path;
+  return url("storage/" . $path);
 }
 
 function redirect($url) {
