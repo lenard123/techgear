@@ -127,6 +127,15 @@ class Product extends BaseModel
     return $product;
   }
 
+  public static function countByCategory($category_id)
+  {
+    $stmt = self::prepareStatement("SELECT COUNT(*) FROM `products` WHERE `category_id`=?");
+    $stmt->bind_param("i", $category_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_array()[0];
+  }
+
   public static function getFeaturedProducts()
   {
     $products = [];
