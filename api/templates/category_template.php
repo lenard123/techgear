@@ -14,7 +14,7 @@
     <h2 class="text-center mb-8 text-gray-500"><?= count($category->getProducts()) ?> items</h2>
 
     <?php if (count($category->getProducts()) < 1) : ?>
-      <div class="text-4xl text-center sm:text-left">No item available</div>
+      <div class="text-4xl text-center sm:text-left" >No item available</div>
     <?php endif;?>
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">

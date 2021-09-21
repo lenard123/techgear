@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet"> 
+  <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" /> 
   <title>TechGear Admin</title>
 </head>
 <body class="bg-gray-50">
