@@ -18,5 +18,8 @@
   <?= view("admin/" . $content, $content_data) ?>
 </div>
 
+<script src="<?= url('assets/js/jquery.min.js') ?>"></script>
+<script src="<?= url('assets/js/admin.js') ?>"></script>
+
 </body>
 </html>
