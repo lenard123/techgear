@@ -58,12 +58,12 @@
             <span>TechGear</span>
           </a>
 
-          <div class="hidden lg:flex">
+          <div class="hidden lg:flex ">
             <?php foreach($categories as $i => $category) : ?>
               <?php if ($i < 5) : #Limit the displayed category to 5 items ?>
               <a 
                 href="<?= url("?page=category&id={$category->id}") ?>" 
-                class="text-md my-auto whitespace-nowrap py-2 px-3"
+                class="text-md my-auto whitespace-nowrap py-2 px-3 hover:text-gray-900"
               >
                 <span><?= __($category->name) ?></span>
               </a>
@@ -71,6 +71,7 @@
             <?php endforeach; ?>
           </div>
         </div>
+
         <div class="flex">
           <a id="search-bar-toggler" class="cursor-pointer my-auto mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
