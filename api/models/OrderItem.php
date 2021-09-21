@@ -2,6 +2,7 @@
 
 import("models/BaseModel");
 import("models/Cart");
+import("models/Product");
 
 class OrderItem extends BaseModel
 {
@@ -12,6 +13,15 @@ class OrderItem extends BaseModel
   public $price;
   public $created_at;
   public $modified_at;
+
+  private $product = null;
+
+  public function getProduct()
+  {
+    if (is_null($this->product))
+      $this->product = Product::find($this->product_id);
+    return $this->product;
+  }
 
   public function save()
   {
