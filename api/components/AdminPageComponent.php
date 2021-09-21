@@ -25,6 +25,12 @@ class AdminPageComponent extends Component
     parent::addData("js_data", $this->js_data);
   }
 
+  public function setActivePage($page)
+  {
+    $this->js_data["active_page"] = $page;
+    parent::addData("js_data", $this->js_data);
+  }
+
   public function addData($key, $value)
   {
     $this->content_data[$key] = $value;

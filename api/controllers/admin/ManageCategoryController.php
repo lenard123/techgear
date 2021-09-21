@@ -11,6 +11,7 @@ class ManageCategoryController extends BaseController
     $categories = Category::getAll();
 
     $view = new AdminPageComponent("category_template");
+    $view->setActivePage("category");
     $view->addData("categories", $categories);
     $view->render();
   }

@@ -8,4 +8,8 @@ $(document).ready(function(){
     $('#sidebar').removeClass('active')
   })
 
+  if (typeof php_active_page != 'undefined') {
+    $(`[data-page=${php_active_page}`).addClass('bg-gray-700')
+  }
+
 })
