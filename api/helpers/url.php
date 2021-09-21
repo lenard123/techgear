@@ -4,8 +4,8 @@ function baseURL()
 {
   $protocol = isSecure() ? 'https://' : 'http://';
   $host = $_SERVER['HTTP_HOST'];
-  $path = BASE_FOLDER;
-  return $protocol . $host . '/' . $path . '/';
+  $path = empty(BASE_FOLDER) ? BASE_FOLDER : BASE_FOLDER . '/';
+  return $protocol . $host . '/' . $path;
 }
 
 function url($path = '')
