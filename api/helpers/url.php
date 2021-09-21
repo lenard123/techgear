@@ -5,6 +5,11 @@ function url($path = '')
   return BASE_URL . $path;
 }
 
+function admin($path='')
+{
+  return url("admin{$path}");
+}
+
 function asset($path)
 {
   return BASE_URL . "assets/" . $path;
