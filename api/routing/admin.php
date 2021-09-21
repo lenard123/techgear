@@ -3,5 +3,6 @@
 import("Route");
 
 $admin_routes = [
-  "home" => Route::admin('DashboardController')
+  "home" => Route::admin('DashboardController'),
+  "category" => Route::admin('ManageCategoryController'),
 ];

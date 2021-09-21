@@ -10,10 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet"> 
   <title>TechGear Admin</title>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
 
 <?= $header->render() ?>
 <?= $sidebar->render() ?>
+<div class="lg:pl-60" style="padding-top: 60px">
+  <?= view("admin/" . $content, $content_data) ?>
+</div>
 
 </body>
 </html>

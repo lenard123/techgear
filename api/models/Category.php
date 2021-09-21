@@ -1,6 +1,7 @@
 <?php
 
 import("models/BaseModel");
+import("models/Product");
 
 class Category extends BaseModel 
 {
@@ -10,6 +11,7 @@ class Category extends BaseModel
   public $modified_at;
 
   public $products = null;
+  public $products_count = null;
   static $categories = null;
 
   public function getProducts()
@@ -17,6 +19,13 @@ class Category extends BaseModel
     if (is_null($this->products))
       $this->products = Product::getAllFromCategory($this->id);
     return $this->products;
+  }
+
+  public function getProductCount()
+  {
+    if (is_null($this->products_count))
+      $this->products_count = Product::countByCategory($this->id);
+    return $this->products_count;
   }
 
   public static function find($id)
