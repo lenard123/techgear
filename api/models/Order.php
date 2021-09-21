@@ -94,7 +94,7 @@ class Order extends BaseModel
   public static function getAllFromUser($user_id)
   {
     $orders = array();
-    $stmt = self::prepareStatement("SELECT * FROM `orders` WHERE `user_id` = ?");
+    $stmt = self::prepareStatement("SELECT * FROM `orders` WHERE `user_id` = ? ORDER BY `modified_at` DESC, `created_at` DESC");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $rs = $stmt->get_result();
