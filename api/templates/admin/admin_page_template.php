@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet"> 
   <title>TechGear Admin</title>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
 
 <?= $header->render() ?>
 <?= $sidebar->render() ?>
