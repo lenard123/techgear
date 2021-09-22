@@ -4,8 +4,8 @@ import("components/ProfilePageComponent");
 import("controllers/BaseController");
 import("controllers/LocationController");
 import("models/User");
-import("utils/AlertMessage");
-import("utils/ValidatorList");
+import("Utils/AlertMessage");
+import("Utils/ValidatorList");
 
 class PersonalController extends BaseController
 {

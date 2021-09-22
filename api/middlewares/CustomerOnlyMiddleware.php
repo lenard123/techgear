@@ -2,7 +2,7 @@
 
 import("middlewares/Middleware");
 import("models/User");
-import("utils/AlertMessage");
+import("Utils/AlertMessage");
 
 class CustomerOnlyMiddleware extends Middleware
 {

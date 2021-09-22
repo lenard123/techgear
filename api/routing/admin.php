@@ -1,6 +1,6 @@
 <?php
 
-use App\utils\Route;
+use App\Utils\Route;
 
 $admin_routes = [
   "home" => Route::admin('DashboardController'),

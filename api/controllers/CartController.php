@@ -5,7 +5,7 @@ import("components/CustomerPageComponent");
 import("components/CartCardComponent");
 import("models/Product");
 import("models/Cart");
-import("utils/AlertMessage");
+import("Utils/AlertMessage");
 
 class CartController extends BaseController
 {

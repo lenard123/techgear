@@ -3,8 +3,8 @@
 import("controllers/BaseController");
 import("components/CustomerPageComponent");
 import("models/User");
-import("utils/ValidatorList");
-import("utils/AlertMessage");
+import("Utils/ValidatorList");
+import("Utils/AlertMessage");
 
 class SignupController extends BaseController
 {

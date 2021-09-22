@@ -1,6 +1,6 @@
 <?php
 
-import("utils/Validator");
+import("Utils/Validator");
 
 class ValidatorList
 {

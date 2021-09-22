@@ -5,8 +5,8 @@ import("controllers/LocationController");
 import("components/CustomerPageComponent");
 import("models/User");
 import("models/Order");
-import("utils/AlertMessage");
-import("utils/ValidatorList");
+import("Utils/AlertMessage");
+import("Utils/ValidatorList");
 
 class CheckoutController extends BaseController
 {

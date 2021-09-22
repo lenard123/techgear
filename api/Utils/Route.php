@@ -1,5 +1,6 @@
 <?php
-namespace App\utils;
+
+namespace App\Utils;
 
 import("NotFoundException");
 import("models/User");

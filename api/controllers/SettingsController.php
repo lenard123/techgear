@@ -2,8 +2,8 @@
 
 import("controllers/BaseController");
 import("components/ProfilePageComponent");
-import("utils/AlertMessage");
-import("utils/ValidatorList");
+import("Utils/AlertMessage");
+import("Utils/ValidatorList");
 
 class SettingsController extends BaseController
 {

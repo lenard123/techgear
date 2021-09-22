@@ -2,7 +2,7 @@
 
 import("components/Component");
 import("components/HeaderComponent");
-import("utils/AlertMessage");
+import("Utils/AlertMessage");
 
 class CustomerPageComponent extends Component
 {
