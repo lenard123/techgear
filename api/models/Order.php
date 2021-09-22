@@ -1,7 +1,6 @@
 <?php
 
-import("models/BaseModel");
-import("models/OrderItem");
+namespace App\Models;
 
 class Order extends BaseModel
 {

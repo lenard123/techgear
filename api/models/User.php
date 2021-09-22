@@ -1,10 +1,6 @@
 <?php
 
-import("models/BaseModel");
-import("models/UserInfo");
-import("models/Cart");
-import("models/Order");
-import("models/Favorite");
+namespace App\Models;
 
 class User extends BaseModel
 {

@@ -1,6 +1,6 @@
 <?php
 
-import("components/Component");
+namespace App\Components;
 
 class CartCardComponent extends Component
 {

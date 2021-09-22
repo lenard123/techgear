@@ -1,8 +1,6 @@
 <?php
 
-import("components/Component");
-import("components/HeaderComponent");
-import("utils/AlertMessage");
+namespace App\Components;
 
 class CustomerPageComponent extends Component
 {

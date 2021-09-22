@@ -1,8 +1,9 @@
 <?php
 
-import("components/Component");
-import("models/Category");
-import("models/User");
+namespace App\Components;
+
+use App\Models\Category;
+use App\Models\User;
 
 class HeaderComponent extends Component
 {

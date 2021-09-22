@@ -24,7 +24,7 @@
         <span class="block text-gray-600 text-lg leading-6 font-semibold"><?= money($product->price) ?></span>
       </div>
 
-      <?php if(User::isUserCustomer()) : ?>
+      <?php if(App\Models\User::isUserCustomer()) : ?>
       <div class="flex">
 
         <?php if ($product->isFavorite()) : ?>

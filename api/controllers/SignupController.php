@@ -1,10 +1,11 @@
 <?php
 
-import("controllers/BaseController");
-import("components/CustomerPageComponent");
-import("models/User");
-import("utils/ValidatorList");
-import("utils/AlertMessage");
+namespace App\Controllers;
+
+use App\Components\CustomerPageComponent;
+use App\Models\User;
+use App\Utils\ValidatorList;
+use App\Utils\AlertMessage;
 
 class SignupController extends BaseController
 {

@@ -1,7 +1,9 @@
 <?php
 
-import("controllers/BaseController");
-import("components/AdminPageComponent");
+namespace App\Controllers\Admin;
+
+use App\Controllers\BaseController;
+use App\Components\AdminPageComponent;
 
 class DashboardController extends BaseController
 {

@@ -1,6 +1,8 @@
 <?php
 
-import('models/BaseModel');
+namespace App\Utils;
+
+use App\Models\BaseModel;
 
 class Validator
 {

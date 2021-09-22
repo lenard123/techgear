@@ -1,8 +1,10 @@
 <?php
 
-import("controllers/BaseController");
-import("components/AdminPageComponent");
-import("models/Category");
+namespace App\Controllers\Admin;
+
+use App\Controllers\BaseController;
+use App\Components\AdminPageComponent;
+use App\Models\Category;
 
 class ManageCategoryController extends BaseController
 {

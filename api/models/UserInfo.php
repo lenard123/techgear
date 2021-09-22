@@ -1,6 +1,6 @@
 <?php
 
-import("models/BaseModel");
+namespace App\Models;
 
 class UserInfo extends BaseModel
 {

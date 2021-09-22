@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 class BaseModel {
 
   static $connection = null;
@@ -7,7 +9,7 @@ class BaseModel {
   static function getConnection()
   {
     if (is_null(self::$connection)) {
-      self::$connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+      self::$connection = new \mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
       if (self::$connection->connect_error) {
         die("Error Connecting to database: ". self::$connection->connect_error);
       }

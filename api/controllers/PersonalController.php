@@ -1,11 +1,11 @@
 <?php
 
-import("components/ProfilePageComponent");
-import("controllers/BaseController");
-import("controllers/LocationController");
-import("models/User");
-import("utils/AlertMessage");
-import("utils/ValidatorList");
+namespace App\Controllers;
+
+use App\Components\ProfilePageComponent;
+use App\Models\User;
+use App\Utils\AlertMessage;
+use App\Utils\ValidatorList;
 
 class PersonalController extends BaseController
 {

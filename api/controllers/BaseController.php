@@ -1,6 +1,8 @@
 <?php
 
-import("NotFoundException");
+namespace App\Controllers;
+
+use App\Utils\NotFoundException;
 
 class BaseController
 {

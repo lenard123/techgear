@@ -1,8 +1,6 @@
 <?php
 
-import("components/Component");
-import("components/AdminHeaderComponent");
-import("components/AdminSidebarComponent");
+namespace App\Components;
 
 class AdminPageComponent extends Component
 {

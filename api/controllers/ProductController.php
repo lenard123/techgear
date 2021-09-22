@@ -1,8 +1,9 @@
 <?php
 
-import("controllers/BaseController");
-import("components/CustomerPageComponent");
-import("components/ProductCardComponent");
+namespace App\Controllers;
+
+use App\Components\CustomerPageComponent;
+use App\Components\ProductCardComponent;
 
 class ProductController extends BaseController
 {
