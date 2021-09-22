@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f6ef24fff0e302cd06c852ca25ae7f841af0cdc0',
+    'reference' => '25e0fd7296ce7726b247ae262dcd8b9f69a2e19f',
     'name' => 'lenard/online-store',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f6ef24fff0e302cd06c852ca25ae7f841af0cdc0',
+      'reference' => '25e0fd7296ce7726b247ae262dcd8b9f69a2e19f',
     ),
   ),
 );
