@@ -1,6 +1,6 @@
 <?php
 
-import("utils/Route");
+use App\utils\Route;
 
 $api_routes = [
   "location" => Route::init("LocationController"),

@@ -1,6 +1,6 @@
 <?php
 
-import("utils/Route");
+use App\utils\Route;
 
 $web_routes = [
   "home" => Route::init('HomeController'),
