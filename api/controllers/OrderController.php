@@ -1,7 +1,7 @@
 <?php
 
 import("controllers/BaseController");
-import("components/ProfilePageComponent");
+import("Components/ProfilePageComponent");
 import("models/User");
 
 class OrderController extends BaseController

@@ -1,7 +1,7 @@
 <?php
 
 import("controllers/BaseController");
-import("components/AdminPageComponent");
+import("Components/AdminPageComponent");
 import("models/Category");
 
 class ManageCategoryController extends BaseController

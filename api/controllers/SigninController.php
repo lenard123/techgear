@@ -1,7 +1,7 @@
 <?php
 
 import("controllers/BaseController");
-import("components/CustomerPageComponent");
+import("Components/CustomerPageComponent");
 import("models/User");
 import("Utils/ValidatorList");
 import("Utils/AlertMessage");

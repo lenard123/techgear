@@ -1,7 +1,7 @@
 <?php
 
 import("controllers/BaseController");
-import("components/ProfilePageComponent");
+import("Components/ProfilePageComponent");
 import("Utils/AlertMessage");
 import("Utils/ValidatorList");
 

@@ -1,6 +1,6 @@
 <?php
 
-import("components/Component");
+import("Components/Component");
 import("models/Category");
 import("models/User");
 

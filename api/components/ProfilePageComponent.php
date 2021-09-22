@@ -1,6 +1,6 @@
 <?php
 
-import("components/CustomerPageComponent");
+import("Components/CustomerPageComponent");
 import("models/User");
 
 class ProfilePageComponent extends CustomerPageComponent

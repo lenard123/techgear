@@ -2,7 +2,7 @@
 
 import("controllers/BaseController");
 import("controllers/LocationController");
-import("components/CustomerPageComponent");
+import("Components/CustomerPageComponent");
 import("models/User");
 import("models/Order");
 import("Utils/AlertMessage");

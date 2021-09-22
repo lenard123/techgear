@@ -1,6 +1,6 @@
 <?php
 
-import("components/ProfilePageComponent");
+import("Components/ProfilePageComponent");
 import("controllers/BaseController");
 import("controllers/LocationController");
 import("models/User");

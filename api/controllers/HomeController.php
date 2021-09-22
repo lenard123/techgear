@@ -1,8 +1,8 @@
 <?php
 
 import("controllers/BaseController");
-import("components/CustomerPageComponent");
-import("components/ProductCardComponent");
+import("Components/CustomerPageComponent");
+import("Components/ProductCardComponent");
 import("models/Product");
 
 class HomeController extends BaseController

@@ -1,8 +1,8 @@
 <?php
 
-import("components/Component");
-import("components/AdminHeaderComponent");
-import("components/AdminSidebarComponent");
+import("Components/Component");
+import("Components/AdminHeaderComponent");
+import("Components/AdminSidebarComponent");
 
 class AdminPageComponent extends Component
 {

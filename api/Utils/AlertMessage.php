@@ -1,6 +1,6 @@
 <?php
 
-import("components/AlertComponent");
+import("Components/AlertComponent");
 
 class AlertMessage {
 

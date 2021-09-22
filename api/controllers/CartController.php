@@ -1,8 +1,8 @@
 <?php
 
 import("controllers/BaseController");
-import("components/CustomerPageComponent");
-import("components/CartCardComponent");
+import("Components/CustomerPageComponent");
+import("Components/CartCardComponent");
 import("models/Product");
 import("models/Cart");
 import("Utils/AlertMessage");
