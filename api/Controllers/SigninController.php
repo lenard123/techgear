@@ -17,7 +17,7 @@ class SigninController extends BaseController
     $this->validator = new ValidatorList;
   }
 
-  public function get()
+  public function __invoke()
   {
 
     $validator = $this->validator;
@@ -47,13 +47,13 @@ class SigninController extends BaseController
 
   }
 
-  public function post()
+  public function signin()
   {
     $this->validate();
     $this->authenticate();
 
     if ($this->validator->hasError()) {
-      $this->get();
+      $this->__invoke();
       return;
     }
 

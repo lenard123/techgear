@@ -1,6 +1,7 @@
 <?php
 
 use App\Utils\Route;
+use App\Utils\Route2;
 
 $web_routes = [
   "home" => Route::init(App\Controllers\HomeController::class),
@@ -19,3 +20,21 @@ $web_routes = [
   "search" => Route::init(App\Controllers\SearchController::class),
 ];
 
+Route2::get("home")
+  ->setController(App\Controllers\HomeController::class);
+
+Route2::get("category")
+  ->setController(App\Controllers\CategoryController::class)
+  ->setModel(App\Models\Category::class);
+
+Route2::post("signout")
+  ->setController(App\Controllers\SignoutController::class)
+  ->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class);
+
+Route2::get("signin")
+  ->setController(App\Controllers\SigninController::class)
+  ->addMiddleware(App\Middlewares\GuestCustomerOnlyMiddleware::class);
+
+Route2::post("signin")
+  ->setController(App\Controllers\SigninController::class, "signin")
+  ->addMiddleware(App\Middlewares\GuestCustomerOnlyMiddleware::class);

@@ -6,19 +6,30 @@ require_once "routing/web.php";
 require_once "routing/admin.php";
 
 use App\Utils\NotFoundException;
+use App\Utils\Route2;
+
 
 function load($page)
 {
-  global $web_routes;
-
   try{
-    $route = $web_routes[$page] ?? $web_routes["home"];
-    $route->testMiddleware();
-    $route->proceed();
+    Route2::load($page);
   } catch (NotFoundException $ex) {
     $ex->render404();
   }
 }
+
+// function load($page)
+// {
+//   global $web_routes;
+
+//   try{
+//     $route = $web_routes[$page] ?? $web_routes["home"];
+//     $route->testMiddleware();
+//     $route->proceed();
+//   } catch (NotFoundException $ex) {
+//     $ex->render404();
+//   }
+// }
 
 function loadAdmin($page)
 {
