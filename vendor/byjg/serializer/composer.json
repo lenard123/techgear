@@ -1,0 +1,28 @@
+{
+    "name": "byjg/serializer",
+    "description": "Serialize any object into array and format it JSON or XML",
+    "authors": [
+        {
+            "name": "João Gilberto Magalhães",
+            "email": "joao@byjg.com.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ByJG\\Serializer\\": "src/",
+            "Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">5.7"
+    },
+    "suggest": {
+        "ext-curl": "*"
+    },
+    "license": "MIT"
+}

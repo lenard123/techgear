@@ -6,5 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Tests\\' => array($vendorDir . '/byjg/serializer/tests'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
+    'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
+    'ByJG\\Util\\' => array($vendorDir . '/byjg/uri/src', $vendorDir . '/byjg/xmlutil/src'),
+    'ByJG\\Serializer\\' => array($vendorDir . '/byjg/serializer/src'),
+    'ByJG\\DbMigration\\' => array($vendorDir . '/byjg/migration/src'),
+    'ByJG\\AnyDataset\\Lists\\' => array($vendorDir . '/byjg/anydataset-array/src'),
+    'ByJG\\AnyDataset\\Db\\' => array($vendorDir . '/byjg/anydataset-db/src'),
+    'ByJG\\AnyDataset\\Core\\' => array($vendorDir . '/byjg/anydataset/src'),
     'App\\' => array($baseDir . '/api'),
 );
