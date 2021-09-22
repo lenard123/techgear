@@ -48,7 +48,7 @@
         </p>
 
         <div>
-          <?php if (!User::isUserCustomer()) : ?>
+          <?php if (!App\Models\User::isUserCustomer()) : ?>
             <a href="javascript:alert('You need to login first')" class="inline-block bg-blue-500 mb-2 text-white px-5 py-2 rounded hover:bg-blue-700">
               <span>Add To Cart</span>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">

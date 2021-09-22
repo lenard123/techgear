@@ -1,8 +1,8 @@
 <?php
 
-import("Route");
+use App\Utils\Route;
 
 $admin_routes = [
-  "home" => Route::admin('DashboardController'),
-  "category" => Route::admin('ManageCategoryController'),
+  "home" => Route::init(App\Controllers\Admin\DashboardController::class),
+  "category" => Route::admin(App\Controllers\Admin\ManageCategoryController::class),
 ];
