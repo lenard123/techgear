@@ -7,6 +7,24 @@ namespace Composer\Autoload;
 class ComposerStaticInit981e1d966365b279d711b61b2f8b1d7c
 {
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Tests\\' => 6,
+        ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Cache\\' => 10,
+        ),
+        'B' => 
+        array (
+            'ByJG\\Util\\' => 10,
+            'ByJG\\Serializer\\' => 16,
+            'ByJG\\DbMigration\\' => 17,
+            'ByJG\\AnyDataset\\Lists\\' => 22,
+            'ByJG\\AnyDataset\\Db\\' => 19,
+            'ByJG\\AnyDataset\\Core\\' => 21,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +32,43 @@ class ComposerStaticInit981e1d966365b279d711b61b2f8b1d7c
     );
 
     public static $prefixDirsPsr4 = array (
+        'Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/byjg/serializer/tests',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'ByJG\\Util\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/byjg/uri/src',
+            1 => __DIR__ . '/..' . '/byjg/xmlutil/src',
+        ),
+        'ByJG\\Serializer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/byjg/serializer/src',
+        ),
+        'ByJG\\DbMigration\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/byjg/migration/src',
+        ),
+        'ByJG\\AnyDataset\\Lists\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/byjg/anydataset-array/src',
+        ),
+        'ByJG\\AnyDataset\\Db\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/byjg/anydataset-db/src',
+        ),
+        'ByJG\\AnyDataset\\Core\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/byjg/anydataset/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/api',
