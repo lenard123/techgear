@@ -1,6 +1,6 @@
 <?php
 
-import("Route");
+import("utils/Route");
 
 $admin_routes = [
   "home" => Route::admin('DashboardController'),
