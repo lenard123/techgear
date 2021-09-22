@@ -1,9 +1,11 @@
 <?php
 
-import("controllers/BaseController");
-import("Components/ProfilePageComponent");
-import("Utils/AlertMessage");
-import("Utils/ValidatorList");
+namespace App\Controllers;
+
+use App\Components\ProfilePageComponent;
+use App\Utils\AlertMessage;
+use App\Utils\ValidatorList;
+use App\Models\User;
 
 class SettingsController extends BaseController
 {

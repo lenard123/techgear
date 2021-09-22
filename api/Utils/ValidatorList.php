@@ -1,6 +1,6 @@
 <?php
 
-import("Utils/Validator");
+namespace App\Utils;
 
 class ValidatorList
 {

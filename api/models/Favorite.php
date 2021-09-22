@@ -1,8 +1,6 @@
 <?php
 
-import("models/BaseModel");
-import("models/Product");
-import("models/User");
+namespace App\Models;
 
 class Favorite extends BaseModel
 {

@@ -1,6 +1,6 @@
 <?php
 
-import("Components/Component");
+namespace App\Components;
 
 class AdminSidebarComponent extends Component
 {

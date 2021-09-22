@@ -1,9 +1,9 @@
 <?php
 
-import("controllers/BaseController");
-import("Components/CustomerPageComponent");
-import("Components/ProductCardComponent");
-import("models/Product");
+namespace App\Controllers;
+
+use App\Components\CustomerPageComponent;
+use App\Models\Product;
 
 class SearchController extends BaseController
 {

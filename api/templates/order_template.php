@@ -49,7 +49,7 @@
         Status
       </div>
       <div class="col-span-8 text-gray-700">
-        <?php if ($order->status === Order::STATUS_PREPARING) : ?>
+        <?php if ($order->status === App\Models\Order::STATUS_PREPARING) : ?>
         <span class="inline-block px-2 py-1 bg-blue-500 text-white text-sm">PREPARING</span>
         <?php endif; ?>
       </div>

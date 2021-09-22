@@ -1,8 +1,9 @@
 <?php
 
-import("controllers/BaseController");
-import("Components/ProfilePageComponent");
-import("models/Order");
+namespace App\Controllers;
+
+use App\Components\ProfilePageComponent;
+use App\Models\Order;
 
 class OrderDetailsController extends BaseController
 {

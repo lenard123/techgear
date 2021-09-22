@@ -1,7 +1,8 @@
 <?php
 
-import("middlewares/Middleware");
-import("models/User");
+namespace App\Middlewares;
+
+use App\Models\User;
 
 class GuestCustomerOnlyMiddleware extends Middleware
 {

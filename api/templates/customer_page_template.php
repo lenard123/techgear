@@ -18,7 +18,7 @@
 
 <?php $header->render() ?>
 <?php view($content, $content_data) ?>
-<?php AlertMessage::render() ?>
+<?php App\Utils\AlertMessage::render() ?>
 
 <script src="<?= url('assets/js/jquery.min.js') ?>"></script>
 <script src="<?= url('assets/js/app.js') ?>"></script>

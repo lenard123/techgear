@@ -1,9 +1,10 @@
 <?php
 
-import("controllers/BaseController");
-import("Components/CustomerPageComponent");
-import("Components/ProductCardComponent");
-import("models/Product");
+namespace App\Controllers;
+
+use App\Components\CustomerPageComponent;
+use App\Components\ProductCardComponent;
+use App\Models\Product;
 
 class HomeController extends BaseController
 {

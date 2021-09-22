@@ -47,10 +47,10 @@
     <div class="h-1 bg-gray-200 rounded relative">
       <div id="order-progress" class="absolute top-0 left-0 h-full bg-blue-500"></div>
       <div class="absolute flex w-full justify-between">
-        <div id="order-status-<?= Order::STATUS_PREPARING ?>" class="h-3 w-3 rounded-full -mt-1"></div>
-        <div id="order-status-<?= Order::STATUS_SHIPPED ?>" class="h-3 w-3 rounded-full -mt-1"></div>
-        <div id="order-status-<?= Order::STATUS_DELIVERY ?>" class="h-3 w-3 rounded-full -mt-1"></div>
-        <div id="order-status-<?= Order::STATUS_DELIVERED ?>" class="h-3 w-3 rounded-full -mt-1"></div>
+        <div id="order-status-<?= App\Models\Order::STATUS_PREPARING ?>" class="h-3 w-3 rounded-full -mt-1"></div>
+        <div id="order-status-<?= App\Models\Order::STATUS_SHIPPED ?>" class="h-3 w-3 rounded-full -mt-1"></div>
+        <div id="order-status-<?= App\Models\Order::STATUS_DELIVERY ?>" class="h-3 w-3 rounded-full -mt-1"></div>
+        <div id="order-status-<?= App\Models\Order::STATUS_DELIVERED ?>" class="h-3 w-3 rounded-full -mt-1"></div>
       </div>
     </div>
     <div class="flex justify-between text-xs sm:text-sm text-gray-700 mb-4">
@@ -60,7 +60,7 @@
       <span>Delivered</span>
     </div>
 
-    <?php if ($order->status === Order::STATUS_PREPARING) : ?>
+    <?php if ($order->status === App\Models\Order::STATUS_PREPARING) : ?>
     <div class="flex justify-end">
       <button class="bg-red-500 py-2 px-5 rounded text-white mt-4">
         Cancel Order

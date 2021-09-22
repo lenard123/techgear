@@ -1,6 +1,8 @@
 <?php
 
-import("Components/AlertComponent");
+namespace App\Utils;
+
+use App\Components\AlertComponent;
 
 class AlertMessage {
 

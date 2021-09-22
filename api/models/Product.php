@@ -1,8 +1,6 @@
 <?php
 
-import("models/BaseModel");
-import("models/Favorite");
-import("models/Category");
+namespace App\Models;
 
 class Product extends BaseModel
 {

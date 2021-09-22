@@ -1,8 +1,9 @@
 <?php
 
-import("middlewares/Middleware");
-import("models/User");
-import("Utils/AlertMessage");
+namespace App\Middlewares;
+
+use App\Models\User;
+use App\Utils\AlertMessage;
 
 class CustomerOnlyMiddleware extends Middleware
 {

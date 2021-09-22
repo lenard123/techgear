@@ -1,7 +1,8 @@
 <?php
 
-import("Components/CustomerPageComponent");
-import("models/User");
+namespace App\Components;
+
+use App\Models\User;
 
 class ProfilePageComponent extends CustomerPageComponent
 {

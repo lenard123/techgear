@@ -1,12 +1,13 @@
 <?php
 
-import("controllers/BaseController");
-import("controllers/LocationController");
-import("Components/CustomerPageComponent");
-import("models/User");
-import("models/Order");
-import("Utils/AlertMessage");
-import("Utils/ValidatorList");
+namespace App\Controllers;
+
+use App\Components\CustomerPageComponent;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Cart;
+use App\Utils\AlertMessage;
+use App\Utils\ValidatorList;
 
 class CheckoutController extends BaseController
 {

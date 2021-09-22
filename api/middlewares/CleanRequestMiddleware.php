@@ -1,6 +1,6 @@
 <?php
 
-import("middlewares/Middleware");
+namespace App\Middlewares;
 
 class CleanRequestMiddleware extends Middleware
 {

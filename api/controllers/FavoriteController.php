@@ -1,9 +1,11 @@
 <?php
 
-import("controllers/BaseController");
-import("Components/ProfilePageComponent");
-import("models/Favorite");
-import("Utils/AlertMessage");
+namespace App\Controllers;
+
+use App\Components\ProfilePageComponent;
+use App\Models\Favorite;
+use App\Models\User;
+use App\Utils\AlertMessage;
 
 class FavoriteController extends BaseController
 {

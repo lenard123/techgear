@@ -1,7 +1,6 @@
 <?php
 
-import("models/BaseModel");
-import("models/Product");
+namespace App\Models;
 
 class Cart extends BaseModel
 {

@@ -1,6 +1,8 @@
 <?php
 
-import("controllers/BaseController");
+namespace App\Controllers;
+
+use App\Utils\NotFoundException;
 
 class LocationController extends BaseController
 {

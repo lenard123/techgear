@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-import("models/User");
+use App\Models\User;
 
 class Route
 {
@@ -13,7 +13,7 @@ class Route
   public $isAdmin = false;
 
   static $global_middlewares = [
-    'CleanRequestMiddleware'
+    \App\Middlewares\CleanRequestMiddleware::class,
   ];
 
   static $web_middlewares = [];
@@ -54,7 +54,6 @@ class Route
   {
     $middlewares = array_merge(self::$global_middlewares, $this->middlewares);
     foreach ($middlewares as $middleware) {
-      import("middlewares/$middleware");
       (new $middleware)->test();
     }
   }
@@ -63,8 +62,6 @@ class Route
   {
     $modelClass = $this->model;
     if (is_null($modelClass)) return null; 
-
-    import("models/$modelClass");
 
     $id = $this->getId();
     $model = $modelClass::find($id);
@@ -87,11 +84,6 @@ class Route
   {
     $model = $this->instantiateModel();
     $controllerClass = $this->controller;
-
-    if ($this->isAdmin)
-      import("controllers/admin/$controllerClass");
-    else
-      import("controllers/$controllerClass");
 
     $controller = new $controllerClass($model);
     return $controller;

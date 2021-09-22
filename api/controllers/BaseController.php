@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 use App\Utils\NotFoundException;
 
 class BaseController

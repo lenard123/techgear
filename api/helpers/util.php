@@ -10,10 +10,6 @@ function resolve_dir($path)
   return API_PATH . $path;
 }
 
-function import($path)
-{
-  require_once resolve_dir($path . ".php");
-}
 
 function view($template, $data = []) {
   foreach ($data as $key => $value) 

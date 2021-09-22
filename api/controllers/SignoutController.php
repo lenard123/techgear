@@ -1,8 +1,9 @@
 <?php
 
-import("controllers/BaseController");
-import("Utils/AlertMessage");
-import("models/User");
+namespace App\Controllers;
+
+use App\Utils\AlertMessage;
+use App\Models\User;
 
 class SignoutController extends BaseController
 {

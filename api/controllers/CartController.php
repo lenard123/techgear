@@ -1,11 +1,13 @@
 <?php
 
-import("controllers/BaseController");
-import("Components/CustomerPageComponent");
-import("Components/CartCardComponent");
-import("models/Product");
-import("models/Cart");
-import("Utils/AlertMessage");
+namespace App\Controllers;
+
+use App\Components\CustomerPageComponent;
+use App\Components\CartCardComponent;
+use App\Models\Product;
+use App\Models\Cart;
+use App\Models\User;
+use App\Utils\AlertMessage;
 
 class CartController extends BaseController
 {
