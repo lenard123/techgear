@@ -2,7 +2,6 @@
 
 namespace App\Utils;
 
-import("Utils/NotFoundException");
 import("models/User");
 
 class Route

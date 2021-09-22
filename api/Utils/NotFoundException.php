@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Utils;
+
 class NotFoundException extends Exception
 {
   public function render404()
