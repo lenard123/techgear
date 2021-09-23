@@ -11,10 +11,12 @@ class Cache
 
   public static function store($provider_key)
   {
-    if ($provider_key == 'file') {
-      return new CacheFileProvider(CACHE_FILE_DIR);
+    if (CACHE_ENABLED) {
+      if ($provider_key == 'file') {
+        return new CacheFileProvider(CACHE_FILE_DIR);
+      }      
     }
-    return null;
+    return new CacheProvider; //Empty Cache Provider
   }
 
   public static function get(string $key, $default = null) : ?string

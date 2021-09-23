@@ -6,6 +6,7 @@ class CacheFileProvider extends CacheProvider
 {
 
   private $cache_folder;
+  private $caches = null;
 
   public function __construct($cache_folder)
   {
@@ -14,25 +15,34 @@ class CacheFileProvider extends CacheProvider
 
   public function getCaches() : array
   {
-    $files = scandir($this->cache_folder);
-    $caches = array();
+    if (is_null($this->caches)) {
+      $files = scandir($this->cache_folder);
+      $caches = array();
 
-    foreach($files as $file) {
-      $filepath = $this->getFileFullPath($file);
+      foreach($files as $file) {
+        $filepath = $this->getFileFullPath($file);
 
-      if (!CacheFile::isValid($filepath)) continue;
-      $cache = new CacheFile($filepath);
-      $caches[$cache->getKey()] = $cache;
+        if (!CacheFile::isValid($filepath)) continue;
+        $cache = new CacheFile($filepath);
+        $caches[$cache->getKey()] = $cache;
+      }
+      $this->caches = $caches;
     }
 
-    return $caches;
+    return $this->caches;
+  }
+
+  public function has(string $key, bool $isHashed = false) : bool
+  {
+    if (!$isHashed) $key = md5($key);
+    return isset($this->getCaches()[$key]);
   }
 
   public function get(string $key, $default = null) : ?string
   {
     $caches = $this->getCaches();
     $key = md5($key);
-    if (isset($caches[$key])) {
+    if ($this->has($key, true)) {
       $cache = $caches[$key];
       if (!$cache->isExpired()) {
         return $cache->getContent();
@@ -58,7 +68,7 @@ class CacheFileProvider extends CacheProvider
   {
     $key = md5($key);
     $caches = $this->getCaches();
-    if (isset($caches[$key])) {
+    if ($this->has($key, true)) {
       $cache = $caches[$key];
       $cache->delete();
     }
