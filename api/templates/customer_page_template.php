@@ -35,5 +35,71 @@
   <script src="<?= $script ?>"></script>
 <?php endforeach ?>
 
+<footer class="px-4 divide-y bg-gray-800 text-gray-400">
+  <div class="container flex flex-row justify-between py-10 mx-auto space-y-8">
+		
+    <div class="lg:w-1/3">
+
+				<a href="#" class="flex justify-center lg:justify-start"
+            href="<?= url() ?>" 
+            style="font-family: 'Iceland', cursive;">
+            <img
+              src="<?= url('assets/img/logo.png') ?>" 
+              class="mr-2 h-8 inline-block" 
+            />
+            <span class="flex my-auto mr-5 text-2xl text-white font-black">TechGear</span>
+        </a>
+
+
+		</div>
+
+		<div class="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-5">
+			
+      <div class="space-y-3">
+				<h3 class="tracking-wide uppercase text-white">Category</h3>
+				
+        <ul class="space-y-1">
+					<li>
+						<a href="#">TV & Video</a>
+					</li>
+					<li>
+						<a href="#">Audio & Home Theater</a>
+					</li>
+					<li>
+						<a href="#">Computer</a>
+					</li>
+					<li>
+						<a href="#">Laptop</a>
+					</li>
+          <li>
+						<a href="#">Wearable Technology</a>
+					</li>
+				</ul>
+
+			</div>
+
+			<div class="space-y-2">
+				<h3 class="tracking-wide uppercase text-white">Customer Service</h3>
+				<ul class="space-y-1">
+					<li>
+						<a href="#">Login</a>
+					</li>
+					<li>
+						<a href="#">Register</a>
+					</li>
+          <li>
+						<a href="#">About Us</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+
+<div class="py-6 text-sm text-center text-coolGray-600">© 2021 TechGear. All rights reserved.</div>
+
+</footer>
+
 </body>
 </html>
