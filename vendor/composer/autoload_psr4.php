@@ -9,6 +9,7 @@ return array(
     'Tests\\' => array($vendorDir . '/byjg/serializer/tests'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
+    'Predis\\' => array($vendorDir . '/predis/predis/src'),
     'ByJG\\Util\\' => array($vendorDir . '/byjg/uri/src', $vendorDir . '/byjg/xmlutil/src'),
     'ByJG\\Serializer\\' => array($vendorDir . '/byjg/serializer/src'),
     'ByJG\\DbMigration\\' => array($vendorDir . '/byjg/migration/src'),
