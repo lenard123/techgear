@@ -24,20 +24,7 @@ class User extends BaseModel
   const ROLE_SUBADMIN = 2;
   const ROLE_ADMIN = 3;
 
-  public static function populateData($data)
-  {
-    $user = new User;
-    $user->id = intval($data["id"]);
-    $user->role = intval($data["role"]);
-    $user->email = $data["email"];
-    $user->password = $data["password"];
-    $user->firstname = $data["firstname"];
-    $user->lastname = $data["lastname"];
-    $user->created_at = strtotime($data["created_at"]);
-    $user->modified_at = is_null($data["modified_at"]) ? null : strtotime($data["modified_at"]);
-    return $user;
-  }
-
+  //User Info
   public function getUserInfo()
   {
     if (is_null($this->user_info))
@@ -85,11 +72,21 @@ class User extends BaseModel
     UserInfo::newUser($this->id);
   }
 
+
+  //Order
   public function countOrder()
   {
     return Order::getOrderCount($this->id);
   }
 
+  public function getOrders()
+  {
+    if (is_null($this->orders))
+      $this->orders = Order::getAllFromUser($this->id);
+    return $this->orders;
+  }
+
+  //Cart
   public function countCart()
   {
     return Cart::countItem($this->id);
@@ -101,20 +98,6 @@ class User extends BaseModel
       $this->carts = Cart::getAllFromUser($this->id);
     }
     return $this->carts;
-  }
-
-  public function getFavorites()
-  {
-    if (is_null($this->favorites))
-      $this->favorites = Favorite::getAllFromUser($this->id);
-    return $this->favorites;
-  }
-
-  public function getOrders()
-  {
-    if (is_null($this->orders))
-      $this->orders = Order::getAllFromUser($this->id);
-    return $this->orders;
   }
 
   public function clearCart()
@@ -132,6 +115,29 @@ class User extends BaseModel
     return false;
   }
 
+  //Favorite
+  public function getFavorites()
+  {
+    if (is_null($this->favorites))
+      $this->favorites = Favorite::getAllFromUser($this->id);
+    return $this->favorites;
+  }
+
+  public function countFavorites()
+  {
+    return Favorite::countByUser($this->id);
+  }
+
+  public function isFavorite($product_id)
+  {
+    foreach($this->getFavorites() as $favorite) {
+      if ($favorite->product_id == $product_id)
+        return true;
+    }
+    return false;
+  }
+
+  //Authentication
   public function login($password, $remember = null)
   {
     if (password_verify($password, $this->password)) {
@@ -183,6 +189,8 @@ class User extends BaseModel
     $this->password = password_hash($password, PASSWORD_DEFAULT);
   }
 
+
+  //Static functions
   public static function findByEmail($email)
   {
     $stmt = self::prepareStatement("SELECT * FROM `users` WHERE `email`=? limit 1");
@@ -239,5 +247,19 @@ class User extends BaseModel
       return true;
     }
     return false;
+  }
+
+  public static function populateData($data)
+  {
+    $user = new User;
+    $user->id = intval($data["id"]);
+    $user->role = intval($data["role"]);
+    $user->email = $data["email"];
+    $user->password = $data["password"];
+    $user->firstname = $data["firstname"];
+    $user->lastname = $data["lastname"];
+    $user->created_at = strtotime($data["created_at"]);
+    $user->modified_at = is_null($data["modified_at"]) ? null : strtotime($data["modified_at"]);
+    return $user;
   }
 }

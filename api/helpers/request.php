@@ -40,3 +40,8 @@ function isSecure()
         return false;
     }
 }
+
+function user()
+{
+  return App\Models\User::getCurrentUser();
+}

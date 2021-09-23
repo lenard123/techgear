@@ -37,7 +37,8 @@ class Product extends BaseModel
 
   public function isFavorite()
   {
-    return Favorite::isCurrentUserFavorite($this->id);
+    if (user()) return user()->isFavorite($this->id);
+    return false;
   }
 
   public function getRelatedProducts()

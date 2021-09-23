@@ -25,9 +25,9 @@ class FavoriteController extends BaseController
     $product_id = post('product_id');
 
     if (is_null($product_id)) return redirect('?page=favorites');
-    if (!Favorite::isCurrentUserFavorite($product_id)) return redirect('?page=favorites'); 
+    if (!user()->isFavorite($product_id)) return redirect('?page=favorites'); 
 
-    Favorite::deleteProduct($product_id);
+    Favorite::deleteProduct(user()->id, $product_id);
     AlertMessage::success("Product successfully removed from favorites");
     redirect('?page=favorites');
   }
@@ -37,7 +37,7 @@ class FavoriteController extends BaseController
     $product_id = post('product_id');
 
     if (is_null($product_id)) return redirect('?page=favorites');
-    if (Favorite::isCurrentUserFavorite($product_id)) return redirect('?page=favorites'); 
+    if (user()->isFavorite($product_id)) return redirect('?page=favorites'); 
 
     $new_favorite = new Favorite;
     $new_favorite->user_id = User::getCurrentUser()->id;
