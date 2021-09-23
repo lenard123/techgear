@@ -80,12 +80,13 @@ class Order extends BaseModel
     $this->id = DB::getLastId();
     OrderItem::moveCart($this->user_id, $this->id);
     Cache::forget("orders:{$this->user_id}");
+    Cache::forget("orders:{$this->user_id}:count");
   }
 
   public static function find($id)
   {
     $data = Cache::remember("order:$id", fn() => (
-      DB::select("SELECT * FROM `orders` WHERE `id`=?", "i", $id)
+      DB::first("SELECT * FROM `orders` WHERE `id`=?", "i", $id)
     ));
     $order = self::decodeData($data);
     return Order::populateData($order);
@@ -94,21 +95,19 @@ class Order extends BaseModel
   public static function getAllFromUser($user_id)
   {
     $data = Cache::remember("orders:$user_id", fn() => (
-      DB::prepare("SELECT * FROM `orders` WHERE `user_id` = ? ORDER BY `modified_at` DESC, `created_at` DESC", "i", $user_id)
+      DB::select("SELECT * FROM `orders` WHERE `user_id` = ? ORDER BY `modified_at` DESC, `created_at` DESC", "i", $user_id)
     ));
     $orders = self::decodeData($data);
-    return array_map(fn() => self::populateData($order), $orders);
+    return array_map(fn($order) => self::populateData($order), $orders);
   }
 
   public static function getOrderCount($user_id)
   {
-    $stmt = self::prepareStatement("SELECT COUNT(*) FROM `orders` WHERE `user_id` = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_array())
-      return $row[0];
-    return 0;
+    $data = Cache::remember("orders:$user_id:count", fn() => (
+      DB::scalar("SELECT COUNT(*) FROM `orders` WHERE `user_id` = ?", "i", $user_id)
+    ));
+    $count = self::decodeData($data);
+    return $count;
   }
 
   public static function populateData($row)

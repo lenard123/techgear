@@ -36,6 +36,7 @@ class Favorite extends BaseModel
 
   public static function populateData($row)
   {
+    if (is_null($row)) return null;
     $favorite = new Favorite;
     $favorite->id = intval($row["id"]);
     $favorite->user_id = intval($row["user_id"]);
@@ -61,7 +62,7 @@ class Favorite extends BaseModel
   public static function countByUser($user_id)
   {
     $data = Cache::remember("favorites:$user_id:count", fn() => (
-      DB::scalar("SELECT COUNT(*) FROM `carts` WHERE `user_id` = ?", "i", $user_id)
+      DB::scalar("SELECT COUNT(*) FROM `favorites` WHERE `user_id` = ?", "i", $user_id)
     ));
     return self::decodeData($data);
   }

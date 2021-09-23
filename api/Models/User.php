@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Utils\DB;
+use App\Utils\Caching\Cache;
+
 class User extends BaseModel
 {
   public $id;
@@ -42,8 +45,7 @@ class User extends BaseModel
 
   public function update()
   {
-    $stmt = self::prepareStatement("UPDATE `users` SET `role`=?, `email`=?, `password`=?, `firstname`=?, `lastname`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?");
-    $stmt->bind_param(
+    DB::prepare("UPDATE `users` SET `role`=?, `email`=?, `password`=?, `firstname`=?, `lastname`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?",
       "issssi",
       $this->role,
       $this->email,
@@ -52,13 +54,12 @@ class User extends BaseModel
       $this->lastname,
       $this->id
     );
-    $stmt->execute();
+    Cache::forget("user:$email");
   }
 
   public function save()
   {
-    $user_stmt = self::prepareStatement("INSERT INTO `users`(`role`, `email`, `password`, `firstname`, `lastname`) VALUES (?, ?, ?, ?, ?)");
-    $user_stmt->bind_param(
+    DB::prepare("INSERT INTO `users`(`role`, `email`, `password`, `firstname`, `lastname`) VALUES (?, ?, ?, ?, ?)",
       "issss", 
       $this->role, 
       $this->email, 
@@ -66,9 +67,7 @@ class User extends BaseModel
       $this->firstname, 
       $this->lastname
     );
-    $user_stmt->execute();
-    $this->id = self::getLastId();
-
+    $this->id = DB::getLastId();
     UserInfo::newUser($this->id);
   }
 
@@ -193,14 +192,11 @@ class User extends BaseModel
   //Static functions
   public static function findByEmail($email)
   {
-    $stmt = self::prepareStatement("SELECT * FROM `users` WHERE `email`=? limit 1");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows == 1) {
-      return User::populateData($result->fetch_assoc());
-    }
-    return null;
+    $data = Cache::remember("user:$email", fn() => (
+      DB::first("SELECT * FROM `users` WHERE `email`=? limit 1", "s", $email)
+    ));
+    $user = self::decodeData($data);
+    return self::populateData($user);
   }
 
   public static function getCurrentUser()
@@ -251,6 +247,7 @@ class User extends BaseModel
 
   public static function populateData($data)
   {
+    if (is_null($data)) return null;
     $user = new User;
     $user->id = intval($data["id"]);
     $user->role = intval($data["role"]);

@@ -15,7 +15,15 @@ class CacheProvider
 
   public function get(string $key, $default = null) : ?string
   {
-    if ($default instanceof \Closure) return $default();
+    if ($default instanceof \Closure) 
+      $default = $default();
+
+    if (is_null($default))
+      return $default;
+
+    if (!is_string($default))
+      return json_encode($default);
+
     return $default;
   }
 

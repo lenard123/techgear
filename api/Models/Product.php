@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Utils\DB;
+use App\Utils\Caching\Cache;
+
 class Product extends BaseModel
 {
   public $id;
@@ -44,22 +47,22 @@ class Product extends BaseModel
   public function getRelatedProducts()
   {
     if (is_null($this->related_products)){
-      $products = array();
-      $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `category_id`=? AND `id`<>? LIMIT 5");
-      $stmt->bind_param("ii", $this->category_id, $this->id);
-      $stmt->execute();
-      $rs = $stmt->get_result();
-      while($row = $rs->fetch_assoc()) 
-        array_push($products, self::populateData($row));
-      $this->related_products = $products;
+      $data = Cache::remember("product:{$this->id}:related", fn() => (
+        DB::select("SELECT * FROM `products` WHERE `category_id`=? AND `id`<>? LIMIT 5",
+          "ii", $this->category_id, $this->id
+        )
+      ));
+      $products = self::decodeData($data);
+      $this->related_products = array_map(fn($product) => (
+        self::populateData($product)
+      ), $products);
     }
     return $this->related_products;
   }
 
   public function update()
   {
-    $stmt = self::prepareStatement("UPDATE `products` SET `category_id`=?, `name`=?, `description`=?, `price`=?, `image`=?, `quantity`=?, `max_order`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?");
-    $stmt->bind_param(
+    DB::prepare("UPDATE `products` SET `category_id`=?, `name`=?, `description`=?, `price`=?, `image`=?, `quantity`=?, `max_order`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?",
       "issdsiii",
       $this->category_id,
       $this->name,
@@ -70,7 +73,9 @@ class Product extends BaseModel
       $this->max_order,
       $this->id
     );
-    $stmt->execute();
+    Cache::forget("product:{$this->id}");
+    Cache::forget("products:featured");
+    Cache::forget("products:{$this->category_id}");
   }
 
   public function isAvailable()
@@ -87,31 +92,23 @@ class Product extends BaseModel
 
   public static function find($id)
   {
-    $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `id`=?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-      return self::populateData($row);
-    }
-    return null;
+    $data = Cache::remember("product:$id", fn() => (
+      DB::first("SELECT * FROM `products` WHERE `id` = ?", "i", $id)
+    ));
+    $product = self::decodeData($data);
+    return self::populateData($product);
   }
 
   public static function search($query)
   {
-    $result = array();
     $query = "%$query%";
-    $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `name` LIKE ? OR `description` LIKE ?");
-    $stmt->bind_param("ss", $query, $query);
-    $stmt->execute();
-    $rs = $stmt->get_result();
-    while($row = $rs->fetch_assoc())
-      array_push($result, self::populateData($row));
-    return $result;
+    $products = DB::select("SELECT * FROM `products` WHERE `name` LIKE ? OR `description` LIKE ?", "ss", $query, $query);
+    return array_map(fn($product) => self::populateData($product), $products);
   }
 
   public static function populateData($row)
   {
+    if (is_null($row)) return null;
     $product = new Product;
     $product->id = intval($row["id"]);
     $product->category_id = intval($row["category_id"]);
@@ -128,32 +125,27 @@ class Product extends BaseModel
 
   public static function countByCategory($category_id)
   {
-    $stmt = self::prepareStatement("SELECT COUNT(*) FROM `products` WHERE `category_id`=?");
-    $stmt->bind_param("i", $category_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->fetch_array()[0];
+    $data = Cache::remember("products:$category_id:count", fn() => (
+      DB::scalar("SELECT COUNT(*) FROM `products` WHERE `category_id`=?", "i", $category_id)
+    ));
+    return self::decodeData($data);
   }
 
   public static function getFeaturedProducts()
   {
-    $products = [];
-    $rs = self::execQuery("SELECT * FROM `products` ORDER BY RAND() LIMIT 15");
-    while($row = $rs->fetch_assoc())
-      array_push($products, self::populateData($row));
-    return $products;
+    $data = Cache::remember("products:featured", fn () => (
+      DB::select("SELECT * FROM `products` ORDER BY RAND() LIMIT 15")
+    ));
+    $products = self::decodeData($data);
+    return array_map(fn($prod) => self::populateData($prod), $products);
   }
 
   public static function getAllFromCategory($category_id)
   {
-    $result = array();
-    $stmt = self::prepareStatement("SELECT * FROM `products` WHERE `category_id`=?");
-    $stmt->bind_param("i", $category_id);
-    $stmt->execute();
-    $rs = $stmt->get_result();
-    while($row = $rs->fetch_assoc()) {
-      array_push($result, self::populateData($row));
-    }
-    return $result;    
+    $data = Cache::remember("products:$category_id", fn() => (
+      DB::select("SELECT * FROM `products` WHERE `category_id`=?", "i", $category_id)
+    ));
+    $products = self::decodeData($data);
+    return array_map(fn($prod) => self::populateData($prod), $products);
   }
 }
