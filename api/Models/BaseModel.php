@@ -42,4 +42,14 @@ class BaseModel {
 
     return $result->num_rows > 0;
   }
+
+  static function decodeData($data)
+  {
+    if (is_string($data)) {
+      $decoded_data = json_decode($data, true);
+      if (is_null($decoded_data)) return $data;
+      return $decoded_data;
+    }
+    return $data;
+  }
 }

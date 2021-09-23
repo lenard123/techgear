@@ -32,21 +32,11 @@ class Category extends BaseModel
 
   public static function find($id)
   {
-    if (is_null(self::$categories)) {
-      $stmt = self::prepareStatement("SELECT * FROM `categories` WHERE `id`=?");
-      $stmt->bind_param("i", $id);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      if ($row = $result->fetch_assoc()) {
-        return self::populateData($row);
-      }
-    } else {
-      foreach(self::$categories as $category) {
-        if ($category->id == $id)
-          return $category;
-      }
-    }
-    return null;
+    $data = Cache::remember("category:$id", fn() => (
+      DB::first('SELECT * FROM `categories` WHERE `id` = ?', "i", $id)
+    ));
+    $category = self::decodeData($data);
+    return Category::populateData($category);
   }
 
   public static function populateData($data)
@@ -62,15 +52,11 @@ class Category extends BaseModel
   public static function getAll() : array
   {
     if (is_null(self::$categories)){
-
-      $result_json = Cache::remember('categories', function() {
-        return json_encode(DB::select('SELECT * FROM `categories`'));
-      });
-      $result = json_decode($result_json);
-
-      self::$categories = array_map(function($row){
-        return Category::populateData((array) $row);
-      }, $result);
+      $result = Cache::remember('categories', fn() => DB::select('SELECT * FROM `categories`'));
+      $categories = self::decodeData($result);
+      self::$categories = array_map(fn($row) => (
+        Category::populateData($row)
+      ), $categories);
     }
     return self::$categories;
   }
