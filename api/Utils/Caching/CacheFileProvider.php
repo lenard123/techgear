@@ -65,6 +65,9 @@ class CacheFileProvider extends CacheProvider
     if ($default instanceof \Closure)
       $default = $default();
     
+    if (!is_string($default)) 
+      $default = json_encode($default);
+
     $this->put($key, $default);
 
     return $default;
