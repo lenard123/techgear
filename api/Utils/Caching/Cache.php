@@ -14,7 +14,9 @@ class Cache
     if (CACHE_ENABLED) {
       if ($provider_key == 'file') {
         return new CacheFileProvider(CACHE_FILE_DIR);
-      }      
+      } else if ($provider_key == 'redis') {
+        return new CacheRedisProvider(CACHE_REDIS_URL);
+      }
     }
     return new CacheProvider; //Empty Cache Provider
   }
@@ -27,6 +29,11 @@ class Cache
   public static function put(string $key, string $value, ?int $expiration = null) : void
   {
     self::getProvider()->put($key, $value, $expiration);
+  }
+
+  public static function has(string $key) : bool
+  {
+    return self::getProvider()->has($key);
   }
 
   public static function remember(string $key, $default) : ?string

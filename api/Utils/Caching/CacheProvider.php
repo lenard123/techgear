@@ -5,7 +5,8 @@ namespace App\Utils\Caching;
 class CacheProvider
 {
   public static $providers = [
-    'file' => CacheFileProvider::class
+    'file' => CacheFileProvider::class,
+    'redis' => CacheRedisProvider::class
   ];
 
   public function getCaches() : array
