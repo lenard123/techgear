@@ -1,0 +1,25 @@
+{
+  "name": "byjg/migration",
+  "description": "Simple library in PHP for database version control. Supports Sqlite, MySql, Sql Server and Postgres.",
+  "authors": [
+    {
+      "name": "jg",
+      "email": "joao@byjg.com.br"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "byjg/anydataset-db": "4.1.*",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.7.*|7.4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ByJG\\DbMigration\\": "src/"
+    }
+  },
+  "license": "MIT"
+}
