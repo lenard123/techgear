@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Utils\DB;
+use App\Utils\Caching\Cache;
 
 class Category extends BaseModel 
 {
@@ -61,9 +62,14 @@ class Category extends BaseModel
   public static function getAll() : array
   {
     if (is_null(self::$categories)){
-      $result = DB::select('SELECT * FROM `categories`');
+
+      $result_json = Cache::remember('categories', function() {
+        return json_encode(DB::select('SELECT * FROM `categories`'));
+      });
+      $result = json_decode($result_json);
+
       self::$categories = array_map(function($row){
-        return Category::populateData($row);
+        return Category::populateData((array) $row);
       }, $result);
     }
     return self::$categories;
