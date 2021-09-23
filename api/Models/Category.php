@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Utils\DB;
+
 class Category extends BaseModel 
 {
   public $id;
@@ -59,16 +61,11 @@ class Category extends BaseModel
   public static function getAll() : array
   {
     if (is_null(self::$categories)){
-      $result = array();
-
-      $rs = parent::execQuery("SELECT * FROM `categories`");
-      while($row = $rs->fetch_assoc()) {
-        array_push($result, Category::populateData($row));
-      }
-
-      self::$categories = $result;
+      $result = DB::select('SELECT * FROM `categories`');
+      self::$categories = array_map(function($row){
+        return Category::populateData($row);
+      }, $result);
     }
-
     return self::$categories;
   }
 }
