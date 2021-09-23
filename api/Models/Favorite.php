@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Utils\DB;
+use App\Utils\Caching\Cache;
+
 class Favorite extends BaseModel
 {
   public $id;
@@ -21,26 +24,19 @@ class Favorite extends BaseModel
 
   public function save()
   {
-    $stmt = self::prepareStatement("INSERT INTO `favorites`(`user_id`, `product_id`) VALUES (?, ?)");
-    $stmt->bind_param("ii", $this->user_id, $this->product_id);
-    $stmt->execute();
-    $this->id = self::getLastId();
-  }
-
-  public static function isCurrentUserFavorite($product_id)
-  {
-    if (User::isUserCustomer()) {
-      $user = User::getCurrentUser();
-      foreach($user->getFavorites() as $favorite) {
-        if ($favorite->product_id == $product_id)
-          return true;
-      }
-    }
-    return false;
+    DB::prepare("INSERT INTO `favorites`(`user_id`, `product_id`) VALUES (?, ?)", 
+      "ii", 
+      $this->user_id,
+      $this->product_id
+    );
+    $this->id = DB::getLastId();
+    Cache::forget("favorites:{$this->user_id}");
+    Cache::forget("favorites:{$this->user_id}:count");
   }
 
   public static function populateData($row)
   {
+    if (is_null($row)) return null;
     $favorite = new Favorite;
     $favorite->id = intval($row["id"]);
     $favorite->user_id = intval($row["user_id"]);
@@ -54,20 +50,27 @@ class Favorite extends BaseModel
 
   public static function getAllFromUser($user_id)
   {
-    $favorites = array();
-    $stmt = self::prepareStatement("SELECT * FROM `favorites` WHERE `user_id`=?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $rs = $stmt->get_result();
-    while($row = $rs->fetch_assoc())
-      array_push($favorites, self::populateData($row));
-    return $favorites;
+    $data = Cache::remember("favorites:$user_id", fn() => (
+      DB::select('SELECT * FROM `favorites` WHERE `user_id` = ?', "i", $user_id)
+    ));
+    $favorites = self::decodeData($data);
+    return array_map(fn($favorite) => (
+      Favorite::populateData($favorite)
+    ), $favorites);
   }
 
-  public static function deleteProduct($product_id)
+  public static function countByUser($user_id)
   {
-    $stmt = self::prepareStatement("DELETE FROM `favorites` WHERE `product_id`=?");
-    $stmt->bind_param("i", $product_id);
-    $stmt->execute();
+    $data = Cache::remember("favorites:$user_id:count", fn() => (
+      DB::scalar("SELECT COUNT(*) FROM `favorites` WHERE `user_id` = ?", "i", $user_id)
+    ));
+    return self::decodeData($data);
+  }
+
+  public static function deleteProduct($user_id, $product_id)
+  {
+    DB::prepare("DELETE FROM `favorites` WHERE `product_id` = ?", "i", $product_id);
+    Cache::forget("favorites:$user_id");
+    Cache::forget("favorites:$user_id:count");
   }
 }

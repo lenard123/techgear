@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Utils\DB;
+use App\Utils\Caching\Cache;
+
 class OrderItem extends BaseModel
 {
   public $id;
@@ -23,15 +26,15 @@ class OrderItem extends BaseModel
 
   public function save()
   {
-    $stmt = self::prepareStatement("INSERT INTO `order_items`(`order_id`, `product_id`, `quantity`, `price`) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiid", 
+    DB::prepare("INSERT INTO `order_items`(`order_id`, `product_id`, `quantity`, `price`) VALUES (?, ?, ?, ?)",
+      "iiid", 
       $this->order_id,
       $this->product_id,
       $this->quantity,
       $this->price
     );
-    $stmt->execute();
-    $this->id = self::getLastId();
+    $this->id = DB::getLastId();
+    Cache::forget("order_items:{$this->order_id}");
   }
 
   public function getSubtotal()
@@ -41,14 +44,13 @@ class OrderItem extends BaseModel
 
   public static function getAllFromOrder($order_id)
   {
-    $items = array();
-    $stmt = self::prepareStatement("SELECT * FROM `order_items` WHERE `order_id` = ?");
-    $stmt->bind_param("i", $order_id);
-    $stmt->execute();
-    $rs = $stmt->get_result();
-    while($row = $rs->fetch_assoc())
-      array_push($items, self::populateData($row));
-    return $items;
+    $data = Cache::remember("order_items:$order_id", fn() => (
+      DB::select("SELECT * FROM `order_items` WHERE `order_id` = ?", "i", $order_id)
+    ));
+    $items = self::decodeData($data);
+    return array_map(fn($item) => (
+      OrderItem::populateData($item)
+    ), $items);
   }
 
   public static function moveCart($user_id, $order_id)
@@ -73,6 +75,7 @@ class OrderItem extends BaseModel
 
   public static function populateData($row)
   {
+    if (is_null($row)) return null;
     $item = new OrderItem;
     $item->id = intval($row["id"]);
     $item->order_id = intval($row["order_id"]);

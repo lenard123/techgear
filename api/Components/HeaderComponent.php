@@ -17,7 +17,7 @@ class HeaderComponent extends Component
       $user = User::getCurrentUser();
       $this->addData("cart_count", $user->countCart());
       $this->addData("order_count", $user->countOrder());
-      $this->addData("favorite_count", count($user->getFavorites()));
+      $this->addData("favorite_count", $user->countFavorites());
     }
 
   }
