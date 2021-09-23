@@ -24,6 +24,15 @@ class DB
     return null;
   }
 
+  public static function scalar(string $query, ?string $param_type = null, ...$params)
+  {
+    $stmt = self::prepare($query, $param_type, ...$params);
+    if ($row = $stmt->fetch_array())
+      if (isset($row[0]))
+        return $row[0];
+    return null;
+  }
+
   public static function select(string $query, ?string $param_type = null, ...$params)
   {
     $query_result = !is_null($param_type) >= 2
@@ -38,6 +47,11 @@ class DB
   public static function execute(string $query)
   {
     return self::getConnection()->query($query);
+  }
+
+  public static function getLastId()
+  {
+    return self::getConnection()->insert_id;
   }
 
   public static function prepare(string $query, string $param_type, ...$params)
