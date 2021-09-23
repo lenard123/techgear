@@ -13,8 +13,15 @@ jobs:
           git config user.name lenard123
           git config user.email lenard.mangayayam@gmail.com
           git checkout -b production
-      - run: cp api/config.production.php api/config.php
       - run: |
-          git add api/config.php
+          cp api/config.production.php api/config.php
+          mkdir public
+          mv admin public/admin
+          mv index.php public/index.php
+          mv assets public/assets
+          mv storage public/storage
+          mv api.php public/api.php
+          mv loader.php public/loader.php
+          git add .
           git commit -m "Use Production config"
           git push --set-upstream origin production --force
