@@ -41,6 +41,8 @@ class Category extends BaseModel
 
   public static function populateData($data)
   {
+    if (is_null($data)) return null;
+
     $category = new Category;
     $category->id = intval($data["id"]);
     $category->name = $data["name"];

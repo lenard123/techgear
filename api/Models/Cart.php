@@ -91,6 +91,8 @@ class Cart extends BaseModel
 
   public static function populateData($row)
   {
+    if (is_null($row)) return null;
+
     $cart = new Cart;
     $cart->id = intval($row["id"]);
     $cart->user_id = intval($row["user_id"]);
@@ -107,6 +109,7 @@ class Cart extends BaseModel
       DB::first('SELECT * FROM `carts` WHERE `id` = ?', "i", $id)
     ));
     $cart = self::decodeData($data);
+
     return Cart::populateData($cart);
   }
 

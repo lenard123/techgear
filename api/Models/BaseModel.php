@@ -47,8 +47,8 @@ class BaseModel {
   {
     if (is_string($data)) {
       $decoded_data = json_decode($data, true);
-      if (is_null($decoded_data)) return $data;
-      return $decoded_data;
+      if (json_last_error() == JSON_ERROR_NONE)
+        return $decoded_data;
     }
     return $data;
   }
