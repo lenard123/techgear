@@ -11,6 +11,9 @@ class CacheFileProvider extends CacheProvider
   public function __construct($cache_folder)
   {
     $this->cache_folder = $cache_folder;
+    if (!file_exists($cache_folder)) {
+      mkdir($cache_folder);
+    }
   }
 
   public function getCaches() : array
@@ -59,6 +62,9 @@ class CacheFileProvider extends CacheProvider
     $remembered = $this->get($key);
     if (!is_null($remembered)) return $remembered;
 
+    if ($default instanceof \Closure)
+      $default = $default();
+    
     $this->put($key, $default);
 
     return $default;
