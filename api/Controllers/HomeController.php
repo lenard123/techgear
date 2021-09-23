@@ -14,6 +14,10 @@ class HomeController extends BaseController
       asset('img/slide1.jpg'),
       asset('img/slide2.jpg'),
       asset('img/slide3.jpg'),
+      asset('img/slide4.jpg'),
+      asset('img/slide5.jpg'),
+      asset('img/slide6.jpg'),
+      asset('img/slide7.jpg'),
     ];
 
     $featured_products = Product::getFeaturedProducts();
