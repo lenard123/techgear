@@ -17,6 +17,13 @@ class DB
     return self::$connection;
   }
 
+  public static function first(string $query, ?string $param_type = null, ...$params)
+  {
+    $result = self::select($query, $param_type, ...$params);
+    if (count($result) >= 1) return $result[0];
+    return null;
+  }
+
   public static function select(string $query, ?string $param_type = null, ...$params)
   {
     $query_result = !is_null($param_type) >= 2
