@@ -12,7 +12,7 @@
   <div class="p-5 border-b border-gray-200">
     <div class="mb-3">
       <a href="<?= url("?page=order-details&id={$order->id}") ?>">
-        <h2 class="text-xl inline">#<?= str_pad($order->id, 7, "0", STR_PAD_LEFT) ?> </h2>
+        <h2 class="text-xl inline hover:text-blue-500">#<?= str_pad($order->id, 7, "0", STR_PAD_LEFT) ?> </h2>
         <h4 class="text-sm text-gray-500 inline">from <?= toDate($order->created_at) ?></h4>
       </a>
     </div>
