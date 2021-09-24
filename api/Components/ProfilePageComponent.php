@@ -16,7 +16,7 @@ class ProfilePageComponent extends CustomerPageComponent
 
     parent::addData("user", $user);
     parent::addData("order_count", $order_count);
-    parent::addData("favorite_count", count($user->getFavorites()));
+    parent::addData("favorite_count", $user->countFavorites());
     parent::addData("content", $template);
     parent::addData("content_data", $this->profile_content_data);
     parent::__construct("profile_page_template");

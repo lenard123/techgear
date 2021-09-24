@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Utils\DB;
+use App\Utils\Caching\Cache;
+
 class UserInfo extends BaseModel
 {
   public $id;
@@ -18,6 +21,8 @@ class UserInfo extends BaseModel
 
   public static function populateData($row)
   {
+    if (is_null($row)) return null;
+
     $user_info = new UserInfo;
     $user_info->id = intval($row["id"]);
     $user_info->user_id = intval($row["user_id"]);
@@ -35,8 +40,7 @@ class UserInfo extends BaseModel
 
   public function update()
   {
-    $stmt = self::prepareStatement("UPDATE `user_info` SET `region`=?, `province`=?, `municipality`=?, `barangay`=?, `street`=?, `unit`=?, `phone`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `user_id`=?");
-    $stmt->bind_param(
+    DB::prepare("UPDATE `user_info` SET `region`=?, `province`=?, `municipality`=?, `barangay`=?, `street`=?, `unit`=?, `phone`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `user_id`=?",
       "sssssssi",
       $this->region,
       $this->province,
@@ -47,13 +51,12 @@ class UserInfo extends BaseModel
       $this->phone,
       $this->user_id
     );
-    $stmt->execute();
+    Cache::forget("user_info:uid:{$this->user_id}");
   }
 
   public function save()
   {
-    $stmt = self::prepareStatement("INSERT INTO `user_info`(`user_id`, `region`, `province`, `municipality`, `barangay`, `street`, `unit`, `phone`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param(
+    DB::prepare("INSERT INTO `user_info`(`user_id`, `region`, `province`, `municipality`, `barangay`, `street`, `unit`, `phone`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       "isssssss", 
       $this->user_id,
       $this->region,
@@ -64,19 +67,16 @@ class UserInfo extends BaseModel
       $this->unit,
       $this->phone
     );
-    $stmt->execute();
-    $this->id = self::getLastId();
+    $this->id = DB::getLastId();
   }
 
   public static function findByUser($user_id)
   {
-    $stmt = self::prepareStatement("SELECT * FROM `user_info` WHERE `user_id` = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc())
-      return self::populateData($row);
-    return null;
+    $data = Cache::remember("user_info:uid:$user_id", fn() => (
+      DB::first("SELECT * FROM `user_info` WHERE `user_id` = ?", "i", $user_id)
+    ));
+    $user_info = self::decodeData($data);
+    return self::populateData($user_info);
   }
 
   public static function newUser($id)

@@ -15,6 +15,7 @@ class ComposerStaticInit981e1d966365b279d711b61b2f8b1d7c
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Cache\\' => 10,
+            'Predis\\' => 7,
         ),
         'B' => 
         array (
@@ -43,6 +44,10 @@ class ComposerStaticInit981e1d966365b279d711b61b2f8b1d7c
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
         'ByJG\\Util\\' => 
         array (

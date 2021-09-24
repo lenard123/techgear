@@ -1,6 +1,6 @@
 <?php
 
-require_once "../api/start.php";
+require_once "../loader.php";
 
 $page = get("page") ?? "home";
 

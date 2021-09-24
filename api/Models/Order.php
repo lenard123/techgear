@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Utils\DB;
+use App\Utils\Caching\Cache;
+
 class Order extends BaseModel
 {
   public $id;
@@ -56,9 +59,9 @@ class Order extends BaseModel
 
   public function save()
   {
-    $query = "INSERT INTO `orders`(`user_id`,`status`,`recipient_firstname`, `recipient_lastname`, `region`, `province`, `municipality`, `barangay`, `street`, `unit`, `phone`, `email`, `shipping_fee`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = self::prepareStatement($query);
-    $stmt->bind_param("iissssssssssd",
+    DB::prepare(
+      "INSERT INTO `orders`(`user_id`,`status`,`recipient_firstname`, `recipient_lastname`, `region`, `province`, `municipality`, `barangay`, `street`, `unit`, `phone`, `email`, `shipping_fee`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "iissssssssssd",
       $this->user_id,
       $this->status,
       $this->recipient_firstname,
@@ -73,48 +76,43 @@ class Order extends BaseModel
       $this->email,
       $this->shipping_fee
     );
-    $stmt->execute();
-    $this->id = self::getLastId();
 
+    $this->id = DB::getLastId();
     OrderItem::moveCart($this->user_id, $this->id);
+    Cache::forget("orders:{$this->user_id}");
+    Cache::forget("orders:{$this->user_id}:count");
   }
 
   public static function find($id)
   {
-    $stmt = self::prepareStatement("SELECT * FROM `orders` WHERE `id` = ?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc())
-      return self::populateData($row);
-    return null;
+    $data = Cache::remember("order:$id", fn() => (
+      DB::first("SELECT * FROM `orders` WHERE `id`=?", "i", $id)
+    ));
+    $order = self::decodeData($data);
+    return Order::populateData($order);
   }
 
   public static function getAllFromUser($user_id)
   {
-    $orders = array();
-    $stmt = self::prepareStatement("SELECT * FROM `orders` WHERE `user_id` = ? ORDER BY `modified_at` DESC, `created_at` DESC");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $rs = $stmt->get_result();
-    while($row = $rs->fetch_assoc())
-      array_push($orders, self::populateData($row));
-    return $orders;
+    $data = Cache::remember("orders:$user_id", fn() => (
+      DB::select("SELECT * FROM `orders` WHERE `user_id` = ? ORDER BY `modified_at` DESC, `created_at` DESC", "i", $user_id)
+    ));
+    $orders = self::decodeData($data);
+    return array_map(fn($order) => self::populateData($order), $orders);
   }
 
   public static function getOrderCount($user_id)
   {
-    $stmt = self::prepareStatement("SELECT COUNT(*) FROM `orders` WHERE `user_id` = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_array())
-      return $row[0];
-    return 0;
+    $data = Cache::remember("orders:$user_id:count", fn() => (
+      DB::scalar("SELECT COUNT(*) FROM `orders` WHERE `user_id` = ?", "i", $user_id)
+    ));
+    $count = self::decodeData($data);
+    return $count;
   }
 
   public static function populateData($row)
   {
+    if (is_null($row)) return null;
     $order = new Order;
     $order->id = intval($row["id"]);
     $order->user_id = intval($row["user_id"]);

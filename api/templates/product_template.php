@@ -109,7 +109,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         <?php foreach($product->getRelatedProducts() as $rProduct) : ?>
-          <?php (new ProductCardComponent($rProduct))->render() ?>
+          <?php (new App\Components\ProductCardComponent($rProduct))->render() ?>
         <?php endforeach; ?>
       </div>
 

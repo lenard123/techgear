@@ -14,5 +14,11 @@ define('DB_DATABASE', 'heroku_670757a0b92e8ee');
 define('SITE_NAME', 'TechGear');
 define('SITE_SHIPPING_FEE', 38);
 
+define('CACHE_ENABLED', true);
+define('CACHE_PROVIDER', 'redis');
+define('CACHE_EXPIRATION', 60); //In minutes
+define('CACHE_FILE_DIR', ROOT_PATH . '/caches');
+define('CACHE_REDIS_URL', 'redis://:pf5c0c0d8dd1eaa1b2f5b6c03a0f2fa1e2e2126ff471e1a474794d73fd6e64e11@ec2-18-205-48-13.compute-1.amazonaws.com:27819');
+
 define('ENV', 'DEBUG');
 
