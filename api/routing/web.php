@@ -1,40 +1,97 @@
 <?php
 
 use App\Utils\Route;
-use App\Utils\Route2;
 
-$web_routes = [
-  "home" => Route::init(App\Controllers\HomeController::class),
-  "category" => Route::init(App\Controllers\CategoryController::class)->setModel(App\Models\Category::class),
-  "signout" => Route::init(App\Controllers\SignoutController::class)->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class),
-  "signin" => Route::init(App\Controllers\SigninController::class)->addMiddleware(App\Middlewares\GuestCustomerOnlyMiddleware::class),
-  "cart" => Route::init(App\Controllers\CartController::class)->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class),
-  "signup" => Route::init(App\Controllers\SignupController::class)->addMiddleware(App\Middlewares\GuestCustomerOnlyMiddleware::class),
-  "checkout" => Route::init(App\Controllers\CheckoutController::class)->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class),
-  "order" => Route::init(App\Controllers\OrderController::class)->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class),
-  "personal" => Route::init(App\Controllers\PersonalController::class)->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class),
-  "settings" => Route::init(App\Controllers\SettingsController::class)->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class),
-  "favorites" => Route::init(App\Controllers\FavoriteController::class)->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class),
-  "product" => Route::init(App\Controllers\ProductController::class)->setModel(App\Models\Product::class),
-  "order-details" => Route::init(App\Controllers\OrderDetailsController::class)->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class)->setModel(App\Models\Order::class),
-  "search" => Route::init(App\Controllers\SearchController::class),
-];
-
-Route2::get("home")
+//For Guest User
+Route::get("home")
   ->setController(App\Controllers\HomeController::class);
 
-Route2::get("category")
+Route::get("category")
   ->setController(App\Controllers\CategoryController::class)
   ->setModel(App\Models\Category::class);
 
-Route2::post("signout")
+Route::get('product')
+  ->setController(App\Controllers\ProductController::class, "get")
+  ->setModel(App\Models\Product::class);
+
+Route::get("search")
+  ->setController(App\Controllers\SearchController::class, "get");
+
+//Authentication
+Route::post("signout")
   ->setController(App\Controllers\SignoutController::class)
-  ->addMiddleware(App\Middlewares\CustomerOnlyMiddleware::class);
+  ->customerOnly();
 
-Route2::get("signin")
+Route::get("signin")
   ->setController(App\Controllers\SigninController::class)
-  ->addMiddleware(App\Middlewares\GuestCustomerOnlyMiddleware::class);
-
-Route2::post("signin")
+  ->guestCustomerOnly();
+Route::post("signin")
   ->setController(App\Controllers\SigninController::class, "signin")
-  ->addMiddleware(App\Middlewares\GuestCustomerOnlyMiddleware::class);
+  ->guestCustomerOnly();
+
+Route::get("signup")
+  ->setController(App\Controllers\SignupController::class)
+  ->guestCustomerOnly();
+Route::post("signup")
+  ->setController(App\Controllers\SignupController::class, "process")
+  ->guestCustomerOnly();
+
+//Cart
+Route::get('cart')
+  ->setController(App\Controllers\CartController::class)
+  ->customerOnly();
+Route::put('cart')
+  ->setController(App\Controllers\CartController::class, "put")
+  ->customerOnly();
+Route::delete("cart")
+  ->setController(App\Controllers\CartController::class, "delete")
+  ->customerOnly();
+Route::patch("cart")
+  ->setController(App\Controllers\CartController::class, "patch")
+  ->customerOnly();
+
+//Checkout
+Route::get('checkout')
+  ->setController(App\Controllers\CheckoutController::class, "get")
+  ->customerOnly();
+Route::post('checkout')
+  ->setController(App\Controllers\CheckoutController::class, "post")
+  ->customerOnly();
+
+//Order
+Route::get('order')
+  ->setController(App\Controllers\OrderController::class, "get")
+  ->customerOnly();
+
+//Profile
+Route::get('personal')
+  ->setController(App\Controllers\PersonalController::class, "get")
+  ->customerOnly();
+Route::patch('personal')
+  ->setController(App\Controllers\PersonalController::class, "patch")
+  ->customerOnly();
+
+//Settings
+Route::get('settings')
+  ->setController(App\Controllers\SettingsController::class, "get")
+  ->customerOnly();
+Route::patch('settings')
+  ->setController(App\Controllers\SettingsController::class, "get")
+  ->customerOnly();
+
+//Favorites
+Route::get('favorites')
+  ->setController(App\Controllers\FavoriteController::class, "get")
+  ->customerOnly();
+Route::delete("favorites")
+  ->setController(App\Controllers\FavoriteController::class, "delete")
+  ->customerOnly();
+Route::post("favorites")
+  ->setController(App\Controllers\FavoriteController::class, "post")
+  ->customerOnly();
+
+//Order Details
+Route::get('order-details')
+  ->setController(App\Controllers\OrderDetailsController::class, "get")
+  ->setModel(App\Models\Order::class)
+  ->customerOnly();
