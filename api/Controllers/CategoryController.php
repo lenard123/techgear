@@ -15,7 +15,7 @@ class CategoryController extends BaseController
     $this->category = $category;
   }
 
-  public function get()
+  public function __invoke()
   {
     $category = $this->category;
 

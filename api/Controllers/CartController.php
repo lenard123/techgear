@@ -11,7 +11,7 @@ use App\Utils\AlertMessage;
 
 class CartController extends BaseController
 {
-  public function get()
+  public function __invoke()
   {
     $carts = User::getCurrentUser()->getCarts();
     $subtotal = Cart::calculateSubtotal($carts);

@@ -3,6 +3,5 @@
 use App\Utils\Route;
 use App\Controllers;
 
-$api_routes = [
-  "location" => Route::init(Controllers\LocationController::class),
-];
+Route::get("location")
+  ->setController(App\Controllers\LocationController::class, "get");

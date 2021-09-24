@@ -8,7 +8,7 @@ use App\Models\Product;
 
 class HomeController extends BaseController
 {
-  public function get()
+  public function __invoke()
   {
     $slides = [
       asset('img/slide1.jpg'),
