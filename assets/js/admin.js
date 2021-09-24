@@ -9,6 +9,14 @@ $(document).ready(function(){
     $('#sidebar').removeClass('active')
   })
 
+  //Sidebar dropdown
+  $('.sidebar-dropdown').click(function(e){
+    var target = $(e.target)
+    if (!target.is('.sidebar-dropdown-menu *')) {
+      $(this).toggleClass('active').find('.sidebar-dropdown-menu').slideToggle()
+    }
+  })
+
   //Set Active Page
   if (typeof php_active_page != 'undefined') {
     $(`[data-page=${php_active_page}`).addClass('bg-gray-700')

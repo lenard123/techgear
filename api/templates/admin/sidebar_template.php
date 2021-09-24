@@ -48,14 +48,35 @@
       </li>
 
       <li>
-        <a href="#" class="flex hover:bg-gray-700 text-gray-300 py-2">
-          <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
-            </svg>
-          </span>
-          <span class="flex-grow">Products</span>
-        </a>
+        <div class="sidebar-dropdown">
+          <a href="#" class="flex justify-between hover:bg-gray-700 text-gray-300 py-2">
+            <div class="flex items-center">
+              <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <span class="flex-grow">Products</span>
+            </div>
+            <div class="flex items-center pr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="caret h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+
+          <div class="sidebar-dropdown-menu hidden bg-gray-900 text-sm">
+            <ul>
+              <li>
+                <a class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" href="#">Add New Product</a>
+              </li>
+              <li>
+                <a class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" href="<?= admin('?page=products') ?>">Manage Products</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
       </li>
 
       <li>
