@@ -1,6 +1,6 @@
 <?php
 
-require_once "api/start.php";
+require_once __DIR__ . "/loader.php";
 
 $page = get("page");
 
