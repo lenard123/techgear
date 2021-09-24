@@ -7,14 +7,22 @@ class AdminPageComponent extends Component
   protected $template = "admin/admin_page_template";
   private $content_data = [];
   private $js_data = [];
+  private $scripts = [];
 
   public function __construct($content)
   {
     parent::addData("content", $content);
     parent::addData("content_data", $this->content_data);
     parent::addData("js_data", $this->js_data);
+    parent::addData("scripts", $this->scripts);
     parent::addData("header", new AdminHeaderComponent);
     parent::addData("sidebar", new AdminSidebarComponent);
+  }
+
+  public function addScript($js_file)
+  {
+    array_push($this->scripts, $js_file);
+    parent::addData("scripts", $this->scripts);
   }
 
   public function addJSData($key, $value)

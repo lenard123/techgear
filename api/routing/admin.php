@@ -7,3 +7,6 @@ Route::get("home")
 
 Route::get("category")
   ->setController(App\Controllers\Admin\ManageCategoryController::class, "get");
+Route::patch("category")
+  ->setController(App\Controllers\Admin\ManageCategoryController::class, "updateCategory")
+  ->setModel(App\Models\Category::class);

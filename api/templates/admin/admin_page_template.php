@@ -19,6 +19,8 @@
   <?= view("admin/" . $content, $content_data) ?>
 </div>
 
+<?php App\Utils\AlertMessage::render() ?>
+
 <script type="text/javascript">
 <?php foreach($js_data as $key => $value) : ?>
   var php_<?= $key ?> = <?= json_encode($value) ?>;
@@ -27,6 +29,10 @@
 
 <script src="<?= url('assets/js/jquery.min.js') ?>"></script>
 <script src="<?= url('assets/js/admin.js') ?>"></script>
+
+<?php foreach($scripts as $script) : ?>
+<script src="<?= $script ?>"></script>
+<?php endforeach; ?>
 
 </body>
 </html>
