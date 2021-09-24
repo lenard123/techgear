@@ -12,7 +12,7 @@
     
     <!-- Desc -->
     <div class="flex-grow pb-5">
-      <a href="#" class="block text-gray-500 text-sm"><?= __($product->getCategory()->name) ?></a>
+      <a href="<?= url("?page=category&id={$product->category_id}")?>" class="block text-gray-500 text-sm"><?= __($product->getCategory()->name) ?></a>
       <a 
         href="<?= url("?page=product&id={$product->id}") ?>" 
         class="block text-gray-600 text-md leading-6 font-semibold hover:text-blue-500"><?= __($product->name) ?></a>
