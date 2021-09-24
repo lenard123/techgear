@@ -14,7 +14,7 @@ define('DB_DATABASE', 'online-store');
 define('SITE_NAME', 'TechGear');
 define('SITE_SHIPPING_FEE', 38);
 
-define('CACHE_ENABLED', false);
+define('CACHE_ENABLED', true);
 define('CACHE_PROVIDER', 'file');
 define('CACHE_EXPIRATION', 60); //In minutes
 define('CACHE_FILE_DIR', ROOT_PATH . '/caches');
