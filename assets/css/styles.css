@@ -19,7 +19,7 @@
 }
 
 .category-link.active .caret {
-  transform: rotateZ(-90deg);
+  transform: rotateZ(90deg);
 }
 
 .category-link.active .subcategories {

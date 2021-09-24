@@ -8,6 +8,14 @@
   left: 0;
 }
 
+.sidebar-dropdown .caret {
+  transition: transform 300ms ease;
+}
+
+.sidebar-dropdown.active .caret {  
+  transform: rotateZ(90deg);
+}
+
 .breadcrumbs  li:not(:last-child)::after {
   content: "/";
   display: inline-block;
