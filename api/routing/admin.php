@@ -10,3 +10,6 @@ Route::get("category")
 Route::patch("category")
   ->setController(App\Controllers\Admin\ManageCategoryController::class, "updateCategory")
   ->setModel(App\Models\Category::class);
+
+Route::get("products")
+  ->setController(App\Controllers\Admin\ProductController::class);

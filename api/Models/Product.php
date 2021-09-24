@@ -73,6 +73,7 @@ class Product extends BaseModel
       $this->max_order,
       $this->id
     );
+    Cache::forget("products");
     Cache::forget("product:{$this->id}");
     Cache::forget("products:featured");
     Cache::forget("products:{$this->category_id}");
@@ -136,6 +137,15 @@ class Product extends BaseModel
     $data = Cache::remember("products:featured", fn () => (
       DB::select("SELECT * FROM `products` ORDER BY RAND() LIMIT 15")
     ));
+    $products = self::decodeData($data);
+    return array_map(fn($prod) => self::populateData($prod), $products);
+  }
+
+  public static function getAll()
+  {
+    $data = Cache::remember('products', fn() => (
+      DB::select("SELECT * FROM `products`")
+    ));;
     $products = self::decodeData($data);
     return array_map(fn($prod) => self::populateData($prod), $products);
   }
