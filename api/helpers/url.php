@@ -28,7 +28,9 @@ function storage($path)
   return url("storage/" . $path);
 }
 
-function redirect($url) {
-  header("Location: ". url($url));
+function redirect($url, $endpoint = null) {
+  if (is_null($endpoint)) $url = url($url);
+  else if($endpoint == "admin") $url = admin($url);
+  header("Location: ". $url);
   exit();
 }

@@ -19,6 +19,8 @@
   <?= view("admin/" . $content, $content_data) ?>
 </div>
 
+<?php App\Utils\AlertMessage::render() ?>
+
 <script type="text/javascript">
 <?php foreach($js_data as $key => $value) : ?>
   var php_<?= $key ?> = <?= json_encode($value) ?>;

@@ -33,13 +33,13 @@
       <?php foreach($categories as $category) : ?>
         <div class="category-item py-2 px-5 grid bg-white hover:bg-gray-50 grid-cols-6 border-b border-gray-200">
           <div class="col-span-5 md:col-span-3">
-            <span class="category-item-name"><?= __($category->name) ?>lorem</span>
-            <form class="hidden category-item-form" method="POST" action="">
+            <span class="category-item-name"><?= __($category->name) ?></span>
+            <form class="hidden category-item-form" method="POST" action="<?= admin("?page=category&id={$category->id}") ?>">
               <?= __method('PATCH') ?>
-              <input type="hidden" name="id" value="<?= $category->id ?>">
               <input
                 class="rounded py-1 px-2 border border-gray-200" 
-                type="text" 
+                type="text"
+                name="name"
                 value="<?= __($category->name) ?>"
                 required
               />

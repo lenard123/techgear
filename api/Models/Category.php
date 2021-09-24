@@ -30,6 +30,13 @@ class Category extends BaseModel
     return $this->products_count;
   }
 
+  public function update()
+  {
+    DB::prepare("UPDATE `categories` SET `name` = ?, `modified_at`=CURRENT_TIMESTAMP WHERE `id` = ?", "si", $this->name, $this->id);
+    Cache::forget("category:$id");
+    Cache::forget("categories");
+  }
+
   public static function find($id)
   {
     $data = Cache::remember("category:$id", fn() => (
