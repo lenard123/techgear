@@ -17,7 +17,7 @@ class SignupController extends BaseController
     $this->validator = new ValidatorList;
   }
 
-  public function get()
+  public function __invoke()
   {
 
     $validator = $this->validator;
@@ -28,12 +28,12 @@ class SignupController extends BaseController
     $view->render();
   }
 
-  public function post()
+  public function process()
   {
     $this->validate();
 
     if ($this->validator->hasError()) {
-      $this->get();
+      $this->__invoke();
       return;
     }
 

@@ -7,7 +7,7 @@ use App\Models\User;
 
 class SignoutController extends BaseController
 {
-  public function post()
+  public function __invoke()
   {
     User::getCurrentUser()->logout();
     AlertMessage::success("Logout Successfully");
