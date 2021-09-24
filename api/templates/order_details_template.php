@@ -21,7 +21,10 @@
     <?php foreach($items as $item) : ?>
       <div class="grid grid-cols-4 mb-4">
         <div class="col-span-3">
-          <span class="font-light text-lg"><?= __($item->getProduct()->name) ?></span>
+
+        <a href="<?= url("?page=product&id={$item->getProduct()->id}") ?>">
+          <span class="font-light text-lg text-gray-500 hover:text-gray-700"><?= __($item->getProduct()->name) ?></span>
+        </a>  
           <span class="block text-sm text-gray-500"><?= $item->quantity ?> × <?= money($item->price) ?></span>
         </div>
         <div class="text-lg font-light"><?= money($item->getSubtotal()) ?></div>
