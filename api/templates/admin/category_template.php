@@ -31,10 +31,20 @@
 
     <div class="table-rows">
       <?php foreach($categories as $category) : ?>
-        <div class="py-2 px-5 grid bg-white hover:bg-gray-50 grid-cols-6 border-b border-gray-200">
-          <p class="col-span-5 md:col-span-3">
-            <span><?= __($category->name) ?>lorem</span>
-          </p>
+        <div class="category-item py-2 px-5 grid bg-white hover:bg-gray-50 grid-cols-6 border-b border-gray-200">
+          <div class="col-span-5 md:col-span-3">
+            <span class="category-item-name"><?= __($category->name) ?>lorem</span>
+            <form class="hidden category-item-form" method="POST" action="">
+              <?= __method('PATCH') ?>
+              <input type="hidden" name="id" value="<?= $category->id ?>">
+              <input
+                class="rounded py-1 px-2 border border-gray-200" 
+                type="text" 
+                value="<?= __($category->name) ?>"
+                required
+              />
+            </form>
+          </div>
           <p class="hidden md:block">
             <?php if ($category->getProductCount() > 0) : ?>
               <span><?= $category->getProductCount() ?> item(s)</span>
@@ -45,14 +55,43 @@
           <p class="hidden md:block">
             <span><?= toDate($category->created_at) ?></span>
           </p>
-          <div class="flex justify-end">
-            <button class="text-white inline-flex bg-blue-500 hover:bg-blue-600 rounded border border-blue-600">
-              <span class="h-6 w-6 inline-flex justify-center items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </span>
-            </button>
+          <div class="flex items-start justify-end">
+            <div class="category-item-action-default">
+              <button
+                data-action="show-edit-form" 
+                class="text-white inline-flex bg-blue-500 hover:bg-blue-600 rounded border border-blue-600">
+                <span class="h-6 w-6 inline-flex justify-center items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <div class="category-item-action-edit hidden grid gap-1">
+              
+              <button 
+                data-action="submit-edit-form"
+                class="bg-white hover:text-white hover:bg-green-500 text-green-500 rounded border border-green-500"
+              >
+                <span class="h-6 w-6 inline-flex justify-center items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+              </button>
+
+              <button 
+                data-action="hide-edit-form"
+                class="bg-white hover:text-white hover:bg-gray-500 text-gray-500 rounded border border-gray-500"
+              >
+                <span class="h-6 w-6 inline-flex justify-center items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                  </svg>
+                </span>
+              </button>
+
+            </div>
           </div>
         </div>
       <?php endforeach; ?>
