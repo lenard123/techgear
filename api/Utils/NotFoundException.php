@@ -6,7 +6,7 @@ class NotFoundException extends \Exception
 {
   public function render404()
   {
-    echo "Page not found";
+    view("404_template");
   }
 
   public function render404JSON()
