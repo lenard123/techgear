@@ -28,5 +28,9 @@
 <script src="<?= url('assets/js/jquery.min.js') ?>"></script>
 <script src="<?= url('assets/js/admin.js') ?>"></script>
 
+<?php foreach($scripts as $script) : ?>
+<script src="<?= $script ?>"></script>
+<?php endforeach; ?>
+
 </body>
 </html>
