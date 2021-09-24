@@ -3,7 +3,7 @@
   <?php foreach($slides as $slide) : ?>
   <div class="slides absolute h-full w-full">
     <img 
-      class="absolute top-0 left-0 right-0 bottom-0 mx-auto h-full w-full"
+      class="object-cover absolute top-0 left-0 right-0 bottom-0 mx-auto h-full w-full"
       src="<?= $slide ?>"
       >
   </div>
