@@ -65,7 +65,7 @@
 
     <?php if ($order->status === App\Models\Order::STATUS_PREPARING) : ?>
     <div class="flex justify-end">
-      <button class="bg-red-500 py-2 px-5 rounded text-white mt-4">
+      <button class="bg-red-500 py-2 px-5 rounded text-white mt-4 hover:bg-red-600">
         Cancel Order
       </button>
     </div>
