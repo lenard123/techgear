@@ -2,54 +2,25 @@
 
 namespace App\Utils;
 
-use App\Models\User;
+use App\Controllers\BaseController;
+use App\Models\BaseModel;
+use App\Middlewares\CleanRequestMiddleware;
+use App\Middlewares\CustomerOnlyMiddleware;
+use App\Middlewares\GuestCustomerOnlyMiddleware;
 
 class Route
 {
-  public $controller;
-  public $model = null;
-  public $isModelPrivate = false;
-  public $middlewares = [];
-  public $isAdmin = false;
+  private $action;
+  private $controllerClass;
+  private $modelClass;
+  private $middlewares = [];
 
-  static $global_middlewares = [
-    \App\Middlewares\CleanRequestMiddleware::class,
+  private static $routes = [];
+  private static $global_middlewares = [
+    CleanRequestMiddleware::class,
   ];
 
-  static $web_middlewares = [];
-  static $api_middlewares = [];
-
-  public function __construct($controller, $isAdmin = false)
-  {
-    $this->isAdmin = $isAdmin;
-    $this->controller = $controller;
-  }
-
-  public function setModel($model, $isPrivate = false)
-  {
-    $this->model = $model;
-    $this->isModelPrivate = $isPrivate;
-    return $this;
-  }
-
-  public function addMiddleware($middleware)
-  {
-    array_push($this->middlewares, $middleware);
-    return $this;
-  }
-
-  public function proceed()
-  {
-    $controller = $this->instantiateController();
-    $method = $this->getRequestMethod();
-    $controller->$method();
-  }
-
-  public function getRequestMethod()
-  {
-    return strtolower(getRequestMethod());
-  }
-
+  //Middlewares
   public function testMiddleware()
   {
     $middlewares = array_merge(self::$global_middlewares, $this->middlewares);
@@ -58,44 +29,121 @@ class Route
     }
   }
 
-  private function instantiateModel()
+  public function guestCustomerOnly()
   {
-    $modelClass = $this->model;
-    if (is_null($modelClass)) return null; 
-
-    $id = $this->getId();
-    $model = $modelClass::find($id);
-
-    if (is_null($model)) throw new NotFoundException();
-
-    if ($this->isModelPrivate && $model->user_id != User::getCurrentUser()->id) throw new NotFoundException;
-
-    return $model;
+    $this->addMiddleware(GuestCustomerOnlyMiddleware::class);
   }
 
-  private function getId()
+  public function customerOnly()
+  {
+    $this->addMiddleware(CustomerOnlyMiddleware::class);
+  }
+
+  public function setCallback(\Closure $cb) : Route
+  {
+    $this->action = $cb;
+    return $this;
+  }
+
+  public function addMiddleware($middlewareClass) : Route
+  {
+    array_push($this->middlewares, $middlewareClass);
+    return $this;
+  }
+
+  public function setModel($modelClass) : Route
+  {
+    $this->modelClass = $modelClass;
+    return $this;
+  }
+
+  public function getModelObject() : BaseModel
   {
     $id = get('id');
-    if (is_null($id)) throw new NotFoundException();
-    return $id;
+    $modelClass = $this->modelClass;
+    $obj = $modelClass::find($id);
+    if (is_null($obj)) throw new NotFoundException;
+    return $obj;
   }
 
-  private function instantiateController()
+  public function getControllerObject() : BaseController
   {
-    $model = $this->instantiateModel();
-    $controllerClass = $this->controller;
-
-    $controller = new $controllerClass($model);
-    return $controller;
+    $controllerClass = $this->controllerClass;
+    if (is_null($this->modelClass))
+      return new $controllerClass;
+    $model = $this->getModelObject();
+    return new $controllerClass($model);
   }
 
-  public static function init($controller)
+  public function setController($controller, $method = null) : Route
   {
-    return new Route($controller);
+    $this->controllerClass = $controller;
+
+    $route = $this;
+
+    if (is_null($method)) {
+      $this->action = function () use ($route) {
+        $obj = $route->getControllerObject();
+        call_user_func($obj);
+      };
+    } else {
+      $this->action = function () use ($route, $method) {
+        $obj = $route->getControllerObject();
+        call_user_func([$obj, $method]);
+      };
+    }
+
+    return $route;
   }
 
-  public static function admin($controller)
+  //Initilize Router
+  private static function init(string $page, string $method) : Route
   {
-    return new Route($controller, true);
+    $route = new Route;
+    self::addRoute($page, $method, $route);
+    return $route;
   }
+
+  public static function get(string $page) : Route
+  {
+    return self::init($page, "GET");
+  }
+
+  public static function post(string $page) : Route
+  {
+    return self::init($page, "POST");
+  }
+
+  public static function put(string $page) : Route
+  {
+    return self::init($page, "PUT");
+  }
+
+  public static function patch(string $page) : Route
+  {
+    return self::init($page, "PATCH");
+  }
+
+  public static function delete(string $page) : Route
+  {
+    return self::init($page, "DELETE");
+  }
+
+  public static function load($page) : void
+  {
+    $method = getRequestMethod();
+    if (!isset(self::$routes[$page])) throw new NotFoundException;
+    if (!isset(self::$routes[$page][$method])) throw new NotFoundException;
+    
+    $route = self::$routes[$page][$method];
+    $route->testMiddleware();
+    ($route->action)();
+  }
+
+  private static function addRoute(string $page, string $method, Route $route) : void
+  {
+    if(!isset(self::$routes[$page])) self::$routes[$page] = [];
+    self::$routes[$page][$method] = $route;
+  }
+
 }

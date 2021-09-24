@@ -2,7 +2,8 @@
 
 use App\Utils\Route;
 
-$admin_routes = [
-  "home" => Route::init(App\Controllers\Admin\DashboardController::class),
-  "category" => Route::admin(App\Controllers\Admin\ManageCategoryController::class),
-];
+Route::get("home")
+  ->setController(App\Controllers\Admin\DashboardController::class, "get");
+
+Route::get("category")
+  ->setController(App\Controllers\Admin\ManageCategoryController::class, "get");
