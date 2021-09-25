@@ -49,3 +49,9 @@
 .category-item.edit .category-item-form{
   display: initial;
 }
+
+/* Toggle B */
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #2563EB;
+}
