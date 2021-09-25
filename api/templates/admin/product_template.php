@@ -25,17 +25,17 @@
       <span>All Products</span>
     </header>
 
-    <div class="hidden md:grid text-sm py-2 px-5 font-bold grid-cols-5 border-b border-gray-200">
-      <p class="col-span-2">Name</p>
-      <p>Info</p>
-      <p>Stocks</p>
-      <p class="text-right">Actions</p>
+    <div class="hidden md:grid text-sm py-2 px-5 font-bold grid-cols-12 border-b border-gray-200">
+      <p class="col-span-5">Name</p>
+      <p class="col-span-3">Info</p>
+      <p class="col-span-2">Stocks</p>
+      <p class="col-span-2 text-right px-1">Actions</p>
     </div>
 
     <div class="table-rows">
       <?php foreach($products as $product) : ?>
-        <div class="py-4 px-5 text-sm grid grid-cols-5 border-b border-gray-200 hover:bg-gray-50">
-          <div class="col-span-2">
+        <div class="py-4 px-5 text-sm grid grid-cols-12 border-b border-gray-200 hover:bg-gray-50">
+          <div class="col-span-5">
             <div class="flex">
               <img 
                 class="w-1/4 h-auto border border-gray-200 rounded"
@@ -44,7 +44,7 @@
             </div>
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex flex-col col-span-3">
             <p>
               <span class="font-bold">Num. of Sale: </span>
               <span>No data</span>
@@ -59,7 +59,7 @@
             </p>
           </div>
 
-          <div>
+          <div class="col-span-2">
             <?php if($product->quantity == 0) : ?>
               <span>Out of Stock</span>
             <?php elseif ($product->quantity == 1) : ?>
@@ -69,15 +69,27 @@
             <?php endif; ?>
           </div>
 
-          <div class="flex justify-end items-start">
+          <div class="flex col-span-2 justify-end items-start">
             <button
-              class="bg-blue-200 text-blue-500 p-1 rounded-full hover:text-white hover:bg-blue-500">
+              class="mx-1 bg-blue-200 text-blue-500 p-1 rounded-full hover:text-white hover:bg-blue-500">
               <span class="h-6 w-6 inline-flex justify-center items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>
               </span>
             </button>
+
+            <a
+              href="<?= url("?page=product&id={$product->id}") ?>" target="_blank"
+              class="mx-1 bg-green-200 text-green-500 p-1 rounded-full hover:text-white hover:bg-green-500">
+              <span class="h-6 w-6 inline-flex justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </span>
+            </a>
+
           </div>
 
         </div>
