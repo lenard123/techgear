@@ -26,7 +26,7 @@
       <p class="col-span-3">Name</p>
       <p>Products</p>
       <p>Created</p>
-      <p></p>
+      <p class="text-right">Action</p>
     </div>
 
     <div class="table-rows">
@@ -59,7 +59,7 @@
             <div class="category-item-action-default">
               <button
                 data-action="show-edit-form" 
-                class="text-white inline-flex bg-blue-500 hover:bg-blue-600 rounded border border-blue-600">
+                class="mx-1 bg-blue-200 text-blue-500 p-1 rounded-full hover:text-white hover:bg-blue-500">
                 <span class="h-6 w-6 inline-flex justify-center items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -71,7 +71,7 @@
               
               <button 
                 data-action="submit-edit-form"
-                class="bg-white hover:text-white hover:bg-green-500 text-green-500 rounded border border-green-500"
+                class="mx-1 bg-green-200 text-green-500 p-1 rounded-full hover:text-white hover:bg-green-500"
               >
                 <span class="h-6 w-6 inline-flex justify-center items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,7 +82,7 @@
 
               <button 
                 data-action="hide-edit-form"
-                class="bg-white hover:text-white hover:bg-gray-500 text-gray-500 rounded border border-gray-500"
+                class="mx-1 bg-gray-200 text-gray-500 p-1 rounded-full hover:text-white hover:bg-gray-500"
               >
                 <span class="h-6 w-6 inline-flex justify-center items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
