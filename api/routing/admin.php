@@ -13,3 +13,6 @@ Route::patch("category")
 
 Route::get("products")
   ->setController(App\Controllers\Admin\ProductController::class);
+
+Route::get("signin")
+  ->setController(App\Controllers\Admin\SigninController::class);
