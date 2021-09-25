@@ -68,10 +68,14 @@
           <div class="sidebar-dropdown-menu hidden bg-gray-900 text-sm">
             <ul>
               <li>
-                <a class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" href="#">Add New Product</a>
+                <a 
+                  class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
+                  href="<?= admin('?page=products-add') ?>">Add New Product</a>
               </li>
               <li>
-                <a class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" href="<?= admin('?page=products') ?>">Manage Products</a>
+                <a 
+                  class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
+                  href="<?= admin('?page=products') ?>">Manage Products</a>
               </li>
             </ul>
           </div>
