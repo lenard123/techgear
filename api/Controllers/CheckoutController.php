@@ -89,7 +89,7 @@ class CheckoutController extends BaseController
     $order->save();
 
     AlertMessage::success('Order placed successfully');
-    redirect('?page=order');
+    redirect("?page=order-details&id={$order->id}");
   }
 
   public function validate()
