@@ -11,7 +11,7 @@
   <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" /> 
   <title>TechGear Admin</title>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-100">
 
 <?= $header->render() ?>
 <?= $sidebar->render() ?>
