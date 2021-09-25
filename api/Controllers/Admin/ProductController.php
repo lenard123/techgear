@@ -18,4 +18,10 @@ class ProductController extends BaseController
     $view->render();
   }
 
+  public function add()
+  {
+    $view = new AdminPageComponent("product_add_template");
+    $view->render();
+  }
+
 }
