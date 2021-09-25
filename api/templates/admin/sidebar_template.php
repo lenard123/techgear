@@ -1,4 +1,4 @@
-<aside id="sidebar" class="bg-gray-800 fixed -left-60 lg:left-0 w-60 h-screen overflow-y-scroll">
+<aside id="sidebar" class="bg-gray-800 z-30 fixed -left-60 lg:left-0 w-60 h-screen overflow-y-scroll">
   <div class="flex justify-between items-center px-5 bg-gray-900" style="height: 60px">
     <a 
       href="<?= url() ?>" 

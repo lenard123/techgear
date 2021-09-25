@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 right-0 bg-white lg:pl-60 shadow" style="height: 60px">
+<header class="fixed top-0 left-0 right-0 bg-white lg:pl-60 shadow z-20" style="height: 60px">
 
   <div class="flex items-center justify-between py-2 px-3 h-full">
 
