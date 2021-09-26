@@ -23,31 +23,31 @@ Route::post("signout")
   ->customerOnly();
 
 Route::get("signin")
-  ->setController(App\Controllers\SigninController::class)
+  ->setController(App\Controllers\Customer\SigninController::class)
   ->guestCustomerOnly();
 Route::post("signin")
-  ->setController(App\Controllers\SigninController::class, "signin")
+  ->setController(App\Controllers\Customer\SigninController::class, "signin")
   ->guestCustomerOnly();
 
 Route::get("signup")
-  ->setController(App\Controllers\SignupController::class)
+  ->setController(App\Controllers\Customer\SignupController::class)
   ->guestCustomerOnly();
 Route::post("signup")
-  ->setController(App\Controllers\SignupController::class, "process")
+  ->setController(App\Controllers\Customer\SignupController::class, "process")
   ->guestCustomerOnly();
 
 //Cart
 Route::get('cart')
-  ->setController(App\Controllers\CartController::class)
+  ->setController(App\Controllers\Customer\CartController::class)
   ->customerOnly();
 Route::put('cart')
-  ->setController(App\Controllers\CartController::class, "put")
+  ->setController(App\Controllers\Customer\CartController::class, "put")
   ->customerOnly();
 Route::delete("cart")
-  ->setController(App\Controllers\CartController::class, "delete")
+  ->setController(App\Controllers\Customer\CartController::class, "delete")
   ->customerOnly();
 Route::patch("cart")
-  ->setController(App\Controllers\CartController::class, "patch")
+  ->setController(App\Controllers\Customer\CartController::class, "patch")
   ->customerOnly();
 
 //Checkout

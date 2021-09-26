@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerPageComponent1;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\User;
 use App\Utils\AlertMessage;
 
-class CartController extends BaseController
+class CartController extends CustomerController
 {
   public function __invoke()
   {
@@ -16,12 +16,13 @@ class CartController extends BaseController
     $subtotal = Cart::calculateSubtotal($carts);
     $total = SITE_SHIPPING_FEE + $subtotal;
 
-    $view = new CustomerPageComponent("cart_template");
+    $view = new CustomerPageComponent1("cart_page");
     $view->setTitle("Shopping Cart");
     $view->addData("carts", $carts);
     $view->addData("subtotal", $subtotal);
     $view->addData("total", $total);
-    $view->render();
+
+    $this->render($view);
   }
 
   public function put()

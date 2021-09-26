@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerPageComponent1;
 use App\Models\User;
 use App\Utils\ValidatorList;
 use App\Utils\AlertMessage;
 
-class SignupController extends BaseController
+class SignupController extends CustomerController
 {
 
   private $validator = null;
@@ -22,10 +22,11 @@ class SignupController extends BaseController
 
     $validator = $this->validator;
 
-    $view = new CustomerPageComponent("signup_template");
+    $view = new CustomerPageComponent1("signup_page");
     $view->setTitle("Sign Up");
     $view->addData("validator", $validator);
-    $view->render();
+
+    $this->render($view);
   }
 
   public function process()
