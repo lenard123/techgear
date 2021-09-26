@@ -62,7 +62,7 @@ class CheckoutController extends BaseController
         }
       }
 
-      $this->$this->renderCustomerLayout($view);
+      $this->renderCustomerLayout($view);
     }
   }
 
