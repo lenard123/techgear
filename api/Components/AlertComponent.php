@@ -2,12 +2,12 @@
 
 namespace App\Components;
 
-class AlertComponent extends Component
+class AlertComponent extends BaseComponent
 {
   const STATUS_SUCCESS = 1;
   const STATUS_FAILED = 2;
 
-  protected $template = "alert_template";
+  protected $template = "alert";
 
   public function __construct($status, $message)
   {

@@ -18,7 +18,7 @@
 
 <?php $header->render() ?>
 <?php view($content, $content_data) ?>
-<?php App\Utils\AlertMessage::render() ?>
+<?= App\Utils\AlertMessage::render() ?>
 
 <footer class="bg-gray-800 text-gray-400 p-5">	
 
