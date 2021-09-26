@@ -21,11 +21,12 @@ class HomeController extends BaseController
     ];
 
     $featured_products = Product::getFeaturedProducts();
+    $product_cards = ProductCardComponent::mapProducts(...$featured_products);
 
     $view = new CustomerPageComponent("home_template");
     $view->setTitle("Home");
     $view->addData("slides", $slides);
-    $view->addData("featured_products", $featured_products);
+    $view->addData("product_cards", $product_cards);
     $view->addScript(asset('js/slider.js'));
     $view->render();
   }

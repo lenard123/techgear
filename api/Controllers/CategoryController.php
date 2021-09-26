@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Components\CustomerPageComponent;
-use App\Components\ProductCardComponent;
 
 class CategoryController extends BaseController
 {
