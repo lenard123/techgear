@@ -3,7 +3,7 @@
 namespace App\Controllers\Customer;
 
 use App\Models\User;
-use App\Components\ProfilePageComponent1;
+use App\Components\ProfilePageComponent;
 
 class OrderController extends CustomerController
 {
@@ -11,7 +11,7 @@ class OrderController extends CustomerController
   {
     $orders = User::getCurrentUser()->getOrders();
 
-    $view = new ProfilePageComponent1('order_page');
+    $view = new ProfilePageComponent('order_page');
     $view->setTitle("Orders");
     $view->setActivePage('order');
     $view->addContentData("orders", $orders);

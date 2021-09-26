@@ -3,7 +3,7 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\LocationController;
-use App\Components\ProfilePageComponent1;
+use App\Components\ProfilePageComponent;
 use App\Models\User;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
@@ -26,7 +26,7 @@ class PersonalController extends CustomerController
   {
     $regions = LocationController::$regions;
 
-    $view = new ProfilePageComponent1("personal_page");
+    $view = new ProfilePageComponent("personal_page");
     $view->setActivePage("personal");
     $view->setTitle("Personal Info");
     $view->addContentData("user", $this->user);

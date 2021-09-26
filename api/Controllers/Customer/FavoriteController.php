@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Customer;
 
-use App\Components\ProfilePageComponent1;
+use App\Components\ProfilePageComponent;
 use App\Models\Favorite;
 use App\Models\User;
 use App\Utils\AlertMessage;
@@ -13,7 +13,7 @@ class FavoriteController extends CustomerController
   {
     $favorites = User::getCurrentUser()->getFavorites();
 
-    $view = new ProfilePageComponent1("favorites_page");
+    $view = new ProfilePageComponent("favorites_page");
     $view->setTitle("Favorites");
     $view->setActivePage("favorites");
     $view->addContentData("favorites", $favorites);

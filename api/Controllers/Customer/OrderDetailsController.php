@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Customer;
 
-use App\Components\ProfilePageComponent1;
+use App\Components\ProfilePageComponent;
 use App\Models\Order;
 
 class OrderDetailsController extends CustomerController
@@ -20,7 +20,7 @@ class OrderDetailsController extends CustomerController
     $order = $this->order;
     $items = $order->getItems();
 
-    $view = new ProfilePageComponent1("order_details_page");
+    $view = new ProfilePageComponent("order_details_page");
     $view->setTitle("Order Details");
     $view->setActivePage("order");
     $view->addContentData("order", $order);

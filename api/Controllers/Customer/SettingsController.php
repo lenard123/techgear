@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Customer;
 
-use App\Components\ProfilePageComponent1;
+use App\Components\ProfilePageComponent;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
 use App\Models\User;
@@ -21,7 +21,7 @@ class SettingsController extends CustomerController
 
   public function get()
   {
-    $view = new ProfilePageComponent1("settings_page");
+    $view = new ProfilePageComponent("settings_page");
     $view->setTitle("Settings");
     $view->addContentData("validator", $this->validator);
     $view->addContentData("user", $this->user);
