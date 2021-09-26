@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent;
+use App\Controllers\LocationController;
+use App\Components\CustomerPageComponent1;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Cart;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
 
-class CheckoutController extends BaseController
+class CheckoutController extends CustomerController
 {
 
   public $validator = null;
@@ -32,7 +33,7 @@ class CheckoutController extends BaseController
     if (count($carts) <= 0) {
       redirect("?page=cart");
     } else {
-      $view = new CustomerPageComponent("checkout_template");
+      $view = new CustomerPageComponent1("checkout_page");
       $view->setTitle("Checkout");
       $view->addData("user", $user);
       $view->addData("user_info", $user_info);
@@ -60,7 +61,7 @@ class CheckoutController extends BaseController
         }
       }
 
-      $view->render();
+      $this->render($view);
     }
   }
 

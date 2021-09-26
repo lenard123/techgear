@@ -52,10 +52,10 @@ Route::patch("cart")
 
 //Checkout
 Route::get('checkout')
-  ->setController(App\Controllers\CheckoutController::class, "get")
+  ->setController(App\Controllers\Customer\CheckoutController::class, "get")
   ->customerOnly();
 Route::post('checkout')
-  ->setController(App\Controllers\CheckoutController::class, "post")
+  ->setController(App\Controllers\Customer\CheckoutController::class, "post")
   ->customerOnly();
 
 //Order
