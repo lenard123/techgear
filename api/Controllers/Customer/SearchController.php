@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerPageComponent1;
 use App\Models\Product;
 
-class SearchController extends BaseController
+class SearchController extends CustomerController
 {
 
   public function get()
@@ -15,11 +15,12 @@ class SearchController extends BaseController
     $query = get('query');
     $result = Product::search($query);
 
-    $view = new CustomerPageComponent("search_result_template");
+    $view = new CustomerPageComponent1("search_result_page");
     $view->addData("query", $query);
     $view->addData("result", $result);
     $view->setTitle("Search results for " . $query);
-    $view->render();
+    
+    $this->render($view);
   }
 
 }

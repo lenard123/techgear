@@ -15,7 +15,7 @@ Route::get('product')
   ->setModel(App\Models\Product::class);
 
 Route::get("search")
-  ->setController(App\Controllers\SearchController::class, "get");
+  ->setController(App\Controllers\Customer\SearchController::class, "get");
 
 //Authentication
 Route::post("signout")
