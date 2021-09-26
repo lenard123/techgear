@@ -12,7 +12,7 @@ class BaseController
   public function renderCustomerLayout(CustomerPageComponent $page)
   {
     $layout = new CustomerLayoutComponent($page);
-    echo $layout->render();
+    $this->render($layout);
   }
 
   public function render(BaseComponent $page)

@@ -3,7 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Components\AdminPageComponent;
+use App\Components\AdminLayoutComponent;
 use App\Models\Category;
 use App\Utils\Validator;
 use App\Utils\AlertMessage;
@@ -22,11 +22,11 @@ class ManageCategoryController extends BaseController
   {
     $categories = Category::getAll();
 
-    $view = new AdminPageComponent("category_template");
-    $view->setActivePage("category");
-    $view->addData("categories", $categories);
+    $view = new AdminLayoutComponent("category_page");
+    $view->addContentData("categories", $categories);
     $view->addScript(asset("js/admin-category.js"));
-    $view->render();
+
+    $this->render($view);
   }
 
   public function updateCategory()

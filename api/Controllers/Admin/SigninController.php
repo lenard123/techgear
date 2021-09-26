@@ -9,7 +9,7 @@ class SigninController extends BaseController
 
   public function __invoke()
   {
-    view("admin/signin_template");
+    view("admin/signin_page");
   }
 
 }

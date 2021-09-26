@@ -11,9 +11,11 @@ class BaseComponent
 
   protected $data = [];
 
-  public function __construct($template, $base_folder = null)
+  public function __construct($template = null, $base_folder = null)
   {
-    $this->template = $template;
+    if (!is_null($template)) {
+      $this->template = $template;
+    }
 
     if (!is_null($base_folder)) {
       $this->base_folder = $base_folder;
