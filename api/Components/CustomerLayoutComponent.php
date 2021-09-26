@@ -7,7 +7,7 @@ class CustomerLayoutComponent extends BaseComponent
   protected $template = 'customer_layout';
   protected $content_data = [];
 
-  public function __construct(CustomerPageComponent1 $content)
+  public function __construct(CustomerPageComponent $content)
   {
     $this->js_data["base_url"] = baseURL();
     $this->addData("content", $content);

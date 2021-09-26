@@ -2,7 +2,7 @@
 
 namespace App\Components;
 
-class CustomerPageComponent1 extends BaseComponent
+class CustomerPageComponent extends BaseComponent
 {
 
   protected $base_folder = 'templates/customer/';

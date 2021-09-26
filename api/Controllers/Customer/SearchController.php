@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent1;
+use App\Components\CustomerPageComponent;
 use App\Models\Product;
 
 class SearchController extends CustomerController
@@ -15,7 +15,7 @@ class SearchController extends CustomerController
     $query = get('query');
     $result = Product::search($query);
 
-    $view = new CustomerPageComponent1("search_result_page");
+    $view = new CustomerPageComponent("search_result_page");
     $view->addData("query", $query);
     $view->addData("result", $result);
     $view->setTitle("Search results for " . $query);

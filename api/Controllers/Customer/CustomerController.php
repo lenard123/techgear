@@ -3,12 +3,12 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
-use App\Components\CustomerPageComponent1;
+use App\Components\CustomerPageComponent;
 use App\Components\CustomerLayoutComponent;
 
 class CustomerController extends BaseController
 {
-  public function render(CustomerPageComponent1 $content)
+  public function render(CustomerPageComponent $content)
   {
     $layout = new CustomerLayoutComponent($content);
     echo $layout->render($content);

@@ -3,7 +3,7 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\LocationController;
-use App\Components\CustomerPageComponent1;
+use App\Components\CustomerPageComponent;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Cart;
@@ -33,7 +33,7 @@ class CheckoutController extends CustomerController
     if (count($carts) <= 0) {
       redirect("?page=cart");
     } else {
-      $view = new CustomerPageComponent1("checkout_page");
+      $view = new CustomerPageComponent("checkout_page");
       $view->setTitle("Checkout");
       $view->addData("user", $user);
       $view->addData("user_info", $user_info);

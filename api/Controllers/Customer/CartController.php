@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent1;
+use App\Components\CustomerPageComponent;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\User;
@@ -16,7 +16,7 @@ class CartController extends CustomerController
     $subtotal = Cart::calculateSubtotal($carts);
     $total = SITE_SHIPPING_FEE + $subtotal;
 
-    $view = new CustomerPageComponent1("cart_page");
+    $view = new CustomerPageComponent("cart_page");
     $view->setTitle("Shopping Cart");
     $view->addData("carts", $carts);
     $view->addData("subtotal", $subtotal);

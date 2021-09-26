@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent1;
+use App\Components\CustomerPageComponent;
 use App\Models\User;
 use App\Utils\ValidatorList;
 use App\Utils\AlertMessage;
@@ -22,7 +22,7 @@ class SignupController extends CustomerController
 
     $validator = $this->validator;
 
-    $view = new CustomerPageComponent1("signup_page");
+    $view = new CustomerPageComponent("signup_page");
     $view->setTitle("Sign Up");
     $view->addData("validator", $validator);
 

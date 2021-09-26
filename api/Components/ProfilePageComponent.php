@@ -4,7 +4,7 @@ namespace App\Components;
 
 use App\Models\User;
 
-class ProfilePageComponent extends CustomerPageComponent1
+class ProfilePageComponent extends CustomerPageComponent
 {
   protected $base_folder = 'templates/components/';
   protected $template = 'profile_page_layout';

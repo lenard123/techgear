@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent1;
+use App\Components\CustomerPageComponent;
 
 class CategoryController extends CustomerController
 {
@@ -18,7 +18,7 @@ class CategoryController extends CustomerController
   {
     $category = $this->category;
 
-    $view = new CustomerPageComponent1("category_page");
+    $view = new CustomerPageComponent("category_page");
     $view->setTitle($category->name);
     $view->addData("category", $category);
     
