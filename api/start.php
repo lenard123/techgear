@@ -7,7 +7,7 @@ use App\Utils\Route;
 
 
 function load($page)
-{
+{cx 
   require_once "routing/web.php";
   try{
     Route::load($page);
