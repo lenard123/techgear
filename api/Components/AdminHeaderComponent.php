@@ -2,7 +2,7 @@
 
 namespace App\Components;
 
-class AdminHeaderComponent extends Component
+class AdminHeaderComponent extends BaseComponent
 {
-  protected $template = "admin/header_template";
+  protected $template = "admin_header";
 }
