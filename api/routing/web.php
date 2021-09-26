@@ -4,7 +4,7 @@ use App\Utils\Route;
 
 //For Guest User
 Route::get("home")
-  ->setController(App\Controllers\HomeController::class);
+  ->setController(App\Controllers\Customer\HomeController::class);
 
 Route::get("category")
   ->setController(App\Controllers\CategoryController::class)

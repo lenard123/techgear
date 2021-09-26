@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerPageComponent1;
 use App\Components\ProductCardComponent;
 use App\Models\Product;
 
-class HomeController extends BaseController
+class HomeController extends CustomerController
 {
   public function __invoke()
   {
+
     $slides = [
       asset('img/slide1.jpg'),
       asset('img/slide2.jpg'),
@@ -23,11 +24,12 @@ class HomeController extends BaseController
     $featured_products = Product::getFeaturedProducts();
     $product_cards = ProductCardComponent::mapProducts(...$featured_products);
 
-    $view = new CustomerPageComponent("home_template");
-    $view->setTitle("Home");
-    $view->addData("slides", $slides);
-    $view->addData("product_cards", $product_cards);
-    $view->addScript(asset('js/slider.js'));
-    $view->render();
+    $content = new CustomerPageComponent1("home_page");
+    $content->setTitle("Home");
+    $content->addData("slides", $slides);
+    $content->addData("product_cards", $product_cards);
+    $content->addScript(asset('js/slider.js'));
+
+    echo $this->render($content);
   }
 }

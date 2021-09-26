@@ -4,13 +4,16 @@ namespace App\Components;
 
 abstract class BaseComponent
 {
+
+  protected $base_folder = 'templates/components/';
+
   protected $template;
 
   protected $data = [];
 
   private function getTemplatePath()
   {
-    return API_PATH . 'templates/components/' . $this->template . '.php';
+    return API_PATH . $this->base_folder . $this->template . '.php';
   }
 
   public function addData(string $key, $value)
