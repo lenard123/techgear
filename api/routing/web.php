@@ -73,25 +73,25 @@ Route::patch('personal')
 
 //Settings
 Route::get('settings')
-  ->setController(App\Controllers\SettingsController::class, "get")
+  ->setController(App\Controllers\Customer\SettingsController::class, "get")
   ->customerOnly();
 Route::patch('settings')
-  ->setController(App\Controllers\SettingsController::class, "get")
+  ->setController(App\Controllers\Customer\SettingsController::class, "get")
   ->customerOnly();
 
 //Favorites
 Route::get('favorites')
-  ->setController(App\Controllers\FavoriteController::class, "get")
+  ->setController(App\Controllers\Customer\FavoriteController::class, "get")
   ->customerOnly();
 Route::delete("favorites")
-  ->setController(App\Controllers\FavoriteController::class, "delete")
+  ->setController(App\Controllers\Customer\FavoriteController::class, "delete")
   ->customerOnly();
 Route::post("favorites")
-  ->setController(App\Controllers\FavoriteController::class, "post")
+  ->setController(App\Controllers\Customer\FavoriteController::class, "post")
   ->customerOnly();
 
 //Order Details
 Route::get('order-details')
-  ->setController(App\Controllers\OrderDetailsController::class, "get")
+  ->setController(App\Controllers\Customer\OrderDetailsController::class, "get")
   ->setModel(App\Models\Order::class)
   ->customerOnly();

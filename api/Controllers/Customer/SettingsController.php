@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\ProfilePageComponent;
+use App\Components\ProfilePageComponent1;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
 use App\Models\User;
 
-class SettingsController extends BaseController
+class SettingsController extends CustomerController
 {
 
   private $user;
@@ -21,11 +21,12 @@ class SettingsController extends BaseController
 
   public function get()
   {
-    $view = new ProfilePageComponent("settings_template");
+    $view = new ProfilePageComponent1("settings_page");
     $view->setTitle("Settings");
-    $view->addData("validator", $this->validator);
-    $view->addData("user", $this->user);
-    $view->render();
+    $view->addContentData("validator", $this->validator);
+    $view->addContentData("user", $this->user);
+
+    $this->render($view);
   }
 
   public function patch()

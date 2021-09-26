@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\ProfilePageComponent;
+use App\Components\ProfilePageComponent1;
 use App\Models\Order;
 
-class OrderDetailsController extends BaseController
+class OrderDetailsController extends CustomerController
 {
 
   private $order;
@@ -20,13 +20,14 @@ class OrderDetailsController extends BaseController
     $order = $this->order;
     $items = $order->getItems();
 
-    $view = new ProfilePageComponent("order_details_template");
+    $view = new ProfilePageComponent1("order_details_page");
     $view->setTitle("Order Details");
     $view->setActivePage("order");
-    $view->addData("order", $order);
-    $view->addData("items", $items);
+    $view->addContentData("order", $order);
+    $view->addContentData("items", $items);
     $view->addJSData("order_status", $order->status);
     $view->addScript(asset('js/order-details.js'));
-    $view->render();
+    
+    $this->render($view);
   }
 }
