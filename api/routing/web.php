@@ -7,7 +7,7 @@ Route::get("home")
   ->setController(App\Controllers\Customer\HomeController::class);
 
 Route::get("category")
-  ->setController(App\Controllers\CategoryController::class)
+  ->setController(App\Controllers\Customer\CategoryController::class)
   ->setModel(App\Models\Category::class);
 
 Route::get('product')

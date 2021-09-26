@@ -11,6 +11,6 @@ class CustomerController extends BaseController
   public function render(CustomerPageComponent1 $content)
   {
     $layout = new CustomerLayoutComponent($content);
-    return $layout->render($content);
+    echo $layout->render($content);
   }
 }

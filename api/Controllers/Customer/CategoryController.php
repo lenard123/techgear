@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerPageComponent1;
 
-class CategoryController extends BaseController
+class CategoryController extends CustomerController
 {
 
   private $category;
@@ -18,9 +18,10 @@ class CategoryController extends BaseController
   {
     $category = $this->category;
 
-    $view = new CustomerPageComponent("category_template");
+    $view = new CustomerPageComponent1("category_page");
     $view->setTitle($category->name);
     $view->addData("category", $category);
-    $view->render();
+    
+    $this->render($view);
   }
 }

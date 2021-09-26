@@ -30,6 +30,6 @@ class HomeController extends CustomerController
     $content->addData("product_cards", $product_cards);
     $content->addScript(asset('js/slider.js'));
 
-    echo $this->render($content);
+    $this->render($content);
   }
 }
