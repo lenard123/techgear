@@ -23,7 +23,7 @@ class CartController extends BaseController
     $view->addData("subtotal", $subtotal);
     $view->addData("total", $total);
 
-    $this->$this->renderCustomerLayout($view);
+    $this->renderCustomerLayout($view);
   }
 
   public function put()
