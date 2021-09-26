@@ -13,7 +13,6 @@ class CustomerPageComponent extends Component
   {
     $this->js_data["base_url"] = baseURL();
     parent::addData("content", $content);
-    parent::addData("header", new HeaderComponent);
     parent::addData("content_data", $this->content_data);
     parent::addData("scripts", $this->scripts);
     parent::addData("js_data", $this->js_data);

@@ -16,7 +16,7 @@
 </head>
 <body class="bg-gray-100">
 
-<?php $header->render() ?>
+<?= (new App\Components\CustomerHeaderComponent)->render() ?>
 <?php view($content, $content_data) ?>
 <?= App\Utils\AlertMessage::render() ?>
 
