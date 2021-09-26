@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Components\CustomerPageComponent;
-use App\Components\CartCardComponent;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\User;

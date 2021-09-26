@@ -2,11 +2,13 @@
 
 namespace App\Components;
 
-class CartCardComponent extends Component
-{
-  protected $template = "cart_card_template";
+use App\Models\Cart;
 
-  public function __construct($cart)
+class CartCardComponent extends BaseComponent
+{
+  protected $template = "cart_card";
+
+  public function __construct(Cart $cart)
   {
     $this->addData("cart", $cart);
   }
