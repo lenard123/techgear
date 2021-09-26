@@ -2,7 +2,7 @@
 
 namespace App\Components;
 
-class AdminSidebarComponent extends Component
+class AdminSidebarComponent extends BaseComponent
 {
-  protected $template = "admin/sidebar_template";
+  protected $template = "admin_sidebar";
 }
