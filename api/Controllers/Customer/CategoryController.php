@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
-use App\Components\ProductCardComponent;
 
 class CategoryController extends BaseController
 {
@@ -19,9 +19,10 @@ class CategoryController extends BaseController
   {
     $category = $this->category;
 
-    $view = new CustomerPageComponent("category_template");
+    $view = new CustomerPageComponent("category_page");
     $view->setTitle($category->name);
     $view->addData("category", $category);
-    $view->render();
+    
+    $this->renderCustomerLayout($view);
   }
 }

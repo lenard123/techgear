@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
+use App\Controllers\LocationController;
 use App\Components\CustomerPageComponent;
 use App\Models\User;
 use App\Models\Order;
@@ -32,7 +34,7 @@ class CheckoutController extends BaseController
     if (count($carts) <= 0) {
       redirect("?page=cart");
     } else {
-      $view = new CustomerPageComponent("checkout_template");
+      $view = new CustomerPageComponent("checkout_page");
       $view->setTitle("Checkout");
       $view->addData("user", $user);
       $view->addData("user_info", $user_info);
@@ -60,7 +62,7 @@ class CheckoutController extends BaseController
         }
       }
 
-      $view->render();
+      $this->$this->renderCustomerLayout($view);
     }
   }
 

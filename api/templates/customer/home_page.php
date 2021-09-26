@@ -48,9 +48,9 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
 
-      <?php foreach($featured_products as $product) : ?>
-        <?php (new App\Components\ProductCardComponent($product))->render() ?>
-      <?php endforeach ?>
+      <?php foreach($product_cards as $card) : ?>
+        <?= $card->render() ?>
+      <?php endforeach; ?>
 
     </div>
 

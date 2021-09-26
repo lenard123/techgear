@@ -30,7 +30,7 @@
             </div>
 
             <?php foreach($carts as $cart) : ?>
-              <?php (new App\Components\CartCardComponent($cart))->render() ?>
+              <?= (new App\Components\CartCardComponent($cart))->render() ?>
             <?php endforeach; ?>
 
             <div class="flex justify-end p-5">

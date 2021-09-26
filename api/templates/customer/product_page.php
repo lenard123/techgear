@@ -104,12 +104,12 @@
       </div>
     </div>
 
-    <?php if (count($product->getRelatedProducts()) >= 3) : ?>
+    <?php if (count($product->getRelatedProducts()) >= 1) : ?>
       <h1 class="text-2xl text-center my-8">Related Products</h1>
 
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         <?php foreach($product->getRelatedProducts() as $rProduct) : ?>
-          <?php (new App\Components\ProductCardComponent($rProduct))->render() ?>
+          <?= (new App\Components\ProductCardComponent($rProduct))->render() ?>
         <?php endforeach; ?>
       </div>
 

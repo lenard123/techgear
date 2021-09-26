@@ -20,7 +20,7 @@ class AlertMessage {
 
     public static function render() {
         if (!isset($_SESSION['alert_message']) || !isset($_SESSION['alert_status'])) {
-            return;
+            return '';
         }
         $status = $_SESSION["alert_status"];
         $message = $_SESSION['alert_message'];
@@ -29,7 +29,7 @@ class AlertMessage {
         unset($_SESSION["alert_status"]);
         
         $alert = new AlertComponent($status, $message);
-        $alert->render();
+        return $alert->render();
     }
 
 }

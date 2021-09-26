@@ -64,7 +64,7 @@
       </div>
 
       <div class="lg:col-span-9">
-        <?php view($content, $content_data) ?>
+        <?= $content->render() ?>
       </div>
 
     </div>

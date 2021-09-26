@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
-use App\Components\CartCardComponent;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\User;
@@ -17,12 +17,13 @@ class CartController extends BaseController
     $subtotal = Cart::calculateSubtotal($carts);
     $total = SITE_SHIPPING_FEE + $subtotal;
 
-    $view = new CustomerPageComponent("cart_template");
+    $view = new CustomerPageComponent("cart_page");
     $view->setTitle("Shopping Cart");
     $view->addData("carts", $carts);
     $view->addData("subtotal", $subtotal);
     $view->addData("total", $total);
-    $view->render();
+
+    $this->$this->renderCustomerLayout($view);
   }
 
   public function put()

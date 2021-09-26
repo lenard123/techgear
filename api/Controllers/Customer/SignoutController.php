@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Utils\AlertMessage;
 use App\Models\User;
 

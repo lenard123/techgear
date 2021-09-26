@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
+use App\Controllers\LocationController;
 use App\Components\ProfilePageComponent;
 use App\Models\User;
 use App\Utils\AlertMessage;
@@ -25,13 +27,13 @@ class PersonalController extends BaseController
   {
     $regions = LocationController::$regions;
 
-    $view = new ProfilePageComponent("personal_template");
+    $view = new ProfilePageComponent("personal_page");
     $view->setActivePage("personal");
     $view->setTitle("Personal Info");
-    $view->addData("user", $this->user);
-    $view->addData("user_info", $this->user_info);
-    $view->addData("regions", $regions);
-    $view->addData("validator", $this->validator);
+    $view->addContentData("user", $this->user);
+    $view->addContentData("user_info", $this->user_info);
+    $view->addContentData("regions", $regions);
+    $view->addContentData("validator", $this->validator);
     $view->addScript(asset('js/promise-polyfill.min.js'));
     $view->addScript(asset('js/axios.min.js'));
     $view->addScript(asset('js/address.js'));
@@ -56,7 +58,7 @@ class PersonalController extends BaseController
       }
     }
 
-    $view->render();
+    $this->renderCustomerLayout($view);
   }
 
   public function patch()

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\ProfilePageComponent;
 use App\Models\Favorite;
 use App\Models\User;
@@ -13,11 +14,12 @@ class FavoriteController extends BaseController
   {
     $favorites = User::getCurrentUser()->getFavorites();
 
-    $view = new ProfilePageComponent("favorites_template");
+    $view = new ProfilePageComponent("favorites_page");
     $view->setTitle("Favorites");
     $view->setActivePage("favorites");
-    $view->addData("favorites", $favorites);
-    $view->render();
+    $view->addContentData("favorites", $favorites);
+
+    $this->renderCustomerLayout($view);
   }
 
   public function delete()

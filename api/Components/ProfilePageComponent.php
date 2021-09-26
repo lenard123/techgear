@@ -6,30 +6,29 @@ use App\Models\User;
 
 class ProfilePageComponent extends CustomerPageComponent
 {
-
-  public $profile_content_data = [];
+  protected $base_folder = 'templates/components/';
+  protected $template = 'profile_page_layout';
+  protected $content;
 
   public function __construct($template)
   {
     $user = User::getCurrentUser();
-    $order_count = $user->countOrder();
-
-    parent::addData("user", $user);
-    parent::addData("order_count", $order_count);
-    parent::addData("favorite_count", $user->countFavorites());
-    parent::addData("content", $template);
-    parent::addData("content_data", $this->profile_content_data);
-    parent::__construct("profile_page_template");
+    $content = new BaseComponent($template, 'templates/customer/');
+    $this->content = $content;
+    $this->addData('user', $user);
+    $this->addData('content', $content);
+    $this->addData("order_count", $user->countOrder());
+    $this->addData("favorite_count", $user->countFavorites());
+    $this->addData("active", '');
   }
 
-  public function addData($key, $value)
+  public function addContentData($key, $value)
   {
-    $this->profile_content_data[$key] = $value;
-    parent::addData("content_data", $this->profile_content_data);
+    $this->content->addData($key, $value);
   }
 
-  public function setActivePage($active)
+  public function setActivePage($page)
   {
-    parent::addData("active", $active);
+    $this->addData('active', $page);
   }
 }

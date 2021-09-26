@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
 use App\Models\User;
 use App\Utils\ValidatorList;
@@ -22,10 +23,11 @@ class SigninController extends BaseController
 
     $validator = $this->validator;
 
-    $view = new CustomerPageComponent("signin_template");
+    $view = new CustomerPageComponent("signin_page");
     $view->setTitle("Sign In");
     $view->addData("validator", $validator);
-    $view->render();
+
+    $this->renderCustomerLayout($view);
   }
 
   public function validate()

@@ -2,12 +2,12 @@
 
 namespace App\Components;
 
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Category;
 
-class HeaderComponent extends Component
+class CustomerHeaderComponent extends BaseComponent
 {
-  protected $template = "header_template";
+  protected $template = 'customer_header';
 
   public function __construct()
   {
@@ -19,6 +19,6 @@ class HeaderComponent extends Component
       $this->addData("order_count", $user->countOrder());
       $this->addData("favorite_count", $user->countFavorites());
     }
-
   }
+
 }

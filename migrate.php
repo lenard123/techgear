@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   </div>
 
-<?php AlertMessage::render(); ?>
+<?= AlertMessage::render(); ?>
 
 </body>
 </html>

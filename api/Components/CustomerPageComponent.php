@@ -2,48 +2,39 @@
 
 namespace App\Components;
 
-class CustomerPageComponent extends Component
+class CustomerPageComponent extends BaseComponent
 {
-  protected $template = "customer_page_template";
-  protected $content_data = [];
-  protected $scripts = [];
-  protected $js_data = [];
 
-  public function __construct($content)
+  protected $base_folder = 'templates/customer/';
+
+  public $title = null;
+  public $description = null;
+  public $js_data = [];
+  public $scripts = [];
+
+  public function __construct($template)
   {
-    $this->js_data["base_url"] = baseURL();
-    parent::addData("content", $content);
-    parent::addData("header", new HeaderComponent);
-    parent::addData("content_data", $this->content_data);
-    parent::addData("scripts", $this->scripts);
-    parent::addData("js_data", $this->js_data);
+    $this->js_data['base_url'] = baseURL();
+    $this->template = $template;
   }
 
   public function addDescription($description)
   {
-    parent::addData("description", $description);
+    $this->addDescription = $description;
+  }
+
+  public function setTitle($title)
+  {
+    $this->title = $title;
+  }
+
+  public function addScript($js)
+  {
+    array_push($this->scripts, $js);
   }
 
   public function addJSData($key, $value)
   {
     $this->js_data[$key] = $value;
-    parent::addData("js_data", $this->js_data);
-  }
-
-  public function addScript($script)
-  {
-    array_push($this->scripts, $script);
-    parent::addData("scripts", $this->scripts);
-  }
-
-  public function setTitle($title)
-  {
-    parent::addData("title", $title);
-  }
-
-  public function addData($key, $value)
-  {
-    $this->content_data[$key] = $value;
-    parent::addData("content_data", $this->content_data);
   }
 }

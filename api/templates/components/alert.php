@@ -1,8 +1,9 @@
+<?php use App\Components\AlertComponent; ?>
 <div
-  class="alert-message flex items-center fixed bottom-5 p-5 rounded-lg text-sm text-white <?= $status === App\Components\AlertComponent::STATUS_SUCCESS ? 'bg-green-700' : 'bg-red-700' ?>" 
+  class="alert-message flex items-center fixed bottom-5 p-5 rounded-lg text-sm text-white <?= $status === AlertComponent::STATUS_SUCCESS ? 'bg-green-700' : 'bg-red-700' ?>" 
   style="width: 300px; right: -300px;"
 >
-  <?php if ($status === App\Components\AlertComponent::STATUS_SUCCESS) : ?>
+  <?php if ($status === AlertComponent::STATUS_SUCCESS) : ?>
     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle w-5 h-5 mx-2">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
         <polyline points="22 4 12 14.01 9 11.01"></polyline>
