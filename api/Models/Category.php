@@ -33,7 +33,7 @@ class Category extends BaseModel
   public function update()
   {
     DB::prepare("UPDATE `categories` SET `name` = ?, `modified_at`=CURRENT_TIMESTAMP WHERE `id` = ?", "si", $this->name, $this->id);
-    Cache::forget("category:$id");
+    Cache::forget("category:{$this->id}");
     Cache::forget("categories");
   }
 
