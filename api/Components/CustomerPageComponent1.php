@@ -8,6 +8,7 @@ class CustomerPageComponent1 extends BaseComponent
   protected $base_folder = 'templates/customer/';
 
   public $title = null;
+  public $description = null;
   public $js_data = [];
   public $scripts = [];
 
@@ -15,6 +16,11 @@ class CustomerPageComponent1 extends BaseComponent
   {
     $this->js_data['base_url'] = baseURL();
     $this->template = $template;
+  }
+
+  public function addDescription($description)
+  {
+    $this->addDescription = $description;
   }
 
   public function setTitle($title)

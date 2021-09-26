@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerPageComponent1;
 
-class ProductController extends BaseController
+class ProductController extends CustomerController
 {
 
   private $product;
@@ -18,10 +18,10 @@ class ProductController extends BaseController
   {
     $product = $this->product;
 
-    $view = new CustomerPageComponent("product_template");
+    $view = new CustomerPageComponent1("product_page");
     $view->addDescription($product->description ?? $product->name);
     $view->setTitle($product->name);
     $view->addData("product", $product);
-    $view->render();
+    $this->render($view);
   }
 }

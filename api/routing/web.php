@@ -11,7 +11,7 @@ Route::get("category")
   ->setModel(App\Models\Category::class);
 
 Route::get('product')
-  ->setController(App\Controllers\ProductController::class, "get")
+  ->setController(App\Controllers\Customer\ProductController::class, "get")
   ->setModel(App\Models\Product::class);
 
 Route::get("search")
