@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Customer;
 
 use App\Utils\AlertMessage;
 use App\Models\User;
 
-class SignoutController extends BaseController
+class SignoutController extends CustomerController
 {
   public function __invoke()
   {

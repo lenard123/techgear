@@ -19,7 +19,7 @@ Route::get("search")
 
 //Authentication
 Route::post("signout")
-  ->setController(App\Controllers\SignoutController::class)
+  ->setController(App\Controllers\Customer\SignoutController::class)
   ->customerOnly();
 
 Route::get("signin")
