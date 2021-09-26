@@ -54,7 +54,7 @@ class User extends BaseModel
       $this->lastname,
       $this->id
     );
-    Cache::forget("user:$email");
+    Cache::forget("user:{$this->email}");
   }
 
   public function save()
