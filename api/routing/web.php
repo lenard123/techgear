@@ -65,10 +65,10 @@ Route::get('order')
 
 //Profile
 Route::get('personal')
-  ->setController(App\Controllers\PersonalController::class, "get")
+  ->setController(App\Controllers\Customer\PersonalController::class, "get")
   ->customerOnly();
 Route::patch('personal')
-  ->setController(App\Controllers\PersonalController::class, "patch")
+  ->setController(App\Controllers\Customer\PersonalController::class, "patch")
   ->customerOnly();
 
 //Settings
