@@ -2,13 +2,14 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Controllers\LocationController;
 use App\Components\ProfilePageComponent;
 use App\Models\User;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
 
-class PersonalController extends CustomerController
+class PersonalController extends BaseController
 {
 
   private $user;
@@ -57,7 +58,7 @@ class PersonalController extends CustomerController
       }
     }
 
-    $this->render($view);
+    $this->renderCustomerLayout($view);
   }
 
   public function patch()

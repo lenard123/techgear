@@ -2,11 +2,12 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
 use App\Components\ProductCardComponent;
 use App\Models\Product;
 
-class HomeController extends CustomerController
+class HomeController extends BaseController
 {
   public function __invoke()
   {
@@ -30,6 +31,6 @@ class HomeController extends CustomerController
     $content->addData("product_cards", $product_cards);
     $content->addScript(asset('js/slider.js'));
 
-    $this->render($content);
+    $this->renderCustomerLayout($content);
   }
 }

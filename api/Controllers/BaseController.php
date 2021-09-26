@@ -2,33 +2,21 @@
 
 namespace App\Controllers;
 
-use App\Utils\NotFoundException;
+use App\Components\BaseComponent;
+use App\Components\CustomerPageComponent;
+use App\Components\CustomerLayoutComponent;
 
 class BaseController
 {
-  public function index(){
-    throw new NotFoundException();
-  }
 
-  public function get()
+  public function renderCustomerLayout(CustomerPageComponent $page)
   {
-    throw new NotFoundException();
+    $layout = new CustomerLayoutComponent($page);
+    echo $layout->render();
   }
 
-  public function post(){
-    throw new NotFoundException();
-  }
-
-  public function patch(){
-    throw new NotFoundException();
-  }
-
-  public function put()
+  public function render(BaseComponent $page)
   {
-    throw new NotFoundException();
-  }
-
-  public function delete(){
-    throw new NotFoundException();
+    echo $page->render();
   }
 }

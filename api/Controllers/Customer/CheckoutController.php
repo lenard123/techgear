@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Controllers\LocationController;
 use App\Components\CustomerPageComponent;
 use App\Models\User;
@@ -10,7 +11,7 @@ use App\Models\Cart;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
 
-class CheckoutController extends CustomerController
+class CheckoutController extends BaseController
 {
 
   public $validator = null;
@@ -61,7 +62,7 @@ class CheckoutController extends CustomerController
         }
       }
 
-      $this->render($view);
+      $this->$this->renderCustomerLayout($view);
     }
   }
 

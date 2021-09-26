@@ -2,12 +2,13 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\ProfilePageComponent;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
 use App\Models\User;
 
-class SettingsController extends CustomerController
+class SettingsController extends BaseController
 {
 
   private $user;
@@ -26,7 +27,7 @@ class SettingsController extends CustomerController
     $view->addContentData("validator", $this->validator);
     $view->addContentData("user", $this->user);
 
-    $this->render($view);
+    $this->renderCustomerLayout($view);
   }
 
   public function patch()

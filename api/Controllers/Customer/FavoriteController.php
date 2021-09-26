@@ -2,12 +2,13 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\ProfilePageComponent;
 use App\Models\Favorite;
 use App\Models\User;
 use App\Utils\AlertMessage;
 
-class FavoriteController extends CustomerController
+class FavoriteController extends BaseController
 {
   public function get()
   {
@@ -18,7 +19,7 @@ class FavoriteController extends CustomerController
     $view->setActivePage("favorites");
     $view->addContentData("favorites", $favorites);
 
-    $this->render($view);
+    $this->renderCustomerLayout($view);
   }
 
   public function delete()

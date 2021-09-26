@@ -2,13 +2,14 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\User;
 use App\Utils\AlertMessage;
 
-class CartController extends CustomerController
+class CartController extends BaseController
 {
   public function __invoke()
   {
@@ -22,7 +23,7 @@ class CartController extends CustomerController
     $view->addData("subtotal", $subtotal);
     $view->addData("total", $total);
 
-    $this->render($view);
+    $this->$this->renderCustomerLayout($view);
   }
 
   public function put()

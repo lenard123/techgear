@@ -2,10 +2,11 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\ProfilePageComponent;
 use App\Models\Order;
 
-class OrderDetailsController extends CustomerController
+class OrderDetailsController extends BaseController
 {
 
   private $order;
@@ -28,6 +29,6 @@ class OrderDetailsController extends CustomerController
     $view->addJSData("order_status", $order->status);
     $view->addScript(asset('js/order-details.js'));
     
-    $this->render($view);
+    $this->renderCustomerLayout($view);
   }
 }

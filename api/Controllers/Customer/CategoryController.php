@@ -2,9 +2,10 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
 
-class CategoryController extends CustomerController
+class CategoryController extends BaseController
 {
 
   private $category;
@@ -22,6 +23,6 @@ class CategoryController extends CustomerController
     $view->setTitle($category->name);
     $view->addData("category", $category);
     
-    $this->render($view);
+    $this->renderCustomerLayout($view);
   }
 }

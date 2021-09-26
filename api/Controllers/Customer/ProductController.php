@@ -2,9 +2,10 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
 
-class ProductController extends CustomerController
+class ProductController extends BaseController
 {
 
   private $product;
@@ -22,6 +23,6 @@ class ProductController extends CustomerController
     $view->addDescription($product->description ?? $product->name);
     $view->setTitle($product->name);
     $view->addData("product", $product);
-    $this->render($view);
+    $this->renderCustomerLayout($view);
   }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
 use App\Models\Product;
 
-class SearchController extends CustomerController
+class SearchController extends BaseController
 {
 
   public function get()
@@ -20,7 +21,7 @@ class SearchController extends CustomerController
     $view->addData("result", $result);
     $view->setTitle("Search results for " . $query);
     
-    $this->render($view);
+    $this->renderCustomerLayout($view);
   }
 
 }

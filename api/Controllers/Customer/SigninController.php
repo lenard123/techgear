@@ -2,12 +2,13 @@
 
 namespace App\Controllers\Customer;
 
+use App\Controllers\BaseController;
 use App\Components\CustomerPageComponent;
 use App\Models\User;
 use App\Utils\ValidatorList;
 use App\Utils\AlertMessage;
 
-class SigninController extends CustomerController
+class SigninController extends BaseController
 {
 
   private $validator = null;
@@ -26,7 +27,7 @@ class SigninController extends CustomerController
     $view->setTitle("Sign In");
     $view->addData("validator", $validator);
 
-    $this->render($view);
+    $this->renderCustomerLayout($view);
   }
 
   public function validate()
