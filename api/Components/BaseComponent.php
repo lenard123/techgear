@@ -2,7 +2,7 @@
 
 namespace App\Components;
 
-abstract class BaseComponent
+class BaseComponent
 {
 
   protected $base_folder = 'templates/components/';
@@ -10,6 +10,16 @@ abstract class BaseComponent
   protected $template;
 
   protected $data = [];
+
+  public function __construct($template, $base_folder = null)
+  {
+    $this->template = $template;
+
+    if (!is_null($base_folder)) {
+      $this->base_folder = $base_folder;
+    }
+
+  }
 
   private function getTemplatePath()
   {

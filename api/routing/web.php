@@ -60,7 +60,7 @@ Route::post('checkout')
 
 //Order
 Route::get('order')
-  ->setController(App\Controllers\OrderController::class, "get")
+  ->setController(App\Controllers\Customer\OrderController::class)
   ->customerOnly();
 
 //Profile
