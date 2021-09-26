@@ -16,6 +16,7 @@ class CustomerPageComponent extends Component
     parent::addData("content_data", $this->content_data);
     parent::addData("scripts", $this->scripts);
     parent::addData("js_data", $this->js_data);
+    parent::addData("header", new CustomerHeaderComponent);
   }
 
   public function addDescription($description)
