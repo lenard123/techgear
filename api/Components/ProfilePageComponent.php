@@ -20,7 +20,7 @@ class ProfilePageComponent extends CustomerPageComponent
     $this->addData("order_count", $user->countOrder());
     $this->addData("favorite_count", $user->countFavorites());
     $this->addData("active", '');
-    parent::__construct('profile_pagE_layout');
+    parent::__construct('profile_page_layout');
   }
 
   public function addContentData($key, $value)
