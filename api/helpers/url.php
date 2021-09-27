@@ -15,7 +15,7 @@ function url($path = '')
 
 function admin($path='')
 {
-  return url("admin{$path}");
+  return url("admin/{$path}");
 }
 
 function asset($path)
