@@ -13,6 +13,7 @@ class User extends BaseModel
   public $password;
   public $firstname;
   public $lastname;
+  public $image;
   public $created_at;
   public $modified_at;
 
@@ -45,13 +46,14 @@ class User extends BaseModel
 
   public function update()
   {
-    DB::prepare("UPDATE `users` SET `role`=?, `email`=?, `password`=?, `firstname`=?, `lastname`=?, `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?",
-      "issssi",
+    DB::prepare("UPDATE `users` SET `role`=?, `email`=?, `password`=?, `firstname`=?, `lastname`=?, `image`=? , `modified_at`=CURRENT_TIMESTAMP WHERE `id`=?",
+      "isssssi",
       $this->role,
       $this->email,
       $this->password,
       $this->firstname,
       $this->lastname,
+      $this->image,
       $this->id
     );
     Cache::forget("user:{$this->email}");
@@ -59,13 +61,14 @@ class User extends BaseModel
 
   public function save()
   {
-    DB::prepare("INSERT INTO `users`(`role`, `email`, `password`, `firstname`, `lastname`) VALUES (?, ?, ?, ?, ?)",
-      "issss", 
+    DB::prepare("INSERT INTO `users`(`role`, `email`, `password`, `firstname`, `lastname`, `image`) VALUES (?, ?, ?, ?, ?, ?)",
+      "isssss", 
       $this->role, 
       $this->email, 
       $this->password, 
       $this->firstname, 
-      $this->lastname
+      $this->lastname,
+      $this->image
     );
     $this->id = DB::getLastId();
     UserInfo::newUser($this->id);
@@ -255,6 +258,7 @@ class User extends BaseModel
     $user->password = $data["password"];
     $user->firstname = $data["firstname"];
     $user->lastname = $data["lastname"];
+    $user->image = $data["image"];
     $user->created_at = strtotime($data["created_at"]);
     $user->modified_at = is_null($data["modified_at"]) ? null : strtotime($data["modified_at"]);
     return $user;
