@@ -1,22 +1,23 @@
-$(document).ready(function() {
+"use strict";
 
-  $('[data-action=show-edit-form]').click(function(){
-    $('.category-item').removeClass('edit')
-    var target = $(this).parents('.category-item')
-    var form = target.find('form')
+document.addEventListener('alpine:init', function () {
+  var previousActiveCategory = null;
+  Alpine.data('category', function () {
+    return {
+      isActive: false,
+      openEditForm: function openEditForm() {
+        var _previousActiveCatego;
 
-    target.addClass('edit')
-    form.trigger('reset')
-  })
-
-  $('[data-action=hide-edit-form]').click(function() {
-    var target = $(this).parents('.category-item')
-    target.removeClass('edit')
-  })
-
-  $('[data-action=submit-edit-form]').click(function() {
-    var target = $(this).parents('.category-item')
-    var form = target.find('form')
-    form.submit()
-  })
-})
+        (_previousActiveCatego = previousActiveCategory) === null || _previousActiveCatego === void 0 ? void 0 : _previousActiveCatego.close();
+        previousActiveCategory = this;
+        this.isActive = true;
+      },
+      close: function close() {
+        this.isActive = false;
+      },
+      submit: function submit() {
+        this.$refs.editForm.submit();
+      }
+    };
+  });
+});

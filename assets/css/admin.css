@@ -38,26 +38,6 @@
   border-bottom-width: 0;
 }
 
-.category-item.edit {
-  background-color: #F9FAFB;
-}
-
-.category-item.edit .category-item-action-default {
-  display: none;
-}
-
-.category-item.edit .category-item-action-edit {
-  display: flex;
-}
-
-.category-item.edit .category-item-name{
-  display: none;
-}
-
-.category-item.edit .category-item-form{
-  display: initial;
-}
-
 /* Toggle B */
 input:checked ~ .dot {
   transform: translateX(100%);
