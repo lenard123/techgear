@@ -61,14 +61,18 @@
 
   <div class="p-5">
     <div class="text-xl mb-4 font-semibold">Address</div>
-    <form action="<?= url('?page=personal') ?>" method="POST">
+    <form 
+      action="<?= url('?page=personal') ?>" 
+      method="POST"
+      x-data="address"
+    >
       <?= __method('PATCH') ?>
       <input type="hidden" name="type" value="address" />
       <div class="text-gray-800 mb-5">
         <label class="text-sm block mb-1">Region: </label>
         <select 
           class="font-light block border border-gray-300 w-full p-2 rounded focus:border-blue-500 outline-none" 
-          id="checkout_input_region"
+          x-model="selected_region"
           name="region"
         >
           <option value="">-- Select Region --</option>
@@ -84,10 +88,16 @@
           <label class="text-sm block mb-1">Province: </label>
           <select 
             class="font-light block border border-gray-300 w-full p-2 rounded focus:border-blue-500 outline-none" 
-            id="checkout_input_province" 
-            disabled="" 
+            x-model="selected_province"
+            :disabled="provinces.length <= 0" 
             name="province"
           >
+            <option value="">-- Select a province --</option>
+            <template 
+              x-for="province in provinces" 
+              :key="province">
+              <option x-text="province"></option>
+            </template>
           </select>
         </div>
 
@@ -95,10 +105,17 @@
           <label class="text-sm block mb-1">City: </label>
           <select 
             class="font-light block border border-gray-300 w-full p-2 rounded focus:border-blue-500 outline-none" 
-            id="checkout_input_municipality" 
-            disabled="" 
+            x-model="selected_municipality"
+            :disabled="municipalities.length <= 0" 
             name="municipality"
           >
+            <option value="">-- Select a City --</option>
+            <template
+              x-for="city in municipalities"
+              :key="city"
+            >
+              <option x-text="city"></option>
+            </template>
           </select>
         </div>
 
@@ -106,10 +123,17 @@
           <label class="text-sm block mb-1">Barangay: </label>
           <select 
             class="font-light block border border-gray-300 w-full p-2 rounded focus:border-blue-500 outline-none" 
-            id="checkout_input_barangay" 
-            disabled="" 
+            x-model="selected_barangay"
+            :disabled="barangay_list.length <= 0" 
             name="barangay" 
           >
+            <option value="">-- Select Barangay --</option>
+            <template
+              x-for="barangay in barangay_list"
+              :key="barangay"
+            >
+              <option x-text="barangay"></option>
+            </template>
           </select>
         </div>
       </div>

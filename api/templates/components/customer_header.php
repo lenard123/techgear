@@ -105,8 +105,8 @@
                 </svg>
               </button>
               <div 
-                class="w-auto py-2 rounded border border-gray-300 bg-white absolute z-20 right-0"
-                :style="{display: isOpen ? 'block':'none'}"
+                class="hidden w-auto py-2 rounded border border-gray-300 bg-white absolute z-20 right-0"
+                :style="{display: isOpen ? 'block':null}"
               >
                 <a href="<?= url('?page=order') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                   Orders <?= $order_count > 0 ? "($order_count)": "" ?>

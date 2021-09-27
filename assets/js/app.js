@@ -1,38 +1,36 @@
+"use strict";
 
 document.addEventListener('alpine:init', function () {
-  
   //Watch Scroll Position
   Alpine.store('scroll', {
     position: window.scrollY,
-    init: function () {
-      var context = this
+    init: function init() {
+      var _this = this;
+
       window.onscroll = function () {
-        context.position = window.scrollY
-      }
+        return _this.position = window.scrollY;
+      };
     }
-  })
+  }); //Sidebar
 
-  //Sidebar
-  Alpine.store('isSidebarOpen', false)
+  Alpine.store('isSidebarOpen', false); //Alert Message
 
-
-  //Alert Message
-  Alpine.data('alert', function() {
+  Alpine.data('alert', function () {
     return {
       right: '-300px',
       opacity: '1',
-      init() {
-        var ctx = this
-        //Without nextTick the animation is not applied
-        ctx.$nextTick(function() { 
-          ctx.right = '5px'
-          setTimeout(function() { 
-            ctx.opacity = '0'
-            ctx.right = '-300px'
-          }, 2000)
-        })
-      }
-    }
-  })
+      init: function init() {
+        var _this2 = this;
 
-})
+        //Without nextTick the animation is not applied
+        this.$nextTick(function () {
+          _this2.right = '5px';
+          setTimeout(function () {
+            _this2.opacity = '0';
+            _this2.right = '-300px';
+          }, 2000);
+        });
+      }
+    };
+  });
+});
