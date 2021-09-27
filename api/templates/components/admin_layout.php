@@ -27,9 +27,8 @@
 <?php endforeach; ?>
 </script>
 
-<script src="<?= url('assets/js/babel-polyfill.min.js') ?>"></script>
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-<script src="<?= asset('js/jquery.min.js') ?>"></script>
+<script src="<?= asset('js/babel-polyfill.min.js') ?>"></script>
+<script src="<?= asset('js/alpine.min.js') ?>" defer></script>
 <script src="<?= asset('js/admin.js') ?>"></script>
 
 <?php foreach($scripts as $script) : ?>
