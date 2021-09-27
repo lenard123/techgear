@@ -40,7 +40,7 @@ class BaseComponent
     foreach ($this->data as $key => $value)
       $$key = $value;
 
-    include $this->getTemplatePath();
+    require $this->getTemplatePath();
 
     return ob_get_clean();
   }
