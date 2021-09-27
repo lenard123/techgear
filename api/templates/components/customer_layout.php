@@ -13,7 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet"> 
   <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" /> 
   <title>  <?= isset($title) ? __($title) . ' | '. SITE_NAME : SITE_NAME ?></title>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-gray-100">
   
@@ -97,7 +96,7 @@
 </footer>
 
 <script src="<?= url('assets/js/babel-polyfill.min.js') ?>"></script>
-<script src="<?= url('assets/js/jquery.min.js') ?>"></script>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script src="<?= url('assets/js/app.js') ?>"></script>
 
 
