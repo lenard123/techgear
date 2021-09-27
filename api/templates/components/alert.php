@@ -1,7 +1,9 @@
 <?php use App\Components\AlertComponent; ?>
 <div
+  x-data="alert"
   class="alert-message flex items-center fixed bottom-5 p-5 rounded-lg text-sm text-white <?= $status === AlertComponent::STATUS_SUCCESS ? 'bg-green-700' : 'bg-red-700' ?>" 
   style="width: 300px; right: -300px;"
+  :style="{right: right, opacity: opacity}"
 >
   <?php if ($status === AlertComponent::STATUS_SUCCESS) : ?>
     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle w-5 h-5 mx-2">

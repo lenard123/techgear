@@ -12,13 +12,27 @@ document.addEventListener('alpine:init', function () {
     }
   })
 
+  //Sidebar
   Alpine.store('isSidebarOpen', false)
-})
 
-var alertMessages = document.querySelector('.alert-message')
-if (alertMessages) { 
-  alertMessages.style.right = '5px'
-  setTimeout(function() {
-    alertMessages.style.opacity = 0
-  }, 2000)
-}
+
+  //Alert Message
+  Alpine.data('alert', function() {
+    return {
+      right: '-300px',
+      opacity: '1',
+      init() {
+        var ctx = this
+        //Without nextTick the animation is not applied
+        ctx.$nextTick(function() { 
+          ctx.right = '5px'
+          setTimeout(function() { 
+            ctx.opacity = '0'
+            ctx.right = '-300px'
+          }, 2000)
+        })
+      }
+    }
+  })
+
+})
