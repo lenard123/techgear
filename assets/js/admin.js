@@ -1,35 +1,40 @@
-$(document).ready(function(){
+"use strict";
 
-  //Sidebar toggler
-  $('[data-action=open-sidebar]').click(function() {
-    $('#sidebar').addClass('active')
-  })
+document.addEventListener('alpine:init', function () {
+  Alpine.store('isSidebarOpen', false);
+  if (typeof window.php_active_page === 'undefined') window.php_active_page = null;
+  Alpine.store('page', window.php_active_page);
+  Alpine.data('toggler', function () {
+    return {
+      isOpen: false,
+      toggle: function toggle() {
+        this.isOpen = !this.isOpen;
+      },
+      close: function close() {
+        this.isOpen = false;
+      },
+      open: function open() {
+        this.isOpen = true;
+      }
+    };
+  }); //Alert Message
 
-  $('[data-action=close-sidebar]').click(function() {
-    $('#sidebar').removeClass('active')
-  })
+  Alpine.data('alert', function () {
+    return {
+      right: '-300px',
+      opacity: '1',
+      init: function init() {
+        var _this = this;
 
-  //Sidebar dropdown
-  $('.sidebar-dropdown').click(function(e){
-    var target = $(e.target)
-    if (!target.is('.sidebar-dropdown-menu *')) {
-      $(this).toggleClass('active').find('.sidebar-dropdown-menu').slideToggle()
-    }
-  })
-
-  //Set Active Page
-  if (typeof php_active_page != 'undefined') {
-    $(`[data-page=${php_active_page}`).addClass('bg-gray-700')
-  }
-
-
-  //Animate alert message
-  $('.alert-message').animate({right: '5px'}, 300, function() {
-    var message = this;
-    setTimeout(function() {
-      $(message).animate({opacity: 0}, 300, function(){
-        $(message).remove()
-      })
-    }, 2000)
-  })
-})
+        //Without nextTick the animation is not applied
+        this.$nextTick(function () {
+          _this.right = '5px';
+          setTimeout(function () {
+            _this.opacity = '0';
+            _this.right = '-300px';
+          }, 2000);
+        });
+      }
+    };
+  });
+});

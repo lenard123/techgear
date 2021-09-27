@@ -2,7 +2,7 @@
 <div
   x-data="alert"
   class="alert-message flex items-center fixed bottom-5 p-5 rounded-lg text-sm text-white <?= $status === AlertComponent::STATUS_SUCCESS ? 'bg-green-700' : 'bg-red-700' ?>" 
-  style="width: 300px; right: -300px;"
+  style="width: 300px; right: -300px; transition: right 300ms linear, opacity 300ms linear;"
   :style="{right: right, opacity: opacity}"
 >
   <?php if ($status === AlertComponent::STATUS_SUCCESS) : ?>

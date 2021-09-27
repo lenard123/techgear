@@ -4,7 +4,8 @@
 
     <form class="flex items-center">
 
-      <a class="lg:hidden cursor-pointer my-2" data-action="open-sidebar">
+      <!-- Burger to Toggle Sidebar -->
+      <a x-data @click="$store.isSidebarOpen = !$store.isSidebarOpen" class="lg:hidden cursor-pointer my-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>

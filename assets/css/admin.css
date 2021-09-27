@@ -8,6 +8,14 @@
   left: 0;
 }
 
+.sidebar-dropdown-menu {
+  display: none;
+}
+
+.sidebar-dropdown.active .sidebar-dropdown-menu{
+  display: block;
+}
+
 .sidebar-dropdown .caret {
   transition: transform 300ms ease;
 }
