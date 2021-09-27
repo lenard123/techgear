@@ -1,11 +1,3 @@
-.slideshow .slides {
-  display: none;
-}
-
-.slideshow .slides.active {
-  display: block;
-}
-
 .category-link .subcategories {
   display: none;
 }

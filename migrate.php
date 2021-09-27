@@ -36,25 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta charset="utf-8">
   <title>Reset Database</title>
   <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.min.css') ?>">
-  <style type="text/css">
-
-    @keyframes alert-message {
-      1% {
-        right: 0px;
-      }
-      5% {
-        right: 0;
-      }
-      6% {
-        right: -300px;
-      }
-    }
-
-    .alert-message {
-      animation-name: alert-message;
-      animation-duration: 100s;
-    }
-  </style>
 </head>
 <body class="bg-gray-50 px-3">
 
@@ -92,6 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
 
 <?= AlertMessage::render(); ?>
+
+<script src="<?= url('assets/js/babel-polyfill.min.js') ?>"></script>
+<script src="<?= url('assets/js/alpine.min.js') ?>" defer></script>
+<script src="<?= url('assets/js/app.js') ?>"></script>
 
 </body>
 </html>

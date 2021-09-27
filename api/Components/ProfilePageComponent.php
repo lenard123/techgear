@@ -7,7 +7,7 @@ use App\Models\User;
 class ProfilePageComponent extends CustomerPageComponent
 {
   protected $base_folder = 'templates/components/';
-  protected $template = 'profile_page_layout';
+  //protected $template = 'profile_page_layout';
   protected $content;
 
   public function __construct($template)
@@ -20,6 +20,7 @@ class ProfilePageComponent extends CustomerPageComponent
     $this->addData("order_count", $user->countOrder());
     $this->addData("favorite_count", $user->countFavorites());
     $this->addData("active", '');
+    parent::__construct('profile_pagE_layout');
   }
 
   public function addContentData($key, $value)

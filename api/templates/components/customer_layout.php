@@ -95,7 +95,8 @@
   </div>
 </footer>
 
-<script src="<?= url('assets/js/jquery.min.js') ?>"></script>
+<script src="<?= url('assets/js/babel-polyfill.min.js') ?>"></script>
+<script src="<?= url('assets/js/alpine.min.js') ?>" defer></script>
 <script src="<?= url('assets/js/app.js') ?>"></script>
 
 

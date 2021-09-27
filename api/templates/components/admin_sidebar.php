@@ -1,4 +1,8 @@
-<aside id="sidebar" class="bg-gray-800 z-30 fixed -left-60 lg:left-0 w-60 h-screen overflow-y-scroll">
+<aside 
+  id="sidebar"
+  x-data
+  :class="{active: $store.isSidebarOpen}"
+  class="bg-gray-800 z-30 fixed -left-60 lg:left-0 w-60 h-screen overflow-y-scroll">
   <div class="flex justify-between items-center px-5 bg-gray-900" style="height: 60px">
     <a 
       href="<?= url() ?>" 
@@ -11,7 +15,8 @@
       <span>TechGear</span>
     </a>
 
-    <a class="lg:hidden text-gray-500 cursor-pointer" data-action="close-sidebar">
+    <!-- Close Sidebar -->
+    <a @click="$store.isSidebarOpen = false" class="lg:hidden text-gray-500 cursor-pointer">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
@@ -37,7 +42,7 @@
     <p class="p-3 text-xs uppercase text-gray-400">General</p>
     <ul>
       <li>
-        <a href="<?= admin('?page=category') ?>" data-page="category" class="flex hover:bg-gray-700 text-gray-300 py-2">
+        <a :class="{'bg-gray-700': $store.page === 'category'}" href="<?= admin('?page=category') ?>" class="flex hover:bg-gray-700 text-gray-300 py-2">
           <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" height="16" width="16" viewBox="0 0 512 512" fill="currentColor">
               <path d="M296 32h192c13.255 0 24 10.745 24 24v160c0 13.255-10.745 24-24 24H296c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24zm-80 0H24C10.745 32 0 42.745 0 56v160c0 13.255 10.745 24 24 24h192c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24zM0 296v160c0 13.255 10.745 24 24 24h192c13.255 0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm296 184h192c13.255 0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H296c-13.255 0-24 10.745-24 24v160c0 13.255 10.745 24 24 24z"/>
@@ -48,8 +53,8 @@
       </li>
 
       <li>
-        <div class="sidebar-dropdown">
-          <a href="#" class="flex justify-between hover:bg-gray-700 text-gray-300 py-2">
+        <div x-data="toggler" :class="{active: isOpen}" class="sidebar-dropdown">
+          <a @click="toggle" href="#" class="flex justify-between hover:bg-gray-700 text-gray-300 py-2">
             <div class="flex items-center">
               <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -65,19 +70,13 @@
             </div>
           </a>
 
-          <div class="sidebar-dropdown-menu hidden bg-gray-900 text-sm">
-            <ul>
-              <li>
-                <a 
-                  class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
-                  href="<?= admin('?page=products-add') ?>">Add New Product</a>
-              </li>
-              <li>
-                <a 
-                  class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
-                  href="<?= admin('?page=products') ?>">Manage Products</a>
-              </li>
-            </ul>
+          <div class="sidebar-dropdown-menu bg-gray-900 text-sm">
+            <a 
+              class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
+              href="<?= admin('?page=products-add') ?>">Add New Product</a>
+            <a 
+              class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
+              href="<?= admin('?page=products') ?>">Manage Products</a>
           </div>
 
         </div>

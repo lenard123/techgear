@@ -39,10 +39,21 @@
     </div>
   </div>
   <div style="height: 60px;">
-    <nav id="navbar" class="fixed lg:relative bg-white text-gray-500 top-0 left-0 right-0 z-20 shadow" style="height: 60px;">
+    <nav 
+      class="fixed lg:relative bg-white text-gray-500 top-0 left-0 right-0 z-20 shadow" 
+      style="height: 60px;"
+      x-data="{ isSearchBarOpen: false }"
+      @click.outside="isSearchBarOpen = false"
+      :style="{ position: $store.scroll.position <= 36 ? '' : 'fixed'}"
+    >
       <div class="container mx-auto px-5 h-full flex justify-between">
         <div class="flex">
-          <a class="cursor-pointer my-auto mr-2 lg:hidden" id="sidebar_burger">
+
+          <!-- Burger -->
+          <a 
+            class="cursor-pointer my-auto mr-2 lg:hidden"
+            @click="$store.isSidebarOpen = true"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -73,20 +84,30 @@
         </div>
 
         <div class="flex">
-          <a id="search-bar-toggler" class="cursor-pointer my-auto mr-4">
+          <a @click="isSearchBarOpen = true" class="cursor-pointer my-auto mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </a>
 
           <?php if(App\Models\User::isUserCustomer()) : ?>
-            <div class="relative my-auto outline-none" data-type="dropdown">
-              <button class="py-2 block cursor-pointer mr-4">
+            <div 
+              class="relative my-auto outline-none"
+              x-data="{isOpen: false}"
+              @click.outside="isOpen = false"
+            >
+              <button 
+                class="py-2 block cursor-pointer mr-4"
+                @click="isOpen = true"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </button>
-              <div class="hidden w-auto py-2 rounded border border-gray-300 bg-white absolute z-20 right-0"  data-type="dropdown-menu">
+              <div 
+                class="hidden w-auto py-2 rounded border border-gray-300 bg-white absolute z-20 right-0"
+                :style="{display: isOpen ? 'block':null}"
+              >
                 <a href="<?= url('?page=order') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                   Orders <?= $order_count > 0 ? "($order_count)": "" ?>
                 </a>
@@ -126,7 +147,11 @@
 
         </div>
       </div>
-      <div class="search-bar absolute left-0 right-0 bg-white z-20 shadow">
+      <!-- Search Bar -->
+      <div
+        class="search-bar absolute left-0 right-0 bg-white z-20 shadow"
+        :class="{active: isSearchBarOpen}"
+      >
         <div class="container mx-auto px-5 h-full text-lg flex">
           <form class="w-full" action="<?= url() ?>">
             <input type="hidden" name="page" value="search">
@@ -137,7 +162,7 @@
               placeholder="Search Product">
           </form>
 
-          <button id="search-bar-close">
+          <button @click="isSearchBarOpen = false">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -149,15 +174,25 @@
   </div>
 </header>
 
-<div class="lg:hidden" id="sidebar" style="display: none;">
-  <div id="sidebar_overlay" class="close-sidebar fixed hidden bg-black top-0 left-0 right-0 bottom-0 z-30 opacity-10">
-  </div>
-  <div 
-    id="sidebar_nav" 
-    class="fixed overflow-y-scroll top-0 left-0 bg-white h-screen z-40" 
-    style="left: -300px; width: 300px;">
+<div 
+  x-data 
+  class="lg:hidden" 
+>
+  <!-- Overlay -->
+  <div
+    @click="$store.isSidebarOpen = false" 
+    class="fixed bg-black top-0 left-0 right-0 bottom-0 z-30 opacity-10"
+    :style="{display: $store.isSidebarOpen ? 'block': 'none'}"
+  ></div>
 
-    <a class="close-sidebar cursor-pointer absolute top-3 right-3 text-gray-400">
+  <!-- Sidebar Content -->
+  <div
+    class="fixed overflow-y-scroll top-0 left-0 bg-white h-screen z-40" 
+    style="width: 300px;"
+    :style="{left: $store.isSidebarOpen ? '0' : '-300px'}"
+  >
+
+    <a @click="$store.isSidebarOpen = false" class="cursor-pointer absolute top-3 right-3 text-gray-400">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
