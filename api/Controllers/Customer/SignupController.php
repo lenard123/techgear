@@ -54,6 +54,7 @@ class SignupController extends BaseController
     $user->setPassword(post('password'));
     $user->firstname = post('firstname');
     $user->lastname = post('lastname');
+    $user->regenerateAvatar();
     $user->save();
 
     return $user;

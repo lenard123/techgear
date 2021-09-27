@@ -9,7 +9,7 @@
           <div class="p-5 border-b border-gray-300">
             <div class="bg-red mb-4 relative w-1/3 sm:w-1/4 lg:w-2/4 mx-auto rounded-full overflow-hidden">
               <img 
-                src="<?= asset('img/avatar.jpg') ?>"
+                src="<?= $user->getImage() ?>"
                 class="h-auto w-full"
               />
             </div>

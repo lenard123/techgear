@@ -36,6 +36,19 @@ class User extends BaseModel
     return $this->user_info;
   }
 
+  public function getImage()
+  {
+    if (is_null($this->image))
+      return asset('img/avatar.jpg');
+    return $this->image;
+  }
+
+  public function regenerateAvatar()
+  {
+    $seed = urlencode($this->firstname . ' ' . $this->lastname);
+    $this->image = "https://avatars.dicebear.com/api/initials/$seed.svg";
+  }
+
   public function changeEmail($email)
   {
     $_SESSION['user_email'] = $email;
