@@ -96,7 +96,7 @@
 </footer>
 
 <script src="<?= url('assets/js/babel-polyfill.min.js') ?>"></script>
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <script src="<?= url('assets/js/app.js') ?>"></script>
 
 
