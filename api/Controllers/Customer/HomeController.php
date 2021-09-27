@@ -27,8 +27,8 @@ class HomeController extends BaseController
 
     $content = new CustomerPageComponent("home_page");
     $content->setTitle("Home");
-    $content->addData("slides", $slides);
     $content->addData("product_cards", $product_cards);
+    $content->addJSData('slides', $slides);
     $content->addScript(asset('js/slider.js'));
 
     $this->renderCustomerLayout($content);
