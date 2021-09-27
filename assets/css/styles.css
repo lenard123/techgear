@@ -55,3 +55,7 @@
   bottom: 0;
   right: 0;
 }
+
+.alert-message {
+  transition: right 300ms linear, opacity 300ms linear;
+}
