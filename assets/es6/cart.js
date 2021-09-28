@@ -1,6 +1,4 @@
 
-const unwrap = data => JSON.parse(JSON.stringify(data))
-
 document.addEventListener('alpine:init', function(){
 
   Alpine.data('cart_plus', () => ({

@@ -4,12 +4,9 @@ const fetchRegionLocation = async (region) => {
     const { data } = await axios.get(`${php_base_url}api.php?page=location&region=${region}`)
     return data
   } catch (err) {
-    return {}
+    console.log('There is an errpr', err)
+    return undefined
   }
-}
-
-const unwrap = (data) => {
-  return JSON.parse(JSON.stringify(data))
 }
 
 document.addEventListener('alpine:init', () => {
@@ -19,21 +16,21 @@ document.addEventListener('alpine:init', () => {
     all_location: {},
 
     get province_list() {
-      const region = this.all_location[this.selected_region]
-      if (region === undefined) return {}
-      return region.province_list
+      const province_list = this.all_location[this.selected_region]?.province_list
+      if (typeof province_list === 'undefined') return {}
+      return province_list
     },
 
     get municipality_list() {
       const province_list = this.province_list
       const province = province_list[this.selected_province]
-      if (province === undefined) return {}
+      if (typeof province === 'undefined') return {}
       return province.municipality_list
     },
 
     get barangay_list() {
       const municipality = this.municipality_list[this.selected_municipality]
-      if (municipality === undefined) return []
+      if (typeof municipality === 'undefined') return []
       return municipality.barangay_list
     },
 
@@ -52,7 +49,7 @@ document.addEventListener('alpine:init', () => {
 
     init() {
       this.$watch('selected_region', async (selected) => {
-        if (this.all_location[selected] !== undefined) return
+        if (typeof this.all_location[selected] !== 'undefined') return
         this.all_location[selected] = await fetchRegionLocation(selected)
       })
 

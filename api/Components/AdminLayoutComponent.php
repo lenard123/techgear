@@ -2,44 +2,21 @@
 
 namespace App\Components;
 
-class AdminLayoutComponent extends BaseComponent
+class AdminLayoutComponent extends LayoutComponent
 {
   protected $template = 'admin_layout';
 
-  protected $content;
-  public $title = null;
-  public $js_data = [];
-  public $scripts = [];
+  public BaseComponent $header;
 
-  public function __construct($template)
+  public function __construct($content_template)
   {
-    $content = new BaseComponent($template, 'templates/admin/');
+    $this->header = new BaseComponent('admin_header');
+    $this->sidebar = new BaseComponent('admin_sidebar');
 
-    $this->addData('header', new AdminHeaderComponent);
-    $this->addData('sidebar', new AdminSidebarComponent);
-    $this->addData('content', $content);
-    $this->addData('js_data', $this->js_data);
-    $this->addData('scripts', $this->scripts);
-    $this->addData('title', $this->title);
+    //Admin Scripts
+    $this->addCustomScript('js/admin.js');
 
-    $this->content = $content;
-  }
-
-  public function addContentData($key, $value)
-  {
-    $this->content->addData($key, $value);
-  }
-
-  public function addJSData($key, $value)
-  {
-    $this->js_data[$key] = $value;
-    $this->addData('js_data', $this->js_data);
-  }
-
-  public function addScript($js)
-  {
-    array_push($this->scripts, $js);
-    $this->addData('scripts', $this->scripts);
+    parent::__construct($content_template, 'templates/admin/');
   }
 
 }

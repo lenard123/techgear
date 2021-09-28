@@ -3,8 +3,8 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
-use App\Components\CustomerPageComponent;
 use App\Components\ProductCardComponent;
+use App\Components\CustomerLayoutComponent;
 use App\Models\Product;
 
 class HomeController extends BaseController
@@ -25,12 +25,12 @@ class HomeController extends BaseController
     $featured_products = Product::getFeaturedProducts();
     $product_cards = ProductCardComponent::mapProducts(...$featured_products);
 
-    $content = new CustomerPageComponent("home_page");
-    $content->setTitle("Home");
-    $content->addData("product_cards", $product_cards);
-    $content->addJSData('slides', $slides);
-    $content->addScript(asset('js/slider.js'));
+    $view = new CustomerLayoutComponent("home_page");
+    $view->setTitle('Home');
+    $view->addContentData('product_cards', $product_cards);
+    $view->addJSData('slides', $slides);
+    $view->addCustomScript('js/slider.js');
 
-    $this->renderCustomerLayout($content);
+    $this->render($view);
   }
 }

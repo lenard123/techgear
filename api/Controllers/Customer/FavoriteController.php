@@ -4,6 +4,7 @@ namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
 use App\Components\ProfilePageComponent;
+use App\Components\CustomerLayoutComponent;
 use App\Models\Favorite;
 use App\Models\User;
 use App\Utils\AlertMessage;
@@ -14,12 +15,14 @@ class FavoriteController extends BaseController
   {
     $favorites = User::getCurrentUser()->getFavorites();
 
-    $view = new ProfilePageComponent("favorites_page");
-    $view->setTitle("Favorites");
-    $view->setActivePage("favorites");
-    $view->addContentData("favorites", $favorites);
+    //Wrap template to Profile Component
+    $profilePage = new ProfilePageComponent('favorites_page', 'favorites');
+    $profilePage->addContentData('favorites', $favorites);
 
-    $this->renderCustomerLayout($view);
+    $view = new CustomerLayoutComponent($profilePage);
+    $view->setTitle('Favorites');
+
+    $this->render($view);
   }
 
   public function delete()

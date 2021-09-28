@@ -4,6 +4,7 @@ namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
 use App\Components\ProfilePageComponent;
+use App\Components\CustomerLayoutComponent;
 use App\Models\Order;
 
 class OrderDetailsController extends BaseController
@@ -21,14 +22,15 @@ class OrderDetailsController extends BaseController
     $order = $this->order;
     $items = $order->getItems();
 
-    $view = new ProfilePageComponent("order_details_page");
-    $view->setTitle("Order Details");
-    $view->setActivePage("order");
-    $view->addContentData("order", $order);
-    $view->addContentData("items", $items);
-    $view->addJSData("order_status", $order->status);
-    $view->addScript(asset('js/order-details.js'));
-    
-    $this->renderCustomerLayout($view);
+    $page = new ProfilePageComponent('order_details_page', 'order');
+    $page->addContentData('order', $order);
+    $page->addContentData('items', $items);
+
+    $view = new CustomerLayoutComponent($page);
+    $view->setTitle('Order Details');
+    $view->addJSData('order_status', $order->status);
+    $view->addCustomScript('js/order-details.js');
+
+    $this->render($view);
   }
 }

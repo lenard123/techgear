@@ -20,8 +20,8 @@ class ProductController extends BaseController
   public function add()
   {
     $view = new AdminLayoutComponent("product_add_page");
-    $view->addScript("https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js");
-    $view->addScript(asset('js/admin-product-add.js'));
+    $view->addCustomScript("https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js", false);
+    $view->addCustomScript('js/admin-product-add.js');
     $this->render($view);
   }
 
