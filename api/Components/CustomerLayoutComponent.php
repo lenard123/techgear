@@ -42,7 +42,7 @@ class CustomerLayoutComponent extends BaseComponent
       $library = self::$js_libraries[$library]['local'];
       array_push($this->installed_libraries, asset($library));
     } else if (SITE_ENV === 'PRODUCTION') {
-      $library = self::$js_libraries[$library]['local'];
+      $library = self::$js_libraries[$library]['prod'];
       array_push($this->installed_libraries, $library); 
     }
   }
