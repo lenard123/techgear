@@ -13,6 +13,11 @@ class CacheRedisProvider extends CacheProvider
     $this->client = new Client($tls_url);
   }
 
+  public function flush()
+  {
+    $this->client->flushAll();
+  }
+
   public function has(string $key) : bool
   {
     return $this->client->exists($key);

@@ -16,6 +16,14 @@ class CacheFileProvider extends CacheProvider
     }
   }
 
+  public function flush() : void
+  {
+    $caches = $this->getCaches();
+    foreach($caches as $cache) {
+      $cache->delete();
+    }
+  }
+
   public function getCaches() : array
   {
     if (is_null($this->caches)) {
