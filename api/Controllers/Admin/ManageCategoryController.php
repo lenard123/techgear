@@ -32,7 +32,7 @@ class ManageCategoryController extends BaseController
 
   public function updateCategory()
   {
-    $validator = new Validator("name", "required|max:15|min:2", "Category name");
+    $validator = new Validator("name", "required|max:35|min:2", "Category name");
 
     if (!$validator->is_valid) {
       AlertMessage::failed($validator->failure_message);
