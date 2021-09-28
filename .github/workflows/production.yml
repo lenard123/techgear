@@ -4,10 +4,10 @@ on:
   push:
     branches: [main]
     paths: 
-      - *.js
-      - *.css
-      - *.php
-      - storage/**
+      - '*.js'
+      - '*.css'
+      - '*.php'
+      - 'storage/**'
       
 
 jobs:
