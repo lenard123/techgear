@@ -13,7 +13,7 @@ class CacheRedisProvider extends CacheProvider
     $this->client = new Client($tls_url);
   }
 
-  public function flush()
+  public function flush() : void
   {
     $this->client->flushAll();
   }
