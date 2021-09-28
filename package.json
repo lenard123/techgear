@@ -12,8 +12,5 @@
     "presets": [
       "@babel/preset-env"
     ]
-  },
-  "dependencies": {
-    "@babel/polyfill": "^7.12.1"
   }
 }
