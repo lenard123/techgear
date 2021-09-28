@@ -34,10 +34,12 @@ abstract class LayoutComponent extends BaseComponent
     ],
     'alpine' => [
       'local' => 'js/lib/alpine.min.js',
+      'prod' => 'https://unpkg.com/alpinejs@3.4.1/dist/cdn.min.js',
       'defer' => true
     ],
     'axios' => [
       'local' => 'js/lib/axios.min.js',
+      'prod' => 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js',
     ],
   ];
 
