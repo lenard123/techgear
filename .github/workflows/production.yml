@@ -3,6 +3,12 @@ name: Merge Main Branch to Production Branch
 on:
   push:
     branches: [main]
+    paths: 
+      - *.js
+      - *.css
+      - *.php
+      - storage/**
+      
 
 jobs:
   build:
