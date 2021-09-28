@@ -14,6 +14,9 @@ class CacheProvider
     return array();
   }
 
+  public function flush() : void
+  {}
+
   public function get(string $key, $default = null) : ?string
   {
     if ($default instanceof \Closure) 

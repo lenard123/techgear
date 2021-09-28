@@ -21,6 +21,11 @@ class Cache
     return new CacheProvider; //Empty Cache Provider
   }
 
+  public static function flush() : void
+  {
+    self::getProvider()->flush();
+  }
+
   public static function get(string $key, $default = null) : ?string
   {
     return self::getProvider()->get($key, $default);
