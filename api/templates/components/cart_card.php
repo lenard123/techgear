@@ -38,11 +38,21 @@
         <div class="p-2 border-t border-b border-gray-200"><?= $cart->quantity ?></div>
 
         <!-- Plus -->
-        <form action="<?= url('?page=cart') ?>" method="POST">
+        <form 
+          x-data="cart_plus"
+          x-init="setAddStatus(<?= json_encode($cart->canStillAdd()) ?>)"
+          action="<?= url('?page=cart') ?>" 
+          method="POST"
+        >
           <?= __method("PATCH") ?>
           <input type="hidden" name="id" value="<?= $cart->id ?>" />
           <input type="hidden" name="action" value="ADD" />
-          <button type="submit" href="#" class="p-2 border-t border-r border-b border-gray-200 <?= !$cart->canStillAdd() ? 'bg-gray-50' : '' ?>" <?= !$cart->canStillAdd() ? 'disabled' : '' ?>>
+          <button
+            type="submit"
+            class="p-2 border-t border-r border-b border-gray-200"
+            :class="{'bg-gray-50': !canStillAdd }"
+            :disabled="!canStillAdd"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
