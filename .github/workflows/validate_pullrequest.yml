@@ -1,0 +1,16 @@
+name: Check if the pull request pass the test
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - *.php
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: overtrue/phplint@8.0
+      with: 
+        path: .
+        options: --exclude=*.log
