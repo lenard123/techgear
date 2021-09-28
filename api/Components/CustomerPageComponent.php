@@ -11,11 +11,17 @@ class CustomerPageComponent extends BaseComponent
   public $description = null;
   public $js_data = [];
   public $scripts = [];
+  public $js_libraries = [];
 
   public function __construct($template)
   {
     $this->js_data['base_url'] = baseURL();
     $this->template = $template;
+  }
+
+  public function addJSLibrary($library)
+  {
+    array_push($this->js_libraries, $library);
   }
 
   public function addDescription($description)

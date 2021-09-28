@@ -99,6 +99,9 @@
 <script src="<?= url('assets/js/alpine.min.js') ?>" defer></script>
 <script src="<?= url('assets/js/app.js') ?>"></script>
 
+<?php foreach($layout->installed_libraries as $library) : ?>
+  <script src="<?= $library ?>"></script>
+<?php endforeach; ?>
 
 <script type="text/javascript">
 <?php foreach($js_data as $key => $value) : ?>
