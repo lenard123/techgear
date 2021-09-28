@@ -3,7 +3,7 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerLayoutComponent;
 use App\Models\Product;
 
 class SearchController extends BaseController
@@ -16,12 +16,12 @@ class SearchController extends BaseController
     $query = get('query');
     $result = Product::search($query);
 
-    $view = new CustomerPageComponent("search_result_page");
-    $view->addData("query", $query);
-    $view->addData("result", $result);
+    $view = new CustomerLayoutComponent("search_result_page");
+    $view->addContentData("query", $query);
+    $view->addContentData("result", $result);
     $view->setTitle("Search results for " . $query);
     
-    $this->renderCustomerLayout($view);
+    $this->render($view);
   }
 
 }

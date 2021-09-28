@@ -3,7 +3,7 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerLayoutComponent;
 
 class CategoryController extends BaseController
 {
@@ -17,12 +17,10 @@ class CategoryController extends BaseController
 
   public function __invoke()
   {
-    $category = $this->category;
+    $view = new CustomerLayoutComponent('category_page');
+    $view->setTitle($this->category->name);
+    $view->addContentData('category', $this->category);
 
-    $view = new CustomerPageComponent("category_page");
-    $view->setTitle($category->name);
-    $view->addData("category", $category);
-    
-    $this->renderCustomerLayout($view);
+    $this->render($view);
   }
 }

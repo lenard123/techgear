@@ -24,9 +24,10 @@ var fetchRegionLocation = /*#__PURE__*/function () {
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](0);
-            return _context.abrupt("return", {});
+            console.log('There is an errpr', _context.t0);
+            return _context.abrupt("return", undefined);
 
-          case 11:
+          case 12:
           case "end":
             return _context.stop();
         }
@@ -39,31 +40,29 @@ var fetchRegionLocation = /*#__PURE__*/function () {
   };
 }();
 
-var unwrap = function unwrap(data) {
-  return JSON.parse(JSON.stringify(data));
-};
-
 document.addEventListener('alpine:init', function () {
   Alpine.data('address', function () {
     return {
       all_location: {},
 
       get province_list() {
-        var region = this.all_location[this.selected_region];
-        if (region === undefined) return {};
-        return region.province_list;
+        var _this$all_location$th;
+
+        var province_list = (_this$all_location$th = this.all_location[this.selected_region]) === null || _this$all_location$th === void 0 ? void 0 : _this$all_location$th.province_list;
+        if (typeof province_list === 'undefined') return {};
+        return province_list;
       },
 
       get municipality_list() {
         var province_list = this.province_list;
         var province = province_list[this.selected_province];
-        if (province === undefined) return {};
+        if (typeof province === 'undefined') return {};
         return province.municipality_list;
       },
 
       get barangay_list() {
         var municipality = this.municipality_list[this.selected_municipality];
-        if (municipality === undefined) return [];
+        if (typeof municipality === 'undefined') return [];
         return municipality.barangay_list;
       },
 
@@ -88,7 +87,7 @@ document.addEventListener('alpine:init', function () {
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
-                    if (!(_this.all_location[selected] !== undefined)) {
+                    if (!(typeof _this.all_location[selected] !== 'undefined')) {
                       _context2.next = 2;
                       break;
                     }

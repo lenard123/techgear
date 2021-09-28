@@ -4,7 +4,7 @@ namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
 use App\Controllers\LocationController;
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerLayoutComponent;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Cart;
@@ -34,18 +34,18 @@ class CheckoutController extends BaseController
     if (count($carts) <= 0) {
       redirect("?page=cart");
     } else {
-      $view = new CustomerPageComponent("checkout_page");
+
+      $view = new CustomerLayoutComponent("checkout_page");
       $view->setTitle("Checkout");
-      $view->addData("user", $user);
-      $view->addData("user_info", $user_info);
-      $view->addData("carts", $carts);
-      $view->addData("subtotal", $subtotal);
-      $view->addData("total", $total);
-      $view->addData("regions", $regions);
-      $view->addData("validator", $validator);
-      $view->addScript(asset('js/promise-polyfill.min.js'));
-      $view->addScript(asset('js/axios.min.js'));
-      $view->addScript(asset('js/address.js'));
+      $view->addContentData("user", $user);
+      $view->addContentData("user_info", $user_info);
+      $view->addContentData("carts", $carts);
+      $view->addContentData("subtotal", $subtotal);
+      $view->addContentData("total", $total);
+      $view->addContentData("regions", $regions);
+      $view->addContentData("validator", $validator);
+      $view->addJSLibrary('axios');
+      $view->addCustomScript('js/address.js');
 
       if (!is_null($user_info->region) && LocationController::isValidRegion($user_info->region)) {
         $region = $user_info->region;
@@ -62,7 +62,7 @@ class CheckoutController extends BaseController
         }
       }
 
-      $this->renderCustomerLayout($view);
+      $this->render($view);
     }
   }
 

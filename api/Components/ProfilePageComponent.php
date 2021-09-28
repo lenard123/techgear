@@ -4,32 +4,25 @@ namespace App\Components;
 
 use App\Models\User;
 
-class ProfilePageComponent extends CustomerPageComponent
+class ProfilePageComponent extends BaseComponent
 {
-  protected $base_folder = 'templates/components/';
-  //protected $template = 'profile_page_layout';
-  protected $content;
+  protected $template = 'profile_page';
+  protected BaseComponent $content;
 
-  public function __construct($template)
+  public function __construct($content_template, $active_page = '')
   {
     $user = User::getCurrentUser();
-    $content = new BaseComponent($template, 'templates/customer/');
-    $this->content = $content;
+    $this->content = new BaseComponent($content_template, 'templates/customer/');
+
     $this->addData('user', $user);
-    $this->addData('content', $content);
+    $this->addData('content', $this->content);
     $this->addData("order_count", $user->countOrder());
     $this->addData("favorite_count", $user->countFavorites());
-    $this->addData("active", '');
-    parent::__construct('profile_page_layout');
+    $this->addData("active", $active_page);
   }
 
   public function addContentData($key, $value)
   {
     $this->content->addData($key, $value);
-  }
-
-  public function setActivePage($page)
-  {
-    $this->addData('active', $page);
   }
 }

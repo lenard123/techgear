@@ -3,7 +3,7 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerLayoutComponent;
 
 class ProductController extends BaseController
 {
@@ -19,10 +19,11 @@ class ProductController extends BaseController
   {
     $product = $this->product;
 
-    $view = new CustomerPageComponent("product_page");
-    $view->addDescription($product->description ?? $product->name);
+    $view = new CustomerLayoutComponent("product_page");
+    $view->addMetaData('description', $product->description ?? $product->name);
     $view->setTitle($product->name);
-    $view->addData("product", $product);
-    $this->renderCustomerLayout($view);
+    $view->addContentData("product", $product);
+
+    $this->render($view);
   }
 }

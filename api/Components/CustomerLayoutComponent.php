@@ -2,48 +2,22 @@
 
 namespace App\Components;
 
-class CustomerLayoutComponent extends BaseComponent
+class CustomerLayoutComponent extends LayoutComponent
 {
   protected $template = 'customer_layout';
 
-  private static $js_libraries = [
-    'popper' => [
-      'local' => 'js/popper.min.js',
-      'prod' => 'https://unpkg.com/@popperjs/core@2'
-    ],
-    'tippy' => [
-      'local' => 'js/tippy.min.js',
-      'prod' => 'https://unpkg.com/tippy.js@6',
-    ]
-  ];
+  public $header;
+  public $footer;
 
-  public $installed_libraries = [];
-
-  public function __construct(CustomerPageComponent $content)
+  public function __construct($content_template)
   {
-    $this->addData('layout', $this);
-    $this->addData("content", $content);
-    $this->addData("title", $content->title);
-    $this->addData("description", $content->description);
-    $this->addData("scripts", $content->scripts);
-    $this->addData("js_data", $content->js_data);
-    $this->addData("header", new CustomerHeaderComponent);
+    $this->header = new CustomerHeaderComponent;
+    $this->footer = new BaseComponent('customer_footer');
 
-    foreach($content->js_libraries as $library)
-      $this->addJSLibrary($library);
+    //this will render to every customer pages
+    $this->addCustomScript('js/app.js');
 
+    parent::__construct($content_template, 'templates/customer/');
   }
 
-  public function addJSLibrary($library)
-  {
-    if (!isset(self::$js_libraries[$library])) return;
-
-    if (SITE_ENV === 'LOCAL') {
-      $library = self::$js_libraries[$library]['local'];
-      array_push($this->installed_libraries, asset($library));
-    } else if (SITE_ENV === 'PRODUCTION') {
-      $library = self::$js_libraries[$library]['prod'];
-      array_push($this->installed_libraries, $library); 
-    }
-  }
 }

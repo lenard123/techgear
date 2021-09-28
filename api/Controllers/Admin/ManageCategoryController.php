@@ -25,7 +25,7 @@ class ManageCategoryController extends BaseController
     $view = new AdminLayoutComponent("category_page");
     $view->addContentData("categories", $categories);
     $view->addJSData('active_page', 'category');
-    $view->addScript(asset("js/admin-category.js"));
+    $view->addCustomScript("js/admin-category.js");
 
     $this->render($view);
   }

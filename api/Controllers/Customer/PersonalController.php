@@ -5,6 +5,7 @@ namespace App\Controllers\Customer;
 use App\Controllers\BaseController;
 use App\Controllers\LocationController;
 use App\Components\ProfilePageComponent;
+use App\Components\CustomerLayoutComponent;
 use App\Models\User;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
@@ -27,16 +28,16 @@ class PersonalController extends BaseController
   {
     $regions = LocationController::$regions;
 
-    $view = new ProfilePageComponent("personal_page");
-    $view->setActivePage("personal");
-    $view->setTitle("Personal Info");
-    $view->addContentData("user", $this->user);
-    $view->addContentData("user_info", $this->user_info);
-    $view->addContentData("regions", $regions);
-    $view->addContentData("validator", $this->validator);
-    $view->addScript(asset('js/promise-polyfill.min.js'));
-    $view->addScript(asset('js/axios.min.js'));
-    $view->addScript(asset('js/address.js'));
+    $page = new ProfilePageComponent('personal_page', 'personal');
+    $page->addContentData('user', $this->user);
+    $page->addContentData('user_info', $this->user_info);
+    $page->addContentData('regions', $regions);
+    $page->addContentData('validator', $this->validator);
+
+    $view = new CustomerLayoutComponent($page);
+    $view->setTitle('Personal Info');
+    $view->addJSLibrary('axios');
+    $view->addCustomScript('js/address.js');
 
 
     if (!is_null($this->user_info->region) && LocationController::isValidRegion($this->user_info->region))
@@ -58,7 +59,7 @@ class PersonalController extends BaseController
       }
     }
 
-    $this->renderCustomerLayout($view);
+    $this->render($view);
   }
 
   public function patch()

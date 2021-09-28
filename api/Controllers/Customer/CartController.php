@@ -3,7 +3,7 @@
 namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
-use App\Components\CustomerPageComponent;
+use App\Components\CustomerLayoutComponent;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\User;
@@ -17,16 +17,16 @@ class CartController extends BaseController
     $subtotal = Cart::calculateSubtotal($carts);
     $total = SITE_SHIPPING_FEE + $subtotal;
 
-    $view = new CustomerPageComponent("cart_page");
-    $view->setTitle("Shopping Cart");
-    $view->addData("carts", $carts);
-    $view->addData("subtotal", $subtotal);
-    $view->addData("total", $total);
+    $view = new CustomerLayoutComponent('cart_page');
+    $view->setTitle('Shopping Cart');
+    $view->addContentData('carts', $carts);
+    $view->addContentData('subtotal', $subtotal);
+    $view->addContentData('total', $total);
     $view->addJSLibrary('popper');
     $view->addJSLibrary('tippy');
-    $view->addScript(asset('js/cart.js'));
+    $view->addCustomScript('js/cart.js');
 
-    $this->renderCustomerLayout($view);
+    $this->render($view);
   }
 
   public function put()

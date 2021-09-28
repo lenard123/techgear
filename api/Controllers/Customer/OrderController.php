@@ -5,6 +5,7 @@ namespace App\Controllers\Customer;
 use App\Controllers\BaseController;
 use App\Models\User;
 use App\Components\ProfilePageComponent;
+use App\Components\CustomerLayoutComponent;
 
 class OrderController extends BaseController
 {
@@ -12,10 +13,12 @@ class OrderController extends BaseController
   {
     $orders = User::getCurrentUser()->getOrders();
 
-    $view = new ProfilePageComponent('order_page');
-    $view->setTitle("Orders");
-    $view->setActivePage('order');
-    $view->addContentData("orders", $orders);
-    $this->renderCustomerLayout($view);
+    $profilePage = new ProfilePageComponent('order_page', 'order');
+    $profilePage->addContentData('orders', $orders);
+
+    $view = new CustomerLayoutComponent($profilePage);
+    $view->setTitle('Orders');
+
+    $this->render($view);
   }
 }

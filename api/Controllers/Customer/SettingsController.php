@@ -4,6 +4,7 @@ namespace App\Controllers\Customer;
 
 use App\Controllers\BaseController;
 use App\Components\ProfilePageComponent;
+use App\Components\CustomerLayoutComponent;
 use App\Utils\AlertMessage;
 use App\Utils\ValidatorList;
 use App\Models\User;
@@ -22,12 +23,15 @@ class SettingsController extends BaseController
 
   public function get()
   {
-    $view = new ProfilePageComponent("settings_page");
-    $view->setTitle("Settings");
-    $view->addContentData("validator", $this->validator);
-    $view->addContentData("user", $this->user);
 
-    $this->renderCustomerLayout($view);
+    $page = new ProfilePageComponent('settings_page');
+    $page->addContentData('validator', $this->validator);
+    $page->addContentData('user', $this->user);
+
+    $view = new CustomerLayoutComponent($page);
+    $view->setTitle('Settings');
+
+    $this->render($view);
   }
 
   public function patch()
