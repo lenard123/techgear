@@ -4,6 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/api/start.php';
 
 use App\Utils\AlertMessage;
+use App\Utils\Caching\Cache;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (post('password') == 'reset_database') {
@@ -24,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $migration->prepareEnvironment();
 
     $migration->reset();
+    
+    Cache::flush();
   } else {
     AlertMessage::failed('Wrong Password!');
   }
