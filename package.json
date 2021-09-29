@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "build": "babel assets/src/es6 -d assets/js",
-    "watch": "babel assets/src/es6 -d assets/js --watch"
+    "js-build": "babel assets/src/es6 -d assets/js",
+    "js-watch": "babel assets/src/es6 -d assets/js --watch",
+    "css-build": "tailwind -o assets/css/tailwind.css"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
