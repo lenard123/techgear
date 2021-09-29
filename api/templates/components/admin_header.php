@@ -11,11 +11,14 @@
         </svg>
       </a>
 
-      <input 
-        class="py-2 px-3 bg-gray-50 rounded focus:outline-none focus:border-blue-500 border border-gray-50"
-        type="text" 
-        name="" 
-        placeholder="Search Everywhere">
+      <!-- Darkmode Toggler -->
+      <button 
+        class="border border-gray-300 rounded text-gray-700 px-3 py-2 hover:bg-gray-50"
+        type="button"
+      >
+        Lights off?
+      </button>
+
     </form>
 
     <div class="dropdown relative text-gray-900 hover:text-blue-500 cursor-pointer">
