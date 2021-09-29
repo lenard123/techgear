@@ -1,7 +1,7 @@
 <?php
 
 //url || path
-define('BASE_FOLDER', 'online-store');
+define('BASE_FOLDER', 'online-store/public');
 define('ROOT_PATH', dirname(__DIR__));
 define('API_PATH', __DIR__ . '/');
 
