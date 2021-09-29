@@ -4,9 +4,12 @@ on:
   push:
     branches: [main]
     paths: 
-      - '*.js'
-      - '*.css'
-      - '*.php'
+      - '**.js'
+      - '**.css'
+      - '**.php'
+      - 'admin/**'
+      - 'api/**'
+      - 'assets/**'
       - 'storage/**'
       
 
@@ -15,6 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
+      - uses: overtrue/phplint@8.0
+        with:
+          path: .
+          options: --exclude=*.log
       - run: |
           git config user.name lenard123
           git config user.email lenard.mangayayam@gmail.com

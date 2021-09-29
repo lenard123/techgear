@@ -4,13 +4,14 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - '*.php'
+      - '**.php'
 
 jobs:
-  test:
+  phplint:
     runs-on: ubuntu-latest
     steps:
-    - uses: overtrue/phplint@8.0
-      with: 
-        path: .
-        options: --exclude=*.log
+      - uses: actions/checkout@v2
+      - uses: overtrue/phplint@8.0
+        with:
+          path: .
+          options: --exclude=*.log
