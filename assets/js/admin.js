@@ -1,18 +1,27 @@
 "use strict";
 
 document.addEventListener('alpine:init', function () {
-  Alpine.store('isSidebarOpen', false);
+  Alpine.store('isSidebarOpen', false); //Darkmode Toggler
+
   Alpine.store('darkmode', {
-    enabled: true,
+    enabled: false,
     init: function init() {
-      this.applyChanges();
-    },
-    applyChanges: function applyChanges() {
-      console.log(this.enabled);
-      if (this.enabled) document.documentElement.classList.add('dark');else document.documentElement.classList.remove('dark');
+      if (localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        this.enabled = true;
+      } else {
+        this.enabled = false;
+      }
     },
     toggle: function toggle() {
       this.enabled = !this.enabled;
+
+      if (this.enabled) {
+        localStorage.theme = 'dark';
+        document.documentElement.classList.add('dark');
+      } else {
+        localStorage.theme = 'light';
+        document.documentElement.classList.remove('dark');
+      }
     }
   });
   if (typeof window.php_active_page === 'undefined') window.php_active_page = null;

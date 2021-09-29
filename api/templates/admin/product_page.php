@@ -8,13 +8,13 @@
   </div>
 </section>
 
-<header class="bg-white p-6">
+<header class="bg-white dark:bg-gray-900 p-6">
   <h1 class="text-3xl font-semibold leading-tight">Manage Products</h1>
 </header>
 
 <main class="md:px-6 py-6">
 
-  <div class="bg-white border border-gray-200">
+  <div class="bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-700">
 
     <header class="flex items-center font-bold py-3 px-4">
       <span class="inline-flex justify-center items-center w-6 h-6 mr-3">
@@ -25,16 +25,16 @@
       <span>All Products</span>
     </header>
 
-    <div class="hidden md:grid text-sm py-2 px-5 font-bold grid-cols-12 border-b border-gray-200">
+    <div class="hidden md:grid text-sm py-2 px-5 font-bold grid-cols-12 border-b border-gray-200 dark:border-gray-700">
       <p class="col-span-5">Name</p>
       <p class="col-span-3">Info</p>
       <p class="col-span-2">Stocks</p>
       <p class="col-span-2 text-right px-1">Actions</p>
     </div>
 
-    <div class="table-rows">
+    <div class="table-rows dark:text-gray-300">
       <?php foreach($products as $product) : ?>
-        <div class="py-4 px-5 text-sm grid grid-cols-12 border-b border-gray-200 hover:bg-gray-50">
+        <div class="py-4 px-5 text-sm grid grid-cols-12 border-b border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
           <div class="col-span-5">
             <div class="flex">
               <img 

@@ -7,7 +7,7 @@
   </div>
 </section>
 
-<header class="bg-white p-6">
+<header class="bg-white dark:bg-gray-900 p-6">
   <h1 class="text-3xl font-semibold leading-tight">Dashboard</h1>
 </header>
 
@@ -15,11 +15,12 @@
 
   <div class="grid gap-6 lg:grid-cols-3 mb-6">
 
-    <div class="bg-white p-6 shadow">
+    <!-- Customer Card -->
+    <div class="bg-white dark:bg-gray-900 p-6 shadow">
       <div class="flex justify-between items-center">
         <div>
-          <p class="text-lg text-gray-500">Customers</p>
-          <p class="text-3xl font-semibold text-black">243</p>
+          <p class="text-lg text-gray-400">Customers</p>
+          <p class="text-3xl font-semibold text-black dark:text-gray-50">243</p>
         </div>
         <div>
           <span class="text-green-500">
@@ -29,11 +30,12 @@
       </div>
     </div>
 
-    <div class="bg-white p-6 shadow">
+    <!-- Sales Card -->
+    <div class="bg-white dark:bg-gray-900 p-6 shadow">
       <div class="flex justify-between items-center">
         <div>
           <p class="text-lg text-gray-500">Sales</p>
-          <p class="text-3xl lg:text-xl xl:text-3xl font-semibold text-black"><?= money(125599) ?></p>
+          <p class="text-3xl lg:text-xl xl:text-3xl font-semibold text-black dark:text-gray-50"><?= money(125599) ?></p>
         </div>
         <div>
           <span class="text-blue-500">
@@ -46,11 +48,12 @@
       </div>
     </div>
 
-    <div class="bg-white p-6 shadow">
+    <!-- Orders Card -->
+    <div class="bg-white dark:bg-gray-900 p-6 shadow">
       <div class="flex justify-between items-center">
         <div>
           <p class="text-lg text-gray-500">Orders</p>
-          <p class="text-3xl font-semibold text-black">17</p>
+          <p class="text-3xl font-semibold text-black dark:text-gray-50">17</p>
         </div>
         <div>
           <span class="text-yellow-500">
@@ -63,7 +66,7 @@
     </div>
   </div>
 
-  <div class="bg-white border border-gray-200">
+  <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
 
     <header class="flex items-center font-bold py-3 px-4">
       <span class="inline-flex justify-center items-center w-6 h-6 mr-3">
@@ -74,16 +77,16 @@
       <span>Best Selling Products</span>
     </header>
 
-    <div class="hidden md:grid text-sm py-2 px-5 font-bold grid-cols-12 border-b border-gray-200">
+    <div class="hidden md:grid text-sm py-2 px-5 font-bold grid-cols-12 border-b border-gray-200 dark:border-gray-700">
       <p class="col-span-5">Name</p>
       <p class="col-span-3">Info</p>
       <p class="col-span-2">Stocks</p>
       <p class="col-span-2 text-right px-1">Actions</p>
     </div>
 
-    <div class="table-rows">
+    <div class="table-rows dark:text-gray-300">
       <?php foreach($featured_products as $product) : ?>
-        <div class="py-4 px-5 text-sm grid grid-cols-12 border-b border-gray-200 hover:bg-gray-50">
+        <div class="py-4 px-5 text-sm grid grid-cols-12 border-b border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
           <div class="col-span-5">
             <div class="flex">
               <img 
