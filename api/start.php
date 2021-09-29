@@ -1,5 +1,6 @@
+This Should Fail
 <?php
-
+VVVV
 require_once "init.php";
 
 use App\Utils\NotFoundException;
