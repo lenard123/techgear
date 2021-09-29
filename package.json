@@ -9,6 +9,7 @@
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "autoprefixer": "^10.3.6",
+    "cross-env": "^7.0.3",
     "postcss": "^8.3.8",
     "tailwindcss": "^2.2.16"
   },
