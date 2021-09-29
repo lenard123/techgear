@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
   <meta charset="utf-8">
   <title>Reset Database</title>
-  <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.min.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.css') ?>">
 </head>
 <body class="bg-gray-50 px-3">
 
