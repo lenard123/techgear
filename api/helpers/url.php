@@ -2,10 +2,15 @@
 
 function baseURL()
 {
-  $protocol = isSecure() ? 'https://' : 'http://';
-  $host = $_SERVER['HTTP_HOST'];
-  $path = empty(BASE_FOLDER) ? BASE_FOLDER : BASE_FOLDER . '/';
-  return $protocol . $host . '/' . $path;
+  static $baseURL = null;
+  if (is_null($baseURL)) {
+    $protocol = isSecure() ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'];
+    $path = empty(BASE_FOLDER) ? BASE_FOLDER : BASE_FOLDER . '/';
+    $baseURL = $protocol . $host . '/' . $path;
+  }
+
+  return $baseURL;
 }
 
 function url($path = '')

@@ -27,6 +27,9 @@ function request($key)
 
 function isSecure()
 {
+  static $isSecure = null;
+
+  if (is_null($isSecure)) {
     if (
         ( ! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
         || ( ! empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
@@ -35,10 +38,12 @@ function isSecure()
         || (isset($_SERVER['HTTP_X_FORWARDED_PORT']) && $_SERVER['HTTP_X_FORWARDED_PORT'] == 443)
         || (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'https')
     ) {
-        return true;
+      $isSecure = true;
     } else {
-        return false;
+      $isSecure = false;
     }
+  }
+  return $isSecure;
 }
 
 function user()
