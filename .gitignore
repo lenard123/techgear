@@ -9,4 +9,5 @@ ehthumbs.db
 Thumbs.db
 /static
 /node_modules
+/vendor
 *.cache
