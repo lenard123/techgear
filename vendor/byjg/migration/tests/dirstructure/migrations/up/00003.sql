@@ -1,1 +1,0 @@
-select something from sometable;
