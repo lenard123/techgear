@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "babel assets/es6 -d assets/js",
-    "watch": "babel assets/es6 -d assets/js --watch"
+    "build": "babel assets/src/es6 -d assets/js",
+    "watch": "babel assets/src/es6 -d assets/js --watch"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

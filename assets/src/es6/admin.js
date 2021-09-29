@@ -2,6 +2,26 @@
 document.addEventListener('alpine:init', function () {
   Alpine.store('isSidebarOpen', false)
 
+  Alpine.store('darkmode', {
+    enabled: true,
+
+    init() {
+      this.applyChanges()
+    },
+
+    applyChanges() {
+      console.log(this.enabled)
+      if (this.enabled)
+        document.documentElement.classList.add('dark')
+      else
+        document.documentElement.classList.remove('dark')
+    },
+
+    toggle() {
+      this.enabled = !this.enabled
+    }
+  })
+
   if (typeof window.php_active_page === 'undefined')  
     window.php_active_page = null
 

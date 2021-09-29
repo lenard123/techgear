@@ -2,6 +2,19 @@
 
 document.addEventListener('alpine:init', function () {
   Alpine.store('isSidebarOpen', false);
+  Alpine.store('darkmode', {
+    enabled: true,
+    init: function init() {
+      this.applyChanges();
+    },
+    applyChanges: function applyChanges() {
+      console.log(this.enabled);
+      if (this.enabled) document.documentElement.classList.add('dark');else document.documentElement.classList.remove('dark');
+    },
+    toggle: function toggle() {
+      this.enabled = !this.enabled;
+    }
+  });
   if (typeof window.php_active_page === 'undefined') window.php_active_page = null;
   Alpine.store('page', window.php_active_page);
   Alpine.data('toggler', function () {
