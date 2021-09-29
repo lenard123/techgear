@@ -41,6 +41,11 @@ abstract class LayoutComponent extends BaseComponent
       'local' => 'lib/axios.min.js',
       'prod' => 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js',
     ],
+    'alpine-collapse' => [
+      'local' => 'lib/alpine-collapse.min.js',
+      'prod' => 'https://unpkg.com/@alpinejs/collapse@3.4.2/dist/cdn.min.js',
+      'defer' => true,
+    ],
   ];
 
   public function __construct($content, $base_folder = null)
