@@ -4,7 +4,7 @@ function baseURL()
 {
   static $baseURL = null;
   if (is_null($baseURL)) {
-    $protocol = isSecure() ? 'https://' : 'http://';
+    $protocol = SITE_ENV === 'PRODUCTION' ? 'https://' : 'http://';
     $host = $_SERVER['HTTP_HOST'];
     $path = empty(BASE_FOLDER) ? BASE_FOLDER : BASE_FOLDER . '/';
     $baseURL = $protocol . $host . '/' . $path;
