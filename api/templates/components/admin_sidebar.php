@@ -70,7 +70,7 @@
             </div>
           </a>
 
-          <div class="sidebar-dropdown-menu bg-gray-900 text-sm">
+          <div x-show="isOpen" x-collapse class="bg-gray-900 text-sm">
             <a 
               class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
               href="<?= admin('?page=products-add') ?>">Add New Product</a>

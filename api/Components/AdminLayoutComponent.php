@@ -13,6 +13,9 @@ class AdminLayoutComponent extends LayoutComponent
     $this->header = new BaseComponent('admin_header');
     $this->sidebar = new BaseComponent('admin_sidebar');
 
+    //Add Library
+    $this->addJSLibrary('alpine-collapse');
+
     //Admin Scripts
     $this->addCustomScript('js/admin.js');
 
