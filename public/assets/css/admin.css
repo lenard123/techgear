@@ -1,0 +1,45 @@
+#sidebar {
+  scrollbar-width: thin;
+  --scrollbar-thumb: #4b5563 !important;
+  transition: left 300ms ease;
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+.sidebar-dropdown-menu {
+  display: none;
+}
+
+.sidebar-dropdown.active .sidebar-dropdown-menu{
+  display: block;
+}
+
+.sidebar-dropdown .caret {
+  transition: transform 300ms ease;
+}
+
+.sidebar-dropdown.active .caret {  
+  transform: rotateZ(90deg);
+}
+
+.breadcrumbs  li:not(:last-child)::after {
+  content: "/";
+  display: inline-block;
+  padding: 0 .75rem;
+}
+
+.breadcrumbs li:last-child {
+  font-weight: 600;
+}
+
+.table-rows > div:last-child {
+  border-bottom-width: 0;
+}
+
+/* Toggle B */
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #2563EB;
+}

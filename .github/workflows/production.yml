@@ -22,19 +22,17 @@ jobs:
         with:
           path: .
           options: --exclude=*.log
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
       - run: |
           git config user.name lenard123
           git config user.email lenard.mangayayam@gmail.com
           git checkout -b production
-      - run: |
+          npm ci
+          npm run css-prod
           cp api/config.production.php api/config.php
-          mkdir public
-          mv admin public/admin
-          mv index.php public/index.php
-          mv assets public/assets
-          mv storage public/storage
-          mv api.php public/api.php
-          mv loader.php public/loader.php
+      - run: |
           git add .
-          git commit -m "Use Production config"
+          git commit -m "Use Production config and Build Tailwind CSS"
           git push --set-upstream origin production --force

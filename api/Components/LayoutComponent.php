@@ -22,23 +22,23 @@ abstract class LayoutComponent extends BaseComponent
    **/
   private static $libraries = [
     'popper' => [
-      'local' => 'js/lib/popper.min.js',
+      'local' => 'lib/popper.min.js',
       'prod' => 'https://unpkg.com/@popperjs/core@2',
     ],
     'tippy' => [
-      'local' => 'js/lib/tippy.min.js',
+      'local' => 'lib/tippy.min.js',
       'prod' => 'https://unpkg.com/tippy.js@6',
     ],
     'babel-polyfill' => [
-      'local' => 'js/lib/babel-polyfill.min.js'
+      'local' => 'lib/babel-polyfill.min.js'
     ],
     'alpine' => [
-      'local' => 'js/lib/alpine.min.js',
+      'local' => 'lib/alpine.min.js',
       'prod' => 'https://unpkg.com/alpinejs@3.4.1/dist/cdn.min.js',
       'defer' => true
     ],
     'axios' => [
-      'local' => 'js/lib/axios.min.js',
+      'local' => 'lib/axios.min.js',
       'prod' => 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js',
     ],
   ];
