@@ -1,7 +1,6 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/api/start.php';
+require_once '../api/start.php';
 
 use App\Utils\AlertMessage;
 use App\Utils\Caching\Cache;
@@ -77,8 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?= AlertMessage::render(); ?>
 
-<script src="<?= url('assets/js/babel-polyfill.min.js') ?>"></script>
-<script src="<?= url('assets/js/alpine.min.js') ?>" defer></script>
+<script src="<?= url('assets/lib/babel-polyfill.min.js') ?>"></script>
+<script src="<?= url('assets/lib/alpine.min.js') ?>" defer></script>
 <script src="<?= url('assets/js/app.js') ?>"></script>
 
 </body>
