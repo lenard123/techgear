@@ -2,7 +2,7 @@
   "scripts": {
     "js-build": "babel front-end/es6 -d public/assets/js",
     "js-watch": "babel front-end/es6 -d public/assets/js --watch",
-    "css-build": "tailwind -o assets/css/tailwind.css"
+    "css-build": "tailwind -o public/assets/css/tailwind.css"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
