@@ -8,8 +8,8 @@
   </div>
 </section>
 
-<header class="bg-white p-6">
-  <h1 class="text-3xl font-semibold leading-tight">Add New Products</h1>
+<header class="bg-white p-6 dark:bg-gray-900">
+  <h1 class="text-3xl font-semibold leading-tight">Add New Product</h1>
 </header>
 
 <main class="sm:px-6 py-6">
@@ -19,8 +19,8 @@
     <div class="xl:col-span-2">
 
       <!-- Product Info -->
-      <div class="bg-white mb-6 border border-gray-200 rounded">
-        <header class="font-semibold py-3 px-4 border-b border-gray-200">
+      <div class="bg-white mb-6 border border-gray-200 rounded dark:bg-gray-900 dark:border-gray-700">
+        <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
           <span>Product Information</span>
         </header>
         <div class="p-6">
@@ -35,7 +35,7 @@
             </div>
             <div class="md:col-span-8">
               <input 
-                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold"
+                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
                 type="text"
                 placeholder="Product name" 
                 name="name"
@@ -53,7 +53,7 @@
             </div>
             <div class="md:col-span-8">
               <select
-                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold"
+                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
                 name="category_id"
                 required="">
                 <option>Option 1</option>
@@ -80,7 +80,7 @@
                 <!-- input -->
                 <input type="checkbox" id="toggleB" class="sr-only">
                 <!-- line -->
-                <div class="block bg-gray-200 w-10 h-6 rounded-full"></div>
+                <div class="block bg-gray-200 w-10 h-6 rounded-full dark:bg-gray-800"></div>
                 <!-- dot -->
                 <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
               </div>
@@ -93,14 +93,14 @@
       </div>
 
       <!-- Product Image -->
-      <div class="bg-white mb-6 border border-gray-200 rounded">
-        <header class="font-semibold py-3 px-4 border-b border-gray-200">
+      <div class="bg-white mb-6 border border-gray-200 rounded dark:bg-gray-900 dark:border-gray-700">
+        <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
           <span>Product Image</span>
         </header>
 
         <div class="p-6">
           <div class="flex items-center justify-center w-full">
-              <label class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
+              <label class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300 dark:hover:bg-gray-800 dark:hover:border-gray-600">
                   <div class="flex flex-col items-center justify-center pt-7">
                       <svg xmlns="http://www.w3.org/2000/svg"
                           class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
@@ -119,8 +119,8 @@
       </div>
 
       <!-- Product Description -->
-      <div class="bg-white border border-gray-200 rounded">
-        <header class="font-semibold py-3 px-4 border-b border-gray-200">
+      <div class="bg-white border border-gray-200 rounded dark:bg-gray-900 dark:border-gray-700">
+        <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
           <span>Product Description</span>
         </header>
 
@@ -133,7 +133,7 @@
                 <span class="text-red-500">*</span>
               </label>
             </div>
-            <div class="md:col-span-9">
+            <div class="md:col-span-9 text-gray-900">
               <textarea id="editor"></textarea>
             </div>
           </div>
@@ -146,8 +146,8 @@
     <div>
 
       <!-- Product Price + Stock -->
-      <div class="bg-white mb-6 border border-gray-200 rounded">
-        <header class="font-semibold py-3 px-4 border-b border-gray-200">
+      <div class="bg-white mb-6 border border-gray-200 rounded dark:bg-gray-900 dark:border-gray-700">
+        <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
           <span>Product Price + Stock</span>
         </header>
 
@@ -162,7 +162,7 @@
             </div>
             <div class="md:col-span-8">
               <input 
-                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold"
+                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
                 type="number"
                 placeholder="price" 
                 name="name"
@@ -179,7 +179,7 @@
             </div>
             <div class="md:col-span-8">
               <input 
-                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold"
+                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
                 type="number"
                 placeholder="Quantity" 
                 name="name"

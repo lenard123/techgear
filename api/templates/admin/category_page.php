@@ -7,12 +7,12 @@
   </div>
 </section>
 
-<header class="bg-white p-6">
+<header class="bg-white dark:bg-gray-900 p-6">
   <h1 class="text-3xl font-semibold leading-tight">Manage Categories</h1>
 </header>
 
 <main class="md:px-6 py-6">
-  <div class="bg-white border border-gray-200">
+  <div class="bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-700">
     <header class="flex items-center font-bold py-3 px-4">
       <span class="inline-flex justify-center items-center w-6 h-6 mr-3">
         <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" height="16" width="16" viewBox="0 0 512 512" fill="currentColor">
@@ -22,16 +22,16 @@
       <span>Categories</span>
     </header>
 
-    <div class="hidden md:grid py-2 px-5 font-bold grid-cols-6 border-b border-gray-200">
+    <div class="hidden md:grid py-2 px-5 font-bold grid-cols-6 border-b border-gray-200 dark:border-gray-700">
       <p class="col-span-3">Name</p>
       <p>Products</p>
       <p>Created</p>
       <p class="text-right">Action</p>
     </div>
 
-    <div class="table-rows">
+    <div class="table-rows dark:text-gray-300">
       <?php foreach($categories as $category) : ?>
-        <div x-data="category" class="category-item py-2 px-5 grid bg-white hover:bg-gray-50 grid-cols-6 border-b border-gray-200">
+        <div x-data="category" class="category-item py-2 px-5 grid hover:bg-gray-50 grid-cols-6 border-b border-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
           <div class="col-span-5 md:col-span-3">
             <template x-if="!isActive">
               <span><?= __($category->name) ?></span>
@@ -44,7 +44,7 @@
               >
                 <?= __method('PATCH') ?>
                 <input
-                  class="rounded py-1 px-2 border border-gray-200" 
+                  class="rounded py-1 px-2 border border-gray-200 dark:bg-gray-900 dark:border-gray-700" 
                   type="text"
                   name="name"
                   value="<?= __($category->name) ?>"

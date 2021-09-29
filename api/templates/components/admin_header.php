@@ -1,24 +1,31 @@
-<header class="fixed top-0 left-0 right-0 bg-white lg:pl-60 shadow z-20" style="height: 60px">
+<header class="fixed top-0 left-0 right-0 bg-white lg:pl-60 shadow z-20 dark:bg-gray-900" style="height: 60px">
 
   <div class="flex items-center justify-between py-2 px-3 h-full">
 
     <form class="flex items-center">
 
       <!-- Burger to Toggle Sidebar -->
-      <a x-data @click="$store.isSidebarOpen = !$store.isSidebarOpen" class="lg:hidden cursor-pointer my-2">
+      <a 
+        x-data @click="$store.isSidebarOpen = !$store.isSidebarOpen" 
+        class="lg:hidden cursor-pointer my-2 mr-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </a>
 
-      <input 
-        class="py-2 px-3 bg-gray-50 rounded focus:outline-none focus:border-blue-500 border border-gray-50"
-        type="text" 
-        name="" 
-        placeholder="Search Everywhere">
+      <!-- Darkmode Toggler -->
+      <button 
+        x-data
+        @click="$store.darkmode.toggle()"
+        class="border border-gray-300 rounded text-gray-700 px-3 py-2 dark:bg-gray-900 dark:text-gray-300"
+        type="button"
+        x-text="$store.darkmode.enabled ? 'Lights on?' : 'Lights off?'"
+      >
+      </button>
+
     </form>
 
-    <div class="dropdown relative text-gray-900 hover:text-blue-500 cursor-pointer">
+    <div class="dropdown relative text-gray-900 dark:text-gray-50 hover:text-blue-500  dark:hover:text-blue-500 cursor-pointer">
 
       <a class="flex items-center py-2 px-3">
         <div class="w-8 h-8 mr-3 inline-flex">

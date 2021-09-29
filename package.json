@@ -1,12 +1,16 @@
 {
   "scripts": {
-    "build": "babel assets/es6 -d assets/js",
-    "watch": "babel assets/es6 -d assets/js --watch"
+    "js-build": "babel assets/src/es6 -d assets/js",
+    "js-watch": "babel assets/src/es6 -d assets/js --watch",
+    "css-build": "tailwind -o assets/css/tailwind.css"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6"
+    "@babel/preset-env": "^7.15.6",
+    "autoprefixer": "^10.3.6",
+    "postcss": "^8.3.8",
+    "tailwindcss": "^2.2.16"
   },
   "babel": {
     "presets": [
