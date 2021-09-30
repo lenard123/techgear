@@ -45,4 +45,14 @@ class BaseComponent
     return ob_get_clean();
   }
 
+  /**
+   * Registered Components
+   * So it can be easily used in templates
+   * ```
+   * template($componentKey, ...$args)
+   * ```
+   **/ 
+  public static $reusables = [
+    'product.card' => ProductCardComponent::class,
+  ];
 }
