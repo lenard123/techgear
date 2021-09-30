@@ -7,10 +7,7 @@ on:
       - '**.js'
       - '**.css'
       - '**.php'
-      - 'admin/**'
-      - 'api/**'
-      - 'assets/**'
-      - 'storage/**'
+      - 'public/**' 
       
 
 jobs:
