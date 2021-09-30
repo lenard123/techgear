@@ -7,10 +7,11 @@ use App\Utils\Caching\Cache;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (post('password') == 'reset_database') {
-    $user = DB_USER;
-    $pass = empty(DB_PASS) ? '' : ':' . DB_PASS;
-    $host = DB_HOST;
-    $db = DB_DATABASE;
+
+    $host = config('db.host');
+    $user = config('db.user');
+    $pass = empty(config('db.pass')) ? '' : ':' . config('db.pass');
+    $db   = config('db.database');
 
     $uri = new \ByJG\Util\Uri("mysql://{$user}{$pass}@{$host}/{$db}");
 

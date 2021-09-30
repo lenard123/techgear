@@ -31,7 +31,6 @@ jobs:
           git checkout -b production
           npm ci
           npm run css-prod
-          cp api/config.production.php api/config.php
       - run: |
           git add .
           git commit -m "Use Production config and Build Tailwind CSS"

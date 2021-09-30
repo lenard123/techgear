@@ -11,6 +11,23 @@ function resolve_dir($path)
 }
 
 
+function config($configKey, $default = null)
+{
+  static $configurations = null;
+  
+  if (is_null($configurations)) {
+    $configurations = require(API_PATH . 'config/config.php');
+  }
+
+  $params = explode(".", $configKey);
+
+  if (count($params) !== 2) {
+    throw new Exception("Config Parameters must be separated by (.)");
+  }
+
+  return $configurations[$params[0]][$params[1]];
+}
+
 function view($template, $data = []) {
   foreach ($data as $key => $value) 
     $$key = $value;

@@ -145,7 +145,7 @@ abstract class LayoutComponent extends BaseComponent
 
     $sources = self::$libraries[$library];
 
-    if (SITE_ENV === 'PRODUCTION') 
+    if (config('app.env') === 'PRODUCTION') 
       return $sources['prod'] ?? asset($sources['local']);
 
     return asset($sources['local']);

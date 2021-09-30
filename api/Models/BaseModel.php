@@ -9,7 +9,13 @@ class BaseModel {
   static function getConnection()
   {
     if (is_null(self::$connection)) {
-      self::$connection = new \mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+
+      $host = config('db.host');
+      $user = config('db.user');
+      $pass = config('db.pass');
+      $db   = config('db.database');
+
+      self::$connection = new \mysqli($host, $user, $pass, $db);
       if (self::$connection->connect_error) {
         die("Error Connecting to database: ". self::$connection->connect_error);
       }

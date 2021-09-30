@@ -94,7 +94,7 @@ class CacheFileProvider extends CacheProvider
   public function put(string $key, string $value, ?int $expiration = null) : void
   {
     $key = md5($key);
-    $expiration = $expiration ?? CACHE_EXPIRATION; 
+    $expiration = $expiration ?? config('cache.expiration'); 
     $filename = $key . '_' . $expiration . '.cache';
     $filepath = $this->getFileFullPath($filename);
     file_put_contents($filepath, $value);

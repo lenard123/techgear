@@ -6,16 +6,16 @@ class Cache
 {
   public static function getProvider() : CacheProvider
   {
-    return self::store(CACHE_PROVIDER);
+    return self::store(config('cache.provider'));
   }
 
   public static function store($provider_key)
   {
-    if (CACHE_ENABLED) {
+    if (config('cache.enabled')) {
       if ($provider_key == 'file') {
-        return new CacheFileProvider(CACHE_FILE_DIR);
+        return new CacheFileProvider(config('cache.file_dir'));
       } else if ($provider_key == 'redis') {
-        return new CacheRedisProvider(CACHE_REDIS_URL);
+        return new CacheRedisProvider(config('cache.redis_url'));
       }
     }
     return new CacheProvider; //Empty Cache Provider
