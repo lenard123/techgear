@@ -4,9 +4,10 @@ function baseURL()
 {
   static $baseURL = null;
   if (is_null($baseURL)) {
-    $protocol = SITE_ENV === 'PRODUCTION' ? 'https://' : 'http://';
+    $base_folder = config('app.folder');
+    $protocol = config('app.env') === 'PRODUCTION' ? 'https://' : 'http://';
     $host = $_SERVER['HTTP_HOST'];
-    $path = empty(BASE_FOLDER) ? BASE_FOLDER : BASE_FOLDER . '/';
+    $path = empty($base_folder) ? $base_folder : $base_folder . '/';
     $baseURL = $protocol . $host . '/' . $path;
   }
 

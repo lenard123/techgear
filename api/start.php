@@ -2,6 +2,10 @@
 
 require_once "init.php";
 
+$session_options = [];
+$session_options["cookie_samesite"] = "Lax";
+session_start($session_options);
+
 use App\Utils\NotFoundException;
 use App\Utils\Route;
 

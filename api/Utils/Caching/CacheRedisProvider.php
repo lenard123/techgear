@@ -64,6 +64,6 @@ class CacheRedisProvider extends CacheProvider
   public function put(string $key, string $value, ?int $expiration = null) : void
   {
     $this->client->set($key, $value);
-    $this->client->expire($key, CACHE_EXPIRATION * 60);
+    $this->client->expire($key, config('cache.expiration') * 60);
   }
 }

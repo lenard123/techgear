@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title><?= isset($layout->title) ? __($layout->title) . ' | '. SITE_NAME : SITE_NAME ?></title>
+  <title><?= isset($layout->title) ? __($layout->title) . ' | '. config('app.name') : config('app.name') ?></title>
   <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" />
   <link rel="stylesheet" type="text/css" href="<?= asset('css/tailwind.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/styles.css') ?>">

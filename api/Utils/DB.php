@@ -12,8 +12,15 @@ class DB
 
   private static function getConnection() : mysqli
   {
-    if (is_null(self::$connection))
-      self::$connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+
+    if (is_null(self::$connection)) {
+      $host = config('db.host');
+      $user = config('db.user');
+      $pass = config('db.pass');
+      $db   = config('db.database');
+      self::$connection = new mysqli($host, $user, $pass, $db);
+    }
+
     return self::$connection;
   }
 
