@@ -26,6 +26,19 @@ function toDate($time)
   return date('M. d, Y', $time);
 }
 
+function template($componentKey, ...$args)
+{
+
+  $component = App\Components\BaseComponent::$reusables;
+
+  if (!isset($component[$componentKey])) {
+    throw new Exception("$componentKey is not registered as reusable a component");
+  }
+
+  $className = App\Components\BaseComponent::$reusables[$componentKey];
+  return new $className(...$args);;
+}
+
 function __($text) {
   return htmlspecialchars($text);
 }

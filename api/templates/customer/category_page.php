@@ -20,7 +20,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
 
       <?php foreach($category->getProducts() as $product) : ?>
-        <?= (new App\Components\ProductCardComponent($product))->render() ?>
+        <?= template('product.card', $product)->render() ?>
       <?php endforeach ?>
 
     </div>
