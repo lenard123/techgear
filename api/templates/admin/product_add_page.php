@@ -113,7 +113,7 @@
                         <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
                             Select a photo</p>
                     </div>
-                    <input type="file" class="opacity-0" />
+                    <input type="file" name="image" class="opacity-0" />
                 </label>
             </div>
           </div>
@@ -166,7 +166,7 @@
                   class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
                   type="number"
                   placeholder="price" 
-                  name="name"
+                  name="price"
                   required="" />
               </div>
             </div>
@@ -183,7 +183,7 @@
                   class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
                   type="number"
                   placeholder="Quantity" 
-                  name="name"
+                  name="quantity"
                   required="" />
               </div>
             </div>
@@ -195,7 +195,7 @@
     </div>
 
     <div>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-5 rounded text-lg">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-5 rounded text-lg">
         Save Product
       </button>
     </div>
