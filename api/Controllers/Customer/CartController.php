@@ -15,7 +15,7 @@ class CartController extends BaseController
   {
     $carts = User::getCurrentUser()->getCarts();
     $subtotal = Cart::calculateSubtotal($carts);
-    $total = SITE_SHIPPING_FEE + $subtotal;
+    $total = config('app.shipping_fee') + $subtotal;
 
     $view = new CustomerLayoutComponent('cart_page');
     $view->setTitle('Shopping Cart');

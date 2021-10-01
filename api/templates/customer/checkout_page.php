@@ -273,7 +273,7 @@
 
             <div class="flex justify-between mb-5">
               <div class="text-gray-400 font-semibold">Shipping Fee</div>
-              <div class="text-gray-500"><?= money(SITE_SHIPPING_FEE) ?></div>
+              <div class="text-gray-500"><?= money(config('app.shipping_fee')) ?></div>
             </div>
 
             <div class="border-b border-gray-300 mb-5"></div>

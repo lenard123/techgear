@@ -28,7 +28,7 @@ class CheckoutController extends BaseController
     $carts = $user->getCarts();
     $subtotal = Cart::calculateSubtotal($carts);
     $regions = LocationController::$regions;
-    $total = SITE_SHIPPING_FEE + $subtotal;
+    $total = config('app.shipping_fee') + $subtotal;
     $validator = $this->validator;
 
     if (count($carts) <= 0) {
@@ -87,7 +87,7 @@ class CheckoutController extends BaseController
     $order->unit = post('unit');
     $order->phone = post('phone');
     $order->email = post('email');
-    $order->shipping_fee = SITE_SHIPPING_FEE;
+    $order->shipping_fee = config('app.shipping_fee');
     $order->save();
 
     AlertMessage::success('Order placed successfully');
