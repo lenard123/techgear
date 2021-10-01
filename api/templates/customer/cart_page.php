@@ -54,7 +54,7 @@
 
             <div class="flex justify-between border-b border-gray-200 pb-4 mb-4">
               <span>Shipping Fee</span>
-              <span class="text-gray-600"><?= money(SITE_SHIPPING_FEE) ?></span>
+              <span class="text-gray-600"><?= money(config('app.shipping_fee')) ?></span>
             </div>
 
             <div class="flex justify-between mb-6">
