@@ -6,7 +6,7 @@
   <meta name="description" content="Page not found">
   <title>Error 404: Page not found</title>
   <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" /> 
-  <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.min.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.css') ?>">
 </head>
 <body>
 
