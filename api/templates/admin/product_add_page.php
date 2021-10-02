@@ -13,7 +13,7 @@
 </header>
 
 <main class="sm:px-6 py-6">
-  <form action="<?= admin('?page=products-add') ?>" method="POST" />
+  <form action="<?= admin('?page=products-add') ?>" method="POST" enctype="multipart/form-data"/>
     <div class="grid mb-6 gap-6 grid-cols-1 xl:grid-cols-3">
       
       <div class="xl:col-span-2">
