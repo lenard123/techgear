@@ -9,4 +9,5 @@ return [
   'app' => require('app.php'),
   'cache' => require('cache.php'),
   'db' => require('database.php'),
+  'storage' => require('storage.php'),
 ];
