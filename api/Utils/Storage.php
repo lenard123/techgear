@@ -61,6 +61,9 @@ class Storage
 
   private static function isValidImage($key)
   {
+    if(!file_exists($_FILES[$key]['tmp_name']) || !is_uploaded_file($_FILES[$key]['tmp_name'])) {
+      return false;
+    }
     return true;
   }
 

@@ -21,12 +21,12 @@ class Product extends BaseModel
   public $category = null;
   public $related_products = null;
 
-  const DEFAULT_IMAGE = 'img/product-default.jpg';
+  const DEFAULT_IMAGE = 'assets/img/product-default.jpg';
 
   public function getImage()
   {
     if (is_null($this->image)) {
-      return asset(self::DEFAULT_IMAGE);
+      return url(self::DEFAULT_IMAGE);
     }
     return url($this->image);
   }
