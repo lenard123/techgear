@@ -28,6 +28,11 @@ class Product extends BaseModel
     if (is_null($this->image)) {
       return url(self::DEFAULT_IMAGE);
     }
+
+    if (substr($this->image, 0, 4) === 'http') {
+      return $this->image;
+    }
+
     return url($this->image);
   }
 
