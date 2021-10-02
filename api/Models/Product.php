@@ -79,6 +79,25 @@ class Product extends BaseModel
     Cache::forget("products:{$this->category_id}");
   }
 
+  public function save()
+  {
+    $query = "INSERT INTO `products`(`category_id`,`name`,`description`,`price`,`image`,`quantity`,`max_order`) VALUES(?, ?, ?, ?, ?, ?, ?);";
+    DB::prepare($query, 'issdsii', 
+      $this->category_id,
+      $this->name,
+      $this->description,
+      $this->price,
+      $this->image,
+      $this->quantity,
+      $this->max_order
+    );
+    $this->id = DB::getLastId();
+    Cache::forget("products");
+    Cache::forget("product:{$this->id}");
+    Cache::forget("products:featured");
+    Cache::forget("products:{$this->category_id}");
+  }
+
   public function isAvailable()
   {
     return $this->quantity > 0;

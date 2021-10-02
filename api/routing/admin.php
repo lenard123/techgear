@@ -14,6 +14,8 @@ Route::patch("category")
 Route::get("products")
   ->setController(App\Controllers\Admin\ProductController::class);
 Route::get("products-add")
+  ->setController(App\Controllers\Admin\ProductController::class, "addPage");
+Route::post("products-add")
   ->setController(App\Controllers\Admin\ProductController::class, "add");
 
 Route::get("signin")
