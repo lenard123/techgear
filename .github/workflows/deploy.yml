@@ -1,4 +1,4 @@
-name: Merge Main Branch to Production Branch
+name: Deploy
 
 on:
   push:
