@@ -2,6 +2,8 @@
 
 namespace App\Utils;
 
+use Cloudinary\Cloudinary;
+
 class Storage
 {
 
@@ -28,6 +30,22 @@ class Storage
 
     //Upload file to storage folder by default
     return self::uploadImage2Local($key, $dir);
+  }
+
+  private static function uploadImage2Cloudinary($key)
+  {
+    try {
+      //Base64 File
+      $image = base64_encode(file_get_contents($_FILES[$key]['tmp_name']));
+
+      $config = config('storage.cloudinary_url');
+      $cloudinary = new Cloudinary($config);
+      $result = $cloudinary->uploadApi()->upload('data:image/gif;base64,'.$image, ['folder' => config('storage.cloudinary_folder')]);
+
+      return $result['secure_url'];
+    } catch (\Exception $ex) {
+      return self::DEFAULT_IMAGE;
+    }
   }
 
   private static function uploadImage2Local($key, $dir)
