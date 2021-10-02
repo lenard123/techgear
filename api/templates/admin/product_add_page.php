@@ -39,7 +39,8 @@
                   type="text"
                   placeholder="Product name" 
                   name="name"
-                  required="" />
+                  required="" 
+                  value="Product 1"/>
               </div>
             </div>
 
@@ -58,7 +59,7 @@
                   required="">
                   <option value="">-- Select Category --</option>
                   <?php foreach($categories as $category) : ?>
-                    <option value="<?= $category->id ?>"><?= __($category->name) ?></option>
+                    <option value="<?= $category->id ?>" <?= $category->id===1?'selected':''?>><?= __($category->name) ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -167,6 +168,7 @@
                   type="number"
                   placeholder="price" 
                   name="price"
+                  value="500" 
                   required="" />
               </div>
             </div>
@@ -184,6 +186,7 @@
                   type="number"
                   placeholder="Quantity" 
                   name="quantity"
+                  value="46" 
                   required="" />
               </div>
             </div>
