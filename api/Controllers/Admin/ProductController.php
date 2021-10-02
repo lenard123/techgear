@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Components\AdminLayoutComponent;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends BaseController
 {
@@ -22,6 +23,7 @@ class ProductController extends BaseController
     $view = new AdminLayoutComponent("product_add_page");
     $view->addCustomScript("https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js", false);
     $view->addCustomScript('js/admin-product-add.js');
+    $view->addContentData('categories', Category::getAll());
     $this->render($view);
   }
 
