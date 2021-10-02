@@ -21,7 +21,7 @@ class Product extends BaseModel
   public $category = null;
   public $related_products = null;
 
-  const DEFAULT_IMAGE = 'img/product1.jpg';
+  const DEFAULT_IMAGE = 'img/product-default.jpg';
 
   public function getImage()
   {
