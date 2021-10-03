@@ -2,11 +2,12 @@
 <div class="bg-white hover:shadow-2xl border border-gray-200 flex flex-row md:flex-col">
 
   <!-- Image -->
-  <a href="<?= url("?page=product&id={$product->id}") ?>" class="flex-shrink-0 block w-2/5 md:w-full">
-    <div class="w-full relative overflow-hidden" style="padding-top: 75%;">
+  
+<!--   <a href="<?= url("?page=product&id={$product->id}") ?>" class="flex-shrink-0 block w-2/5 md:w-full">
+    <div class="w-full relative overflow-hidden bg-gray-100 " style="padding-top: 75%;">
       <img class="mx-auto h-full absolute top-0 left-0 right-0 botttom-0" src="<?= $product->getImage() ?>" />
     </div>
-  </a>
+  </a> -->
 
   <div class="flex flex-col flex-grow p-4">
     
