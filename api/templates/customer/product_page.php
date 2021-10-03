@@ -20,11 +20,14 @@
 
     <div class="flex flex-col lg:flex-row bg-white rounded shadow-lg">
       <div class="w-full lg:w-1/2 p-5">
-        <div class="rounded border border-gray-200 w-full relative" style="padding-top:75%">
+        <div class="rounded border border-gray-200 ratio-4/3">
+          <img src="<?= $product->getImage() ?>" />
+        </div>
+<!--         <div class="rounded border border-gray-200 w-full relative" style="padding-top:75%">
           <img 
             class="absolute top-0 h-full mx-auto left-0 right-0" 
             src="<?= $product->getImage() ?>" />
-        </div>
+        </div> -->
       </div>
       <div class="w-full lg:w-1/2 p-5">
         <span class="block text-gray-600 mt-2 mb-5 text-4xl leading-6 font-semibold">

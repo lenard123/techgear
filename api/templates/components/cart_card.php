@@ -3,8 +3,8 @@
 
   <div class="flex">
     <div class="flex-shrink-0 w-1/3 p-1">
-      <div class="w-full relative overflow-hidden" style="padding-top: 75%;">
-        <img class="mx-auto h-full absolute top-0 left-0 right-0 botttom-0" src="<?= $cart->getProduct()->getImage() ?>" />
+      <div class="ratio-4/3">
+        <img src="<?= $cart->getProduct()->getImage() ?>">
       </div>
     </div>
     <div class="flex-grow px-2 py-4">

@@ -36,12 +36,19 @@
       <?php foreach($products as $product) : ?>
         <div class="py-4 px-5 text-sm grid grid-cols-12 border-b border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
           <div class="col-span-5">
-            <div class="flex">
-              <img 
-                class="w-1/4 h-auto border border-gray-200 rounded"
-                src="<?= $product->getImage() ?>"/>
-              <span class="w-full px-4"><?= __($product->name) ?></span>
+
+            <!-- First Column -->
+            <div class="grid grid-cols-4">
+
+              <!-- Image -->
+              <div class="ratio-4/3 bg-gray-200 rounded border border-gray-300">
+                <img src="<?= $product->getImage() ?>" />
+              </div>
+
+              <!-- Product name -->
+              <p class="col-span-3 px-4"><?= __($product->name) ?></p>
             </div>
+
           </div>
 
           <div class="flex flex-col col-span-3">

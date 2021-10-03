@@ -1,0 +1,21 @@
+.log {
+  border:  1px solid red;
+}
+
+.ratio-4\/3 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 75%;
+}
+
+.ratio-4\/3 > * {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
