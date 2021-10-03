@@ -8,10 +8,12 @@ class CustomerLayoutComponent extends LayoutComponent
 
   public $header;
   public $footer;
+  public $sidebar;
 
   public function __construct($content_template)
   {
     $this->header = new CustomerHeaderComponent;
+    $this->sidebar = new CustomerSidebarComponent;
     $this->footer = new BaseComponent('customer_footer');
 
     //this will render to every customer pages
