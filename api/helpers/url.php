@@ -4,11 +4,16 @@ function baseURL()
 {
   static $baseURL = null;
   if (is_null($baseURL)) {
-    $base_folder = config('app.folder');
+
     $protocol = config('app.env') === 'PRODUCTION' ? 'https://' : 'http://';
     $host = $_SERVER['HTTP_HOST'];
-    $path = empty($base_folder) ? $base_folder : $base_folder . '/';
-    $baseURL = $protocol . $host . '/' . $path;
+
+    $path = '/';
+    if (config('app.env') === 'LOCAL') {
+      $path .= basename(ROOT_PATH) . '/public/';
+    }
+
+    $baseURL = $protocol . $host  . $path;
   }
 
   return $baseURL;
