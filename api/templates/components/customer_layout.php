@@ -17,6 +17,7 @@
 <body>
 
 <?= $layout->header->render() ?>
+<?= $layout->sidebar->render() ?>
 <?= $layout->content->render() ?>
 <?= $layout->footer->render() ?>
 
