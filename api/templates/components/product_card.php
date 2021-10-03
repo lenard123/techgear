@@ -2,6 +2,11 @@
 <div class="bg-white hover:shadow-2xl border border-gray-200 flex flex-row md:flex-col">
 
   <!-- Image -->
+  <a href="<?= url("?page=product&id={$product->id}") ?>" class="flex-shrink-0 block w-2/5 md:w-full">
+    <div class="ratio-4/3">
+      <img src="<?= $product->getImage() ?>"/>
+    </div>
+  </a>
   
 <!--   <a href="<?= url("?page=product&id={$product->id}") ?>" class="flex-shrink-0 block w-2/5 md:w-full">
     <div class="w-full relative overflow-hidden bg-gray-100 " style="padding-top: 75%;">
