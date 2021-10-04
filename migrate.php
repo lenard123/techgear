@@ -1,6 +1,6 @@
 <?php
 
-require_once '../api/start.php';
+require_once 'api/start.php';
 
 use App\Utils\AlertMessage;
 use App\Utils\Caching\Cache;
