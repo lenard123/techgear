@@ -46,6 +46,10 @@ abstract class LayoutComponent extends BaseComponent
       'prod' => 'https://unpkg.com/@alpinejs/collapse@3.4.2/dist/cdn.min.js',
       'defer' => true,
     ],
+    'cropper' => [
+      'local' => 'lib/cropper.js',
+      'prod' => 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.js',
+    ]
   ];
 
   public function __construct($content, $base_folder = null)
