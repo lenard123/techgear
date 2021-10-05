@@ -101,15 +101,57 @@
           </header>
 
           <div class="p-6">
-            <div class="w-full sm:w-2/3 lg:w-3/4 xl:2/3">
-              <div class="ratio-4/3">
-                <label 
-                  x-data="productImagePreview" 
+            <div class="w-full" x-data="productImagePreview" x-cloak>
+
+              <div x-show="status === 2">
+                <div class="ratio-16/9 flex justify-center items-center">
+                  <img x-ref="previewImageToBeUploaded" class="object-cover h-full w-full border-4 border-dashed rounded " />
+                </div>
+
+                <div class="mt-6 text-center">
+                  <button 
+                    @click="cancel"
+                    type="button" 
+                    class="w-full py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-700 hover:text-gray-50"
+                    >Reselect
+                  </button>
+                </div>
+              </div>
+
+              <!-- Image Preview -->
+              <div x-show="status === 1">
+                <div class="ratio-16/9 flex justify-center items-center">
+                  <img x-ref="previewImage" :src="source" class="object-cover h-full w-full"/>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-center mt-6">
+                  <!-- Crop Button -->
+                  <button 
+                    type="button"
+                    @click="saveAsync"
+                    class="py-2 bg-green-300 text-green-700 rounded hover:bg-green-700 hover:text-gray-50"
+                    >Crop
+                  </button>
+
+                  <!-- Cancel Button -->
+                  <button 
+                    @click="cancel"
+                    type="button" 
+                    class="py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-700 hover:text-gray-50"
+                    >Cancel
+                  </button>
+                </div>
+
+              </div>
+
+              <!-- Image Input Selector -->
+              <div class="ratio-16/9" x-show="status === 0">
+                <label   
                   class="border-4 border-dashed rounded hover:bg-gray-100 hover:border-gray-300 dark:hover:bg-gray-800 dark:hover:border-gray-600"
                   >
                   
                   <!-- Placeholder -->
-                  <div x-show="source===null" class="flex h-full flex-col items-center justify-center pt-7">
+                  <div class="flex h-full flex-col items-center justify-center pt-7">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
                     </svg>
@@ -118,29 +160,19 @@
                     </p>
                   </div>
 
-                  <div x-show="source!==null" class="flex justify-center items-center h-full">
-                    <img :src="source" class="object-cover h-full w-full"/>
-                  </div>
-
                   <!-- Input file -->
-                  <input @change="previewFile" type="file" name="image" class="opacity-0"/>
+                  <input                     
+                    @click="preventIfHasFile" 
+                    @change="previewFile" 
+                    type="file" 
+                    class="opacity-0"
+                  />
+
+                  <!-- File to be uploaded -->
+                  <input x-ref="finalInput" type="file" name="image" class="opacity-0" />
 
                 </label>
               </div>
-<!--                 <label class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300 dark:hover:bg-gray-800 dark:hover:border-gray-600">
-                    <div class="flex flex-col items-center justify-center pt-7">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                            Select a photo</p>
-                    </div>
-                    <input type="file" name="image" class="opacity-0" />
-                </label> -->
             </div>
           </div>
         </div>
