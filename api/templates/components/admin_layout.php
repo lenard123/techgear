@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title><?= isset($layout->title) ? __($layout->title) . ' | '. config('app.name') : config('app.name') ?> Admin</title>
   <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" integrity="sha512-0SPWAwpC/17yYyZ/4HSllgaK7/gg9OlVozq8K7rf3J8LvCjYEEIfzzpnA2/SSjpGIunCSD18r3UhvDcu/xncWA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" type="text/css" href="<?= asset('css/tailwind.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/all.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/admin.css') ?>">

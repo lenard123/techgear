@@ -22,6 +22,7 @@ class ProductController extends BaseController
   public function addPage()
   {
     $view = new AdminLayoutComponent("product_add_page");
+    $view->addJSLibrary('cropper');
     $view->addCustomScript("https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js", false);
     $view->addCustomScript('js/admin-product-add.js');
     $view->addContentData('categories', Category::getAll());
