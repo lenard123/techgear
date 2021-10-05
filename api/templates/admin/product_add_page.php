@@ -66,29 +66,54 @@
             </div>
 
             <!-- Product Max Order -->
-            <div class="grid md:grid-cols-12 gap-y-2 gap-x-5">
-              <div class="md:col-span-3">
-                <label class="text-sm">
-                  <span>
-                    Limit Purchases:<span class="text-red-500">*</span>
-                  </span>
-                </label>
-              </div>
-              <div class="md:col-span-8">
+            <div x-data="{hasLimit: false}">
 
-              <label class="flex items-center cursor-pointer">
-                <!-- toggle -->
-                <div class="relative">
-                  <!-- input -->
-                  <input type="checkbox" id="toggleB" class="sr-only">
-                  <!-- line -->
-                  <div class="block bg-gray-200 w-10 h-6 rounded-full dark:bg-gray-800"></div>
-                  <!-- dot -->
-                  <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
+              <!-- Max Order Toggler -->
+              <div class="grid md:grid-cols-12 gap-y-2 gap-x-5">
+                <div class="md:col-span-3">
+                  <label class="text-sm">
+                    <span>
+                      Limit Purchases:<span class="text-red-500">*</span>
+                    </span>
+                  </label>
                 </div>
-              </label>
+                <div class="md:col-span-8">
 
+                <label class="flex items-center cursor-pointer">
+                  <!-- toggle -->
+                  <div class="relative">
+                    <!-- input -->
+                    <input type="checkbox" id="toggleB" class="sr-only" x-model="hasLimit">
+                    <!-- line -->
+                    <div class="block bg-gray-200 w-10 h-6 rounded-full dark:bg-gray-800"></div>
+                    <!-- dot -->
+                    <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
+                  </div>
+                </label>
+
+                </div>
               </div>
+
+              <!-- Max Order Input -->
+              <template x-if="hasLimit">
+                <div class="grid md:grid-cols-12 gap-y-2 gap-x-5 mt-6">
+                  <div class="md:col-span-3">
+                    <label class="text-sm">
+                      <span>Max Order: </span>
+                      <span class="text-red-500">*</span>
+                    </label>
+                  </div>
+                  <div class="md:col-span-8">
+                    <input 
+                      class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
+                      type="number" 
+                      name="max_order"
+                      required=""
+                      min="1" 
+                      value="1"/>
+                  </div>
+                </div>
+              </template>
             </div>
 
           </div>
