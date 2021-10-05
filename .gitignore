@@ -10,5 +10,6 @@ Thumbs.db
 /static
 /node_modules
 /vendor
+/public/storage/uploads/
 *.cache
 .env
