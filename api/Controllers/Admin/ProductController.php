@@ -36,6 +36,7 @@ class ProductController extends BaseController
     $product->category_id = post('category_id');
     $product->price = post('price');
     $product->quantity = post('quantity');
+    $product->max_order = post('max_order');
     $product->image = Storage::uploadImage('image', 'product', Product::DEFAULT_IMAGE); 
     $product->save();
     redirect('?page=products', 'admin');
