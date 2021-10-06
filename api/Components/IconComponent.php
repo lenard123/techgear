@@ -7,32 +7,38 @@ class IconComponent extends BaseComponent
 
   protected $base_folder = 'templates/svgs/';
 
-  protected $defaultHeight = 16;
-  protected $defaultWidth = 16;
+  protected $height = 16;
+  protected $width = 16;
+  protected $classes = '';
 
   public function __construct($name, $classes = '')
   {
+    $this->classes = $classes;
     $this->template = "$name.svg";
-    $this->addData('height', $this->defaultHeight);
-    $this->addData('width', $this->defaultWidth);
-    $this->addData('classes', $classes);
   }
 
   public function height($height)
   {
-    $this->addData('height', $height);
+    $this->height = $height;
     return $this;
   }
 
   public function width($width)
   {
-    $this->addData('width', $width);
+    $this->width = $width;
     return $this;
   }
 
   public function size($size)
   {
-    return $this->height($size)->width($size);
+    $this->height = $size;
+    $this->width = $size;
+    return $this;
+  }
+
+  public function attr()
+  {
+    return "class='{$this->classes}' height='{$this->height}' width='{$this->width}'";
   }
 
 }
