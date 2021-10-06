@@ -17,7 +17,7 @@
       
           </a>
 
-        <span class="text-sm">Tagline</span>
+        <span class="text-sm ">Technology, Electronics, Our Future.</span>
 
     </div>
 
