@@ -43,6 +43,11 @@ function toDate($time)
   return date('M. d, Y', $time);
 }
 
+function icon($name, $classes = '')
+{
+  return new App\Components\IconComponent($name, $classes);
+}
+
 function template($componentKey, ...$args)
 {
 
