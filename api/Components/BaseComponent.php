@@ -46,6 +46,15 @@ class BaseComponent
   }
 
   /**
+   * Alias for render
+   * For shorter version in templates
+   */
+  public function r()
+  {
+    return $this->render();
+  }
+
+  /**
    * Registered Components
    * So it can be easily used in templates
    * ```
