@@ -1,4 +1,4 @@
-<div class="bg-white rounded shadow-lg">
+<div class="card">
 
   <div class="p-5 border-b border-gray-200">
     <h1 class="text-4xl text-gray-800 font-semibold">Personal Info</h1>

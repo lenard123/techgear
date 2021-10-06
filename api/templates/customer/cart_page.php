@@ -17,7 +17,7 @@
       <div class="grid lg:grid-cols-12 gap-4 text-gray-500">
 
         <div class="lg:col-span-9">
-          <div class="overflow-hidden bg-white rounded border border-gray-200 shadow">
+          <div class="card overflow-hidden">
             
             <!-- Header -->
             <div class="hidden lg:grid grid-cols-2 text-center text-sm py-4 border-b border-gray-300">
@@ -46,7 +46,7 @@
         </div>
 
         <div class="lg:col-span-3">
-          <div class="bg-white rounded border border-gray-200 shadow px-5 py-6">
+          <div class="card px-5 py-6">
             <div class="flex justify-between mb-4">
               <span>Subtotal</span>
               <span class="text-gray-600"><?= money($subtotal) ?></span>

@@ -1,5 +1,5 @@
 
-<div class="bg-white hover:shadow-2xl border border-gray-200 flex flex-row md:flex-col">
+<div class="card hover:shadow-2xl flex flex-row md:flex-col">
 
   <!-- Image -->
   <a href="<?= url("?page=product&id={$product->id}") ?>" class="flex-shrink-0 block w-2/5 md:w-full">

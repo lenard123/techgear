@@ -4,7 +4,7 @@
     <div class="grid lg:grid-cols-12 gap-5">
 
       <div class="lg:col-span-3">
-        <div class="bg-white shadow-lg rounded">
+        <div class="card">
 
           <div class="p-5 border-b border-gray-300">
             <div class="bg-red mb-4 relative w-1/3 sm:w-1/4 lg:w-2/4 mx-auto rounded-full overflow-hidden">
