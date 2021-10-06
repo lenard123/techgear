@@ -7,8 +7,8 @@ class IconComponent extends BaseComponent
 
   protected $base_folder = 'templates/svgs/';
 
-  protected $defaultHeight = 32;
-  protected $defaultWidth = 32;
+  protected $defaultHeight = 16;
+  protected $defaultWidth = 16;
 
   public function __construct($name, $classes = '')
   {
