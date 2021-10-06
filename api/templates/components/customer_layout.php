@@ -4,6 +4,13 @@
   <meta charset="utf-8">
   <title><?= isset($layout->title) ? __($layout->title) . ' | '. config('app.name') : config('app.name') ?></title>
   <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" />
+
+  <!-- 
+    Full Tailwind | This will be automatically disabled on production 
+    or when explicitly disabled on environment variables
+  -->
+  <?= $layout->renderFullTailwind() ?>
+  
   <link rel="stylesheet" type="text/css" href="<?= asset('css/tailwind.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/all.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/styles.css') ?>">

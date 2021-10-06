@@ -120,6 +120,13 @@ abstract class LayoutComponent extends BaseComponent
     return $data . PHP_EOL;
   }
 
+  public function renderFullTailwind()
+  {
+    if (config('app.env') == 'PRODUCTION' || !config('app.full_tailwind')) return;
+    $tailwindSource = asset('css/tailwind.full.css');
+    return "<link rel='stylesheet' type='text/css' href='{$tailwindSource}' />";
+  }
+
   public function renderCustomScripts()
   {
     $data = '<!-- CUSTOM SCRIPTS -->'. PHP_EOL;
