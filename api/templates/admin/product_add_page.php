@@ -8,18 +8,18 @@
   </div>
 </section>
 
-<header class="bg-white p-6 dark:bg-gray-900">
-  <h1 class="text-3xl font-semibold leading-tight">Add New Product</h1>
+<header class="admin-page-header">
+  <h1>Add New Product</h1>
 </header>
 
 <main class="sm:px-6 py-6">
   <form action="<?= admin('?page=products-add') ?>" method="POST" enctype="multipart/form-data"/>
     <div class="grid mb-6 gap-6 grid-cols-1 xl:grid-cols-3">
       
-      <div class="xl:col-span-2">
+      <div class="xl:col-span-2 grid grid-cols-1 gap-6">
 
-        <!-- Product Info -->
-        <div class="bg-white mb-6 border border-gray-200 rounded dark:bg-gray-900 dark:border-gray-700">
+        <!-- Product Info bg-white mb-6 border border-gray-200 rounded -->
+        <div class="card">
           <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
             <span>Product Information</span>
           </header>
@@ -120,7 +120,7 @@
         </div>
 
         <!-- Product Image -->
-        <div class="bg-white mb-6 border border-gray-200 rounded dark:bg-gray-900 dark:border-gray-700">
+        <div class="card">
           <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
             <span>Product Image</span>
           </header>
@@ -203,7 +203,7 @@
         </div>
 
         <!-- Product Description -->
-        <div class="bg-white border border-gray-200 rounded dark:bg-gray-900 dark:border-gray-700">
+        <div class="card">
           <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
             <span>Product Description</span>
           </header>
@@ -227,56 +227,54 @@
         </div>
       </div>
 
-      <div>
 
-        <!-- Product Price + Stock -->
-        <div class="bg-white mb-6 border border-gray-200 rounded dark:bg-gray-900 dark:border-gray-700">
-          <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
-            <span>Product Price + Stock</span>
-          </header>
+      <!-- Product Price + Stock -->
+      <div class="card self-start">
+        <header class="font-semibold py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+          <span>Product Price + Stock</span>
+        </header>
 
-          <div class="p-6">
+        <div class="p-6">
 
-            <div class="grid gap-y-2 mb-6">
-              <div class="md:col-span-3">
-                <label class="text-sm">
-                  <span>Unit Price: </span>
-                  <span class="text-red-500">*</span>
-                </label>
-              </div>
-              <div class="md:col-span-8">
-                <input 
-                  class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
-                  type="number"
-                  placeholder="price" 
-                  name="price"
-                  value="500" 
-                  required="" />
-              </div>
+          <div class="grid gap-y-2 mb-6">
+            <div class="md:col-span-3">
+              <label class="text-sm">
+                <span>Unit Price: </span>
+                <span class="text-red-500">*</span>
+              </label>
             </div>
-
-            <div class="grid gap-y-2 mb-6">
-              <div class="md:col-span-3">
-                <label class="text-sm">
-                  <span>Quantity: </span>
-                  <span class="text-red-500">*</span>
-                </label>
-              </div>
-              <div class="md:col-span-8">
-                <input 
-                  class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
-                  type="number"
-                  placeholder="Quantity" 
-                  name="quantity"
-                  value="46" 
-                  required="" />
-              </div>
+            <div class="md:col-span-8">
+              <input 
+                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
+                type="number"
+                placeholder="price" 
+                name="price"
+                value="500" 
+                required="" />
             </div>
-
           </div>
-        </div>
 
+          <div class="grid gap-y-2 mb-6">
+            <div class="md:col-span-3">
+              <label class="text-sm">
+                <span>Quantity: </span>
+                <span class="text-red-500">*</span>
+              </label>
+            </div>
+            <div class="md:col-span-8">
+              <input 
+                class="focus:outline-none focus:border-blue-500 text-gray-600 border border-gray-300 py-2 px-3 w-full rounded font-semibold dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-700 dark:text-gray-200"
+                type="number"
+                placeholder="Quantity" 
+                name="quantity"
+                value="46" 
+                required="" />
+            </div>
+          </div>
+
+        </div>
       </div>
+
     </div>
 
     <div>

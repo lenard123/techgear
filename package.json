@@ -2,7 +2,7 @@
   "scripts": {
     "js-build": "babel front-end/es6 -d public/assets/js",
     "js-watch": "babel front-end/es6 -d public/assets/js --watch",
-    "css-watch": "tailwind -i front-end/css/tailwind.css -o public/assets/css/tailwind.css --watch",
+    "css-watch": "cross-env TAILWIND_MODE=jit tailwind -i front-end/css/tailwind.css -o public/assets/css/tailwind.css --watch",
     "css-build": "tailwind -i front-end/css/tailwind.css -o public/assets/css/tailwind.css --minify",
     "css-prod": "cross-env NODE_ENV=production tailwindcss -i front-end/css/tailwind.css -o public/assets/css/tailwind.css --minify"
   },

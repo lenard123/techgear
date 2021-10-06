@@ -1,7 +1,7 @@
 
-module.exports = {
+const config = {
 
-  mode: 'jit',
+  mode: process.env.TAILWIND_MODE,
 
   darkMode: 'class',
 
@@ -10,3 +10,6 @@ module.exports = {
   ]
 
 }
+
+
+module.exports = config 

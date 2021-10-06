@@ -21,7 +21,7 @@
             <span class="text-gray-700">Contact Information</span>
           </p>
 
-          <div class="bg-white shadow-lg p-5 mb-8 rounded">
+          <div class="checkout-form-group">
 
             <div class="grid lg:grid-cols-2 gap-5 mb-5">
               <div class="text-gray-800">
@@ -99,9 +99,9 @@
           </p>
 
           <div 
-            class="bg-white shadow-lg p-5 mb-8 rounded"
+            class="checkout-form-group"
             x-data="address"
-          >
+           >
 
             <div class="text-gray-800 mb-5">
               <label class="text-sm block mb-1">Region: </label>
@@ -219,7 +219,7 @@
             <span class="text-gray-700">Payment Option</span>
           </p>
 
-          <div class="bg-white shadow-lg p-5 mb-8 rounded grid lg:grid-cols-3 gap-3">
+          <div class="checkout-form-group grid lg:grid-cols-3 gap-3">
 
             <a class="cursor-pointer p-5 border border-blue-500 rounded text-center">
               <div class="mx-auto mb-2 h-4 w-4 border-4 border-blue-500 rounded-full"></div>
@@ -242,7 +242,7 @@
         </div>
 
         <div class="lg:col-span-3">
-          <div class="bg-white shadow-lg p-5 rounded lg:sticky" style="top: 68px">
+          <div class="checkout-form-group lg:sticky" style="top: 68px">
             <div class="font-semibold text-lg mb-5">Items in Order</div>
 
             <?php foreach ($carts as $cart) : ?>

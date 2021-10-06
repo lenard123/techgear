@@ -1,4 +1,4 @@
-<div class="bg-white rounded shadow-lg pb-2">
+<div class="card pb-2">
 
   <div class="p-5 border-b border-gray-200">
     <h1 class="text-4xl text-gray-800 font-semibold">Orders</h1>
