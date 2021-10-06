@@ -2,8 +2,8 @@
   "scripts": {
     "js-build": "babel front-end/es6 -d public/assets/js",
     "js-watch": "babel front-end/es6 -d public/assets/js --watch",
-    "css-build": "tailwind -o public/assets/css/tailwind.css --minify",
-    "css-prod": "cross-env NODE_ENV=production tailwindcss -o public/assets/css/tailwind.css --minify"
+    "css-build": "tailwind -i front-end/css/tailwind.css -o public/assets/css/tailwind.css --minify",
+    "css-prod": "cross-env NODE_ENV=production tailwindcss -i front-end/css/tailwind.css -o public/assets/css/tailwind.css --minify"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
