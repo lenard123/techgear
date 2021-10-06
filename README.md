@@ -8,6 +8,14 @@
   <img src="https://github.com/lenard123/techgear/workflows/Deploy/badge.svg" />
 </p>
 
+## Tools Needed
+- PHP (v7.4 or higher)
+- MySQL (or MariaDB)
+- Composer
+- Git
+- NPM (optional: use for frontend development)
+- Text Editor (e.g. VSCode, Sublime Text)
+
 ## Contributors
 
 <a href="https://github.com/lenard123/techgear/graphs/contributors">
