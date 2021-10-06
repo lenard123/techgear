@@ -1,0 +1,24 @@
+name: Build Tailwind
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'front-end/css/tailwind.css'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: npm ci
+      - run: npm run css-build
+      - run: git config user.name lenard123
+      - run: git config user.email lenard.mangayayam@gmail.com
+      - run: git checkout -b tailwind_build
+      - run: git add .
+      - run: git commit -m "Build Tailwind CSS"
+      - run: git push --set-upstream origin tailwind_build --force
