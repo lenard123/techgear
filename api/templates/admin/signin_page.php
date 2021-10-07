@@ -19,7 +19,7 @@
 <body class="bg-white">
 
   <!-- Main Card -->
-  <main class="bg-white w-full lg:w-1/3 mx-auto rounded-lg lg:my-20 px-4 py-10 shadow-lg sm:w-2/3">
+  <main class="bg-white w-full lg:w-1/3 mx-auto rounded-lg my-20 px-4 py-10 shadow-lg sm:w-2/3">
 
     <div class="max-w-md w-full space-y-8">
 
