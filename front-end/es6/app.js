@@ -1,6 +1,14 @@
 
 document.addEventListener('alpine:init',  () => {
   
+  Alpine.directive('tooltip', (el, {expression}) => {
+    el.addEventListener('mouseover', function(){
+      tippy(el, {
+        content: expression
+      })
+    })
+  })
+
   //Watch Scroll Position
   Alpine.store('scroll', {
     position: window.scrollY,

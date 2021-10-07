@@ -22,8 +22,6 @@ class CartController extends BaseController
     $view->addContentData('carts', $carts);
     $view->addContentData('subtotal', $subtotal);
     $view->addContentData('total', $total);
-    $view->addJSLibrary('popper');
-    $view->addJSLibrary('tippy');
     $view->addCustomScript('js/cart.js');
 
     $this->render($view);
