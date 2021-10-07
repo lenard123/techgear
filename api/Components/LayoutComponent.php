@@ -62,6 +62,8 @@ abstract class LayoutComponent extends BaseComponent
     //Global Library
     $this->addJSLibrary('babel-polyfill');
     $this->addJSLibrary('alpine');
+    $this->addJSLibrary('popper');
+    $this->addJSLibrary('tippy');
 
     //Global Meta Data
     $this->addMetaData('viewport', 'width=device-width,initial-scale=1');
