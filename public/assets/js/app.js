@@ -1,7 +1,15 @@
 "use strict";
 
 document.addEventListener('alpine:init', function () {
-  //Watch Scroll Position
+  Alpine.directive('tooltip', function (el, _ref) {
+    var expression = _ref.expression;
+    el.addEventListener('mouseover', function () {
+      tippy(el, {
+        content: expression
+      });
+    });
+  }); //Watch Scroll Position
+
   Alpine.store('scroll', {
     position: window.scrollY,
     init: function init() {
