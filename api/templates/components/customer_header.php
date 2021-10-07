@@ -92,22 +92,20 @@
 
           <?php if(App\Models\User::isUserCustomer()) : ?>
             <div 
-              class="relative my-auto outline-none"
+              class="relative my-auto outline-none z-50"
               x-data="{isOpen: false}"
               @click.outside="isOpen = false"
-            >
-              <button 
-                class="py-2 block cursor-pointer mr-4"
-                @click="isOpen = true"
               >
+              <button class="py-2 block cursor-pointer mr-4" @click="isOpen = true">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </button>
+
               <div 
                 class="hidden w-auto py-2 rounded border border-gray-300 bg-white absolute z-20 right-0"
                 :style="{display: isOpen ? 'block':null}"
-              >
+                >
                 <a href="<?= url('?page=order') ?>" class="px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                   Orders <?= $order_count > 0 ? "($order_count)": "" ?>
                 </a>
@@ -121,11 +119,13 @@
                   Settings
                 </a>
                 <div class="border-b border-gray-300 my-1"></div>
+                
                 <form action="<?= url('?page=signout') ?>" method="POST">
                   <button type="submit" class="text-left px-5 py-1 whitespace-nowrap inline-block hover:bg-gray-200 w-full">
                     Logout
                   </button>
                 </form>
+
               </div>
             </div>
 
@@ -142,6 +142,7 @@
                 ><?= $cart_count ?></span>
               <?php endif; ?>
             </div>
+            
           <?php endif ?>
 
 
@@ -149,7 +150,7 @@
       </div>
       <!-- Search Bar -->
       <div
-        class="search-bar absolute left-0 right-0 bg-white z-20 shadow"
+        class="search-bar absolute left-0 right-0 bg-white shadow z-0"
         :class="{active: isSearchBarOpen}"
       >
         <div class="container mx-auto px-5 h-full text-lg flex">
