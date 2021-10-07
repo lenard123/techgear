@@ -19,9 +19,9 @@
 <body class="bg-gray-100 px-4 sm:px-0">
 
   <!-- Main Card -->
-  <main class="bg-white w-full lg:w-1/3 mx-auto rounded-lg my-20 px-4 py-10 shadow-lg sm:w-2/3">
+  <main class="bg-white w-full sm:w-3/5 lg:w-2/5 mx-auto rounded-lg my-20 px-4 py-10 shadow-lg">
 
-    <div class="max-w-md w-full space-y-8">
+    <div class="max-w-md w-full mx-auto space-y-8">
 
       <!-- Brand Name and Logo -->
       <div>      
