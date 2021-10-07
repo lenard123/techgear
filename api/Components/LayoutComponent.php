@@ -65,6 +65,8 @@ abstract class LayoutComponent extends BaseComponent
     $this->addJSLibrary('popper');
     $this->addJSLibrary('tippy');
 
+    $this->addCustomScript('js/app.js');
+
     //Global Meta Data
     $this->addMetaData('viewport', 'width=device-width,initial-scale=1');
 

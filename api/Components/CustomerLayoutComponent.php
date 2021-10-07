@@ -16,9 +16,6 @@ class CustomerLayoutComponent extends LayoutComponent
     $this->sidebar = new CustomerSidebarComponent;
     $this->footer = new BaseComponent('customer_footer');
 
-    //this will render to every customer pages
-    $this->addCustomScript('js/app.js');
-
     parent::__construct($content_template, 'templates/customer/');
   }
 
