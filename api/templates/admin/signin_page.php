@@ -21,7 +21,7 @@
 
       <!-- Brand Name and Logo -->
       <div>      
-        <img class="mx-auto h-12 w-auto" src="<?= url('assets/img/favicon.ico') ?>" alt="TechGear Logo">
+        <img class="mx-auto h-12 w-auto" src="<?= url('assets/img/logo.png') ?>" alt="TechGear Logo">
         <h2 class="mb-8 text-center text-xl sm:text-2xl text-gray-700">
           Sign in to your account
         </h2>
