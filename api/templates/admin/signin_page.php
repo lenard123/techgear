@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet"> 
 </head>
 
-<body class="bg-white">
+<body class="bg-gray-100">
 
   <!-- Main Card -->
   <main class="bg-white w-full lg:w-1/3 mx-auto rounded-lg my-20 px-4 py-10 shadow-lg sm:w-2/3">
