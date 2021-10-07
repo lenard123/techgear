@@ -17,7 +17,7 @@
       
           </a>
 
-        <span class="text-sm ">Technology, Electronics, Our Future.</span>
+        <p class="text-sm text-center sm:text-left">Technology, Electronics, Our Future.</p>
 
     </div>
 
