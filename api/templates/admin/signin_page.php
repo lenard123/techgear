@@ -7,7 +7,6 @@
   <title>Sign Up | TechGear Admin</title>
   <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" />
   
-  <link rel="stylesheet" type="text/css" href="<?= url('assets/css/tailwind.min.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/tailwind.full.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/all.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/admin.css') ?>">
