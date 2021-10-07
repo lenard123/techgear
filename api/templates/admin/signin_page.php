@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Sign Up | TechGear Admin</title>
-  <link rel="icon" type="image/jpeg" href="<?= url('assets/img/favicon.ico') ?>" />
+  <link rel="icon" type="image/jpeg" href="<?= asset('img/favicon.ico') ?>" />
   
   <link rel="stylesheet" type="text/css" href="<?= asset('css/tailwind.full.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= asset('css/all.css') ?>">
@@ -21,7 +21,7 @@
 
       <!-- Brand Name and Logo -->
       <div>      
-        <img class="mx-auto h-12 w-auto" src="<?= url('assets/img/logo.png') ?>" alt="TechGear Logo">
+        <img class="mx-auto h-12 w-auto" src="<?= asset('img/logo.png') ?>" alt="TechGear Logo">
         <h2 class="mb-8 text-center text-xl sm:text-2xl text-gray-700">
           Sign in to your account
         </h2>
