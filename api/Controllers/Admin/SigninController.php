@@ -23,6 +23,12 @@ class SigninController extends BaseController
     if (is_null($user)) {
       AlertMessage::failed('Email not found on the database.');
       redirect('?page=signin', 'admin');
+    } else if (!$user->login(request('$password') )) {
+      AlertMessage::failed('Invalid Password');
+      redirect('?page=signin', 'admin');
+    } else {
+      AlertMessage::Success('LOGED');
+      redirect('?page=home', 'admin');
     }
 
   }//end of process()
