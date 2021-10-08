@@ -18,7 +18,13 @@ class DB
       $user = config('db.user');
       $pass = config('db.pass');
       $db   = config('db.database');
-      self::$connection = new mysqli($host, $user, $pass, $db);
+      $connection = new mysqli($host, $user, $pass, $db);
+
+      if ($connection->connect_errno) {
+        throw new \Exception('There is an error with your database connection.');
+      }
+
+      self::$connection = $connection;
     }
 
     return self::$connection;
