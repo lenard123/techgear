@@ -21,12 +21,15 @@
 <?= $layout->renderMetaData() ?>
 
 </head>
-<body>
+<body class="flex flex-col h-screen">
 
-<?= $layout->header->render() ?>
-<?= $layout->sidebar->render() ?>
-<?= $layout->content->render() ?>
-<?= $layout->footer->render() ?>
+  <?= $layout->header->render() ?>
+  <?= $layout->sidebar->render() ?>
+
+  <div class="flex-grow">
+    <?= $layout->content->render() ?>
+  </div>
+  <?= $layout->footer->render() ?>
 
 <?= $layout->renderAlertNotification() ?>
 <?= $layout->renderLibraries() ?>
