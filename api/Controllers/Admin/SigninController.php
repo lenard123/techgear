@@ -21,8 +21,8 @@ class SigninController extends BaseController
     $user = User::findByEmail($email);
     
     if (is_null($user)) {
+      AlertMessage::failed('Email not found on the database.');
       redirect('?page=signin', 'admin');
-      AlertMessage::failed('email','Email not found on the database.');
     }
 
   }//end of process()

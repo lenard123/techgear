@@ -68,5 +68,8 @@
 
 <?= \App\Utils\AlertMessage::render() ?>
 
+<script src="<?= asset('lib/alpine.min.js') ?>" defer></script>
+<script src="<?= asset('js/app.js') ?>"></script>
+
 </body>
 </html>
