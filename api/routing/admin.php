@@ -20,3 +20,6 @@ Route::post("products-add")
 
 Route::get("signin")
   ->setController(App\Controllers\Admin\SigninController::class);
+
+Route::post("signin")
+  ->setController(App\Controllers\Admin\SigninController::class, "process");

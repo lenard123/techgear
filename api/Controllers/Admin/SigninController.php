@@ -12,4 +12,8 @@ class SigninController extends BaseController
     view("admin/signin_page");
   }
 
+  public function process(){
+    echo "<h2>Hello World</h2>";
+  }
+
 }

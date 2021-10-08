@@ -57,6 +57,8 @@
           <!-- Submit Button -->
           <button type="submit" class="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-800 focus:outline-none">
             <span>Sign in</span>
+            <?php admin('?page=signin_page.php')?>
+
           </button>
         </div>
         
