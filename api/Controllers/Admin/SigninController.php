@@ -3,6 +3,8 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\User;
+use App\Utils\AlertMessage;
 
 class SigninController extends BaseController
 {
@@ -13,7 +15,16 @@ class SigninController extends BaseController
   }
 
   public function process(){
-    echo "<h2>Hello World</h2>";
-  }
+    $email = post('email');
+    $password = post('password');
 
-}
+    $user = User::findByEmail($email);
+    
+    if (is_null($user)) {
+      redirect('?page=signin', 'admin');
+      AlertMessage::failed('email','Email not found on the database.');
+    }
+
+  }//end of process()
+
+}//end of class

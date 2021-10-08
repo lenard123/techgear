@@ -28,8 +28,9 @@
       </div>
 
 
-      <form class="mt-8 space-y-6" action="#" method="POST">
-       
+      <form class="mt-8 space-y-6" action="<?php echo admin('?page=signin')?>" method="POST">
+      
+
         <div class="rounded-md shadow-sm -space-y-px">
 
           <!-- Email Input -->
@@ -57,8 +58,6 @@
           <!-- Submit Button -->
           <button type="submit" class="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-800 focus:outline-none">
             <span>Sign in</span>
-            <?php admin('?page=signin_page.php')?>
-
           </button>
         </div>
         
@@ -66,6 +65,8 @@
 
     </div>
   </main>
+
+<?= \App\Utils\AlertMessage::render() ?>
 
 </body>
 </html>
