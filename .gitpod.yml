@@ -9,6 +9,11 @@ tasks:
       vendor/bin/migrate reset --path=. mysql://root@localhost/online_store --yes
       export APP_ENV=PRODUCTION
       export DB_DATABASE=online_store
-
     command: php -S 0.0.0.0:8080 -t public
 
+  - init: npm install
+    command: npm run css-watch
+
+ports:
+  - port: 8080
+    onOpen: open-browser
