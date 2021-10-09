@@ -28,8 +28,9 @@
       </div>
 
 
-      <form class="mt-8 space-y-6" action="#" method="POST">
-       
+      <form class="mt-8 space-y-6" action="<?php echo admin('?page=signin')?>" method="POST">
+      
+
         <div class="rounded-md shadow-sm -space-y-px">
 
           <!-- Email Input -->
@@ -64,6 +65,11 @@
 
     </div>
   </main>
+
+<?= \App\Utils\AlertMessage::render() ?>
+
+<script src="<?= asset('lib/alpine.min.js') ?>" defer></script>
+<script src="<?= asset('js/app.js') ?>"></script>
 
 </body>
 </html>
