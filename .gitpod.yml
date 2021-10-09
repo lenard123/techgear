@@ -3,12 +3,14 @@ image:
 
 tasks:
   - init: |
-      mysql -e "CREATE DATABASE online_store;"
       composer install
       export APP_ENV=PRODUCTION
       export DB_DATABASE=online_store
+      
+    command:
       vendor/bin/migrate reset --path=. mysql://root@localhost/online_store --yes
-    command: php -S 0.0.0.0:8080 -t public
+      mysql -e "CREATE DATABASE online_store;" 
+      php -S 0.0.0.0:8080 -t public
 
   - init: |
       npm install -g npm@latest
