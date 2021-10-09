@@ -1,6 +1,6 @@
 <footer class="bg-gray-800 text-gray-400 p-5">  
 
-  <div class="grid grid-cols-1 sm:grid-cols-4 gap-y-5">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-y-5">
 
     <!-- Content 1 -->
     <div>
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Content 2 -->
-    <div>
+    <!-- <div>
 
       <h3 class="tracking-wide uppercase text-white">Follow Us On</h3>
 
@@ -52,10 +52,7 @@
 					</svg>
           <div class="m-1.5 text-sm"> @TechGearOfficial </div>
 				</a>
-
-      
-
-    </div>
+    </div> -->
 
     <!-- Content 3 -->
     <div>
@@ -75,11 +72,12 @@
 
     </div>
 
-    <div>
-
-    <span class="text-sm justify-items-center">© 2021 Shopee. All Rights Reserved</span>
-
-    </div>
-
   </div>
+
+    <!-- <div class="grid justify-center pt-6 lg:justify-between">
+      <div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
+        <span span class="text-sm justify-items-center">© 2021 Shopee. All Rights Reserved</span>
+      </div>
+    </div> -->
+
 </footer>
