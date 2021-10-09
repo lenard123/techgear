@@ -3,6 +3,7 @@ image:
 
 tasks:
   - init: |
+      mysql -u root -e "CREATE DATABASE online_store"
       composer install
       
     command: |
