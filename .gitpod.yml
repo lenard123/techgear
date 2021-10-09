@@ -1,2 +1,14 @@
 image:
   file: .gitpod.dockerfile
+
+tasks:
+  init: |
+    mysql -e "CREATE DATABASE online_store;"
+    composer install
+    composer require 'byjg/migration-cli=4.1.*'
+    vendor/bin/migrate reset --path=. mysql://root@localhost/online_store --yes
+    export APP_ENV=PRODUCTION
+    export DB_DATABASE=online_store
+
+  command: php -S 0.0.0.0:8080 -t public
+
