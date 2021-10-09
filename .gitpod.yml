@@ -11,8 +11,8 @@ tasks:
       php -S 0.0.0.0:8080 -t public
 
     env:
-      APP_ENV=PRODUCTION
-      DB_DATABASE=online_store
+      APP_ENV: PRODUCTION
+      DB_DATABASE: online_store
 
   - init: |
       npm install -g npm@latest
