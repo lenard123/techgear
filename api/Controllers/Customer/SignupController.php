@@ -43,7 +43,7 @@ class SignupController extends BaseController
     $user->login(post('password'));
 
     AlertMessage::success('Registered Successfully');
-    redirect('');
+    redirect('?page=personal');
   }
 
   private function saveUser()
