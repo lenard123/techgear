@@ -30,6 +30,10 @@
 
 <p>If you have any questions regarding the installation; You can post it <a href='https://github.com/lenard123/techgear/discussions/categories/q-a'>here</a>.</p>
 
+## Do you want to test the app?
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/...)
+
+
 ## Contributors
 
 <a href="https://github.com/lenard123/techgear/graphs/contributors">
