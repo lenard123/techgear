@@ -35,7 +35,7 @@
 
         <?php if ($product->isFavorite()) : ?>
           <!-- Remove from favorites -->
-          <form action="<?= url('?page=favorites') ?>" method="POST">
+          <form action="<?= url('?page=favorites') ?>" method="POST" x-data x-tooltip="Remove To Favorites>
             <?= __method('DELETE') ?>
             <input type="hidden" name="product_id" value="<?= $product->id ?>">
             <button type="submit" class="text-red-500 my-auto">
@@ -46,7 +46,7 @@
           </form>
         <?php else : ?>
           <!-- Add to favorite -->
-          <form action="<?= url('?page=favorites') ?>" method="POST">
+          <form action="<?= url('?page=favorites') ?>" method="POST" x-data x-tooltip="Add To Favorites">
             <input type="hidden" name="product_id" value="<?= $product->id ?>">
             <button type="submit" class="text-red-500 my-auto">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -57,7 +57,7 @@
         <?php endif; ?>
 
         <!-- Add to Cart -->
-        <form action="<?= url('?page=cart') ?>" method="post">
+        <form action="<?= url('?page=cart') ?>" method="post" x-data x-tooltip="Add To Cart">
           <?= __method("PUT") ?>
           <input type="hidden" name="product_id" value="<?= $product->id ?>"/>
           <button type="submit" class="ml-2 p-1 bg-blue-500 text-white rounded-full">
