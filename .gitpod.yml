@@ -5,9 +5,9 @@ tasks:
   - init: |
       mysql -e "CREATE DATABASE online_store;"
       composer install
-      vendor/bin/migrate reset --path=. mysql://root@localhost/online_store --yes
       export APP_ENV=PRODUCTION
       export DB_DATABASE=online_store
+      vendor/bin/migrate reset --path=. mysql://root@localhost/online_store --yes
     command: php -S 0.0.0.0:8080 -t public
 
   - init: |
