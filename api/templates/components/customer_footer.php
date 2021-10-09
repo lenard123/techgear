@@ -1,12 +1,12 @@
 <footer class="bg-gray-800 text-gray-400 p-5">  
 
-  <div class="grid grid-cols-1 sm:grid-cols-4 gap-y-5">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-y-5">
 
     <!-- Content 1 -->
     <div>
 
       <!-- Brand name and Logo -->
-      <a href="#" class="flex justify-center lg:justify-start"
+      <a href="#" class="flex justify-center sm:justify-start"
           href="<?= url() ?>" 
           style="font-family: 'Iceland', cursive;">
           <img
@@ -52,9 +52,6 @@
 					</svg>
           <div class="m-1.5 text-sm"> @TechGearOfficial </div>
 				</a>
-
-      
-
     </div>
 
     <!-- Content 3 -->
@@ -75,11 +72,12 @@
 
     </div>
 
-    <div>
+  </div>
 
-    <span class="text-sm justify-items-center">© 2021 Shopee. All Rights Reserved</span>
-
+    <div class="grid justify-center pt-6 lg:justify-center">
+      <div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
+        <span span class="text-sm justify-items-center">© 2021 Shopee. All Rights Reserved</span>
+      </div>
     </div>
 
-  </div>
 </footer>
