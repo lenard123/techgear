@@ -6,13 +6,14 @@ tasks:
       composer install
       
     command: |
-      mysql -e "CREATE DATABASE online_store;" 
+      export APP_ENV=PRODUCTION
+      export DB_DATABASE=online_store
       vendor/bin/migrate reset --path=. mysql://root@localhost/online_store --yes
       php -S 0.0.0.0:8080 -t public
 
-    env:
-      APP_ENV: PRODUCTION
-      DB_DATABASE: online_store
+    # env:
+    #   APP_ENV: PRODUCTION
+    #   DB_DATABASE: online_store
 
   - init: |
       npm install -g npm@latest
