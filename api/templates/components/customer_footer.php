@@ -6,7 +6,7 @@
     <div>
 
       <!-- Brand name and Logo -->
-      <a href="#" class="flex justify-center lg:justify-start"
+      <a href="#" class="flex justify-center sm:justify-start"
           href="<?= url() ?>" 
           style="font-family: 'Iceland', cursive;">
           <img
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Content 2 -->
-    <!-- <div>
+    <div>
 
       <h3 class="tracking-wide uppercase text-white">Follow Us On</h3>
 
@@ -52,7 +52,7 @@
 					</svg>
           <div class="m-1.5 text-sm"> @TechGearOfficial </div>
 				</a>
-    </div> -->
+    </div>
 
     <!-- Content 3 -->
     <div>
@@ -74,10 +74,10 @@
 
   </div>
 
-    <!-- <div class="grid justify-center pt-6 lg:justify-between">
+    <div class="grid justify-center pt-6 lg:justify-center">
       <div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
         <span span class="text-sm justify-items-center">© 2021 Shopee. All Rights Reserved</span>
       </div>
-    </div> -->
+    </div>
 
 </footer>
