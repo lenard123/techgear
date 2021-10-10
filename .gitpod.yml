@@ -12,13 +12,15 @@ tasks:
       sudo apt-get update
       sudo apt-get install mysql-server -y
       sudo service mysql start
+      sudo mysql -e "CREATE USER 'techgear'@'localhost'"
       composer install
       
     command: |
-      mysql -u root -e "CREATE DATABASE online_store"
+      mysql -u techgear -e "CREATE DATABASE online_store"
       export APP_ENV=PRODUCTION
+      export DB_USER=techgear
       export DB_DATABASE=online_store
-      vendor/bin/migrate reset --path=. mysql://root@localhost/online_store --yes
+      vendor/bin/migrate reset --path=. mysql://techgear@localhost/online_store --yes
       php -S 0.0.0.0:8080 -t public
 
     # env:
