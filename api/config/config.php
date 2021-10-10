@@ -2,7 +2,7 @@
 
 function env($var, $default = null)
 {
-  return $_ENV[$var] ?? $default;
+  return $_ENV[$var] ?? getenv($var) ? getenv($var) : $default;
 }
 
 return [
