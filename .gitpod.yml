@@ -1,5 +1,5 @@
-image:
-  file: .gitpod.dockerfile
+# image:
+#   file: .gitpod.dockerfile
 
 tasks:
   - init: |
@@ -9,6 +9,9 @@ tasks:
     command: npm run css-watch
 
   - init: |
+      sudo apt-get update
+      sudo apt-get install mysql-server
+      sudo mysqld
       composer install
       
     command: |
