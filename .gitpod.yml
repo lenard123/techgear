@@ -3,10 +3,16 @@ image:
 
 tasks:
   - init: |
-      mysql -u root -e "CREATE DATABASE online_store"
+      npm install -g npm@latest
+      npm install
+    
+    command: npm run css-watch
+
+  - init: |
       composer install
       
     command: |
+      mysql -u root -e "CREATE DATABASE online_store"
       export APP_ENV=PRODUCTION
       export DB_DATABASE=online_store
       vendor/bin/migrate reset --path=. mysql://root@localhost/online_store --yes
@@ -15,12 +21,6 @@ tasks:
     # env:
     #   APP_ENV: PRODUCTION
     #   DB_DATABASE: online_store
-
-  - init: |
-      npm install -g npm@latest
-      npm install
-    
-    command: npm run css-watch
 
 ports:
   - port: 8080
