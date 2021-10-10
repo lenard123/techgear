@@ -26,5 +26,8 @@ tasks:
     #   DB_DATABASE: online_store
 
 ports:
+  - port: 3306
+    onOpen: ignore
+
   - port: 8080
     onOpen: open-browser
