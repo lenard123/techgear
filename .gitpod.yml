@@ -11,7 +11,7 @@ tasks:
   - init: |
       sudo apt-get update
       sudo apt-get install mysql-server
-      sudo mysqld
+      sudo service mysqld start
       composer install
       
     command: |
