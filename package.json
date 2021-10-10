@@ -1,4 +1,5 @@
 {
+  "name": "techgear",
   "scripts": {
     "js-build": "babel front-end/es6 -d public/assets/js",
     "js-watch": "babel front-end/es6 -d public/assets/js --watch",
