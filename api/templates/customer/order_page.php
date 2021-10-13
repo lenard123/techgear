@@ -48,34 +48,21 @@
       <div class="col-span-4 text-gray-500">
         Status
       </div>
-      <div class="col-span-8 text-gray-700">
+      <div class="col-span-8 text-gray-700" x-data>
 
         <?php if ($order->status === App\Models\Order::STATUS_PREPARING) : ?>
-        <span class="inline-block px-2 py-1 bg-blue-500 text-white text-sm">PREPARING</span>
+        <span class="inline-block px-2 py-1 bg-blue-500 text-white text-sm" x-tooltip="We are still processing your order">PREPARING</span>
 
         <?php elseif($order->status === App\Models\Order::STATUS_SHIPPED) : ?>
-        <span class="inline-block px-2 py-1 bg-purple-500 text-white text-sm">SHIPPED</span>  
+        <span class="inline-block px-2 py-1 bg-purple-500 text-white text-sm" x-tooltip="Your order has been shipped">SHIPPED</span>  
 
         <?php elseif($order->status === App\Models\Order::STATUS_DELIVERY) : ?>
-        <span class="inline-block px-2 py-1 bg-yellow-500 text-white text-sm">DELIVERY</span>
+        <span class="inline-block px-2 py-1 bg-yellow-500 text-white text-sm" x-tooltip="Your is order is out for delivery. Please prepare the exact amount, thank you.">DELIVERY</span>
 
         <?php elseif($order->status === App\Models\Order::STATUS_DELIVERED) : ?>
-        <span class="inline-block px-2 py-1 bg-green-500 text-white text-sm">DELIVERED</span>
+        <span class="inline-block px-2 py-1 bg-green-500 text-white text-sm" x-tooltip="Your order has been delivered.">DELIVERED</span>
 
         <?php endif; ?>
-
-        
-        <!-- <?php if ($order->status === App\Models\Order::STATUS_SHIPPED) : ?>
-        <span class="inline-block px-2 py-1 bg-blue-500 text-white text-sm">SHIPPED</span>
-        <?php endif; ?>
-
-        <?php if ($order->status === App\Models\Order::STATUS_DELIVERY) : ?>
-        <span class="inline-block px-2 py-1 bg-blue-500 text-white text-sm">DELIVERY</span>
-        <?php endif; ?>
-
-        <?php if ($order->status === App\Models\Order::STATUS_DELIVERED) : ?>
-        <span class="inline-block px-2 py-1 bg-blue-500 text-white text-sm">DELIVERED</span>
-        <?php endif; ?> -->
 
       </div>
     </div>
