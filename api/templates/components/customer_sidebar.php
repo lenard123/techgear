@@ -1,5 +1,6 @@
 <aside 
   x-data 
+  x-cloak
   class="lg:hidden" 
   >
   <!-- Overlay -->
