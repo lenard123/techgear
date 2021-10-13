@@ -50,9 +50,9 @@
 
     <div 
       class="h-1 bg-gray-200 rounded relative"
-      x-data='order_details'
+      x-data='OrderDetails(["","w-1/3", "w-2/3", "w-full"], "bg-blue-500")'
     >
-      <div :class="order_progress" class="absolute top-0 left-0 h-full bg-blue-500"></div>
+      <div :class="orderProgress" class="absolute top-0 left-0 h-full bg-blue-500"></div>
       <div class="absolute flex w-full justify-between">
         <div :class="bg(<?= Order::STATUS_PREPARING ?>)" class="h-3 w-3 rounded-full -mt-1"></div>
         <div :class="bg(<?= Order::STATUS_SHIPPED ?>)" class="h-3 w-3 rounded-full -mt-1"></div>
