@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+  opacity: 0 !important;
+}
+
+.btn {
+  @apply px-5 py-2 text-sm transition;
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-primary-darker text-gray-50;
+}
+
+.carousel {
+  @apply relative overflow-hidden w-full bg-gray-700;
+  height: min(75vw, 75vh);
+}
+
+.carousel img.enter, img.leave {
+  transition-property: right, left;
+  transition-duration: 300ms;
+}
+
+.carousel img.move-left.leave-end,
+.carousel img.move-right.enter-start {
+  right: -100%;
+}
+
+.carousel img.move-right.leave-start,
+.carousel img.move-left.enter-end,
+.carousel img.move-left.leave-start,
+.carousel img.move-right.enter-end{
+  right: 0;
+}
+
+.carousel img.move-left.enter-start,
+.carousel img.move-right.leave-end {
+  right: 100%;
+}
