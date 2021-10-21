@@ -1,3 +1,8 @@
 <x-customer-layout>
-  <x-carousel></x-carousel>
+
+  {{-- Slideshow / Caroues --}}
+  <x-carousel />
+
+  <x-product-card-container :products="$featuredProducts" />
+
 </x-customer-layout>

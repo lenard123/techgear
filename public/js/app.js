@@ -3264,6 +3264,10 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('carousel', function () {
       }
 
       this.head += val;
+    },
+    activate: function activate(index) {
+      if (index === this.activate) return;else if (index > this.active) this.move = 'move-right';else this.move = 'move-left';
+      this.head = index;
     }
   };
 }); // Alpine.data('carousel', () => ({

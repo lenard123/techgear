@@ -28,6 +28,13 @@ Alpine.data('carousel', () => ({
       val += this.slidesCount
     } 
     this.head += val
+  },
+
+  activate(index) {
+    if (index === this.activate) return
+    else if (index > this.active) this.move = 'move-right'
+    else this.move = 'move-left'
+    this.head = index
   }
 
 }))

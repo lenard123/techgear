@@ -45,7 +45,7 @@
   <div class="absolute w-full bottom-5">
     <ul class="flex justify-center">
       <template x-for="h,i in Array(slidesCount)">
-        <li @@click="head = i" :class="{'bg-white': i === active}" class="cursor-pointer mx-1 h-3 w-3 rounded-full border border-white">
+        <li @@click="activate(i)" :class="{'bg-white': i === active}" class="cursor-pointer mx-1 h-3 w-3 rounded-full border border-white">
           <a href="#"></a>
         </li>
       </template>

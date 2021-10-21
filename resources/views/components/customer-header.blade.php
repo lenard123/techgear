@@ -43,7 +43,7 @@
 
           <!-- Brand Name -->
           <a href="#" class="flex items-center gap-2 | text-2xl text-gray-800 font-black font-iceland">
-            <img src="<?= asset('img/logo.png') ?>" class="h-8 w-8" alt="TechGear Logo"/>
+            <img src="{{ asset('img/logo.png') }}" class="hidden sm:block h-8 w-8" alt="TechGear Logo"/>
             <span>TechGear</span>
           </a>
 
@@ -61,7 +61,7 @@
         <!-- Right -->
         <div class="flex items-center">
 
-          <div class="hidden xl:flex xl:items-center xl:gap-4">
+          <div class="flex items-center gap-4">
             <a href="#" class="hover:text-primary | transition">Create Account</a>
             <a href="#" class="btn btn-primary rounded-full">Login</a>
           </div>

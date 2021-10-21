@@ -14,14 +14,19 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $data = collect([
-            ['name' => 'TV & Video'],
-            ['name' => 'Audio & Home Theatre'],
-            ['name' => 'Computer'],
-            ['name' => 'Laptop'],
-            ['name' => 'Wearable Technology'],
-        ]);
+        $this->data()->each(function($category) {
+            Category::create($category);
+        });
+    }
 
-        $data->each(fn($category) => Category::create($category));
+    private function data()
+    {
+        return collect([
+            ['id' => 1, 'name' => 'TV & Video'],
+            ['id' => 2, 'name' => 'Audio & Home Theatre'],
+            ['id' => 3, 'name' => 'Computer'],
+            ['id' => 4, 'name' => 'Laptop'],
+            ['id' => 5, 'name' => 'Wearable Technology'],
+        ]);
     }
 }
