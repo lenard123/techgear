@@ -7,6 +7,7 @@ use App\Models\BaseModel;
 use App\Middlewares\CleanRequestMiddleware;
 use App\Middlewares\CustomerOnlyMiddleware;
 use App\Middlewares\GuestCustomerOnlyMiddleware;
+use App\Middlewares\AdminMiddleware;
 
 class Route
 {
@@ -32,6 +33,11 @@ class Route
   public function guestCustomerOnly()
   {
     $this->addMiddleware(GuestCustomerOnlyMiddleware::class);
+  }
+
+  public function adminOnly()
+  {
+    $this->addMiddleware(AdminMiddleware::class);
   }
 
   public function customerOnly()
