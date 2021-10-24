@@ -76,7 +76,7 @@
 
     <div class="grid justify-center pt-6 lg:justify-center">
       <div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
-        <span span class="text-sm justify-items-center">© 2021 Shopee. All Rights Reserved</span>
+        <span span class="text-sm justify-items-center">© 2021 TechGear. All Rights Reserved</span>
       </div>
     </div>
 
