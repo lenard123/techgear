@@ -20,7 +20,7 @@ class SigninController extends BaseController
 
     $user = User::findByEmail($email);
     
-    if (is_null($user)) {
+    if (is_null($user) or $user->role === User::ROLE_CUSTOMER) {
       AlertMessage::failed('Email not found on the database.');
       redirect('?page=signin', 'admin');
     } else if (!$user->login($password)) {
