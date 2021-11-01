@@ -3,23 +3,21 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\Cart;
 
-class ProductCardContainer extends Component
+class CartCard extends Component
 {
 
-    public $products;
+    public $cart;
 
     /**
      * Create a new component instance.
      *
-     * @param App\Models\Product[] $products
-     * 
      * @return void
      */
-    public function __construct(Collection $products)
+    public function __construct(Cart $cart)
     {
-        $this->products = $products;
+        $this->cart = $cart;
     }
 
     /**
@@ -29,6 +27,6 @@ class ProductCardContainer extends Component
      */
     public function render()
     {
-        return view('components.product-card-container');
+        return view('components.cart-card');
     }
 }

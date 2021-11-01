@@ -3235,11 +3235,44 @@ var module_default = src_default;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
 /* harmony import */ var _sticky_top_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sticky-top.js */ "./resources/js/sticky-top.js");
+/* harmony import */ var _carousel_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./carousel.js */ "./resources/js/carousel.js");
+
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].directive('sticky-top', _sticky_top_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
-alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('carousel', function () {
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('carousel', _carousel_js__WEBPACK_IMPORTED_MODULE_2__["default"]);
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('phpData', {});
+
+window.addPhpData = function (key, value) {
+  alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('phpData')[key] = value;
+};
+
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('resetErrorValidation', function () {
+  return {
+    removeErrorMessage: function removeErrorMessage() {
+      var _this$$refs, _this$$refs$errorMess, _this$$refs2, _this$$refs2$input, _this$$refs2$input$cl;
+
+      (_this$$refs = this.$refs) === null || _this$$refs === void 0 ? void 0 : (_this$$refs$errorMess = _this$$refs.errorMessage) === null || _this$$refs$errorMess === void 0 ? void 0 : _this$$refs$errorMess.remove();
+      (_this$$refs2 = this.$refs) === null || _this$$refs2 === void 0 ? void 0 : (_this$$refs2$input = _this$$refs2.input) === null || _this$$refs2$input === void 0 ? void 0 : (_this$$refs2$input$cl = _this$$refs2$input.classList) === null || _this$$refs2$input$cl === void 0 ? void 0 : _this$$refs2$input$cl.remove('error');
+    }
+  };
+});
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+
+/***/ }),
+
+/***/ "./resources/js/carousel.js":
+/*!**********************************!*\
+  !*** ./resources/js/carousel.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   return {
     move: 'move-right',
     head: 0,
@@ -3270,45 +3303,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('carousel', function () {
       this.head = index;
     }
   };
-}); // Alpine.data('carousel', () => ({
-//     get slides() {
-//       return this.$store.phpData.slides
-//     },
-//     activeSlide: 0,
-//     getPosition(i) {
-//       var pos = (i * 100) - (this.activeSlide * 100)
-//       return `${pos}%`
-//     },
-//     nextSlide() {
-//       let next = this.activeSlide + 1
-//       if (next < this.slides.length) {
-//         this.activeSlide = next
-//       } else {
-//         this.activeSlide = 0
-//       }
-//     },
-//     prevSlide() {
-//       let prev = this.activeSlide - 1
-//       if (prev >= 0) {
-//         this.activeSlide = prev
-//       } else {
-//         this.activeSlide = this.slides.length-1
-//       }
-//     },
-//     init() {
-//       setTimeout(() => {
-//         this.nextSlide()
-//       }, 5000)
-//     }
-// }))
-
-alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('phpData', {});
-
-window.addPhpData = function (key, value) {
-  alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('phpData')[key] = value;
-};
-
-alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+});
 
 /***/ }),
 

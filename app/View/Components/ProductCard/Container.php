@@ -1,23 +1,24 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\ProductCard;
 
 use Illuminate\View\Component;
-use App\Models\Category;
 
-class CustomerLayout extends Component
+class Container extends Component
 {
 
-    public $categories;
+    public $products;
+    public $title;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($products, $title = 'Products')
     {
-        $this->categories = Category::all();
+        $this->products = $products;
+        $this->title = $title;
     }
 
     /**
@@ -27,6 +28,6 @@ class CustomerLayout extends Component
      */
     public function render()
     {
-        return view('components.customer-layout');
+        return view('components.product-card.container');
     }
 }

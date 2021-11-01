@@ -3,22 +3,23 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use App\Models\Product;
 
-class ProductCard extends Component
+class CheckoutForm extends Component
 {
 
-    public Product $product;
+    public $number;
+
+    public $title;
 
     /**
      * Create a new component instance.
      *
-     * @param App\Models\Product $product 
      * @return void
      */
-    public function __construct(Product $product)
+    public function __construct($title, $number)
     {
-        $this->product = $product;
+        $this->title = $title;
+        $this->number = $number;
     }
 
     /**
@@ -28,6 +29,6 @@ class ProductCard extends Component
      */
     public function render()
     {
-        return view('components.product-card');
+        return view('components.checkout-form');
     }
 }

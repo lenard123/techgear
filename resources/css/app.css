@@ -42,3 +42,11 @@
 .carousel img.move-right.leave-end {
   right: 100%;
 }
+
+.simple-input-1 {
+  @apply outline-none w-full py-2 px-3 border border-gray-200 hover:border-primary focus:border-primary rounded transition;
+}
+
+.simple-input-1.error{
+  @apply border-red-500;
+}
