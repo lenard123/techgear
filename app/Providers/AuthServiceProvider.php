@@ -31,11 +31,11 @@ class AuthServiceProvider extends ServiceProvider
 
             $provider = Auth::createUserProvider($config['provider']);
 
-            return new AdminGuard(
-                $name, 
-                $provider,
-                app()->make('session.store')
-            );
+            $guard = new AdminGuard($name, $provider, app()->make('session.store'));
+
+            $guard->setCookieJar(app('cookie'));
+
+            return $guard;
         });
     }
 }
