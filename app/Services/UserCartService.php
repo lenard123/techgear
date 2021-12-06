@@ -23,12 +23,12 @@ class UserCartService
         $this->calculateTotal();
     }
 
-    public function calculateSubtotal()
+    private function calculateSubtotal()
     {
         $this->subtotal = $this->items->sum(fn($item) => $item->calculateSubtotal());
     }
 
-    public function calculateTotal()
+    private function calculateTotal()
     {
         $this->total = $this->subtotal + $this->shippingFee;
     }

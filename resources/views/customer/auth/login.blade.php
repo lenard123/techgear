@@ -13,26 +13,32 @@
 
       @csrf
 
-      <x-simple-input
+      <x-input.text
+        class="text-gray-800"
+        input-class="simple-input-1"
+        error-class="error"
         label="Email"
         name="email"
         placeholder="Enter your email here"
-        :isRequired="true"
         type="email"
+        required
       />
 
-      <x-simple-input
+      <x-input.text
+        class="text-gray-800"
+        input-class="simple-input-1"
+        error-class="error"
         label="Password"
         name="password"
         placeholder="Enter your password here"
-        :isRequired="true"
         type="password"
+        required
       />
 
       <div class="flex justify-between">
 
         <label>
-          <input type="checkbox" name=""/>
+          <input type="checkbox" name="remember"/>
           <span>Remember me</span>
         </label>
 

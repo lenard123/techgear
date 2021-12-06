@@ -1,32 +1,36 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\SimpleInput;
 
 use Illuminate\View\Component;
 
-class SimpleInput extends Component
+class Text extends Component
 {
 
     public $label;
     public $name;
     public $type;
     public $placeholder;
-    public $isRequired;
+    public $required;
     public $inputClass;
+    public $value;
+    public $disabled;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label, $name, $type = 'text', $placeholder = null, $isRequired = false, $inputClass = '')
+    public function __construct($label, $name, $type = 'text', $placeholder = null, $required = false, $inputClass = '', $value = null, $disabled = false)
     {
         $this->label = $label;
         $this->name = $name;
         $this->type = $type;
         $this->placeholder = $placeholder;
-        $this->isRequired = $isRequired;
+        $this->required = $required;
         $this->inputClass = $inputClass;
+        $this->value = $value;
+        $this->disabled = $disabled;
     }
 
     /**
@@ -36,6 +40,6 @@ class SimpleInput extends Component
      */
     public function render()
     {
-        return view('components.simple-input');
+        return view('components.simple-input.text');
     }
 }

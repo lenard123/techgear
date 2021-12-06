@@ -5,6 +5,10 @@ use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\CategoryController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CheckoutController;
+use App\Http\Controllers\Customer\OrderController;
+use App\Http\Controllers\Customer\FavoriteController;
+use App\Http\Controllers\Customer\ProfileController;
+use App\Http\Controllers\Customer\SettingsController;
 use App\Http\Controllers\Customer\Auth\SignupController;
 use App\Http\Controllers\Customer\Auth\LogoutController;
 use App\Http\Controllers\Customer\Auth\LoginController;
@@ -20,6 +24,10 @@ use App\Http\Controllers\Customer\Auth\LoginController;
 |
 */
 
+
+/**
+ * Public Routes
+ */
 Route::get('/', HomeController::class)->name('home');
 Route::get('/home', HomeController::class);
 
@@ -52,5 +60,23 @@ Route::middleware('auth')->group(function() {
 
 
   Route::get('/check-out', [CheckoutController::class, 'showCheckoutForm'])->name('checkout');
+  Route::post('/check-out', [CheckoutController::class, 'proccessOrder']);
+
+  Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+  Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
+  Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+  Route::post('/favorites', [FavoriteController::class, 'store']);
+  Route::delete('/favorites/{favorite}', [FavoriteController::class, 'delete'])->name('favorites.delete');
+
+  Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+  Route::patch('/settings/email', [SettingsController::class, 'updateEmail'])->name('settings.updateEmail');
+  Route::patch('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.updatePassword');
+
+  Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+  Route::patch('/profile/contact', [ProfileController::class, 'updateContact'])->name('profile.updateContact');
+  Route::patch('/profile/address', [ProfileController::class, 'updateAddress'])->name('profile.updateAddress');
 
 });
+
+include 'admin.php';

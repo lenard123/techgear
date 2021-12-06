@@ -5,7 +5,7 @@
 
   <label class="font-bold text-gray-500 block">
     {{ $label }}
-    @if($isRequired) <span class="text-red-500">*</span> @endif
+    @if($required) <span class="text-red-500">*</span> @endif
   </label>
 
   <input 
@@ -13,9 +13,11 @@
     type="{{ $type }}" 
     placeholder="{{ $placeholder }}" 
     name="{{ $name }}"
-    value="{{ old($name) }}"
+    value="{{ old($name) ?? $value }}"
     x-ref="input" 
     @@blur="removeErrorMessage()"
+    :disabled="@json($disabled)"
+    :required="@json($required)"
   />
 
   @error($name)

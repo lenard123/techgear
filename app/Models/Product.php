@@ -2,13 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\ImageSource;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'category_id',
+        'description',
+        'price',
+        'quantity',
+        'is_published',
+        'is_featured'
+    ];
 
     public static function featured()
     {

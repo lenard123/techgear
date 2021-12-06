@@ -23,7 +23,7 @@ class ImageSeeder extends Seeder
     private function data()
     {
         return collect([
-            ['id' => 1, 'url' => 'img/product1.jpg', 'source' => ImageSource::ASSET],
+            ['id' => 1, 'url' => 'img/default.jpg', 'source' => ImageSource::ASSET],
             ['id' => 2, 'url' => 'img/product2.jpg', 'source' => ImageSource::ASSET],
         ]);
     }

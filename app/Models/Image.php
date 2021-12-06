@@ -11,9 +11,21 @@ class Image extends Model
 
   protected $fillable = ['source', 'url'];
 
+  const DEFAULT = 1;
+
   public function getUrlAttribute($url)
   {
-    return $url;
+    switch ($this->source) {
+
+      case ImageSource::ASSET:
+        return asset($url);
+
+      case ImageSource::STORAGE:
+        return asset('storage/'.$url);
+
+      default:
+        return $url;
+    }
   }
 
   public static function generateAvatar(User $user)

@@ -1,23 +1,15 @@
 import Alpine from 'alpinejs'
-import stickyTop from './sticky-top.js'
-import carousel from './carousel.js'
+import stickyTop from './modules/sticky-top.js'
+import carousel from './modules/carousel.js'
+import resetErrorValidation from './modules/resetErrorValidation.js'
 
-window.Alpine = Alpine
+require('./bootstrap.js')
 
 Alpine.directive('sticky-top', stickyTop)
 
 Alpine.data('carousel', carousel)
 
-Alpine.store('phpData', {})
-window.addPhpData = function (key, value) {
-  Alpine.store('phpData')[key] = value
-}
+Alpine.data('resetErrorValidation', resetErrorValidation)
 
-Alpine.data('resetErrorValidation', () => ({
-  removeErrorMessage() {
-    this.$refs?.errorMessage?.remove()
-    this.$refs?.input?.classList?.remove('error')
-  }
-}))
-
+window.Alpine = Alpine
 Alpine.start()

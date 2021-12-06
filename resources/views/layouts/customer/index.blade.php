@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @stack('css')
-    <title>{{  isset($title) ? $title . ' | ' : ''}}TechGear</title>
-</head>
-<body class="bg-gray-50">
+<x-layouts.main :title="$title" class="bg-gray-50">
 
-@include('layouts.customer.header')
-@include('layouts.customer.sidebar')
+    @push('css')
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    @endpush
 
-{{ $slot }}
+    @include('layouts.customer.header')
+    @include('layouts.customer.sidebar')
 
-@include('layouts.customer.alert-message')
+    {{ $slot }}
 
-@stack('scripts')
-<script src="{{ asset('js/app.js') }}" defer></script>
-@stack('postScripts')
+    @include('layouts.customer.alert-message')
 
-</body>
-</html>
+    @push('scripts')
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        @stack('postScripts')
+    @endpush
+
+</x-layouts.main>

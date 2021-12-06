@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Auth\AdminGuard;
+use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Auth::extend('admin', function ($app, $name, array $config) {
+
+            $provider = Auth::createUserProvider($config['provider']);
+
+            return new AdminGuard(
+                $name, 
+                $provider,
+                app()->make('session.store')
+            );
+        });
     }
 }

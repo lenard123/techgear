@@ -14,46 +14,63 @@
 
       @csrf
 
-      <x-simple-input
+      <x-input.text
+        class="text-gray-800"
+        input-class="simple-input-1"
+        error-class="error"
         label="Firstname"
         name="firstname"
+        type="text"
         placeholder="Enter your firstname here"
-        :isRequired="true"
+        required
       />
 
-      <x-simple-input
+      <x-input.text
+        class="text-gray-800"
+        input-class="simple-input-1"
+        error-class="error"
         label="Lastname"
         name="lastname"
+        type="text"
         placeholder="Enter your lastname here"
-        :isRequired="true"
+        required
       />
 
-      <x-simple-input
+      <x-input.text
+        class="text-gray-800"
+        input-class="simple-input-1"
+        error-class="error"
         label="Email"
         name="email"
-        placeholder="Enter your email here"
-        :isRequired="true"
         type="email"
+        placeholder="Enter your email here"
+        required
       />
 
-      <x-simple-input
+      <x-input.text
+        class="text-gray-800"
+        input-class="simple-input-1"
+        error-class="error"
         label="Password"
         name="password"
-        placeholder="Enter your password here"
-        :isRequired="true"
         type="password"
+        placeholder="Enter your password here"
+        required
       />
 
-      <x-simple-input
+      <x-input.text
+        class="text-gray-800"
+        input-class="simple-input-1"
+        error-class="error"
         label="Confirm Password"
         name="confirm_password"
-        placeholder="Confirm your password here"
-        :isRequired="true"
         type="password"
+        placeholder="Re-enter your password here."
+        required
       />
 
       <label class="text-gray-500">
-        <input type="checkbox" name=""/>
+        <input type="checkbox" name="" required />
         <span>By signing up you agree to our terms and conditions</span>
       </label>
 

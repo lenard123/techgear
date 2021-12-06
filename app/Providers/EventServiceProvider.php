@@ -8,8 +8,12 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Observers\UserObserver;
 use App\Observers\CartObserver;
+use App\Observers\OrderObserver;
+use App\Observers\OrderItemObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -33,5 +37,7 @@ class EventServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         Cart::observe(CartObserver::class);
+        Order::observe(OrderObserver::class);
+        OrderItem::observe(OrderItemObserver::class);
     }
 }

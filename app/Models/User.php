@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
+use App\Enums\UserRole;
 
 class User extends Authenticatable
 {
@@ -54,6 +55,23 @@ class User extends Authenticatable
         return $this->hasMany(Cart::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function info()
+    {
+        return UserInfo::firstOrCreate([
+            'user_id' => $this->id
+        ]);
+    }
+
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
@@ -63,5 +81,15 @@ class User extends Authenticatable
     {
         $this->image_id = Image::generateAvatar($this)->id;
         $this->save();
+    }
+
+    public function getFullnameAttribute()
+    {
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
+    public function isCustomer()
+    {
+        return $this->role === UserRole::CUSTOMER;
     }
 }

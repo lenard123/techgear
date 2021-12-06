@@ -16,6 +16,14 @@
   @apply bg-primary hover:bg-primary-darker text-gray-50;
 }
 
+.btn-yellow {
+   @apply bg-yellow-500 hover:bg-yellow-600 text-gray-50; 
+}
+
+.btn-red {
+   @apply bg-red-500 hover:bg-red-600 text-gray-50; 
+}
+
 .carousel {
   @apply relative overflow-hidden w-full bg-gray-700;
   height: min(75vw, 75vh);
@@ -49,4 +57,36 @@
 
 .simple-input-1.error{
   @apply border-red-500;
+}
+
+
+.ratio-4\/3 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 75%;
+}
+
+.ratio-16\/9 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 56.25%;
+}
+
+.ratio-16\/9 > *, .ratio-4\/3 > * {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Toggle B */
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #2563EB;
 }

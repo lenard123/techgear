@@ -20,8 +20,18 @@ class Customer extends Component
     public function __construct($title = null, $jsData = [])
     {
         $this->categories = Category::all();
-        $this->title = $title;
+        $this->title = $this->formatTitle($title);
         $this->jsData = $jsData;
+    }
+
+    private function formatTitle($title)
+    {
+        $appName = config('app.name');
+
+        if (is_null($title)) 
+            return $appName;
+
+        return "{$title} | {$appName}";
     }
 
     /**
