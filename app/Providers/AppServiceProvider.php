@@ -27,5 +27,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('currency', function ($amount) {
             return "&#8369;<?= number_format($amount, 2); ?>";
         });
+
+        if($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
+
     }
 }
