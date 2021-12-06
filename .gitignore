@@ -1,15 +1,15 @@
-# OS generated files #
-######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-/static
 /node_modules
+/public/hot
+/public/storage
+/storage/*.key
 /vendor
-/public/storage/uploads/
-*.cache
 .env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode

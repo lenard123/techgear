@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+  opacity: 0 !important;
+}
+
+.btn {
+  @apply px-5 py-2 text-sm transition;
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-primary-darker text-gray-50;
+}
+
+.btn-yellow {
+   @apply bg-yellow-500 hover:bg-yellow-600 text-gray-50; 
+}
+
+.btn-red {
+   @apply bg-red-500 hover:bg-red-600 text-gray-50; 
+}
+
+.carousel {
+  @apply relative overflow-hidden w-full bg-gray-700;
+  height: min(75vw, 75vh);
+}
+
+.carousel img.enter, img.leave {
+  transition-property: right, left;
+  transition-duration: 300ms;
+}
+
+.carousel img.move-left.leave-end,
+.carousel img.move-right.enter-start {
+  right: -100%;
+}
+
+.carousel img.move-right.leave-start,
+.carousel img.move-left.enter-end,
+.carousel img.move-left.leave-start,
+.carousel img.move-right.enter-end{
+  right: 0;
+}
+
+.carousel img.move-left.enter-start,
+.carousel img.move-right.leave-end {
+  right: 100%;
+}
+
+.simple-input-1 {
+  @apply outline-none w-full py-2 px-3 border border-gray-200 hover:border-primary focus:border-primary rounded transition;
+}
+
+.simple-input-1.error{
+  @apply border-red-500;
+}
+
+
+.ratio-4\/3 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 75%;
+}
+
+.ratio-16\/9 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 56.25%;
+}
+
+.ratio-16\/9 > *, .ratio-4\/3 > * {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Toggle B */
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #2563EB;
+}
