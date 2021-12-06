@@ -15,7 +15,7 @@
           {{-- 1st Column --}}
           <div class="flex-shrink-0 w-1/3 lg:w-1/4 py-2">
             <div class="ratio-4/3">
-              <img src="{{ $favorite->product->imageUrl() }}"/>
+              <img src="{{ $favorite->product->image->url }}"/>
             </div>
           </div>
 

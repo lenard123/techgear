@@ -3,7 +3,7 @@
   <div class="flex">
     <div class="flex-shrink-0 w-1/3 p-1">
       <div class="ratio-4/3">
-        <img src="{{ $cart->product->imageUrl() }}" />
+        <img src="{{ $cart->product->image->url }}" />
       </div>
     </div>
     <div class="flex-grow px-2 py-4">

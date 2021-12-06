@@ -3,7 +3,7 @@
   {{-- Image --}}
   <a href="#" class="flex-shrink-0 block w-2/5 md:w-full">
     <div class="ratio-4/3">
-      <img src="{{ $product->imageUrl() }}"/>
+      <img src="{{ $product->image->url }}"/>
     </div>
   </a>
 

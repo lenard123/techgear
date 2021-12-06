@@ -36,19 +36,4 @@ class Product extends Model
     {
         return $this->belongsTo(Image::class);
     }
-
-    public function imageUrl()
-    {
-        switch ($this->image->source) {
-
-            case ImageSource::ASSET:
-                return asset($this->image->url);
-
-            case ImageSource::STORAGE:
-                return storage($this->image->url);
-
-            default:
-                return $this->image->url;
-        }
-    }
 }
