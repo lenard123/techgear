@@ -151,7 +151,7 @@
                 >
                 <option value="">-- Select Barangay --</option>
                 <template x-for="barangay in filteredBarangays" :key="barangay.id">
-                  <option x-text="barangay.name" :selected="barangay.barangay_id === selected.barangay" :value="barangay.barangay_id"></option>
+                  <option x-text="barangay.name" :selected="barangay.code === selected.barangay" :value="barangay.code"></option>
                 </template>
               </select>
             </div>
