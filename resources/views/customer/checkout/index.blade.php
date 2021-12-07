@@ -73,7 +73,7 @@
               error-class="error"
               label="Email"
               name="email"
-              :value="$user->firstname"
+              :value="$user->email"
               type="email"
               required
             />

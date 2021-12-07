@@ -15,5 +15,41 @@ Alpine.data('tinymce', (selector) => ({
   }
 }))
 
+Alpine.data('chart', (config) => ({
+
+  chart: null,
+
+  testConfig: {
+    type: 'doughnut',
+    data: {
+      labels: ['Published', 'Unpublished'],
+      datasets: [{
+        data: [300, 50],
+        backgroundColor: [
+          '#10B981',
+          '#FCD34D',
+        ],
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      plugins:{
+        legend: {
+          position: 'bottom',
+          labels: {
+            pointStyle: 'circle',
+            usePointStyle: true
+          }
+        }
+      }
+    }
+  },
+
+  init() {
+    this.chart = new Chart(this.$root, config)
+  }
+
+}))
+
 window.Alpine = Alpine
 Alpine.start()

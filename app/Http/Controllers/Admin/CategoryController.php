@@ -56,4 +56,17 @@ class CategoryController extends Controller
             ->route('admin.categories.index')
             ->with('success', '1 Category deleted successfully');
     }
+
+    public function toggleIsFeatured(Category $category)
+    {
+        if (! $category->is_featured && Category::where('is_featured', true)->count() >= 5) {
+            return back()
+                ->with('error', 'Only 5 categories can be featured.');
+        }
+
+        $category->is_featured = ! $category->is_featured;
+        $category->save();
+        return back();
+
+    }
 }

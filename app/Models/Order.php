@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Yajra\Address\HasAddress;
 use App\Enums\OrderStatus;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -73,5 +74,16 @@ class Order extends Model
         if (!auth()->user()->isCustomer() && $this->status === OrderStatus::DELIVERED) return false;
 
         return true;
+    }
+
+    public static function calculateTotalSales()
+    {
+        $sales = self::select([
+                DB::raw('sum(order_items.price * order_items.quantity) + sum(orders.shipping_fee) as total_sales'),
+            ])
+            ->join('order_items', 'orders.id', 'order_items.order_id')
+            ->where('status', OrderStatus::DELIVERED)
+            ->first();
+        return $sales->total_sales;
     }
 }

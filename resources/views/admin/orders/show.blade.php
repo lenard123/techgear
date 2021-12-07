@@ -68,7 +68,7 @@
               <td class="py-4 px-3 border border-gray-200">
                 <div class="w-full relative" style="padding-top: 75%;">
                   <img 
-                    src="{{ $item->product->image->url }}" 
+                    src="{{ $item->product->imageUrl }}" 
                     class="rounded object-cover absolute top-0 left-0 h-full w-full"
                   />
                 </div>

@@ -3508,6 +3508,36 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('tinymce', function (selec
     }
   };
 });
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('chart', function (config) {
+  return {
+    chart: null,
+    testConfig: {
+      type: 'doughnut',
+      data: {
+        labels: ['Published', 'Unpublished'],
+        datasets: [{
+          data: [300, 50],
+          backgroundColor: ['#10B981', '#FCD34D'],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              pointStyle: 'circle',
+              usePointStyle: true
+            }
+          }
+        }
+      }
+    },
+    init: function init() {
+      this.chart = new Chart(this.$root, config);
+    }
+  };
+});
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 })();

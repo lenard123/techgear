@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\ImageSource;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\Models\HasImage;
 
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasImage;
 
     protected $fillable = [
         'name',
@@ -30,10 +31,5 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function image()
-    {
-        return $this->belongsTo(Image::class);
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ConfirmPasswordController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
@@ -16,7 +17,7 @@ Route::group(['prefix' => 'admin'], function() {
 
 
   Route::middleware('auth:admin')->group(function() {
-    Route::view('/', 'admin.dashboard.index')->name('admin.home');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.home');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
     Route::get('/categories/create', [CategoryController::class, 'showCreateForm'])->name('admin.categories.create');
@@ -24,6 +25,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
     Route::put('/categories/{category}', [CategoryController::class, 'edit'])->name('admin.categories.edit');
     Route::delete('/categories/{category}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
+    Route::patch('/categories/{category}/featured', [CategoryController::class, 'toggleIsFeatured'])->name('admin.categories.featured');
 
     Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
     Route::get('/products/create', [ProductController::class, 'showCreateForm'])->name('admin.products.create');
