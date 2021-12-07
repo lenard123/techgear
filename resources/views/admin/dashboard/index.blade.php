@@ -85,11 +85,17 @@
           <div class="p-4 border-b border-gray-200">
             <span class="font-semibold text-lg text-gray-800">Category wise product sales</span>
           </div>
+          <div class="p-1 flex-grow py-4">
+            <canvas x-data='chart(@json($dashboard->getCategoriesSaleChartData()))'></canvas>
+          </div>
         </div>
 
         <div class="bg-white rounded shadow-lg self-start min-h-full flex flex-col">
           <div class="p-4 border-b border-gray-200">
             <span class="font-semibold text-lg text-gray-800">Category wise product stocks</span>
+          </div>
+          <div class="p-1 flex-grow py-4">
+            <canvas x-data='chart(@json($dashboard->getCategoriesStockChartData()))'></canvas>
           </div>
         </div>
 

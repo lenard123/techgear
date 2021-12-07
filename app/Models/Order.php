@@ -86,4 +86,16 @@ class Order extends Model
             ->first();
         return $sales->total_sales;
     }
+
+    public static function getOrderStatusReport()
+    {
+        $status_counts = self::select([
+            DB::raw("count(case when is_cancelled is true then 1 end) as cancelled"),
+            DB::raw("count(case when status = ". OrderStatus::PREPARING ." and is_cancelled is false then 1 end) as preparing"),
+            DB::raw("count(case when status = ". OrderStatus::SHIPPED ." and is_cancelled is false then 1 end) as shipped"),
+            DB::raw("count(case when status = ". OrderStatus::DELIVERY ." and is_cancelled is false then 1 end) as delivery"),
+            DB::raw("count(case when status = ". OrderStatus::DELIVERED ." and is_cancelled is false then 1 end) as delivered"),
+        ])->first();
+        return $status_counts;
+    }
 }
