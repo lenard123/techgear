@@ -88,6 +88,11 @@
         @endforeach
 
       </div>
+
+      <div class="py-4 px-8">
+        {{ $products->links() }}
+      </div>
+
     </div>
 
   </div>
