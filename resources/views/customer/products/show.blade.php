@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <div class="flex justify-between mt-5">
+        <div class="flex justify-between mt-5 clear-both">
           <form action="{{ route('favorites.store') }}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">

@@ -2,7 +2,7 @@
 
 return [
 
-    'email' => 'support@techgear.studio',
+    'email' => 'techgear.mailer@gmail.com',
 
     'phone' => '(0939) 771 4101',
 
