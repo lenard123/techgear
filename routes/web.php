@@ -51,6 +51,7 @@ Route::middleware('guest')->group(function() {
   Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotPassword']);
 
   Route::get('/reset-password', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
+  Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
 });
 
