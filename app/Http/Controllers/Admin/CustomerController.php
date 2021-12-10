@@ -14,7 +14,7 @@ class CustomerController extends Controller
     {
 
         $customers = User::with('image')
-//            ->where('role', UserRole::CUSTOMER)
+            ->where('role', UserRole::CUSTOMER)
             ->get();
 
         return view('admin.customers.index', [
