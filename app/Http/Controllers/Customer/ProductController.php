@@ -9,5 +9,10 @@ use App\Models\Cart;
 
 class ProductController extends Controller
 {
-
+    public function show(Product $product)
+    {
+        return view('customer.products.show', [
+            'product' => $product
+        ]);
+    }
 }

@@ -16,7 +16,7 @@
 
           <div class="mb-3">
             <a href="{{ route('orders.show', $order) }}">
-              <h2 class="text-xl inline hover:text-blue-500">#{{ str_pad($order->id, 7, "0", STR_PAD_LEFT) }}</h2>
+              <h2 class="text-xl inline hover:text-blue-500">{{ $order->code }}</h2>
               <h4 class="text-sm text-gray-500 inline">from {{ $order->created_at->diffForHumans() }}</h4>
             </a>
           </div>

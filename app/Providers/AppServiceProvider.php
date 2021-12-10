@@ -28,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
             return "&#8369;<?= number_format($amount, 2); ?>";
         });
 
+        Blade::if('routeIs', function ($pattern) {
+            return request()->routeIs($pattern);
+        });
+
         if($this->app->environment('production')) {
             \URL::forceScheme('https');
         }

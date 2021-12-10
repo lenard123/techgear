@@ -28,7 +28,7 @@
             <div class="col-span-1">
               <div class="w-full relative" style="padding-top: 75%;">
                 <img 
-                  src="{{ $product->image->url }}" 
+                  src="{{ $product->imageUrl }}" 
                   class="object-cover absolute top-0 left-0 h-full w-full"
                 />
               </div>

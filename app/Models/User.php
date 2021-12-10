@@ -9,10 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
 use App\Enums\UserRole;
+use App\Traits\Models\HasImage;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasImage;
 
     /**
      * The attributes that are mass assignable.
@@ -44,11 +45,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function image()
-    {
-        return $this->belongsTo(Image::class);
-    }
 
     public function carts()
     {

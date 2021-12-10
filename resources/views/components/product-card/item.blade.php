@@ -3,7 +3,7 @@
   {{-- Image --}}
   <a href="#" class="flex-shrink-0 block w-2/5 md:w-full">
     <div class="ratio-4/3">
-      <img src="{{ $product->image->url }}"/>
+      <img src="{{ $product->imageUrl }}"/>
     </div>
   </a>
 
@@ -14,7 +14,7 @@
     <div class="flex-grow pb-5">
       <a href="{{ route('categories.show', $product->category) }}" class="block text-gray-500 text-sm">{{ $product->category->name }}</a>
       <a 
-        href="#" 
+        href="{{ route('products.show', $product) }}" 
         class="block text-gray-600 text-md leading-6 font-semibold hover:text-primary"
       >{{ $product->name }}</a>
     </div>
@@ -30,7 +30,7 @@
       <div class="flex items-center">
 
         {{-- Add to favorite --}}
-        <form action="{{ route('favorites.index') }}" method="POST">
+        <form action="{{ route('favorites.store') }}" method="POST">
           @csrf
           <input type="hidden" name="product_id" value="{{ $product->id }}">
           <button type="submit" class="text-red-500 my-auto block">

@@ -22,7 +22,14 @@ class Category extends Model
     public static function getStocksReport()
     {
         $stocks = self::withSum('products as stocks', 'quantity')->get();
-        return $stocks;
+        return static::sortByNameLength($stocks);
+    }
+
+    private static function sortByNameLength($categories)
+    {
+        return $categories
+            ->sort(fn($a, $b) => strlen($a->name) - strlen($b->name))
+            ->values();
     }
 
     public static function getSalesReport()
@@ -41,6 +48,6 @@ class Category extends Model
             })
             ->groupBy('categories.id')
             ->get();
-        return $sales;
+        return static::sortByNameLength($sales);
     }
 }

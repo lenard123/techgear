@@ -24,6 +24,7 @@ class Product extends Model
     public static function featured()
     {
         return Product::with('category', 'image')
+            ->where('is_published', true)
             ->where('is_featured', true)
             ->get();
     }

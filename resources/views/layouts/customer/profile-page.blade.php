@@ -6,7 +6,7 @@
         <div class="bg-white rounded shadow">
           <div class="p-5 border-b border-gray-300">
             <div class="mb-4 relative w-1/3 sm:w-1/4 lg:w-2/4 mx-auto rounded-full overflow-hidden">
-              <img src="{{ auth()->user()->image->url }}" class="h-auto w-full" />
+              <img src="{{ auth()->user()->imageUrl }}" class="h-auto w-full" />
             </div>
             <p class="text-center text-lg font-bold text-gray-700">{{ auth()->user()->fullname }}</p>
             <p class="text-center text-sm text-gray-500 mb-4">Joined {{ auth()->user()->created_at->diffForHumans() }}</p>

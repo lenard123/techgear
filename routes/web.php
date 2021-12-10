@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\CategoryController;
+use App\Http\Controllers\Customer\ProductController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\OrderController;
@@ -32,6 +33,7 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/home', HomeController::class);
 
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 /** 
  * Guest Only Routes
@@ -66,7 +68,7 @@ Route::middleware('auth')->group(function() {
   Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 
   Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
-  Route::post('/favorites', [FavoriteController::class, 'store']);
+  Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
   Route::delete('/favorites/{favorite}', [FavoriteController::class, 'delete'])->name('favorites.delete');
 
   Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');

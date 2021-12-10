@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\CustomerController;
 
 Route::group(['prefix' => 'admin'], function() {
 
@@ -40,6 +41,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('/orders/{order}/ship', [OrderController::class, 'ship'])->name('admin.orders.ship');
     Route::patch('/orders/{order}/deliver', [OrderController::class, 'deliver'])->name('admin.orders.deliver');
     Route::patch('/orders/{order}/complete', [OrderController::class, 'complete'])->name('admin.orders.complete');
+
+    Route::get('/customers', [CustomerController::class, 'index'])->name('admin.customers.index');
+    Route::get('/customers/{user}/profile', [CustomerController::class, 'profile'])->name('admin.customers.profile');
+    Route::get('/customers/{user}/orders', [CustomerController::class, 'orders'])->name('admin.customers.orders');
+    Route::get('/customers/{user}/favorites', [CustomerController::class, 'favorites'])->name('admin.customers.favorites');
 
     Route::get('/confirm-password', [ConfirmPasswordController::class, 'showConfirmPasswordForm'])->name('password.confirm');
     Route::post('/confirm-password', [ConfirmPasswordController::class, 'confirmPassword'])->middleware('throttle:6,1');

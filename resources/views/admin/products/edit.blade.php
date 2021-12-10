@@ -80,7 +80,7 @@
                 <p class="font-light text-xs text-gray-700">(400x300)</p>
               </div>
 
-              <div class="w-3/4" x-data='imagePreview(@json($product->image->url))'>
+              <div class="w-3/4" x-data='imagePreview(@json($product->imageUrl))'>
                 <label class="flex rounded border border-gray-300 cursor-pointer">
                   <div class="py-2 px-3 text-gray-600 font-semibold bg-gray-200 text-sm border-r border-gray-300">Browse</div>
                   <div class="py-2 px-3 text-gray-600 text-sm font-semibold w-full">

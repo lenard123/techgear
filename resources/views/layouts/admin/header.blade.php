@@ -22,7 +22,7 @@
       <a class="flex items-center py-2 px-3">
         <div class="w-9 h-9 mr-3 inline-flex">
           <img 
-            src="{{ $user->image->url }}" 
+            src="{{ $user->imageUrl }}" 
             class="h-full w-full rounded-full"
           />
         </div>
