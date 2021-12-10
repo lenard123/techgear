@@ -13,6 +13,7 @@ use App\Http\Controllers\Customer\SettingsController;
 use App\Http\Controllers\Customer\Auth\SignupController;
 use App\Http\Controllers\Customer\Auth\LogoutController;
 use App\Http\Controllers\Customer\Auth\LoginController;
+use App\Http\Controllers\Customer\Auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,12 @@ Route::middleware('guest')->group(function() {
 
   Route::get('/signup', [SignupController::class, 'showSignupForm'])->name('signup');
   Route::post('/signup', [SignupController::class, 'signup']);
+
+  Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
+  Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotPassword']);
+
+  Route::get('/reset-password', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
+
 });
 
 

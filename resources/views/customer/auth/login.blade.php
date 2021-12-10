@@ -42,7 +42,7 @@
           <span>Remember me</span>
         </label>
 
-        <a href="#">Forgot password?</a>
+        <a href="{{ route('forgot-password') }}">Forgot password?</a>
 
       </div>
 

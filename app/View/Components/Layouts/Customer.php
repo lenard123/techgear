@@ -9,6 +9,7 @@ class Customer extends Component
 {
 
     public $categories;
+    public $cartCount;
     public $title;
     public $jsData;
 
@@ -22,6 +23,7 @@ class Customer extends Component
         $this->categories = Category::published();
         $this->title = $this->formatTitle($title);
         $this->jsData = $jsData;
+        $this->cartCount = auth()->user()?->carts()->count() ?? 0;
     }
 
     private function formatTitle($title)
