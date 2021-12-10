@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function __invoke()
     {
 
-        $categories = Category::whereRelation('products', 'is_published', true)->get();
+        $categories = Category::published();
 
         return view('customer.home.index', [
             'slides' => config('site.carousel_images'),

@@ -19,7 +19,7 @@ class Customer extends Component
      */
     public function __construct($title = null, $jsData = [])
     {
-        $this->categories = Category::all();
+        $this->categories = Category::published();
         $this->title = $this->formatTitle($title);
         $this->jsData = $jsData;
     }

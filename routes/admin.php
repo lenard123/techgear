@@ -18,6 +18,12 @@ Route::group(['prefix' => 'admin'], function() {
 
 
   Route::middleware('auth:admin')->group(function() {
+
+    Route::get('/confirm-password', [ConfirmPasswordController::class, 'showConfirmPasswordForm'])->name('password.confirm');
+    Route::post('/confirm-password', [ConfirmPasswordController::class, 'confirmPassword'])->middleware('throttle:6,1');
+
+    Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
     Route::get('/', [DashboardController::class, 'index'])->name('admin.home');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
@@ -46,9 +52,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/customers/{user}/profile', [CustomerController::class, 'profile'])->name('admin.customers.profile');
     Route::get('/customers/{user}/orders', [CustomerController::class, 'orders'])->name('admin.customers.orders');
     Route::get('/customers/{user}/favorites', [CustomerController::class, 'favorites'])->name('admin.customers.favorites');
-
-    Route::get('/confirm-password', [ConfirmPasswordController::class, 'showConfirmPasswordForm'])->name('password.confirm');
-    Route::post('/confirm-password', [ConfirmPasswordController::class, 'confirmPassword'])->middleware('throttle:6,1');
 
   });
 

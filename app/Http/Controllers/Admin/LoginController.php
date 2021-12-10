@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Requests\Admin\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,5 +32,17 @@ class LoginController extends Controller
             $request->validated(),
             $request->has('remember')
         );
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()
+            ->route('admin.login');
     }
 }

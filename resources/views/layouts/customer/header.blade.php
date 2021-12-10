@@ -38,7 +38,7 @@
       <div class="flex justify-between items-center gap-6 | container mx-auto px-4 h-full">
 
         <!-- Left -->
-        <div class="flex items-center">
+        <div class="flex items-center gap-6">
 
           <!-- Brand Name -->
           <a href="{{ route('home') }}" class="flex items-center gap-2 | text-2xl text-gray-800 font-black font-iceland">
@@ -46,15 +46,19 @@
             <span>TechGear</span>
           </a>
 
+          <div class="flex gap-4 text-sm text-gray-600">
+            @foreach($categories as $category)
+              @if ($category->is_featured)
+                <a 
+                  href="{{ route('categories.show', $category) }}" 
+                  class="hover:text-gray-900 {{ request()->url() === route('categories.show', $category) ? 'font-semibold' : '' }}">{{ $category->name }}</a>
+              @endif
+            @endforeach
+          </div>
+
         </div>
 
-        <form action="#" class="flex-grow gap-5 hidden lg:flex justify-center">
-
-          <button type="button" class="text-gray-500">
-<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-</svg>
-          </button>
+{{--         <form action="#" class="flex-grow gap-5 hidden lg:flex justify-center">
 
           <div class="flex items-center w-1/2 relative transition-all">
             <input 
@@ -69,7 +73,7 @@
               </svg>
             </button>
           </div>
-        </form>
+        </form> --}}
 
         <div class="flex items-center text-gray-700">
 

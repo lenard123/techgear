@@ -50,4 +50,9 @@ class Category extends Model
             ->get();
         return static::sortByNameLength($sales);
     }
+
+    public static function published()
+    {
+        return self::whereRelation('products', 'is_published', true)->get();
+    }
 }

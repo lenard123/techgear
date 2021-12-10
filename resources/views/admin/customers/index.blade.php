@@ -9,10 +9,10 @@
 
       <div class="p-4">
 
-        <div class="grid grid-cols-5 font-semibold text-sm border-b border-gray-200 p-4 gap-4">
+        <div class="grid grid-cols-6 font-semibold text-sm border-b border-gray-200 p-4 gap-4">
 
           <span class="col-span-2 ml-9">Name</span>
-          <span>Email</span>
+          <span class="col-span-2">Email</span>
           <span>Joined Date</span>
           <span class="text-right">Options</span>
 
@@ -20,14 +20,14 @@
         </div>
 
         @foreach($customers as $customer)
-          <div class="grid grid-cols-5 items-center border-b border-gray-200 p-4 text-sm gap-2 text-gray-800">
+          <div class="grid grid-cols-6 items-center border-b border-gray-200 p-4 text-sm gap-2 text-gray-800">
             <div class="col-span-2 flex items-center gap-3">
               <div class="h-8 w-8">
                 <img src="{{ $customer->imageUrl }}" class="h-full w-full rounded-full"/>
               </div>
               <div>{{ $customer->fullname }}</div>
             </div>
-            <div>{{ $customer->email }}</div>
+            <div class="col-span-2">{{ $customer->email }}</div>
             <div>{{ $customer->created_at->diffForHumans() }}</div>
             <div>
               <div class="flex justify-end gap-2">

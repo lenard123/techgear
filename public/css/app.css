@@ -1003,6 +1003,9 @@ video {
 .grid-cols-4{
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 }
+.grid-cols-6{
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+}
 .flex-row{
 	flex-direction: row;
 }
@@ -1797,6 +1800,11 @@ input:checked ~ .dot {
 	background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
 }
 
+.hover\:bg-primary:hover{
+	--tw-bg-opacity: 1;
+	background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
+}
+
 .hover\:text-blue-500:hover{
 	--tw-text-opacity: 1;
 	color: rgba(59, 130, 246, var(--tw-text-opacity));
@@ -1830,6 +1838,11 @@ input:checked ~ .dot {
 .hover\:text-gray-900:hover{
 	--tw-text-opacity: 1;
 	color: rgba(17, 24, 39, var(--tw-text-opacity));
+}
+
+.hover\:text-gray-600:hover{
+	--tw-text-opacity: 1;
+	color: rgba(75, 85, 99, var(--tw-text-opacity));
 }
 
 .hover\:shadow-2xl:hover{
