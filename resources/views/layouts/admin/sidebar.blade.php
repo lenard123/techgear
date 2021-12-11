@@ -107,6 +107,46 @@
         </a>
       </li>
 
+      <li>
+        <div x-data="{isOpen: @json(request()->routeIs('admin.reports*'))}">
+          <button 
+            @@click="isOpen = !isOpen"
+            class="flex justify-between hover:bg-gray-700 text-gray-300 py-2 w-full"
+            >
+            <div class="flex items-center">
+              <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </span>
+              <span class="flex-grow">Reports</span>
+            </div>
+            <div class="flex items-center mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition transform" :class="{'rotate-90': isOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </button>
+          <div x-show="isOpen" x-cloak x-collapse class="bg-gray-900 text-sm">
+            <a 
+              class="flex items-center pl-12 h-12 hover:text-gray-300"
+              :class="@json(request()->routeIs('admin.reports.sales')) ? 'text-gray-200' : 'text-gray-400'" 
+              href="{{ route('admin.reports.sales') }}"
+            >Sales Report</a>
+            <a 
+              class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
+              :class="@json(request()->routeIs('admin.reports.stocks')) ? 'text-gray-200' : 'text-gray-400'" 
+              href="{{ route('admin.reports.stocks') }}"
+            >Product Stocks</a>
+            <a 
+              class="flex items-center pl-12 h-12 text-gray-400 hover:text-gray-300" 
+              :class="@json(request()->routeIs('admin.reports.favorites')) ? 'text-gray-200' : 'text-gray-400'" 
+              href="{{ route('admin.reports.favorites') }}"
+            >Product Favorites</a>
+          </div>
+        </div>
+      </li>
+
     </ul>
   </nav>
 

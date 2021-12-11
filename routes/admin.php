@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\ReportController;
 
 Route::group(['prefix' => 'admin'], function() {
 
@@ -52,6 +53,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/customers/{user}/profile', [CustomerController::class, 'profile'])->name('admin.customers.profile');
     Route::get('/customers/{user}/orders', [CustomerController::class, 'orders'])->name('admin.customers.orders');
     Route::get('/customers/{user}/favorites', [CustomerController::class, 'favorites'])->name('admin.customers.favorites');
+
+    Route::get('/reports/sales', [ReportController::class, 'salesReport'])->name('admin.reports.sales');
+    Route::get('/reports/stocks', [ReportController::class, 'stocksReport'])->name('admin.reports.stocks');
+    Route::get('/reports/favorites', [ReportController::class, 'favoritesReport'])->name('admin.reports.favorites');
 
   });
 
