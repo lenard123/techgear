@@ -24,7 +24,11 @@
         <div class="grid grid-cols-8 border-b border-gray-200 p-4 text-sm gap-2">
           <div>{{ $order->code }}</div>
           <div>{{ $order->created_at->diffForHumans() }}</div>
-          <div class="col-span-2">{{ $order->firstname.' '.$order->lastname }}</div>
+          <div class="col-span-2">
+            <a href="{{ route('admin.customers.profile', $order->user) }}" class="hover:text-primary"> 
+              {{ $order->user->fullname }}
+            </a>
+          </div>
           <div>@currency($order->total + $order->shipping_fee)</div>
           <div class="text-white text-xs">
             @if ($order->is_cancelled)

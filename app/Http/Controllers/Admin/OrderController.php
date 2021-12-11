@@ -14,6 +14,7 @@ class OrderController extends Controller
     {
 
         $orders = Order::join('order_items', 'orders.id', '=', 'order_items.order_id')
+            ->with('user')
             ->select(
                 'orders.*',
                 DB::raw('sum(order_items.quantity) as quantity'),
