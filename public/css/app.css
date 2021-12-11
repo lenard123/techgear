@@ -1009,10 +1009,6 @@ video {
 .border-collapse{
 	border-collapse: collapse;
 }
-.rotate-45{
-	--tw-rotate: 45deg;
-	transform: var(--tw-transform);
-}
 .rotate-90{
 	--tw-rotate: 90deg;
 	transform: var(--tw-transform);
@@ -1962,6 +1958,11 @@ input:checked ~ .dot {
 	color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
 
+.hover\:text-gray-300:hover{
+	--tw-text-opacity: 1;
+	color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+
 .hover\:text-gray-900:hover{
 	--tw-text-opacity: 1;
 	color: rgba(17, 24, 39, var(--tw-text-opacity));
@@ -1975,11 +1976,6 @@ input:checked ~ .dot {
 .hover\:text-gray-400:hover{
 	--tw-text-opacity: 1;
 	color: rgba(156, 163, 175, var(--tw-text-opacity));
-}
-
-.hover\:text-gray-300:hover{
-	--tw-text-opacity: 1;
-	color: rgba(209, 213, 219, var(--tw-text-opacity));
 }
 
 .hover\:shadow-2xl:hover{
@@ -2068,6 +2064,10 @@ input:checked ~ .dot {
 		flex: 1 1 0%;
 	}
 
+	.sm\:grid-cols-2{
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
 	.sm\:grid-cols-3{
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
@@ -2116,6 +2116,10 @@ input:checked ~ .dot {
 
 	.md\:grid-cols-3{
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.md\:grid-cols-2{
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
 	.md\:flex-col{
@@ -2273,5 +2277,9 @@ input:checked ~ .dot {
 
 	.xl\:w-3\/4{
 		width: 75%;
+	}
+
+	.xl\:grid-cols-2{
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }

@@ -2,9 +2,9 @@
 
   <div class="py-8 px-6">
 
-    <div class="grid grid-cols-2 gap-5">
+    <div class="grid xl:grid-cols-2 gap-5">
 
-      <div class="grid grid-cols-2 gap-5 self-start">
+      <div class="grid sm:grid-cols-2 gap-5 self-start">
 
         <div class="bg-grad-4 rounded text-white">
           <div class="px-3 pt-3">
@@ -48,7 +48,7 @@
 
       </div>
 
-      <div class="grid grid-cols-2 gap-5">
+      <div class="grid sm:grid-cols-2 gap-5">
 
         <div class="bg-white rounded shadow-lg self-start min-h-full flex flex-col">
           <div class="p-4 border-b border-gray-200">
@@ -72,7 +72,7 @@
 
     </div>
 
-    <div class="grid grid-cols-2 gap-5 mt-6">
+    <div class="grid xl:grid-cols-2 gap-5 mt-6">
 
         <div class="bg-white rounded shadow-lg self-start min-h-full flex flex-col">
           <div class="p-4 border-b border-gray-200">
