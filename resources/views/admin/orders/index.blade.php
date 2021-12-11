@@ -59,6 +59,11 @@
         </div>
         @endforeach
       </div>
+
+      <div class="py-4 px-8">
+        {{ $orders->links() }}
+      </div>
+
     </div>
 
   </div>

@@ -22,7 +22,7 @@ class OrderController extends Controller
             )
             ->groupBy('orders.id')
             ->latest()
-            ->get();
+            ->paginate(10);
 
         return view('admin.orders.index', [
             'orders' => $orders
