@@ -43,6 +43,11 @@
         @endforeach
 
       </div>
+
+      <div class="py-4 px-8">
+        {{ $customers->links() }}
+      </div>
+
     </div>
   </div>
 

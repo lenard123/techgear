@@ -15,7 +15,7 @@ class CustomerController extends Controller
 
         $customers = User::with('image')
             ->where('role', UserRole::CUSTOMER)
-            ->get();
+            ->paginate(15);
 
         return view('admin.customers.index', [
             'customers' => $customers
