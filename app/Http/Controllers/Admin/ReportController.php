@@ -29,7 +29,7 @@ class ReportController extends Controller
 
     public function stocksReport()
     {
-        $products = Product::orderBy('quantity', 'DESC')->orderBy('favorites_count', 'DESC')->get();
+        $products = Product::orderBy('quantity', 'DESC')->orderBy('quantity', 'DESC')->get();
 
         return view('admin.reports.stocks', [
             'products' => $products
@@ -38,7 +38,7 @@ class ReportController extends Controller
 
     public function favoritesReport()
     {
-        $products = Product::withCount('favorites')->get();
+        $products = Product::withCount('favorites')->orderBy('favorites_count', 'DESC')->get();
 
         return view('admin.reports.favorites', [
             'products' => $products

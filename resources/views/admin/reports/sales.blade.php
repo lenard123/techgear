@@ -26,7 +26,7 @@
                   target="_blank"
                 >{{ $product->name }}</a>
               </td>
-              <td class="border p-2 text-center">{{ $product->sales }}</td>
+              <td class="border p-2 text-center">{{ $product->sales ?? 0 }}</td>
               <td class="border p-2 text-right">@currency($product->sales * $product->price)</td>
             </tr>
             @endforeach
