@@ -9,6 +9,8 @@
 
     {{ $slot }}
 
+    @include('layouts.customer.footer')
+
     @include('layouts.customer.alert-message')
 
     @push('scripts')

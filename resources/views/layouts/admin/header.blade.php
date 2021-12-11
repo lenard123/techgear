@@ -47,7 +47,7 @@
       </a>
 
       <div 
-        class="w-auto py-2 rounded border border-gray-300 bg-white absolute z-20 right-0"
+        class="w-auto py-2 rounded border border-gray-300 bg-white absolute z-20 right-0 text-gray-700"
         x-show="isOpen"
         x-cloak
         >
