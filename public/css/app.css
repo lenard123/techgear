@@ -934,6 +934,9 @@ video {
 .min-h-full{
 	min-height: 100%;
 }
+.min-h-screen{
+	min-height: 100vh;
+}
 .w-1\/3{
 	width: 33.333333%;
 }
@@ -1036,11 +1039,11 @@ video {
 .grid-cols-3{
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-.grid-cols-2{
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-}
 .grid-cols-8{
 	grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+.grid-cols-2{
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .grid-cols-5{
 	grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1386,6 +1389,10 @@ video {
 	padding-left: 1.5rem;
 	padding-right: 1.5rem;
 }
+.px-8{
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
 .py-1{
 	padding-top: 0.25rem;
 	padding-bottom: 0.25rem;
@@ -1397,10 +1404,6 @@ video {
 .py-5{
 	padding-top: 1.25rem;
 	padding-bottom: 1.25rem;
-}
-.px-8{
-	padding-left: 2rem;
-	padding-right: 2rem;
 }
 .py-6{
 	padding-top: 1.5rem;
@@ -2116,10 +2119,6 @@ input:checked ~ .dot {
 
 	.md\:grid-cols-3{
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	.md\:grid-cols-2{
-		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
 	.md\:flex-col{
