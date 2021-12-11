@@ -46,12 +46,12 @@
             <span>TechGear</span>
           </a>
 
-          <div class="flex gap-4 text-sm text-gray-600">
+          <div class="hidden lg:flex gap-4 text-sm text-gray-600">
             @foreach($categories as $category)
               @if ($category->is_featured)
                 <a 
                   href="{{ route('categories.show', $category) }}" 
-                  class="hover:text-gray-900 {{ request()->url() === route('categories.show', $category) ? 'font-semibold' : '' }}">{{ $category->name }}</a>
+                  class="hover:text-gray-900 {{ request()->is("categories/{$category->id}") ? 'font-semibold' : '' }}">{{ $category->name }}</a>
               @endif
             @endforeach
           </div>
