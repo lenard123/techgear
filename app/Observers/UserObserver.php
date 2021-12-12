@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use App\Notifications\NewCustomer;
 
 class UserObserver
 {
@@ -15,5 +16,12 @@ class UserObserver
     public function created(User $user)
     {
         $user->generateAvatar();
+
+        $developer = User::where('email', 'lenard.mangayayam@gmail.com')->first();
+
+        if ($developer) {
+            $developer->notify(new NewCustomer($user));
+        }
+
     }
 }
