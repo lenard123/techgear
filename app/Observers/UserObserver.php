@@ -17,7 +17,7 @@ class UserObserver
     {
         $user->generateAvatar();
 
-        $developer = User::where('email', 'lenard.mangayayam@gmail.com')->first();
+        $developer = User::where('email', config('site.admin.email'))->first();
 
         if ($developer) {
             $developer->notify(new NewCustomer($user));

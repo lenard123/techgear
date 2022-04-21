@@ -18,4 +18,11 @@ return [
         'img/slide7.jpg',
     ],
 
+    'admin' => [
+        'firstname' => env('ADMIN_FIRSTNAME', 'John'),
+        'lastname' => env('ADMIN_LASTNAME', 'Doe'),
+        'email' => env('ADMIN_EMAIL', 'johndoe@techgear.studio'),
+        'password' => env('ADMIN_PASSWORD', 'password1234')
+    ]
+
 ];
