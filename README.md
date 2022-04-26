@@ -1,4 +1,8 @@
+<img align="right" width="120" src="./public/img/logo.png">
+
 # TechGear
+
+<hr/>
 
 <blockquote>
   TechGear is an Ecommerce website that sells electronics and gadgets. This project is built using Alpine JS and Tailwind CSS on top of Laravel. You can visit the live status of the site https://www.techgear.studio/.
@@ -17,15 +21,43 @@
 - Text Editor (e.g. VSCode, Sublime Text)
 
 ## How to Setup
-1. run `git clone https://github.com/lenard123/techgear`
-2. run `cd techgear`
-3. run `composer install`
-4. run `cp .env.example .env` or `copy .env.example .env`
-5. Open the .env file and setup your database connection
-6. run `php artisan key:generate`
-7. run `php artisan storage:link`
-8. run `php artisan migrate:fresh --seed`
-9. finally run `php artisan serve`
+```shell
+# First Clone the project (Git Required)
+git clone https://github.com/lenard123/techgear
+
+# Navigate to the project directory
+cd techgear
+
+# Install PHP Dependencies using composer
+composer install
+
+# Copy .env.example to .env
+# (Windows)
+copy .env.example .env
+
+# (On Linux)
+cp .env.example .env
+
+# Before you proceed to the next
+# configure your database first
+# in the .env file
+
+# Generate Application key
+php artisan key:generate
+
+# Link storage
+php artisan storage:link
+
+# Run database migration
+#   this command will automatically import
+#   the database tables and default data
+php artisan migrate:fresh --seed
+
+# Finally, you can now serve the application
+php artisan serve
+
+# You can now view the system on http://localhost:8000
+```
 
 <p>If you have any questions regarding the installation; You can post it <a href='https://github.com/lenard123/techgear/discussions/categories/q-a'>here</a>.</p>
 
