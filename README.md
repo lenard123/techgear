@@ -12,6 +12,25 @@
   <img src="https://github.com/lenard123/techgear/workflows/Deployment/badge.svg" />
 </p>
 
+## Demo
+
+You can visit the site here https://techgear.lenard123.me/
+
+```
+Demo Accounts
+
+xilovynu@mailinator.com
+Pa$$w0rd!
+
+foqucub@mailinator.com
+Pa$$w0rd!
+
+# Admin Acount
+admin@gmail.com
+Pa$$w0rd!
+
+```
+
 ## Tools Needed
 - PHP (v8.0 or higher)
 - MySQL (or MariaDB)
