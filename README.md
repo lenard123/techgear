@@ -5,7 +5,7 @@
 <hr/>
 
 <blockquote>
-  TechGear is an Ecommerce website that sells electronics and gadgets. This project is built using Alpine JS and Tailwind CSS on top of Laravel. You can visit the live status of the site https://www.techgear.studio/.
+  TechGear is an Ecommerce website that sells electronics and gadgets. This project is built using Alpine JS and Tailwind CSS on top of Laravel. You can visit the live status of the site https://techgear.lenard123.me/.
 </blockquote>
   
 <p>
@@ -28,7 +28,6 @@ Pa$$w0rd!
 # Admin Acount
 admin@gmail.com
 Pa$$w0rd!
-
 ```
 
 ## Tools Needed
